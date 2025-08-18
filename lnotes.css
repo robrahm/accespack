@@ -1,3 +1,8 @@
+body{
+padding: 50px;
+}
+
+
 .vertspace{
 height: 1vh;
 }
@@ -9,4 +14,19 @@ height: 10vh;
 }
 .BigBigVertspace{
 height: 50vh;
+}
+
+.workbox{
+  width: 96.5%;
+  margin: 1rem;
+  padding: 5px;
+  border: solid 1px;
+  height: auto;
+}
+.halfworkbox{
+  width: 47%;
+  margin: 1rem;
+  padding: 5px;
+  border: solid 1px;
+  height: auto;
 }

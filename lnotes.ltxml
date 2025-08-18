@@ -8,6 +8,7 @@
 #\========================================================/
 use LaTeXML::Package;
 use strict;
+# These are all for spacing
 
 DefConstructor('\vertspace', 
 	'<ltx:logical-block class="vertspace"></ltx:logical-block>');
@@ -20,3 +21,18 @@ DefConstructor('\BigVertspace',
 
 DefConstructor('\BigBigVertspace', 
 	'<ltx:logical-block class="BigBigVertspace"></ltx:logical-block>');
+
+# These are for boxes for student work
+DefConstructor('\workbox{}', 
+	'<ltx:logical-block class="workbox">#1</ltx:logical-block>'); 
+DefConstructor('\halfworkbox{}', 
+	'<ltx:inline-logical-block class="halfworkbox">#1</ltx:inline-logical-block>'); 
+
+
+
+
+
+
+
+
+
