@@ -1,0 +1,56 @@
+% lnotes.sty — lecture notes helpers (PDF side)
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{lnotes}[2025/08/18 lecture notes helpers]
+
+% --- Viewport-ish unit: 1vh ≈ 1% of \textheight in TeX
+\newlength{\ln@vh}
+\setlength{\ln@vh}{0.01\textheight}
+
+% --- Vertical space commands (no arguments)
+% \vertspace       → ~1 × \textheight
+% \Vertspace       → ~5 × \textheight
+% \BigVertspace    → ~10 × \textheight
+\newcommand{\vertspace}{%
+  \vspace*{.01\textheight}%
+}
+\newcommand{\Vertspace}{%
+  \vspace*{.05\textheight}%
+}
+\newcommand{\BigVertspace}{%
+  \vspace*{.1\textheight}%
+}
+\newcommand{\BigBigVertspace}{%
+  \vspace*{.5\textheight}%
+}
+
+% --- These are boxes for students' work. 
+% the height is adjusted via \vertspaces in the argument; this is 
+% so LaTeXML will work right. 
+\newcommand{\workbox}[1]{
+% #1 = content
+  \par\noindent
+  \framebox[\dimexpr \linewidth\relax][l]{%
+    \begin{minipage}{\dimexpr \linewidth-2\fboxsep-2\fboxrule\relax}
+      #1
+    \end{minipage}%
+  }%
+}
+
+\newcommand{\halfworkbox}[1]{
+% #1 = content
+  \noindent
+  \framebox[\dimexpr .495\linewidth\relax][l]{%
+    \begin{minipage}{\dimexpr .5\linewidth-2\fboxsep-2\fboxrule\relax}
+      #1
+    \end{minipage}%
+  }%
+}
+
+% --- Theorem setup ---
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{definition}
+\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{rem}[theorem]{Remark}
+\newtheorem{definition}[theorem]{Definition}

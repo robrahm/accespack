@@ -1,0 +1,22 @@
+#
+#/========================================================\
+# This is a set of bindings corresponding to the 
+# lecturnotes class and lnotes.sty files. They provide the 
+# bindings LaTeXML uses to produce the expected html output
+# ========================================================
+# First (in time) Author: Rob Rahm; robrahm@tamu.edu
+#\========================================================/
+use LaTeXML::Package;
+use strict;
+
+DefConstructor('\vertspace', 
+	'<ltx:logical-block class="vertspace"></ltx:logical-block>');
+
+DefConstructor('\Vertspace', 
+	'<ltx:logical-block class="Vertspace"></ltx:logical-block>');
+
+DefConstructor('\BigVertspace', 
+	'<ltx:logical-block class="BigVertspace"></ltx:logical-block>');
+
+DefConstructor('\BigBigVertspace', 
+	'<ltx:logical-block class="BigBigVertspace"></ltx:logical-block>');
