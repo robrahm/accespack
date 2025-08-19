@@ -17,16 +17,27 @@ height: 50vh;
 }
 
 .workbox{
-  width: 96.5%;
+  width: 96.15%;
   margin: 1rem;
   padding: 5px;
-  border: solid 1px;
+/*  border: solid 1px;*/
   height: auto;
 }
 .halfworkbox{
-  width: 47%;
+  width: 46.171%;
   margin: 1rem;
   padding: 5px;
-  border: solid 1px;
+/*  border: solid 1px;*/
   height: auto;
 }
+.bl{ 
+  display: inline-block;
+  width: 2em;
+  border-bottom: 1px solid black;
+}
+/* Math version: one underline, no mtext */
+mspace.bl_m { display:inline-block; border-bottom:1px solid; }
+
+/* Text version */
+.bl_t { display:inline-block; border-bottom:1px solid; }
+

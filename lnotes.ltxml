@@ -1,11 +1,11 @@
-#
-#/========================================================\
-# This is a set of bindings corresponding to the 
-# lecturnotes class and lnotes.sty files. They provide the 
-# bindings LaTeXML uses to produce the expected html output
-# ========================================================
-# First (in time) Author: Rob Rahm; robrahm@tamu.edu
-#\========================================================/
+ #/=======================================================\
+ # This is a set of bindings corresponding to the         # 
+ # lecturnotes class and lnotes.sty files. They provide   # 
+ # bindings LaTeXML uses to produce the expected html     #
+ # output                                                 #
+ # ====================================================== #
+ # First (in time) Author: Rob Rahm; robrahm@tamu.edu     #
+ #\=======================================================/
 use LaTeXML::Package;
 use strict;
 # These are all for spacing
@@ -24,9 +24,13 @@ DefConstructor('\BigBigVertspace',
 
 # These are for boxes for student work
 DefConstructor('\workbox{}', 
-	'<ltx:logical-block class="workbox">#1</ltx:logical-block>'); 
+	'<ltx:logical-block class="workbox ltx_framed_rectangle">#1</ltx:logical-block>'); 
 DefConstructor('\halfworkbox{}', 
-	'<ltx:inline-logical-block class="halfworkbox">#1</ltx:inline-logical-block>'); 
+	'<ltx:inline-logical-block class="halfworkbox ltx_framed_rectangle">#1</ltx:inline-logical-block>'); 
+DefConstructor('\abl', 
+	'<ltx:inline-logical-block class="bl ltx_rule"></ltx:inline-logical-block>');
+DefConstructor('\bl', 
+	'<ltx:inline-logical-block class="bl ltx_rule"></ltx:inline-logical-block>');
 
 
 
@@ -35,4 +39,4 @@ DefConstructor('\halfworkbox{}',
 
 
 
-
+1;
