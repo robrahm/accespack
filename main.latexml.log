@@ -1,0 +1,26 @@
+(Loading /usr/share/perl5/LaTeXML/Package/TeX.pool.ltxml...
+(Loading /usr/share/perl5/LaTeXML/Package/eTeX.pool.ltxml... 0.00 sec)
+(Loading /usr/share/perl5/LaTeXML/Package/pdfTeX.pool.ltxml... 0.01 sec) 0.10 sec)
+(Loading /mnt/c/Users/robrahm/Documents/accespack/lnotes.ltxml... 0.00 sec)
+latexmlc (LaTeXML version 0.8.8)
+invoked as [/usr/bin/latexmlc main.tex --dest=main.html --preload=lnotes.ltxml --css=lnotes.css]
+processing started Tue Aug 19 14:33:52 2025
+Fatal:missing_file:main Can't find TeX file main
+	at String; line 0 col 0 - line 0 col 0
+	search paths are /mnt/c/Users/robrahm/Documents/accespack, /mnt/c/Users/robrahm/Documents/accespack
+(Building...
+(Loading compiled schema /usr/share/perl5/LaTeXML/resources/RelaxNG/LaTeXML.model... 0.01 sec) 0.01 sec)
+(Rewriting... 0.00 sec)
+(Finalizing... 0.00 sec)
+Conversion complete: 1 fatal error (See /mnt/c/Users/robrahm/Documents/accespack/main.latexml.log)
+LaTeXML died!
+(post-processing...
+(Scan main.html processing...
+Scan: DBStatus: 3/0 objects
+ 0.00 sec)
+(CrossRef main.html processing... 0.00 sec)
+(XSLT[using LaTeXML-html5.xsl] main.html processing... 0.00 sec)
+(Writer main.html processing... 0.00 sec) 0.01 sec)
+Post-processing complete: No obvious problems
+processing finished Tue Aug 19 14:33:53 2025
+Status:conversion:3

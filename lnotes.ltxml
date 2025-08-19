@@ -27,10 +27,6 @@ DefConstructor('\workbox{}',
 	'<ltx:logical-block class="workbox ltx_framed_rectangle">#1</ltx:logical-block>'); 
 DefConstructor('\halfworkbox{}', 
 	'<ltx:inline-logical-block class="halfworkbox ltx_framed_rectangle">#1</ltx:inline-logical-block>'); 
-DefConstructor('\abl', 
-	'<ltx:inline-logical-block class="bl ltx_rule"></ltx:inline-logical-block>');
-DefConstructor('\bl', 
-	'<ltx:inline-logical-block class="bl ltx_rule"></ltx:inline-logical-block>');
 
 
 

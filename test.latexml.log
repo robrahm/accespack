@@ -1,27 +1,27 @@
 (Loading /usr/share/perl5/LaTeXML/Package/TeX.pool.ltxml...
 (Loading /usr/share/perl5/LaTeXML/Package/eTeX.pool.ltxml... 0.00 sec)
-(Loading /usr/share/perl5/LaTeXML/Package/pdfTeX.pool.ltxml... 0.01 sec) 0.11 sec)
+(Loading /usr/share/perl5/LaTeXML/Package/pdfTeX.pool.ltxml... 0.00 sec) 0.10 sec)
 (Loading /mnt/c/Users/robrahm/Documents/accespack/lnotes.ltxml... 0.00 sec)
 latexmlc (LaTeXML version 0.8.8)
-invoked as [/usr/bin/latexmlc --path=. test.tex --dest=test.html --preload=lnotes.ltxml --css=lnotes.css]
-processing started Tue Aug 19 13:42:27 2025
+invoked as [/usr/bin/latexmlc test.tex --dest=test.html --preload=lnotes.ltxml --css=lnotes.css]
+processing started Tue Aug 19 14:49:26 2025
 (Digesting TeX test...
 (Processing content /mnt/c/Users/robrahm/Documents/accespack/test.tex...
 (Loading /usr/share/perl5/LaTeXML/Package/LaTeX.pool.ltxml...
 (Loading /usr/share/perl5/LaTeXML/Package/textcomp.sty.ltxml...
-(Processing definitions /usr/share/texlive/texmf-dist/tex/latex/base/ts1enc.dfu... 0.01 sec) 0.07 sec) 0.25 sec)
+(Processing definitions /usr/share/texlive/texmf-dist/tex/latex/base/ts1enc.dfu... 0.01 sec) 0.07 sec) 0.21 sec)
 Warning:missing_file:lecturenotes Can't find binding for class lecturenotes (using OmniBus)
 	at test.tex; line 2 col 0 - line 2 col 1
 	Anticipate undefined macros or environments
-	search paths are /mnt/c/Users/robrahm/Documents/accespack, /mnt/c/Users/robrahm/Documents/accespack, /mnt/c/Users/robrahm/Documents/accespack
+	search paths are /mnt/c/Users/robrahm/Documents/accespack, /mnt/c/Users/robrahm/Documents/accespack
 	In Core::Definition::Constructor[\docume... /usr/share/perl5/LaTeXML/Package/LaTeX.pool.ltxml; line 61
 (Loading /usr/share/perl5/LaTeXML/Package/OmniBus.cls.ltxml...
 (Loading /usr/share/perl5/LaTeXML/Package/article.cls.ltxml... 0.01 sec)
 (Loading /usr/share/perl5/LaTeXML/Package/inst_support.sty.ltxml... 0.00 sec)
-(Loading /usr/share/perl5/LaTeXML/Package/epsf.sty.ltxml... 0.02 sec)
+(Loading /usr/share/perl5/LaTeXML/Package/epsf.sty.ltxml... 0.01 sec)
 (Loading /usr/share/perl5/LaTeXML/Package/graphicx.sty.ltxml...
-(Loading /usr/share/perl5/LaTeXML/Package/graphics.sty.ltxml... 0.01 sec) 0.02 sec)
-(Loading /usr/share/perl5/LaTeXML/Package/aas_macros.sty.ltxml... 0.01 sec) 0.12 sec)
+(Loading /usr/share/perl5/LaTeXML/Package/graphics.sty.ltxml... 0.01 sec) 0.01 sec)
+(Loading /usr/share/perl5/LaTeXML/Package/aas_macros.sty.ltxml... 0.01 sec) 0.07 sec)
 Info:dependencies:dependencies Loading dependencies for /mnt/c/Users/robrahm/Documents/accespack/lecturenotes.cls: article,geometry,amsmath,amstext,amsthm,amssymb,amsxtra,hyperref,enumitem,fancyhdr,microtype,latexml,lnotes
 	at test.tex; line 2 col 0 - line 2 col 1
 (Loading /usr/share/perl5/LaTeXML/Package/geometry.sty.ltxml...
@@ -30,66 +30,79 @@ Info:dependencies:dependencies Loading dependencies for /mnt/c/Users/robrahm/Doc
 (Loading /usr/share/perl5/LaTeXML/Package/ifpdf.sty.ltxml... 0.00 sec)
 (Loading /usr/share/perl5/LaTeXML/Package/ifvtex.sty.ltxml...
 (Loading /usr/share/perl5/LaTeXML/Package/iftex.sty.ltxml... 0.00 sec) 0.01 sec)
-(Loading /usr/share/perl5/LaTeXML/Package/ifxetex.sty.ltxml... 0.00 sec) 0.06 sec)
+(Loading /usr/share/perl5/LaTeXML/Package/ifxetex.sty.ltxml... 0.00 sec) 0.03 sec)
 (Loading /usr/share/perl5/LaTeXML/Package/amsmath.sty.ltxml...
 (Loading /usr/share/perl5/LaTeXML/Package/amsbsy.sty.ltxml...
 (Loading /usr/share/perl5/LaTeXML/Package/amsgen.sty.ltxml... 0.00 sec) 0.01 sec)
-(Loading /usr/share/perl5/LaTeXML/Package/amstext.sty.ltxml... 0.01 sec)
-(Loading /usr/share/perl5/LaTeXML/Package/amsopn.sty.ltxml... 0.01 sec) 0.08 sec)
+(Loading /usr/share/perl5/LaTeXML/Package/amstext.sty.ltxml... 0.00 sec)
+(Loading /usr/share/perl5/LaTeXML/Package/amsopn.sty.ltxml... 0.00 sec) 0.04 sec)
 (Loading /usr/share/perl5/LaTeXML/Package/amsthm.sty.ltxml... 0.01 sec)
 (Loading /usr/share/perl5/LaTeXML/Package/amssymb.sty.ltxml...
-(Loading /usr/share/perl5/LaTeXML/Package/amsfonts.sty.ltxml... 0.00 sec) 0.02 sec)
-(Loading /usr/share/perl5/LaTeXML/Package/amsxtra.sty.ltxml... 0.01 sec)
+(Loading /usr/share/perl5/LaTeXML/Package/amsfonts.sty.ltxml... 0.00 sec) 0.01 sec)
+(Loading /usr/share/perl5/LaTeXML/Package/amsxtra.sty.ltxml... 0.00 sec)
 (Loading /usr/share/perl5/LaTeXML/Package/hyperref.sty.ltxml...
 (Loading /usr/share/perl5/LaTeXML/Package/ltxcmds.sty.ltxml...
-(Processing definitions /usr/share/texlive/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty... 0.06 sec) 0.06 sec)
+(Processing definitions /usr/share/texlive/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty... 0.05 sec) 0.06 sec)
 (Loading /usr/share/perl5/LaTeXML/Package/kvsetkeys.sty.ltxml...
-(Processing definitions /usr/share/texlive/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty... 0.06 sec) 0.06 sec)
+(Processing definitions /usr/share/texlive/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty... 0.05 sec) 0.05 sec)
 (Loading /usr/share/perl5/LaTeXML/Package/kvdefinekeys.sty.ltxml...
-(Processing definitions /usr/share/texlive/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty... 0.02 sec) 0.03 sec)
+(Processing definitions /usr/share/texlive/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty... 0.02 sec) 0.02 sec)
 (Loading /usr/share/perl5/LaTeXML/Package/kvoptions.sty.ltxml...
-(Processing definitions /usr/share/texlive/texmf-dist/tex/latex/kvoptions/kvoptions.sty... 0.12 sec) 0.13 sec)
+(Processing definitions /usr/share/texlive/texmf-dist/tex/latex/kvoptions/kvoptions.sty... 0.08 sec) 0.09 sec)
 (Loading /usr/share/perl5/LaTeXML/Package/nameref.sty.ltxml...
 (Loading /usr/share/perl5/LaTeXML/Package/refcount.sty.ltxml...
 (Processing definitions /usr/share/texlive/texmf-dist/tex/latex/refcount/refcount.sty...
 (Loading /usr/share/perl5/LaTeXML/Package/infwarerr.sty.ltxml...
-(Processing definitions /usr/share/texlive/texmf-dist/tex/generic/infwarerr/infwarerr.sty... 0.03 sec) 0.04 sec) 0.09 sec) 0.09 sec)
+(Processing definitions /usr/share/texlive/texmf-dist/tex/generic/infwarerr/infwarerr.sty... 0.03 sec) 0.03 sec) 0.07 sec) 0.07 sec)
 (Loading /usr/share/perl5/LaTeXML/Package/gettitlestring.sty.ltxml...
-(Processing definitions /usr/share/texlive/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty... 0.17 sec) 0.18 sec) 0.30 sec)
-(Loading /usr/share/perl5/LaTeXML/Package/url.sty.ltxml... 0.01 sec)
+(Processing definitions /usr/share/texlive/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty... 0.09 sec) 0.09 sec) 0.18 sec)
+(Loading /usr/share/perl5/LaTeXML/Package/url.sty.ltxml... 0.00 sec)
 (Loading /usr/share/perl5/LaTeXML/Package/bitset.sty.ltxml...
 (Processing definitions /usr/share/texlive/texmf-dist/tex/generic/bitset/bitset.sty...
 (Loading /usr/share/perl5/LaTeXML/Package/intcalc.sty.ltxml...
-(Processing definitions /usr/share/texlive/texmf-dist/tex/generic/intcalc/intcalc.sty... 0.04 sec) 0.05 sec)
+(Processing definitions /usr/share/texlive/texmf-dist/tex/generic/intcalc/intcalc.sty... 0.03 sec) 0.04 sec)
 (Loading /usr/share/perl5/LaTeXML/Package/bigintcalc.sty.ltxml...
 (Processing definitions /usr/share/texlive/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty...
-(Loading /usr/share/perl5/LaTeXML/Package/pdftexcmds.sty.ltxml... 0.01 sec) 0.18 sec) 0.19 sec) 0.43 sec) 0.44 sec) 1.13 sec)
+(Loading /usr/share/perl5/LaTeXML/Package/pdftexcmds.sty.ltxml... 0.00 sec) 0.10 sec) 0.11 sec) 0.25 sec) 0.25 sec) 0.69 sec)
 (Loading /usr/share/perl5/LaTeXML/Package/enumitem.sty.ltxml... 0.01 sec)
 (Loading /usr/share/perl5/LaTeXML/Package/fancyhdr.sty.ltxml... 0.00 sec)
 (Loading /usr/share/perl5/LaTeXML/Package/microtype.sty.ltxml... 0.00 sec)
-(Loading /usr/share/perl5/LaTeXML/Package/latexml.sty.ltxml... 0.01 sec) 29.24 sec) 29.25 sec)
+(Loading /usr/share/perl5/LaTeXML/Package/latexml.sty.ltxml... 0.01 sec) 1.27 sec) 1.28 sec)
 (Building...
-(Loading compiled schema /usr/share/perl5/LaTeXML/resources/RelaxNG/LaTeXML.model... 0.01 sec) -27.09 sec)
+(Loading compiled schema /usr/share/perl5/LaTeXML/resources/RelaxNG/LaTeXML.model... 0.01 sec) 0.07 sec)
 (Rewriting... 0.00 sec)
-(Math Parsing 6 formulae ...... 0.03 sec)
+(Math Parsing 4 formulae ......
+Warning:not_parsed:INTOP>RELOP MathParser failed to match rule 'Anything'
+	at test.tex; line 39 col 4 - line 39 col 4
+	In "$\displaystyle\int=\quad\quad\quad and\mspace{20.0mu}and\underline{\mspace{20.%
+	0mu}}\@@ENDINLINEMATH"
+	∫[[INTOP]]
+	        > =[[RELOP]] $\displaystyle\int=\quad\quad\quadand\mspace{20.0mu}and\underline{\mspace{20.0mu}}\@@ENDINLINEMATH[[PUNCT]] a[[UNKNOWN]] n[[UNKNOWN]] d[[UNKNOWN]] $\displaystyle\int=\quad\quad\quadand\mspace{20.0mu}and\underline{\mspace{20.0mu}}\@@ENDINLINEMATH[[PUNCT]] a[[UNKNOWN]] n[[UNKNOWN]] d[[UNKNOWN]] \underline{\mspace{20.0mu}}[[UNKNOWN]]
+Warning:not_parsed:INTOP>RELOP MathParser failed to match rule 'Anything'
+	at test.tex; line 39 col 4 - line 40 col 12
+	In "$\displaystyle\int=\quad\quad\quad and\mspace{20.0mu}and\underline{\mspace{20.%
+	0mu}}$"
+	∫[[INTOP]]
+	        > =[[RELOP]] $\displaystyle\int=\quad\quad\quadand\mspace{20.0mu}and\underline{\mspace{20.0mu}}$[[PUNCT]] a[[UNKNOWN]] n[[UNKNOWN]] d[[UNKNOWN]] $\displaystyle\int=\quad\quad\quadand\mspace{20.0mu}and\underline{\mspace{20.0mu}}$[[PUNCT]] a[[UNKNOWN]] n[[UNKNOWN]] d[[UNKNOWN]] \underline{\mspace{20.0mu}}[[UNKNOWN]]
+ 0.03 sec)
 Math parsing succeeded:
-   ltx:XMArg: 1/1
-   ltx:XMath: 6/6
+   ltx:XMArg: 3/3
+   ltx:XMath: 2/4
 Symbols assumed as simple identifiers (with # of occurences):
-   'd{italic}' (1), 'f{italic}' (1), 'x{italic}' (4), 'y{italic}' (1)
+   'a{italic}' (8), 'd{italic}' (9), 'f{italic}' (1), 'n{italic}' (8), 'x{italic}' (4), 'y{italic}' (1)
 Set MATHPARSER_SPECULATE to speculate on possible notations.
 (Finalizing... 0.01 sec)
-Conversion complete: 1 warning; 1 missing file[lecturenotes.cls] (See /mnt/c/Users/robrahm/Documents/accespack/test.latexml.log)
+Conversion complete: 3 warnings; 1 missing file[lecturenotes.cls] (See /mnt/c/Users/robrahm/Documents/accespack/test.latexml.log)
 (post-processing...
 (Scan test.html processing...
-Scan: DBStatus: 31/0 objects
+Scan: DBStatus: 26/0 objects
  0.00 sec)
 (CrossRef test.html processing... 0.00 sec)
-(MathML::Presentation test.html 6 to process...
-converted 6 Maths
+(MathML::Presentation test.html 4 to process...
+converted 4 Maths
  0.01 sec)
-(XSLT[using LaTeXML-html5.xsl] test.html processing... 0.02 sec)
-(Writer test.html processing... 0.01 sec) 0.04 sec)
+(XSLT[using LaTeXML-html5.xsl] test.html processing... 0.00 sec)
+(Writer test.html processing... 0.00 sec) 0.02 sec)
 Post-processing complete: No obvious problems
-processing finished Tue Aug 19 13:42:29 2025
+processing finished Tue Aug 19 14:49:27 2025
 Status:conversion:1
