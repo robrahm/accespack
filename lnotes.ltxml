@@ -24,7 +24,7 @@ DefConstructor('\BigBigVertspace',
 
 # These are for boxes for student work
 DefConstructor('\workbox{}', 
-	'<ltx:logical-block class="workbox ltx_framed_rectangle">#1</ltx:logical-block>'); 
+	'\html{\div aria-label="test"	<ltx:logical-block class="workbox ltx_framed_rectangle">#1</ltx:logical-block>\html{</div>'); 
 DefConstructor('\halfworkbox{}', 
 	'<ltx:inline-logical-block class="halfworkbox ltx_framed_rectangle">#1</ltx:inline-logical-block>'); 
 DefMacro('\bl{}', 
