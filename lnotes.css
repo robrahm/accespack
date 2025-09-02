@@ -1,31 +1,364 @@
-body{
-padding: 50px;
+/* =========================================================
+   Georgia Tech theme + LaTeXML notes skin
+   + OpenDyslexic webfont (no @import needed)
+   ========================================================= */
+
+/* === OpenDyslexic: self-host via CDN === */
+@font-face {
+  font-family: "OpenDyslexic";
+  src:
+    local("OpenDyslexic Regular"),
+    local("OpenDyslexic-Regular"),
+    url("https://cdn.jsdelivr.net/gh/antijingoist/opendyslexic/compiled/OpenDyslexic-Regular.woff2") format("woff2"),
+    url("https://cdn.jsdelivr.net/gh/antijingoist/opendyslexic/compiled/OpenDyslexic-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "OpenDyslexic";
+  src:
+    local("OpenDyslexic Bold"),
+    local("OpenDyslexic-Bold"),
+    url("https://cdn.jsdelivr.net/gh/antijingoist/opendyslexic/compiled/OpenDyslexic-Bold.woff2") format("woff2"),
+    url("https://cdn.jsdelivr.net/gh/antijingoist/opendyslexic/compiled/OpenDyslexic-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "OpenDyslexic";
+  src:
+    local("OpenDyslexic Italic"),
+    local("OpenDyslexic-Italic"),
+    url("https://cdn.jsdelivr.net/gh/antijingoist/opendyslexic/compiled/OpenDyslexic-Italic.woff2") format("woff2"),
+    url("https://cdn.jsdelivr.net/gh/antijingoist/opendyslexic/compiled/OpenDyslexic-Italic.woff") format("woff");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* === Light mode tokens === */
+:root {
+  --bg: #ffffff;
+  --text: #0b0b0c;
+
+  /* GT palette */
+  --gt-gold: #B3A369;   /* Tech Gold (accents only) */
+  --gt-blue: #003057;   /* Tech Blue (links/headings) */
+
+  /* Site tokens */
+  --accent: var(--gt-gold);
+  --link: var(--gt-blue);
+  --link-visited: #4b5f85;
+  --muted: #5a5f6a;
+  --card: #f7f7f8;
+  --border: #e1e4ea;
+  --focus: #eaaa00;
+  --radius: 14px;
+  --shadow: 0 4px 14px rgba(0,0,0,.06);
+  --maxw: 68rem;
+}
+
+/* === Dark mode tokens === */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f1115;
+    --text: #e8eaf0;
+    --card: #171a21;
+    --border: #2a2f3a;
+
+    /* Brand hues tuned for dark */
+    --gt-gold: #B3A369;
+    --gt-blue: #9ec0ff;
+    --accent: var(--gt-gold);
+    --link: var(--gt-blue);
+    --link-visited: #c5d6ff;
+    --focus: #ffd666;
+    --shadow: 0 6px 18px rgba(0,0,0,.35);
+  }
+}
+
+/* === Base typography === */
+body {
+  font-family: "OpenDyslexic", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  line-height: 1.6;
+  letter-spacing: 0.0125em;
+  color: var(--text);
+  background: var(--bg);
+  padding: 50px;
+}
+
+/* Headings use GT blue; ensure LaTeXML classes also inherit font */
+h1, h2, h3, h4, h5, h6 { color: var(--gt-blue); }
+h1, h2, h3, h4, h5, h6,
+.ltx_font_italic, .ltx_text {
+  font-family: "OpenDyslexic", Arial, sans-serif;
+}
+
+/* Page container width */
+.ltx_page_main,
+.ltx_document,
+.ltx_page_content {
+  max-width: var(--maxw);
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+
+/* Paragraphs & list items */
+.ltx_para, .ltx_p, .ltx_item, .ltx_block {
+  color: var(--text);
+  line-height: 1.65;
+  font-size: 1rem;
+}
+
+/* Links */
+a { color: var(--link); }
+a:visited { color: var(--link-visited); }
+a:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}
+
+/* Section titles with GT accent rule */
+.ltx_section > .ltx_title,
+.ltx_subsection > .ltx_title,
+.ltx_subsubsection > .ltx_title {
+  border-left: 6px solid var(--accent);
+  padding-left: .6rem;
+  margin: 1.2rem 0 .8rem;
+}
+.ltx_title, .ltx_subtitle { color: var(--text); }
+h1.ltx_title, .ltx_title_section.ltx_title {
+  font-size: clamp(1.8rem, 1.6rem + 1.2vw, 2.2rem);
+  margin: 1.2rem 0 0.75rem;
+}
+.ltx_section > .ltx_title { font-size: clamp(1.35rem, 1vw + 1rem, 1.8rem); }
+.ltx_subsection > .ltx_title { font-size: 1.2rem; }
+.ltx_subsubsection > .ltx_title { font-size: 1.1rem; }
+
+/* Section spacing */
+.ltx_section, .ltx_subsection, .ltx_subsubsection {
+  padding-block: 1.2rem;
+  border-top: 1px solid var(--border);
+}
+.ltx_section:first-child { border-top: none; }
+
+/* Spacing utilities */
+.vertspace { height: 1vh; }
+.Vertspace { height: 5vh; }
+.BigVertspace { height: 10vh; }
+.BigBigVertspace { height: 50vh; }
+
+/* Cards: theorem-like blocks and workboxes */
+.ltx_theorem, .ltx_lemma, .ltx_proposition, .ltx_corollary,
+.ltx_definition, .ltx_example, .ltx_remark, .ltx_proof,
+.workbox, .halfworkbox {
+  border: 1px solid var(--border);
+  border-left: 6px solid var(--accent);
+  background: var(--bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: .9rem 1rem;
+  margin: 1rem 0;
+}
+
+/* Proof label & end mark */
+.ltx_proof::before {
+  content: "Proof.";
+  font-weight: 600;
+  margin-right: .25rem;
+}
+.ltx_proof .ltx_proof_end::after { content: "■"; }
+
+/* Workbox block (full width within text column) */
+.workbox {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  margin: 1rem 0;
+  padding: .9rem 1rem;
+  border: 1px solid var(--border);
+  border-left: 6px solid var(--accent);
+  background: var(--bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+/* If LaTeXML adds framed styling, neutralize it */
+.workbox.ltx_framed_rectangle {
+  border: 1px solid var(--border);
+  background: var(--bg);
+}
+/* Optional title label: use data-label if present, otherwise a default */
+.workbox::before {
+  content: attr(data-label, "Blank space for student work");
+  display: block;
+  font-weight: 600;
+  margin: 0 0 .4rem 0;
+  color: var(--muted);
+}
+.workbox p { margin: .25rem 0 .75rem; }
+.workbox p:last-child { margin-bottom: 0; }
+
+/* Half-width workbox pair */
+.halfworkbox {
+  display: inline-block;
+  vertical-align: top;
+  box-sizing: border-box;
+  width: calc(50% - 1rem);
+  margin: 0 .75rem 1rem 0;
+  padding: .75rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--card);
+  box-shadow: var(--shadow);
+}
+
+/* Equations & equation groups */
+.ltx_equation, .ltx_equationgroup {
+  margin: 1rem auto;
+  padding: .75rem;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+.ltx_eqn_number {
+  color: var(--muted);
+  padding-left: .5rem;
+}
+.ltx_equation .ltx_inline-block { overflow-x: auto; }
+
+/* Code blocks & verbatim */
+pre.ltx_listing, pre, code.ltx_verbatim {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: .8rem 1rem;
+  overflow-x: auto;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  font-size: .95rem;
+}
+code {
+  background: color-mix(in oklab, var(--card) 80%, transparent);
+  padding: .1rem .25rem;
+  border-radius: 6px;
+}
+
+/* Tables */
+table, .ltx_tabular {
+  border-collapse: collapse;
+  width: 100%;
+  overflow: hidden;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+  margin: .8rem 0 1rem;
+}
+th, td { padding: .55rem .7rem; border-bottom: 1px solid var(--border); }
+th { text-align: left; background: var(--card); }
+tr:last-child td { border-bottom: none; }
+.table-wrapper { overflow-x: auto; }
+
+/* Figures & captions */
+.ltx_figure, figure { margin: 1rem auto; text-align: center; }
+.ltx_graphics, img, svg, canvas, video {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+.ltx_caption, figcaption {
+  color: var(--muted);
+  font-size: .95rem;
+  margin-top: .4rem;
+}
+
+/* Cross-refs & citations */
+.ltx_ref, .ltx_tag, .ltx_cite { color: var(--link); }
+
+/* Notes/Admonitions (example) */
+.ltx_note, .ltx_warning, .ltx_attention { border-left-color: #e69f00; }
+
+/* Focus visibility */
+:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}
+
+/* Print styles */
+@page { size: letter; margin: 0.75in; }
+@media print {
+  html, body { height: auto; background: #fff; color: #000; margin: 0; }
+  a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 90%; }
+  .workbox, .example, .remark, figure, pre, table, blockquote,
+  .code-block, .problem, .solution, .theorem, .proof {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  h1, h2, h3 { break-after: avoid; page-break-after: avoid; }
+  h1 + *, h2 + *, h3 + * { break-inside: avoid; }
+  .page-break { break-before: page; page-break-before: always; }
+  table { border-collapse: collapse; width: 100%; }
+  thead { display: table-header-group; }
+  tr, td, th { break-inside: avoid; page-break-inside: avoid; }
+  .display-math, .figure, img { break-inside: avoid; }
+  .ltx_equation, .ltx_equationgroup,
+  .ltx_theorem, .ltx_proof, pre.ltx_listing, table { box-shadow: none !important; }
+}
+
+/* Dark mode tweaks for components */
+@media (prefers-color-scheme: dark) {
+  .ltx_equation, .ltx_equationgroup { background: var(--card); }
+  pre.ltx_listing, pre, code.ltx_verbatim { background: var(--card); }
+  th { background: color-mix(in oklab, var(--card) 90%, black 0%); }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
 }
 
 
-.vertspace{
-height: 1vh;
-}
-.Vertspace{
-height: 5vh;
-}
-.BigVertspace{
-height: 10vh;
-}
-.BigBigVertspace{
-height: 50vh;
+/* === Single-card toggle (no binding changes) === */
+:root{
+  --_blue: var(--gt-blue, var(--link, #003057));
+  --_gold: var(--gt-gold, var(--accent, #B3A369));
+  --_border: var(--border, #e1e4ea);
+  --_card: var(--card, #f7f7f8);
+  --_focus: var(--focus, #eaaa00);
+  --_radius: var(--radius, 14px);
+  --_shadow: var(--shadow, 0 4px 14px rgba(0,0,0,.06));
 }
 
 .workbox{
-  width: 96.15%;
-  margin: 1rem;
-  padding: 5px;
-  height: auto;
-}
-.halfworkbox{
-  width: 46.171%;
-  margin: 1rem;
-  padding: 5px;
-  height: auto;
+  border:1px solid var(--_border);
+  border-left:6px solid var(--_blue);
+  border-radius:var(--_radius);
+  box-shadow:var(--_shadow);
+  background:var(--bg, #fff);
+  padding:.9rem 1rem;
+  margin:1rem 0;
 }
 
+.workbox .prompt{ margin:.25rem 0 1rem; }
+.workbox .solution{ display:none; margin:.25rem 0 1rem; }
+
+.workbox.showing-solution .prompt{ display:none; }
+.workbox.showing-solution .solution{ display:block; }
+
+/* Controls */
+.workbox .controls .hidebtn{ display:none; }
+.workbox.showing-solution .controls .showbtn{ display:none; }
+.workbox.showing-solution .controls .hidebtn{ display:inline-block; }
+
+.workbox .btn{
+  display:inline-block; text-decoration:none; font-weight:600;
+  border:1px solid var(--_border); border-radius:10px;
+  padding:.4rem .7rem; background:var(--_card); color:var(--_blue);
+  cursor:pointer;
+}
+.workbox .btn:focus-visible, .workbox .btn:hover{
+  outline:3px solid var(--_focus); outline-offset:2px;
+}

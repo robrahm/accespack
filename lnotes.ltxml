@@ -23,12 +23,33 @@ DefConstructor('\BigBigVertspace',
 	'<ltx:logical-block class="BigBigVertspace"></ltx:logical-block>');
 
 # These are for boxes for student work
-DefConstructor('\workbox{}', 
-	'\html{\div aria-label="test"	<ltx:logical-block class="workbox ltx_framed_rectangle">#1</ltx:logical-block>\html{</div>'); 
+# WORKBOX: optional key [#1] just for your own bookkeeping; content in {#2}
+# Emits a single card with your prompt / blank space.
+DefConstructor('\workbox[]{}',
+  '<ltx:logical-block class="workbox ltx_framed_rectangle">
+     <ltx:para class="sr-only"><ltx:text>Blank space for student work.</ltx:text></ltx:para>
+     #2
+   </ltx:logical-block>');
+
+# SOLUTION: optional key [#1]; solution body in {#2}
+# Emit the solution card as a *separate element that follows the workbox*.
+# The JS will move this content into the preceding workbox and wire up the toggle.
+DefConstructor('\sol[]{}',
+  '<ltx:logical-block class="solution-card">
+     <ltx:para class="solution-title"><ltx:text>Solution</ltx:text></ltx:para>
+     #2
+   </ltx:logical-block>');
+
+
+
+
+
+
 DefConstructor('\halfworkbox{}', 
 	'<ltx:inline-logical-block class="halfworkbox ltx_framed_rectangle">#1</ltx:inline-logical-block>'); 
 DefMacro('\bl{}', 
 	'\protect\ifmmode\rule[-3.0ex]{#1em}{0.4pt}\else\rule{#1em}{0.4pt}\fi');
+
 
 
 
