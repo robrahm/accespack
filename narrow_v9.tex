@@ -1,0 +1,854 @@
+% !TEX root = laplace_beltrami.tex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Narrow Band Method}\label{sec:narrow}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+In the narrow band approach, the partial differential equation \eqref{e:weak_relax}
+on $\gamma$
+$$
+-\Delta_\gamma \wu = \wf
+$$
+is extended to the tubular neighborhood $\Nd$ of $\gamma$ defined in \eqref{e:delta-tube}
+$$
+\mathcal N(\delta):= \left \lbrace  \bx  \in \mathbb R^{n+1}  : \   |d(x)| < \delta \right\rbrace \subset \mathbb R^{n+1};
+$$
+%
+we refer to the original papers \cite{MR1868103,MR2485787}. The finite element method is then posed over a discrete approximation to $\mathcal{N}(\delta)$.
+%
+We assume that $\gamma$ is of class $C^2$ and $0<\delta < \frac 1{2 K_\infty}$ so that \eqref{e:Ntilde} holds, namely $\Nd\subset{\mathcal{N}}_\eps(\delta_\eps)$, and all the properties of the distance function detailed in Section~\ref{sec:preliminaries} are valid in $\mathcal N(\delta)$.
+
+A natural / standard way to extend $\wu$ and $\wf$ to $\mathcal N(\delta)$ is to use the constant extensions along the normal direction
+%
+\[
+u = \wu \circ \bP_d,
+\quad
+f = \wf \circ \bP_d.
+\]
+%
+We use the latter to design the FEM. However, we need $u \in H^2(\Nd)$ to derive optimal a-priori $H^1$ error estimates for the FEM, which entails $\gamma \in  C^3$ when using the closest point projection $\bP_d$. We circumvent this extra regularity on $\gamma$ via Proposition~\ref{P:H2-extension} ($H^2$ extension), which defines $u$ as a normal extension relative to a perturbation $\gae$ of $\gamma$ constructed as a zero level set of a regularized distance function $\de$. We will show below in Lemma \ref{t:narrow:geom_consistency} (narrow band PDE consistency) that such a function $u$ satisfies
+%
+\begin{equation}\label{narrow-band-eq}
+\left| \int_{\mathcal N(\delta)} \nabla u \cdot \nabla v - \int_{\mathcal N(\delta)} f v \right| \lesssim  \delta^{3/2} \| \wf \|_{L_2(\gamma)} \|  v \|_{H^1(\mathcal N(\delta))}. 
+\end{equation}
+%
+The specific choice of $u$ adds several technicalities to the proof of \eqref{narrow-band-eq} but reduces the regularity of $\gamma$ to $C^2$. This seems to be a new result in the literature consistent with the underlying regularity $\wu\in H^2(\gamma)$. This also motivates the narrow band FEM as a straightforward (bulk) finite element approximation of \eqref{narrow-band-eq} upon replacing $\Nd$ by a polygonal approximation $\mathcal N_h(\delta)$ dictated by $d_h$, the Lagrange interpolant of $d$ in the bulk. We discuss this next.
+We refer to \cite{MR3471100} for higher order FEMs and \cite{MR2608464,MR3249369} for an algorithm based on a level-set function, rather that the less practical distance function. The essential ideas, however, are similar to those below but are more technical.
+
+
+%--------------------------------------------------------------------------------
+\subsection{The Narrow Band FEM}\label{S:FE-narrow-band}
+%--------------------------------------------------------------------------------
+
+We assume that $\mathcal{N}$ is enclosed in a $n+1$ dimensional polyhedral domain $D$ and denote by $\mathcal T$ a partition of $D$ made of simplices. We omit to mention the explicit dependence on the shape regularity constant of $\T$
+$$
+\sigma := \max_{T\in \mathcal T} \frac{\textrm{diam}(T)}{h_T}
+$$
+in most estimates below;
+we use the notation $h_T=| T |^{\frac 1 {n+1}}$ and $h=\max_{T\in \mathcal T} h_T$.
+Let $d_h$ stand for the Lagrange interpolant of the
+distance function $d$ by continuous piecewise linear functions over $\T$. The discrete distance function $d_h$ induces the discrete narrow band
+$$
+\mathcal N_h(\delta) := \left\lbrace \bx \in D \ : \  |d_h(\bx)| < \delta \right\rbrace.
+$$ 
+%
+Notice that standard interpolation estimates imply
+\begin{equation}\label{e:narrow:interp}
+  \| d - d_h \|_{L_\infty(\mathcal N)} + h \| \nabla (d-d_h)\|_{L_\infty(\mathcal N)} \leq c_I h^2
+  | d |_{W^2_\infty(\mathcal N)},
+\end{equation}
+where $c_I$ is a constant only depending on $\sigma$.
+This implies the {\it non-degeneracy} property
+%
+\begin{equation}\label{e:narrow:nondegen}
+| \nabla d_h| \geq \big| |\nabla d| - |\nabla(d-d_h)| \big| \geq  \big| 1 - |\nabla(d-d_h)| \big|  \geq  \frac 1 2,
+\end{equation}
+provided $h$ is sufficiently small so that
+$
+c_I h | d |_{W^2_\infty(\mathcal N)} \leq \frac 1 2. 
+$
+Combining estimates \eqref{e:narrow:interp} and \eqref{e:narrow:nondegen}
+we deduce that the Hausdorff distance between
+$\Nd$ and $\mathcal{N}_h(\delta)$ satisfies 
+%
+\begin{equation}\label{hausdorff}
+\dist_H(\Nd,\mathcal{N}_h(\delta)) \le 2 c_I h^2 | d |_{W^2_\infty(\mathcal N)}.
+\end{equation}
+Moreover, to guarantee that $\mathcal N_h(\delta) \subset \mathcal N$, we observe
+$$
+|d(\bx)| \leq |d_h(\bx)| + |(d-d_h)(\bx)| \leq \delta + c_I | d |_{W^2_\infty(\mathcal N)} h^2
+\quad\forall \, \bx \in \mathcal N_h(\delta).
+$$
+In view of \eqref{N:def}, it thus suffices to restrict $\delta$ and $h$ so that
+%
+\begin{equation}\label{e:narrow:delta_and_h}
+\delta + c_I | d |_{W^2_\infty(\mathcal N)} h^2 \leq \frac{1}{2K_\infty}.
+\end{equation}
+%
+Hereafter we make the structural assumption
+%
+\begin{equation}\label{delta-h}
+C_1 h \le \delta \le C_2 h
+\end{equation}
+%
+with $c_I \le C_1 \le C_2$ so that \eqref{e:narrow:delta_and_h} holds for $h$ sufficiently small.
+
+We denote by  $\mathcal T_\delta$ the restriction of $\mathcal T$ to $\mathcal N_h(\delta)$  in the sense that
+$$
+\mathcal T_\delta := \big\lbrace T\in\T  \ : \ T\cap \mathcal N_h(\delta) \not = \emptyset \big\rbrace.
+$$
+The finite element space associated with $\mathcal T_\delta$ is then constructed in the usual way
+$$
+\mathbb V(\mathcal T_\delta) := \left\lbrace V \in C^0(\overline{\mathcal N_h(\delta)}) \ : \ V|_T \in \mathcal P, \ T \in \mathcal T_\delta \right\rbrace, \quad
+$$
+where we recall that $\mathcal P$ stands for the space of polynomials of degree 1.
+The subspace of functions with vanishing mean value is denoted $\mathbb V_{\#}(\mathcal T_\delta)$.
+
+With this notation at hand and inspired by \eqref{narrow-band-eq},  we define the narrow band finite element solution $U \in \mathbb V_{\#}(\mathcal T_\delta)$ to satisfy
+%
+\begin{equation}\label{e:discrete_nb}
+\int_{\mathcal N_h(\delta)} \nabla U \cdot \nabla V = \int_{\mathcal N_h(\delta)}F  V, \qquad \forall V \in \mathbb V_\#(\mathcal T_\delta),
+\end{equation}
+where $F$ is an approximation to $f=\widetilde f \circ \bP_d$ satisfying $\int_{\mathcal N_h(\delta)} F = 0$. In order to make a convenient choice of $F$, we first define ${\bf M}_h:\mathcal{N}_h(\delta) \rightarrow \mathcal{N}(\delta)$ by
+%
+\[
+  {\bf M}_h(\bx)=\bP_d(\bx) + d_h(\bx) \nabla d(\bx);
+\]
+%
+the properties of ${\bf M}_h$ are explored thoroughly later in this section.  With this definition in hand, we let
+%
+\begin{equation}\label{e:narrow:F}
+F = f \circ {\bf M}_h-  \frac{1}{  |\mathcal N_h(\delta)|}  \int_{\mathcal N_h(\delta)} f \circ {\bf M}_h.
+\end{equation}
+%
+%\comment{AD:  Andrea and I agreed that this is a sensible choice of $F$, and far more convenient that the previous choice $F=f-\frac{1}{|\mathcal{N}(\delta)|} \int_{\mathcal{N}(\delta)} f$.  It requires no more information about $d$ to compute than we have already assumed (since the definition of $f$ requires computing $\bP_d$, which in turn gives us access to $\nabla d$, and access to $d_h$ is already assumed), and it also makes FEM consistency estimates down the road much easier.}   
+%
+This requires having access to $d, d_h$ and $\bP_d$, which we assume hereafter.
+Since $F$ has vanishing meanvalue, \eqref{e:discrete_nb} is also valid for all
+$V\in \mathbb V(\mathcal T_\delta)$.
+The existence and uniqueness of $U \in \mathbb V_\#(\mathcal T_\delta)$ follows directly from the Lax-Milgram lemma. 
+
+%--------------------------------------------------------------------------------
+\subsection{PDE Geometric Consistency}\label{s:narrow:consistency}
+%--------------------------------------------------------------------------------
+
+We intend to prove \eqref{narrow-band-eq} for the extension $u \in H^2(\Nd)$ in Proposition \ref{P:H2-extension} ($H^2$ extension) of $\wu\in H^2(\gamma)$. We recall Proposition \ref{P:BVP} (PDE satisfied by $u$)
+%
+\[
+-\div { \mue \bBe \nabla u } = \fe \mue,
+\]
+%
+multiply by a test function $\tv \in H^1(\mathcal N(\delta))$ and integrate by parts in $\Nd$ to obtain
+%
+\begin{equation}\label{e:narrow_band_exact}
+\int_{\mathcal N(\delta)} \bB_\varepsilon \nabla u \cdot \nabla \tv ~\mu_\varepsilon = \int_{\mathcal N(\delta)} f_\varepsilon~ \tv ~\mu_\varepsilon
++ \int_{\partial \mathcal N(\delta)} \bB_\varepsilon \nabla u \cdot \nabla d ~ \tv ~\mu_\varepsilon.
+\end{equation}
+%
+Notice that we have used that $\bnu=\nabla d$ is the outward pointing normal to $\partial \Nd$.
+%
+We start by estimating geometric quantities appearing in \eqref{e:narrow_band_exact}.
+%To this end, we denote by $\| . \|_2$ the standard $l_2$ euclidian norm in $\mathbb R^{n+1}$ and by
+%$$
+%|| \bA ||_2 := \sup_{\bx \in \mathbb R^{n+1}, \ \bx \not = 0} \frac{\| \bA \bx \|_2}{ \| \bx \|_2 } = \sup_{\bx \in \mathbb R^{n+1}, \ \bx \not = 0} \frac{| \bA \bx \cdot \bx|}{ \| \bx \|_2^2}
+%$$ 
+%the spectral norm of a matrix $\bA \in \mathbb R^{(n+1) \times (n+1)}$.
+
+%
+\begin{lemma}[properties of $\mue$ and $\bBe$]\label{e:narrow:consistency_alg}
+Let $\gamma$ be of class $C^2$ and $C\delta \le \eps\le\frac{\delta}{2}$ be sufficiently small. Then for all $\bx\in\Nd$ we have
+%
+\begin{equation}\label{nb:mu_estim}
+\|1-\mu_\varepsilon\|_{L_\infty(\mathcal N(\delta))} \lesssim   \delta |d|_{W^2_\infty(\mathcal{N})}
+\end{equation}
+and
+\begin{equation}\label{nb:matrix_estim}
+\|  \Pi_\eps - \bB_\varepsilon \mu_\varepsilon \|_{L_\infty(\mathcal N(\delta))} \lesssim    \delta |d|_{W^2_\infty(\mathcal{N})}.
+\end{equation}
+\end{lemma}
+\begin{proof}
+We recall the definitions of $\mue$ from Proposition \ref{P:BVP} (PDE satisfied by $u$)
+and $\wmue$ from Lemma \ref{L:PDE-ue} (PDE satisfies by $\ue$)
+\[
+\mue = \frac{1}{\wmue\circ\bPe} \det\Big( \bI - \wde \, D^2\wde  \Big), \quad 
+\wmue = \det\Big(\bI - \wde \, D^2\wde  \Big)
+\big( \nabla d \cdot \nabla\wde  \big) \circ\bQe,
+\]
+where $\bP_\eps$ is the projection from $\mathcal N(\delta)$ onto $\gamma_\eps =\{ \wde (\bx) = 0\}$ and $\bQ_\eps$ is its inverse when restricted to $\gamma$. 
+%
+Note that in $\Nd$
+%
+\[
+1-\mue = \Big(1 - \frac{1}{\wmue\circ\bPe}  \Big)
++ \frac{1}{\wmue\circ\bPe} \Big(1 - \det \big(\bI - \wde D^2 \wde \big) \Big).
+\]
+%
+We thus need to examine the eigenvalues $(\zeta_i(\bx))_{i=0}^n$ of 
+$$
+\bI - \wde(\bx)D^2 \wde(\bx) \quad\forall \, \bx\in\Nd,
+$$
+with $\zeta_0(\bx)=1$ corresponding to the eigenvector $\nabla \wde$.
+We infer that
+$$
+\zeta_i(\bx) = 1 - \eta_i(\bx)
+$$
+where 
+\begin{equation*}\label{e:narrow:zeta}
+  | \eta_i(\bx)| \lesssim  | \wde(\bx)| ~ | \wde |_{W^2_\infty(\Nd)} \lesssim
+  \delta | d |_{W^2_\infty({\mathcal N})}
+\end{equation*}
+%
+according to Lemma \ref{L:properties-Pe} (properties of $\wde$) and \eqref{e:Ntilde}
+with $\delta_\varepsilon \le \frac32 \delta$. Hence
+%
+\begin{equation*}\label{e:narrow:estimr}
+\Big| 1 - \det \big( \bI - \wde(\bx)D^2 \wde(\bx) \big) \Big|
+= \left| 1- \prod_{i=1}^{n} \zeta_i(\bx)\right|
+\lesssim \delta |d|_{W^2_\infty({\mathcal N})}
+\end{equation*}
+%
+for all $\bx\in\Nd$. This takes care of the second term in the equation for $1-\mue$.
+It remains to estimate $1-\wmue\circ\bPe$. Since $1-\wmue\circ\bPe$ reads as follows
+on $\gamma$
+%
+\[
+1-\wmue = \Big(1 - \det \big( \bI - \wde D^2 \wde \big) \Big)
++ \det \big( \bI - \wde D^2 \wde \big) \big(1 - \nabla d\cdot\nabla\wde \big),
+\]
+%
+combining the previous estimate with Lemma \ref{L:properties-Pe} (properties
+of $\wde$) yields
+%
+\[
+\big| 1-\wmue(\bPe(\bx)) \big| \lesssim \delta  |d|_{W^2_\infty({\mathcal N})}
+\quad\forall \, \bx\in\Nd.
+\]
+%
+This implies $|\wmue(\bPe(\bx))|\ge\frac12$ for $\delta$ suficiently small and
+thus leads to \eqref{nb:mu_estim}.
+%
+
+We now prove \eqref{nb:matrix_estim} which, in light of \eqref{nb:mu_estim}, reduces to
+the estimate $\| \Pi_\eps - \bB_\varepsilon\|_{L_\infty(\mathcal N(\delta))} \lesssim \delta |d|_{W^2_\infty({\mathcal N})}$.
+We recall from Proposition \ref{P:BVP} that in $\Nd$
+%
+\[
+\bBe = \big(\bI - \wde \, D^2\wde \big)^{-1} \Pi_\eps \wbAe\circ\bPe \Pi_\eps
+\big( \bI - \wde \, D^2\wde \big)^{-1}.
+\]
+%
+Since $\wde(\bx) \le \widetilde \delta \leq \frac{3}{2}\delta$ for $\bx \in \Nd$ and $\| D^2 \wde \|_{L_\infty(\mathcal N(\delta))} \lesssim |d|_{W^2_\infty(\mathcal N)}$ thanks to Lemma~\ref{L:properties-Pe} (properties of $\wde$),  
+the Taylor expansion of  $(\bI - t \wde D^2\wde)^{-1}$ centered at $t=0$ and computed
+at $t=1$ converges for $\delta$ sufficiently small. It reads
+%
+$$
+(\bI - \wde D^2 \wde)^{-1} = \bI +  \wde  (\bI- \xi \wde D^2 \wde)^{-2} D^2 \wde
+$$  
+for some $0< \xi <1$. The definition of $\wbAe$ given in Lemma~\ref{L:PDE-ue} yields
+$$
+\bBe =\Pi_\eps (\Pi\circ \bQ_\eps \circ \bP_\eps) \Pi_\eps +  \wde \bG,
+$$
+where $\bG:\mathcal N(\delta) \rightarrow \mathbb R^{(n+1)\times (n+1)}$ satisfies $\| \bG \|_{L_\infty(\mathcal N(\delta))} \lesssim 1$. 
+Moreover,
+%
+\[
+\Pi_\eps - \Pi_\eps (\Pi \circ \bQ_\eps \circ \bP_\eps) \Pi_\eps = \Pi_\eps \nabla d \circ (\bQ_\eps \circ \bP_\eps)  \otimes \Pi_\eps \nabla  d \circ (\bQ_\eps \circ \bP_\eps)
+\]
+%
+whence for all $\bx\in\Nd$ we see that
+%
+\[
+\Pi_\eps(\bx) \nabla d(\bQ_\eps(\bP_\eps(\bx))) =
+\nabla d(\bQ_\eps(\bP_\eps(\bx))) -
+\nabla\wde(\bx) \big(\nabla d(\bQ_\eps(\bP_\eps(\bx))) \cdot\nabla\wde(\bx)\big).
+\]
+%
+Since
+%
+\begin{align*}
+  \big| \nabla \wde(\bx) - \nabla d(\bQ_\eps(\bP_\eps(\bx))) \big| &\leq
+  \big | \nabla (\wde(\bx) -d(\bx)) \big| + \big| \nabla d(\bx) - \nabla d(\bQ_\eps(\bP_\eps(\bx))) \big| \\
+  &\lesssim \big(\delta+|\bx -\bQ_\eps(\bP_\eps(\bx))| \big) |d|_{W^2_\infty(\mathcal{N})}
+  \lesssim \delta |d|_{W^2_\infty(\mathcal{N})}
+\end{align*}
+%
+thanks to Lemma~\ref{L:properties-Pe} (properties of $\wde$), we get
+%
+\begin{equation*}\label{e:narrow_matrix_A}
+|| \Pi_\eps - \bBe||_{L_\infty(\Nd)} \lesssim \delta |d|_{W^2_\infty(\mathcal{N})}
+\end{equation*}
+%
+as asserted. This concludes the proof.
+\end{proof}
+\begin{remark}[estimate of $\mu$]\label{r:narrow:mu}
+Lemma~\ref{L:area_ratio_distance} (relation between $q$ and $q_\Gamma$) gives
+the expression $\mu(\bx):= \det(\bI-d(\bx) D^2 d(\bx))$ for the change of infinitesimal
+area between $\gamma_s:=\{ d^{-1}(s)\}$ and $\gamma := \{ d^{-1}(0)\}$.
+Proceeding as in the proof of the above lemma, we get
+%
+\begin{equation}\label{nb:mu_estim_d}
+\|1-\mu\|_{L_\infty(\mathcal N(\delta))} \lesssim  \delta \, |d|_{W^2_\infty(\mathcal{N})}
+\end{equation}
+provided $\delta$ is sufficiently small so that
+$\mathcal N(\delta) \subset \mathcal N$.
+\end{remark}
+We are now in position to prove a consistency estimate measuring the discrepancy between $f$ and $\Delta u$ in $\mathcal{N}(\delta)$.
+%
+\begin{lemma}[narrow band PDE consistency]\label{t:narrow:geom_consistency}
+Let $\gamma$ be of class $C^2$ and $u$ be the extension of Proposition \ref{P:H2-extension} ($H^2$ extension) with $C\delta \le \eps \le \frac{\delta}{2}$
+sufficiently small. If $\wf \in L_2(\gamma)$,
+then for all $\tv \in H^1(\mathcal N(\delta))$, we have
+%
+\begin{equation}\label{e:narrow:geom_consistency}
+\left| \int_{\mathcal N(\delta)} \nabla u \cdot \nabla \tv - \int_{\mathcal N(\delta)} f \tv \, \right| \lesssim  \delta^{3/2} |d|_{W^2_\infty(\mathcal{N})}^2 \| \wf \|_{L_2(\gamma)} \|  \tv \|_{H^1(\mathcal N(\delta))}. 	
+\end{equation}
+\end{lemma}
+\begin{proof}
+In view of \eqref{e:narrow_band_exact}, we deduce
+$$
+I(\tv) := \int_{\mathcal N(\delta)} \nabla u \cdot \nabla \tv - \int_{\mathcal N(\delta)} f \tv
+= I_1(\tv) + I_2(\tv) + I_3(\tv)
+\quad\forall \, \tv \in H^1(\Nd),
+$$
+%
+where
+%
+\begin{align*}
+ I_1(v) &:= \int_{\mathcal N(\delta)} (\bI - \bB_\varepsilon \mu_\varepsilon) \nabla u \cdot \nabla \tv,
+  \\
+  I_2(v) &:= \int_{\mathcal N(\delta)} (f_\varepsilon \mu_\varepsilon - f)  \tv,
+  \\
+  I_3(v) &:= \int_{\partial \mathcal N(\delta)} \bB_\varepsilon \nabla u \cdot \nabla d ~ \tv ~\mu_\varepsilon
+\end{align*}
+%
+with $f_\varepsilon=\wf \circ \bQ_\varepsilon \circ \bP_\varepsilon$.
+%
+We now examine these three terms separately.
+
+\medskip\noindent
+{\it Step 1: Term $I_1(v)$.}
+Since $u$ is constant along the direction $\nabla\wde$, we realize that
+$\nabla u = \Pi_\eps\nabla u$ and
+Lemma~\ref{e:narrow:consistency_alg} (properties of $\mue$ and $\bBe$) directly yields
+$$
+\big| I_1(\tv) \big| \lesssim \delta  |d|_{W^2_\infty(\mathcal{N})}  \| \nabla u \|_{L_2(\mathcal N(\delta))} \| \nabla \tv \|_{L_2(\mathcal N(\delta))}.
+$$
+\medskip\noindent
+{\it Step 2: Term $I_2(\tv)$.} Let $-\delta<s<\delta$ and consider the isomorphisms
+%
+$$
+\bR_s:=\bQ_\eps \circ \bP_{\eps} \circ \bQ_s: \gamma \to \gamma,
+\quad
+\bR^{-1}_s = \bP_d \circ \bQ_{\eps,s} \circ \bP_\eps : \gamma \to \gamma,
+$$
+%
+where $\bQ_s:\gamma\to\gamma_s$ is the inverse of $\bP_d$ on $\gamma_s$ and $\bQ_{\eps,s}:\gae\to\gamma_s$ is the inverse of $\bP_\eps$ on $\gamma_s$. Using the coarea formula \eqref{e:coarea} together with $ |\nabla d|=1$ we write
+%
+\[
+I_2(\tv) = \int_{-\delta}^\delta \int_{\gamma_s} (\fe\mue-f) \tv,
+\]
+%
+and combining with Lemma \ref{L:area_ratio_distance} (relation between $q$ and
+$q_\Gamma$), we obtain
+%
+\begin{align*}
+  I_2(\tv) &= \int_{-\delta}^\delta \int_\gamma (\wf \circ \bRs)
+  (\tv\circ\bQs) (\mue \circ \bQs) (\mu^{-1} \circ \bQs)
+  \\
+  & - \int_{-\delta}^\delta \int_\gamma \wf (\tv\circ\bQs) (\mu^{-1} \circ \bQs)
+  = II_1(\tv) + II_2(\tv) + II_3(\tv),
+\end{align*}
+%
+where
+%
+\begin{align*}
+  II_1(\tv) &:= \int_{-\delta}^\delta \int_\gamma (\wf \circ \bRs) (\tv\circ\bQs)
+  - \wf (\tv\circ\bQs),
+  \\
+  II_2(\tv) &:= \int_{-\delta}^\delta \int_\gamma \wf (\tv\circ\bQs) \big(1 - \mu^{-1}\circ\bQs  \big)
+  \\
+  II_3(\tv) &:= \int_{-\delta}^\delta \int_\gamma (\wf \circ \bRs) (\tv\circ\bQs)
+  \Big( (\mue \circ \bQs) (\mu^{-1} \circ \bQs) - 1 \Big).
+\end{align*}
+%  
+We proceed to estimate each term separately. To manipulate $II_1(\tv)$ we first observe that
+changing variables from $\gamma$ to $\gamma_s$, $\gamma_s$ to $\gae$,
+and $\gae$ to $\gamma$ and invoking Lemma \ref{L:area_ratio_distance} (relation between $q$ and $q_\Gamma$) yields
+%
+\begin{equation}
+\begin{split}
+  \int_\gamma (\wf \circ \bRs) (\tv\circ\bQs) &=
+  \int_\gamma (\wf \circ \bQe \circ \bPe \circ \bQs) (\tv\circ\bQs)
+  \\ &=
+  \int_{\gamma_s} (\wf \circ \bQe \circ \bPe) \tv \mu
+  \\ &=
+  \int_{\gae} (\wf \circ \bQe) (\tv \, \mu \, \mue^{-1}) \circ \bQes
+  \\ &=
+  \int_\gamma \wf \, (\tv \, \mu \, \mue^{-1} ) \circ \bQes\circ \bPe \, \mue,
+\end{split}
+\end{equation}
+%
+where
+%
+\[
+\mu = \det \big(\bI-d  D^2 d \big),
+\qquad \mu_{\eps} = \det \big(\bI-\wde  D^2 \wde \big) \, (\nabla d \cdot \nabla\wde).
+\]
+%
+Therefore, denoting by $\mu_\bR$ the infinitesimal change in area induced by
+$\bR_s^{-1}$ on $\gamma$
+%
+\[
+\mu_\bR := (\mu \, \mue^{-1}) \circ \bQes\circ\bPe \, \mue,
+\]
+%
+we infer again from the coarea formula \eqref{e:coarea} that
+%
+\begin{align*}
+II_1(\tv) &= \int_{-\delta}^\delta \int_\gamma \wf \, \Big( (\tv \circ \bQes\circ \bPe) \mu_\bR - \tv\circ\bQs \Big)
+\\ & =
+\int_{-\delta}^\delta \int_{\gamma_s} \Big( f \, (\tv \circ \bQes\circ \bPe \circ \bP_d) \mu_\bR \, \mu - f  \tv \mu \Big) |\nabla d|
+\\ &=
+\int_\Nd f \, \big(\tv \circ \bL - \tv \big) \mu_\bR\mu
++ \int_\Nd f \, \tv \big(\mu_\bR -1 \big) \mu,
+\end{align*}
+%
+where $\bL$ is defined on each $\gamma_s$ by $\bL|_{\gamma_s}  := \bQes\circ \bPe \circ \bP_d: \gamma_s \rightarrow \gamma_s$ .
+Notice that the map $\bL :\Nd\to\Nd$ is a
+bi-Lipschitz perturbation of the identity with perturbation constant
+%
+\[
+r = \|\bI - \bL\|_{L_\infty(\Nd)} \lesssim \delta |d|_{W^2_\infty(\Nd)},
+\]
+%
+because
+%
+\begin{align*}
+\| \bI -\bP_d\|_{L_\infty(\mathcal N(\delta))} &+ \| \bI - \bQ_{s} \|_{L_\infty(\mathcal N(\delta))}\\& + 
+\| \bI -\bP_\eps\|_{L_\infty(\mathcal N(\delta))} + \| \bI -\bQ_{\eps,s}\|_{L_\infty(\mathcal N(\delta))} \lesssim \delta  |d|_{W^2_\infty(\Nd)}.
+\end{align*}
+%
+Moreover, since $\mu_\bR - 1 = (\mu\mue^{-1}-1) \circ \bQes\circ\bPe \, \mue +
+(\mue-1)$, \eqref{nb:mu_estim} and \eqref{nb:mu_estim_d} imply
+%
+\[
+\| \mu_\bR -1 \|_{L_\infty(\gamma)} \lesssim \delta  |d|_{W^2_\infty(\Nd)}.
+\]
+%
+These estimates in conjunction in Proposition \ref{p:mol_bulk} (Lipschitz perturbation)
+give
+%
+\[
+\big| II_1(\tv) \big| 
+\lesssim \delta  |d|_{W^2_\infty(\Nd)} \|f\|_{L_2(\Nd)} \|\tv\|_{H^1(\Nd)};
+\]
+%
+we observe that to apply Proposition \ref{p:mol_bulk} we take
+$\Omega_1=\Omega_2=\Nd$,
+which are Lipschitz domains, and extend $\tv$ to $\Omega=\mathcal{N}$
+so that $\|\tv\|_{H^1(\mathcal{N})} \lesssim \|\tv\|_{H^1(\Nd)}$.
+
+Upon utilizing the coarea formula \eqref{e:coarea} once more,  we obtain for $II_2(v)$
+%
+\[
+II_2(\tv) = \int_\Nd f \tv (1-\mu^{-1})\mu,
+\]
+so that
+\eqref{nb:mu_estim_d} yields
+\[
+\big| II_2(\tv)  \big| \lesssim
+\delta  |d|_{W^2_\infty(\Nd)} \|f\|_{L_2(\Nd)} \|\tv\|_{H^1(\Nd)}.
+\]
+We proceed similarly for $II_3(v)$ but using in addition that
+$$
+\int_{-\delta}^\delta \|  \wf \circ \bRs \|_{L_2(\gamma)}^2 ds
+\lesssim \int_{-\delta}^\delta \| \wf \|_{L_2(\gamma)} ds \lesssim
+\|f\|_{L_2(\Nd)}^2,
+$$
+and
+$$
+\|  (\mue \circ \bQs) (\mu^{-1} \circ \bQs) - 1\|_{L_\infty(\gamma)} \lesssim \delta  |d|_{W^2_\infty(\Nd)}
+$$
+thanks to \eqref{nb:mu_estim} and \eqref{nb:mu_estim_d} again. We thus obtain for
+$II_3(v)$ an estimate similar to those for $II_1(\tv)$ and $II_2(\tv)$, whence
+%
+\[
+\big| I_2(\tv)  \big| \lesssim
+\delta  |d|_{W^2_\infty(\Nd)} \|f\|_{L_2(\Nd)} \|\tv\|_{H^1(\Nd)}.
+\]
+
+\noindent
+ {\it Step 3: Term $I_3(\tv)$.} In view of $\Pi_\eps=\bI-\nabla\wde\otimes\nabla\wde$,
+ we first note that
+%
+\[
+\nabla d^T \bB_\varepsilon \mu_\eps = \nabla d^T \big( \bB_\varepsilon \mue - \Pi_\eps\big)
++ \nabla(d-\wde)^T + \nabla\wde^T \big( 1 - \nabla d \cdot \nabla\wde  \big).
+\]
+%
+Invoking Lemma~\ref{e:narrow:consistency_alg} (properties of $\mue$ and $\bBe$)
+and then Lemma~\ref{L:properties-Pe} (properties of $\wde$) yields
+%
+$$
+\| \nabla d^T \bB_\varepsilon \mu_\eps \|_{L_\infty(\mathcal N(\delta))} \lesssim
+\delta |d|_{W^2_\infty(\Nd)}.
+$$
+%
+It remains to use trace inequalities  to obtain
+%
+\begin{align*}
+I_3(\tv) &\lesssim \delta |d|_{W^2_\infty(\Nd)} \| \nabla u \|_{L_2(\partial N(\delta))} \| \tv \|_{L_2(\partial N(\delta))}
+  \\&
+\lesssim \delta |d|_{W^2_\infty(\Nd)} \| u \|_{H^2(\mathcal N(\delta))} \| \tv \|_{H^1(\mathcal N(\delta))}.
+\end{align*}
+%
+\medskip\noindent
+ {\it Step 4: Normal extension.} Gathering the above estimates we find that
+$$
+I(\tv) \lesssim \delta |d|_{W^2_\infty(\Nd)} \left(\| u \|_{H^2(\mathcal N(\delta))}+ \| f \|_{L_2(\mathcal N(\delta))}\right) \| \tv \|_{H^1(\mathcal N(\delta))}.
+$$
+%
+We finally deduce 
+$\|f\|_{L_2(\Nd)} \lesssim \delta^{\frac12} |d|_{W^2_\infty(\Nd)}\|\wf\|_{L_2(\gamma)}$
+because $f$ is the normal extension of $\wf$ to $\gamma$, and
+%
+\[
+\|\nabla u\|_{L_2(\Nd)} \lesssim \delta^{\frac12} |d|_{W^2_\infty(\mathcal{N})}
+\|\wf\|_{L_2(\gamma)},
+\]
+%
+upon combining Proposition \ref{P:H2-extension} ($H^2$ extension) with
+Lemma \ref{L:regularity} (regularity). This leads to the desired estimate.
+%
+\end{proof}
+
+%---------------------------------------------------------------------------------
+\subsection{Properties of the Narrow Band FEM}
+%---------------------------------------------------------------------------------
+
+To begin with, we recall the definition of $\bM_{h}: \mathcal N_h(\delta) \rightarrow \mathcal N(\delta)$, that accounts for the mismatch between $\mathcal N_h(\delta)$ and $\mathcal N(\delta)$:
+%
+\begin{equation}\label{e:narrow:rewrite_M}
+\bM_{h}(\bx) = \bP_d(\bx) + d_h(\bx) \nabla d(\bx) = \bx +(d_h(\bx)-d(\bx)) \nabla d(\bx).
+\end{equation}
+%
+Note that if $\bx\in\Nhd\subset\mathcal{N}$ then
+$\bP_d(\bM_h(\bx))=\bP_d(\bx)$, because this is what happens with all points in the line
+$s\mapsto\bx+s\nabla d(\bx)$ within $\mathcal{N}$. Since $|d_h(\bx)|<\delta$,
+%
+\[
+|d(\bM_h(\bx))| = | \bM_h(\bx) - \bP_d(\bM_h(\bx))| = |d_h(\bx)| \, |\nabla d(\bx)|
+< \delta
+\]
+implies that $\bM_h(\bx)\in\Nd$ and the map $M_h$ is well defined.
+Further properties of $\bM_h$ are discussed next.
+Before doing so, we mention that the results provided below are not optimal (to avoid technicalities) but are sufficient for our analysis.
+We refer to \cite{MR3249369,MR3471100} for higher order estimates.
+
+\begin{lemma}[properties of $\bM_h$]\label{l:narrow:prop_Mh}
+Let $\gamma$ be of class $C^2$ and $h$ be sufficiently small.
+Then, the map $\bM_h: \mathcal N_h(\delta) \rightarrow \mathcal N(\delta)$ is bi-Lipschitz with
+\begin{equation} \label{e:narrow:lipschitz}
+\| D\bM_h \|_{L_\infty(\mathcal N_h(\delta))} + \| D\bM_h^{-1} \|_{L_\infty(\mathcal N(\delta))} \leq L
+\end{equation}
+for some constant $L$ independent of $h$ and $\delta$.
+Moreover, there holds
+\begin{equation}\label{e:narrow:estim_Mh}
+\| \bI - \bM_h \|_{L_\infty(\mathcal N_h(\delta))} + h  \| \bI - D\bM_h \|_{L_\infty(\mathcal N_h(\delta))} \lesssim h^2 | d |_{W^2_\infty(\mathcal N)}
+\end{equation}
+and
+\begin{equation}\label{e:narrow:det}
+\| \det(D \bM_h) - 1 \|_{L_\infty(\mathcal N_h(\delta))}  \lesssim h | d |_{W^2_\infty(\mathcal N)}.
+\end{equation}
+\end{lemma}
+\begin{proof}
+From the definition~\eqref{e:narrow:rewrite_M} of $\bM_h$ and the interpolation estimate~\eqref{e:narrow:interp}, we find that
+$$
+| \bx - \bM_h(\bx) | \leq  | d(\bx) - d_h(\bx) | \leq c_I   h^2 | d |_{W^2_\infty(\mathcal N)}.
+$$
+Furthermore, we compute
+$$
+D\bM_h(\bx) = \bI + \nabla (d_h(\bx)-d(\bx)) \otimes \nabla d(\bx)
++ (d_h(\bx) - d(\bx)) D^2d(\bx)
+$$
+to deduce
+$$
+\| \bI - D\bM_h \|_{L_\infty(\mathcal N_h(\delta))} \leq c_I h | d |_{W^2_\infty(\mathcal N)}
++ c_I h^2 | d |_{W^2_\infty(\mathcal N)}^2.
+$$
+%
+The above two estimates yield~\eqref{e:narrow:estim_Mh} because $c_Ih| d |_{W^2_\infty(\mathcal N)}\le\frac12$ for $h$ sufficiently small. Exploiting \eqref{e:narrow:estim_Mh}, we also deduce that $\bM_h$ is invertible, bi-Lipschitz and that~\eqref{e:narrow:lipschitz} holds for $h$ sufficiently small.
+
+We are left to show~\eqref{e:narrow:det}.
+This follows from $D\det\bA = (\det \bA) \bA^{-1}$ for any invertible matrix
+$\bA$ and the first order Taylor expansion of 
+$$
+\psi(t) := \det\left(\bI -t \left( \nabla (d(\bx)-d_h(\bx)) \otimes \nabla d(\bx) - (d(\bx) - d_h(\bx)) D^2d(\bx)\right)\right)
+$$ 
+about $t=0$ and evaluated at $t=1$, along with \eqref{e:narrow:estim_Mh} and
+the fact that $\psi(1)=\det(D\bM_h(\bx))$. This concludes the proof.
+\end{proof}
+
+The previous lemma is instrumental to estimate the consistency error 
+%
+\begin{equation}\label{e:narrow:Ih}
+  E_h(V):=\int_{\mathcal N_h(\delta)} \nabla u \cdot \nabla V - \int_{\mathcal N_h(\delta)} F V \quad\forall \, V \in \mathbb V(\mathcal T_\delta),
+\end{equation}
+%
+due to the approximation of the narrow band $\mathcal N(\delta)$ by $\mathcal N_h(\delta)$ and to the use of $F$ in the discrete formulation~\eqref{e:discrete_nb}. Since $\Nd\subset\mathcal{N}$ is of class $C^2$, we assume without loss of generality that the function $u:\Nd\to\mathbb{R}$ constructed in Proposition \ref{P:H2-extension} ($H^2$ extension) extends to $\mathcal{N}$ and satisfies $\|u\|_{H^2(\mathcal{N})} \lesssim \|u\|_{H^2(\Nd)}$. In light of $\Nhd\subset\mathcal{N}$, the consistency error \eqref{e:narrow:Ih} is well defined.
+
+
+\begin{lemma}[narrow band geometric consistency]\label{l:narrow:consistency_Ih}
+Let $\gamma$ be of class $C^2$ and $\delta$ and $h$ satisfy the structural
+condition \eqref{delta-h} and be sufficiently small. Let $\wf \in L_{2,\#}(\gamma)$,
+$\wu \in H^2(\gamma)$ solve~\eqref{e:weak}, and $u\in H^2(\Nd)$ be the $H^2$ extension of $\wu$ given by~\eqref{e:non_const_ext} with $C\delta \le \eps \le \frac{\delta}{2}$. Let also $F$ be given by \eqref{e:narrow:F}.
+Then the consistency error \eqref{e:narrow:Ih} satisfies for all $V \in \mathbb V(\mathcal T_\delta)$
+$$
+\left| \int_{\mathcal N_h(\delta)} \nabla u  \cdot \nabla V - \int_{\mathcal N_h(\delta)} F V \,\right| \lesssim 
+\delta^{3/2} |d|_{W^2_\infty(\mathcal N)} \| \wf \|_{L_2(\gamma)} \|  V \|_{H^1(\mathcal N_h(\delta))}.
+$$
+\end{lemma}
+\begin{proof}
+We compare the consistency errors \eqref{e:narrow:Ih} and \eqref{e:narrow:geom_consistency} term by term.
+
+\medskip\noindent
+{\it Step 1: Dirichlet integrals.}
+Utilizing the change of variables induced by the map $\bM_h:\Nhd\to\Nd$ we end up with
+%
+\begin{align*}
+  \int_{\Nhd} \nabla u  \cdot \nabla V -
+  \int_{\Nd} \nabla u  \cdot \nabla (V\circ\bM_h^{-1}) = I_1(V) + I_2(V) + I_3(V),
+\end{align*}    
+%
+where
+%
+\begin{align*}
+I_1(V) &:= \int_{\Nhd} \big(\nabla u - \nabla u\circ\bM_h \big)  \cdot \nabla V
+  \, \det\big( D\bM_h  \big)
+\\
+I_2(V) &:= \int_{\Nhd} \nabla u \cdot \nabla V \, \big( 1- \det(D\bM_h) \big)\\
+I_3(V) &:= \int_{\Nd} \nabla u \cdot \left( \nabla V \circ \bM_h^{-1} - \nabla ( V \circ \bM_h^{-1})\right).
+\end{align*}
+%
+In view of Proposition \ref{p:mol_bulk} (Lipschitz perturbation) and Lemma \ref{l:narrow:prop_Mh} (properties of $\bM_h$), we infer that
+%
+\[
+\big| I_1(V) \big| , \, \big| I_2(V) \big|
+\lesssim h |d|_{W^2_\infty(\mathcal{N})} \|u\|_{H^2(\Nd)} \|V\|_{H^1(\Nhd)}.
+\]
+Similarly for $I_3(V)$, we observe that
+%
+\[
+\nabla V \circ \bM_h^{-1} - \nabla \big( V \circ \bM_h^{-1} \big)
+= \big(\bI - D \bM_h^{-1} \big) \nabla V \circ \bM_h^{-1},
+\]
+so that employing Lemma \ref{l:narrow:prop_Mh} (properties of $\bM_h$) 
+yields
+%
+\[
+\big| I_3(V)|
+\lesssim h |d|_{W^2_\infty(\mathcal{N})}
+\|\nabla u\|_{L_2(\Nd)} \|\nabla V\|_{L_2(\Nhd)}.
+\]
+%
+Recalling the structural assumption $C_1 h\leq \delta$,  Lemma \ref{L:regularity} (regularity) as well as $\|f\|_{L_2(\Nd)} \lesssim \delta^{\frac12} \|\wf\|_{L_2(\gamma)}$, the estimates for $I_1(V)$, $I_2(V)$ and $I_3(V)$ guarantee
+$$
+\left| \int_{\Nhd} \nabla u  \cdot \nabla V -
+  \int_{\Nd} \nabla u  \cdot \nabla (V\circ\bM_h^{-1}) \right| \lesssim \delta^{3/2} |d|_{W^2_\infty(\mathcal N)} \| \wf \|_{L_2(\gamma)} \|  V \|_{H^1(\mathcal N_h(\delta))}.
+$$
+
+%
+\noindent  
+{\it Step 2: Forcing.}
+Recalling \eqref{e:narrow:F}, we rewrite the forcing term in \eqref{e:narrow:Ih} as 
+%
+\begin{align*}
+\int_\Nhd F \, V - \int_\Nd f \, V\circ\bM_h^{-1} = II_1(V) + II_2(V),
+\end{align*}
+%
+where
+%
+\begin{align*}
+II_1(V) & := \int_\Nd f\, V \circ \bM_h^{-1} \big(\det(D \bM_h)^{-1}-1 \big), 
+\\  
+II_2(V) & := -\frac{1}{|\mathcal{N}_h(\delta)|} \int_{\mathcal{N}_h(\delta)}  f \circ \bM_h \int_{\mathcal{N}_h(\delta)} V. 
+%\\
+%II_3(V) & := \int_{\Nhd} F \, V  - \int_{\Nd} F \, V.
+\end{align*}
+%
+We make use of \eqref{e:narrow:lipschitz} and \eqref{e:narrow:det}, along with a change of variables, to compute
+%
+$$\begin{aligned}
+II_1(V) &  \lesssim h|d|_{W_\infty^2(\mathcal{N})} \|f\|_{L_2(\Nd)} \|V \circ \bM_h^{-1} \|_{L_2(\Nd)}
+  \\ & \lesssim h|d|_{W_\infty^2(\mathcal{N})} \|f\|_{L_2(\Nd)} \|V\|_{H^1(\Nd)}.
+  \end{aligned}
+  $$
+%
+Since $|\mathcal{N}_h(\delta)| \simeq |\Nd| \simeq \delta$, the first equivalence resulting from \eqref{e:narrow:lipschitz} and the second from the coarea formula, using \eqref{e:narrow:det} again we obtain
+  $$
+  \begin{aligned}
+  II_2(V ) &\lesssim \delta^{-1/2} \|V\|_{L_2(\mathcal{N}_h(\delta))} \Big | \int_{\mathcal{N}_h(\delta)} f \circ \bM_h \big({\rm det} (D\bM_h)-1 \big) - \int_{\Nd} f \Big | 
+%  \\ & \lesssim  \delta^{-1/2} \|V\|_{L_2(\mathcal{N}_h(\delta))}\Big(h |d|_{W_\infty^2(\mathcal{N})} \delta^{1/2} \|f \circ \bM_h\|_{L_2(\mathcal{N}_h(\delta))} + \Big |\int_{\Nd} f \Big| \Big)
+  \\ & \lesssim \|V\|_{L_2(\mathcal{N}_h(\delta))} \Big ( h|d|_{W_\infty^2(\mathcal{N})} \|f\|_{L_2(\Nd)} + \delta^{-1/2}\Big |\int_{\Nd} f \Big| \Big) .
+  \end{aligned}
+  $$
+  %%
+To estimate the rightmost term we exploit the fact that $\wf$ has a vanishing
+mean on $\gamma$. Using the coarea formula \eqref{e:coarea}, we see that
+%
+\[\begin{aligned}
+\int_\Nd f = \int_{-\delta}^\delta \int_{\gamma_s} f &= \int_{-\delta}^\delta \int_\gamma \wf
+\mu_s = \int_{-\delta}^\delta \int_\gamma \wf \big(\mu_s - 1  \big) 
+\\ & \le 2 \delta \|\mu_s-1\|_{L_\infty(\gamma \times [-\delta, \delta])} \|\wf\|_{L_2(\gamma)},
+\end{aligned}
+\]
+%
+where $\mu_s = \det \big( \bI - d D^2 d \big)^{-1} \circ \bQs$ according to
+Lemma \ref{L:area_ratio_distance} (relation between $q$ and $q_\Gamma$).
+Remark \ref{r:narrow:mu} (estimate of $\mu$) in turn leads to
+%
+\[
+\Big| \int_\Nd f \, \Big| \lesssim \delta^{2} |d|_{W^2_\infty(\mathcal{N})} \|\wf\|_{L_2(\gamma)}.  
+\]
+%
+%and finishes the estimate of the first factor of $II_3(V)$. We now deal with the second factor $\|V\|_{L_2(\omega_h)}$. We let $T\in\T_\delta$ intersect $\omega_h$ and make use of an inverse estimate
+%based on the fact that $V$ is piecewise linear in $\omega_h$ to show
+%%
+%\[
+%\|V\|_{L_2(T\cap\omega_h)} \lesssim h^{\frac{n}{2}+1}
+%|d|_{W^2_\infty(\mathcal{N})}^{\frac12} \|V\|_{L_\infty(T)}
+%\lesssim h^{\frac12} |d|_{W^2_\infty(\mathcal{N})}^{\frac12} \|V\|_{L_2(T)},
+%\]
+%%
+%whence
+%%
+%\[
+%\|V\|_{L_2(\omega_h)} \lesssim h^{\frac12}
+%|d|_{W^2_\infty(\mathcal{N})}^{\frac12} \|V\|_{L_2(\Nhd)}.
+%\]
+%
+Consequently, collecting the previous estimates and using the structural assumption $C_1h \le \delta$ again readily gives
+%
+\[
+\big| II_2(V) \big| \lesssim \delta^{\frac32} |d|_{W^2_\infty(\mathcal{N})}
+\|\wf\|_{L_2(\gamma)} \|V\|_{L_2(\Nhd)}.
+\]
+% 
+%It remains to estimate $II_1(V)$. We utilize again the definition
+%\eqref{e:narrow:F} of $F$ to get
+%%
+%\[
+%\big| II_1(V) \big| = \frac{1}{\big| \Nhd \big|} \Big| \int_\Nhd f \,\Big| \,
+%\Big| \int_\Nd V \,\Big| \lesssim \delta^{\frac32} \|\wf\|_{L_2(\gamma)} \|V\|_{L_2(\Nhd)}.
+%\]
+%%
+
+Gathering the bounds for $II_i(V)$ for $i=1,2$, we discover
+$$
+\left| \int_\Nhd F \, V - \int_\Nd f \, V\circ\bM_h^{-1}\right| \lesssim  \delta^{\frac32}
+|d|_{W^2_\infty(\mathcal{N})} \|\wf\|_{L_2(\gamma)} \|V\|_{H^1(\Nhd)}.
+$$
+{\it Step 3: Conclusion.}
+The assertion follows from the bounds derived in Steps~1 and~2 together with the estimate \eqref{e:narrow:geom_consistency} of Lemma \ref{t:narrow:geom_consistency} (narrow band PDE consistency) with $\tv =V\circ \bM_h^{-1} \in H^1(\mathcal N(\delta))$. The proof is complete.
+\end{proof}
+
+\subsection{A Priori Error Estimates}
+
+All of the ingredients for a-priori error analysis in the narrow band norm are now in place. We recall that the extension $u:\Nd\to\mathbb{R}$ constructed in Proposition \ref{P:H2-extension} ($H^2$ extension) is further extended to $\mathcal{N}$ and satisfies
+%
+\begin{equation}\label{extension-N}
+\|u\|_{H^2(\mathcal{N})} \lesssim \|u\|_{H^2(\Nd)} \lesssim \delta^{\frac12}
+|d|_{W^2_\infty(\mathcal{N})}  \|\wu\|_{H^2(\gamma)}.
+\end{equation}
+%
+\begin{theorem}[a-priori error estimate]\label{t:narrow:aprior}
+Let $\gamma$ be of class $C^2$ and $\delta$ and $h$ satisfy the structural condition
+\eqref{delta-h} and be sufficiently small.
+Let  $\wu \in H^1_\#(\gamma)$ be defined by~\eqref{e:weak} with $\wf \in L_{2,\#}(\gamma)$ and $u$ be its extension given by~\eqref{e:non_const_ext} with $C\delta \le \eps \le \frac{\delta}{2}$.
+Let $U \in \mathbb V_\#(\mathcal T_\delta)$ be the finite element solution to~\eqref{e:discrete_nb} with $F$ given in~\eqref{e:narrow:F}.
+Then, the following error estimate is valid
+%
+\begin{equation*}\label{e:narrow:best_apprx}
+\| \nabla (u - U) \|_{L_2(\mathcal N_h(\delta))} \lesssim
+\inf_{V \in \mathbb V(\mathcal T_\delta)} \| \nabla (u - V)\|_{L_2(\mathcal N_h(\delta))} + h^{\frac32} |d|_{W^2_\infty(\mathcal{N})} \| \wf \|_{L_2(\gamma)},
+\end{equation*}
+with hidden constant independent of $h$ and $\delta$.
+\end{theorem}
+%
+\begin{proof}
+The proof consists of a Strang type argument.
+For any $V \in \mathbb V(\mathcal T_\delta)$ the equation~\eqref{e:discrete_nb} satisfied by $U$ and the definition~\eqref{e:narrow:Ih} of $E_h(.)$ give
+$$
+\| \nabla (V-U)\|_{L_2(\mathcal N_h(\delta))}^2 = \int_{\mathcal N_h(\delta)} \nabla (V-u) \cdot \nabla (V-U) + E_h(V-U).
+$$
+Invoking Lemma~\ref{l:narrow:consistency_Ih} (narrow band geometric consistency), together with the structural assumption \eqref{delta-h}, yields
+%
+$$
+\| \nabla (V-U)\|_{L_2(\mathcal N_h(\delta))} \leq \|  \nabla (V-u ) \|_{L_2(\mathcal N_h(\delta))} + c h^{\frac32} |d|_{W^2_\infty(\mathcal{N})} \| \wf \|_{L_2(\gamma)}.
+$$
+%
+The desired error estimate follows from a triangle inequality.
+\end{proof}
+%
+\begin{corollary}[rate of convergence in $\Nhd$]\label{c:narrow:error} 
+Under the assumptions of Theorem~\ref{t:narrow:aprior} we have
+$$
+\| \nabla (u  - U) \|_{L_2(\mathcal N_h(\delta))} \lesssim h^{\frac32}
+|d|_{W^2_\infty(\mathcal{N})}  \| \wf \|_{L_2(\gamma)}.
+$$
+\end{corollary}
+\begin{proof}
+In view of \eqref{extension-N} standard polynomial interpolation theory gives
+%
+$$
+\| \nabla (u  - I_h^{\textrm{sz}}u) \|_{L_2(\mathcal N_h(\delta))}
+\lesssim h \| u \|_{H^2(\mathcal N)}
+\lesssim h \| u \|_{H^2(\mathcal N(\delta))},
+$$
+%
+where $I_h^{\textrm{sz}}u$ is the Scott-Zhang interpolant of $u$.
+%
+It remains to use Proposition \ref{P:H2-extension} ($H^2$ extension)
+and Lemma \ref{L:regularity} (regularity) to arrive at
+%
+$$
+\| \nabla (u  -I_h^{\textrm{sz}} u)\|_{L_2(\mathcal N_h(\delta))} \lesssim h^{\frac32}
+|d|_{W^2_\infty(\mathcal{N})}  \| \wf \|_{L_2(\gamma)}.
+$$
+%
+The asserted estimate follows from Theorem~\ref{t:narrow:aprior} (a-priori estimate).
+\end{proof}
+
+In addition, we follow \cite{MR3471100} to deduce a rate of convergence for
+$\| \nabla_\gamma (\wu -U)\|_{L_2(\gamma)}$.
+%
+\begin{corollary}[rate of convergence on $\gamma$]\label{C:rate-gamma}
+Under the assumptions of Theorem~\ref{t:narrow:aprior} we have  
+%
+$$
+\| \nabla_\gamma ( \widetilde u - U ) \|_{L_2(\gamma)} \lesssim h \| \wf \|_{L_2(\gamma)}.
+$$
+\end{corollary}
+%
+\begin{proof}
+We recall the scaled trace inequality \eqref{curved_trace_est}: for a bulk triangulation $\mathcal T$  there exists a constant $C$ only depending on the mesh shape regularity constant of $\mathcal T$ such that for $T \in \mathcal T_\delta$ and $\tv \in H^1(T)$, one has
+%
+\begin{equation*}\label{e:bulk_trace}
+  \| \tv \|_{L_2(T \cap \gamma)}^2 \leq C \left( h_T^{-1} \| \tv \|_{L_2(T)}^2
+  + h_T \| \nabla \tv \|_{L_2(T)}^2 \right),
+\end{equation*}
+where $h_T = \mathrm{diam}(T)$.
+We apply this inequality with $\tv = \nabla(u-U)$, and $h_T\approx h$ sufficiently small,
+to obtain
+%
+$$
+\| \nabla (u -U) \|_{L_2(T\cap \gamma)}^2 \lesssim \left( h^{-1}
+\| \nabla(u-U) \|_{L_2(T)}^2 + h | u |_{H^2(T)}^2 \right).
+$$
+Summing up over all $T \in \mathcal T_\delta$ with non-empty intersection with $\gamma$, Proposition~\ref{P:H2-extension} ($H^2$ extension) and Corollary~\ref{c:narrow:error} (rate of convergence in $\Nhd$) give
+$$
+\| \nabla_\gamma (\widetilde u-U) \|_{L_2(\gamma)} \leq \| \nabla (u-U) \|_{L_2(\gamma)}
+\lesssim h |d|_{W^2_\infty(\mathcal{N})} \Big( \| \wf \|_{L_2(\gamma)} +
+| \wu |_{H^2(\gamma)} \Big).
+$$
+The desired estimate follows from Lemma \ref{L:regularity} (regularity).
+\end{proof}

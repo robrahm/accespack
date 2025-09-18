@@ -1,0 +1,236 @@
+\usepackage[normalem]{ulem}
+\usepackage{color}
+
+\newlength\tocrulewidth
+\setlength{\tocrulewidth}{1.5pt}
+\usepackage{etoc}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+
+
+\definecolor{cornellred}{rgb}{0.7, 0.11, 0.11}
+\newcommand{\delete}[1]{\textcolor{red}{\sout{#1}}}
+\newcommand{\modif}[1]{\textcolor{red}{{#1}}}
+\newcommand{\rhn}[1]{\textcolor{blue}{{#1}}}
+\newcommand{\AB}[1]{\textcolor{cyan}{{#1}}}
+\newcommand{\ARD}[1]{\textcolor{cornellred}{{#1}}}
+
+
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{assumption}{Assumption}
+\newtheorem{mainresult}{Main Result}
+\newtheorem{algo}{Algorithm}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{condition}{\textbf{Condition}}
+\renewcommand{\thecondition}{\textbf{\arabic{condition}}}
+
+\newcommand{\jump}[1]{\left[\negthinspace\left[{#1}\right]\negthinspace\right]}
+\newcommand\mean[1] {\left\lbrace\negthinspace\left\lbrace #1 \right\rbrace\negthinspace\right\rbrace}
+\newcommand\dualprod[2]{\left< #1, #2 \right>}
+\newcommand\scalprod[2]{\left( #1, #2 \right)}
+\renewcommand\div[1]{\mathrm{div}\left( #1 \right)}
+\newcommand\divg[1]{\mathrm{div}_\gamma\left( #1 \right)}
+\newcommand\trace[1]{\mathrm{trace}\left( #1 \right)}
+
+\renewcommand{\algorithmiccomment}[1]{// #1}
+\renewcommand{\algorithmicrequire}{\textbf{\textrm{Inputs:}}}
+\renewcommand{\algorithmicensure}{\textbf{\textrm{Ouput:}}}
+
+
+%--------------------------------------------------------------------------------%
+%  algorithm environment
+%--------------------------------------------------------------------------------%
+\newenvironment{algotab}%
+{\par\begin{samepage}%
+\begin{tabbing}\ttfamily%
+ \hspace*{5mm}\=\hspace{3ex}\=\hspace{3ex}\=\hspace{3ex}\=\hspace{3ex}%
+\=\hspace{3ex}\=\hspace{3ex}\=\hspace{3ex}\=\hspace{3ex}\kill}%
+{\end{tabbing}\end{samepage}}
+
+%  Step   --------------------------------------------------------
+
+\newcommand{\step}[1]{\noindent\raisebox{1.5pt}[10pt][0pt]{\tiny\framebox{$#1$}}\xspace}
+
+%\newcounter{step}
+%\newcommand{\step}{\stepcounter{step}{\underline{Step \thestep}.\ }}
+%\newcommand{\resetstep}{\setcounter{step}{0}}
+
+%--------------------------------------------------------------------------------%
+%  counter
+%--------------------------------------------------------------------------------%
+
+\newcommand{\ie}{i.\,e.,\xspace}
+\newcommand{\eg}{e.\,g.\xspace}
+
+
+\newcommand{\eps}{\ensuremath{\varepsilon}}
+\newcommand{\T}{\ensuremath{\mathcal{T}}}
+\newcommand{\wT}{ {\ensuremath{\widehat{\mathcal{T}}}} } 
+\newcommand{\F}{\ensuremath{\mathcal{F}}}
+
+\newcommand{\V}{\ensuremath{\mathbb{V}}}
+\newcommand{\VT}[1][\T]{\ensuremath{\mathbb{V}(#1)}}
+\newcommand{\Vk}[1][k]{\ensuremath{\mathbb{V}_{#1}}}
+
+\DeclareMathOperator{\interior}{int}
+\DeclareMathOperator{\osc}{osc}
+\DeclareMathOperator{\id}{id}
+%\renewcommand{\span}{\textrm{span}}
+
+%-------------------  procedures    ---------------------------------------%
+\newcommand{\GREEDY}{\textsf{GREEDY}\xspace}
+\newcommand{\SOLVE}{\textsf{SOLVE}\xspace}
+\newcommand{\MARK}{\textsf{MARK}\xspace}
+\newcommand{\REFINE}{\textsf{REFINE}\xspace}
+\newcommand{\ESTIMATE}{\textsf{ESTIMATE}\xspace}
+\newcommand{\MAKECON}{\textsf{MAKECONFORM}\xspace}
+\newcommand{\REDUCEOSC}{\textsf{ADAPTDATA}\xspace}
+\newcommand{\UPDATE}{\textsf{UPDATE}\xspace}
+\newcommand{\OSC}{\textsf{DATA}\xspace}
+\newcommand{\MARKDATA}{\textsf{MARK\_DATA}\xspace}
+\newcommand{\AFEM}{\textsf{AFEM}\xspace}
+\newcommand{\COEFF}{\textsf{COEFF}\xspace}
+\newcommand{\ADAPTSURF}{\textsf{ADAPT\_SURFACE}\xspace}
+\newcommand{\ADAPTPDE}{\textsf{ADAPT\_PDE}\xspace}
+
+\newcommand{\RT}{\ensuremath{\mathcal{R}_T}}
+\newcommand{\JT}{\mathcal{J}_{\partial T}}
+\newcommand{\abs}[1]{\left\vert#1\right\vert}
+\DeclareMathOperator{\dist}{dist}
+
+\newcommand{\calA}{{\mathcal A}}
+\newcommand{\calB}{{\mathcal B}}
+\newcommand{\calC}{{\mathcal C}}
+\newcommand{\calD}{{\mathcal D}}
+\newcommand{\calE}{{\mathcal E}}
+\newcommand{\calF}{{\mathcal F}}
+\newcommand{\calG}{{\mathcal G}}
+\newcommand{\calH}{{\mathcal H}}
+\newcommand{\calI}{{\mathcal I}}
+\newcommand{\calJ}{{\mathcal J}}
+\newcommand{\calK}{{\mathcal K}}
+\newcommand{\calL}{{\mathcal L}}
+\newcommand{\calM}{{\mathcal M}}
+\newcommand{\calN}{{\mathcal N}}
+\newcommand{\calO}{{\mathcal O}}
+\newcommand{\calP}{{\mathcal P}}
+\newcommand{\calQ}{{\mathcal Q}}
+\newcommand{\calR}{{\mathcal R}}
+\newcommand{\calS}{{\mathcal S}}
+\newcommand{\calT}{{\mathcal T}}
+\newcommand{\calU}{{\mathcal U}}
+\newcommand{\calV}{{\mathcal V}}
+\newcommand{\calW}{{\mathcal W}}
+\newcommand{\calX}{{\mathcal X}}
+\newcommand{\calY}{{\mathcal Y}}
+\newcommand{\calZ}{{\mathcal Z}}
+
+\newcommand{\polA}{{\mathbb A}}
+\newcommand{\polB}{{\mathbb B}}
+\newcommand{\polC}{{\mathbb C}}
+\newcommand{\polD}{{\mathbb D}}
+\newcommand{\polE}{{\mathbb E}}
+\newcommand{\polF}{{\mathbb F}}
+\newcommand{\polG}{{\mathbb G}}
+\newcommand{\polH}{{\mathbb H}}
+\newcommand{\polI}{{\mathbb I}}
+\newcommand{\polJ}{{\mathbb J}}
+\newcommand{\polK}{{\mathbb K}}
+\newcommand{\polL}{{\mathbb L}}
+\newcommand{\polM}{{\mathbb M}}
+\newcommand{\polN}{{\mathbb N}}
+\newcommand{\polO}{{\mathbb O}}
+\newcommand{\polP}{{\mathbb P}}
+\newcommand{\polQ}{{\mathbb Q}}
+\newcommand{\polR}{{\mathbb R}}
+\newcommand{\polS}{{\mathbb S}}
+\newcommand{\polT}{{\mathbb T}}
+\newcommand{\polU}{{\mathbb U}}
+\newcommand{\polV}{{\mathbb V}}
+\newcommand{\polW}{{\mathbb W}}
+\newcommand{\polX}{{\mathbb X}}
+\newcommand{\polY}{{\mathbb Y}}
+\newcommand{\polZ}{{\mathbb Z}}
+
+\newcommand{\comment}[1]{
+\par
+\boxed{
+\begin{minipage}{0.9\textwidth}
+{\color{red}COMMENT:} #1
+\end{minipage}
+}\\
+}
+
+
+\newcommand{\lingamma}{\Gamma}
+\newcommand{\linsub}{\T}
+\newcommand{\linpatch}{\omega}
+\newcommand{\linparam}{\bX}
+\newcommand{\exactparam}{\bXi}
+\newcommand{\refpatch}{\widehat{\omega}}
+\newcommand{\interp}{\mathcal{I}_\T}
+
+
+\DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
+\newcommand{\tv}{\mathpzc{v}}
+\newcommand{\tV}{V}
+\newcommand{\ttv}{\widetilde{\tv}}
+
+
+\newcounter{ourassumption}
+\newenvironment{ourassumption}{\refstepcounter{ourassumption}\equation}{\tag{A\theourassumption}\endequation}
+
+
+%--------------------------------------------------------------------------------%
+%          Regularization
+%--------------------------------------------------------------------------------%
+
+\newcommand{\gae}{{\gamma_\varepsilon}}
+\newcommand{\ue}{u_\varepsilon}
+%\newcommand{\de}{\mathtt{d_\varepsilon}}
+\newcommand{\de}{\overline{d}_\varepsilon}
+\newcommand{\dge}{d_\gae}
+\newcommand{\fe}{f_\varepsilon}
+\newcommand{\qe}{q_\varepsilon}
+\newcommand{\re}{\rho_\varepsilon}
+\newcommand{\mue}{{\mu_\eps}}
+\newcommand{\bnue}{\bnu_\varepsilon}
+
+\newcommand{\wu}{\widetilde{u}}
+\newcommand{\wv}{\widetilde{\tv}}
+\newcommand{\wz}{\widetilde{z}}
+\newcommand{\ww}{\widetilde{w}}
+\newcommand{\wf}{\widetilde{f}}
+\newcommand{\wx}{\widetilde{\bx}}
+\newcommand{\bxe}{\bx_\eps}
+\newcommand{\wde}{d_\varepsilon}
+\newcommand{\wfe}{\widetilde{f}_\eps}
+\newcommand{\wmue}{{\widetilde{\mu}_\eps}}
+\newcommand{\wbAe}{{\widetilde{\mathbf{A}}_\varepsilon}}
+\newcommand{\wU}{\widetilde{U}}
+\newcommand{\wV}{\widetilde{V}}
+\newcommand{\wF}{\widetilde{F}}
+
+\newcommand{\Be}{{B_\varepsilon}}
+\newcommand{\Ne}{{\mathcal{N}_\varepsilon}}
+\newcommand{\Nd}{{\mathcal{N}(\delta)}}
+\newcommand{\Nde}{{\mathcal{N}_{\delta+\eps}}}
+\newcommand{\bPe}{{\bP_\varepsilon}}
+\newcommand{\bQe}{{\mathbf{Q}_\eps}}
+\newcommand{\bQs}{{\mathbf{Q}_s}}
+\newcommand{\bQes}{{\mathbf{Q}_{\eps,s}}}
+\newcommand{\bRs}{{\mathbf{R}_s}}
+\newcommand{\Pie}{{\Pi_\varepsilon}}
+\newcommand{\bchie}{{\bchi_\varepsilon}}
+\newcommand{\bWe}{{\bW_\varepsilon}}
+\newcommand{\bEe}{{\bE_\varepsilon}}
+\newcommand{\bAe}{{\mathbf{A}_\varepsilon}}
+\newcommand{\bBe}{{\mathbf{B}_\varepsilon}}
+\newcommand{\bDe}{{\mathbf{D}_\varepsilon}}
+%\newcommand{\bM}{{\mathbf{M}}}
+
+\newcommand{\Nhd}{{\mathcal{N}_h(\delta)}}

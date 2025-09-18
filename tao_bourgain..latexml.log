@@ -1,0 +1,25 @@
+(Loading /usr/share/perl5/LaTeXML/Package/TeX.pool.ltxml...
+(Loading /usr/share/perl5/LaTeXML/Package/eTeX.pool.ltxml... 0.00 sec)
+(Loading /usr/share/perl5/LaTeXML/Package/pdfTeX.pool.ltxml... 0.01 sec) 0.12 sec)
+latexmlc (LaTeXML version 0.8.8)
+invoked as [/usr/bin/latexmlc tao_bourgain..tex --dest=tao_bourgain.html]
+processing started Thu Sep 18 17:54:43 2025
+Fatal:missing_file:tao_bourgain. Can't find TeX file tao_bourgain.
+	at String; line 0 col 0 - line 0 col 0
+	search paths are /mnt/c/Users/robrahm/Documents/accespack, /mnt/c/Users/robrahm/Documents/accespack
+(Building...
+(Loading compiled schema /usr/share/perl5/LaTeXML/resources/RelaxNG/LaTeXML.model... 0.01 sec) 0.02 sec)
+(Rewriting... 0.00 sec)
+(Finalizing... 0.00 sec)
+Conversion complete: 1 fatal error (See /mnt/c/Users/robrahm/Documents/accespack/tao_bourgain..latexml.log)
+LaTeXML died!
+(post-processing...
+(Scan tao_bourgain.html processing...
+Scan: DBStatus: 3/0 objects
+ 0.00 sec)
+(CrossRef tao_bourgain.html processing... 0.00 sec)
+(XSLT[using LaTeXML-html5.xsl] tao_bourgain.html processing... 0.00 sec)
+(Writer tao_bourgain.html processing... 0.00 sec) 0.01 sec)
+Post-processing complete: No obvious problems
+processing finished Thu Sep 18 17:54:44 2025
+Status:conversion:3

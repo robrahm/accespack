@@ -38,6 +38,31 @@
   font-display: swap;
 }
 
+
+
+@font-face {
+  font-family: "Noto Sans Math";
+  src: url("NotoSansMath-Regular.ttf") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* 2) Apply to LaTeXML math blocks (and MathML just in case) */
+.ltx_Math, .ltx_math, math {
+  font-family: "Noto Sans Math", "Fira Math", "STIX Two Math",
+               "Cambria Math", "Latin Modern Math", sans-serif !important; 
+  font-size: 1.05em;
+  line-height: 1.3;
+}
+
+/* Optional readability tweaks */
+.ltx_Math mi { font-style: normal; }   /* upright identifiers */
+.ltx_Math mo { padding: 0 0.02em; }    /* tiny operator spacing */
+
+
+
+
 /* === Light mode tokens === */
 :root {
   --bg: #ffffff;
@@ -153,7 +178,7 @@ h1.ltx_title, .ltx_title_section.ltx_title {
 /* Cards: theorem-like blocks and workboxes */
 .ltx_theorem, .ltx_lemma, .ltx_proposition, .ltx_corollary,
 .ltx_definition, .ltx_example, .ltx_remark, .ltx_proof,
-.workbox, .halfworkbox {
+.workbox_border, .halfworkbox, .front {
   border: 1px solid var(--border);
   border-left: 6px solid var(--accent);
   background: var(--bg);
@@ -161,6 +186,10 @@ h1.ltx_title, .ltx_title_section.ltx_title {
   box-shadow: var(--shadow);
   padding: .9rem 1rem;
   margin: 1rem 0;
+}
+
+.workbox_noborder{
+  border: 0px !important
 }
 
 /* Proof label & end mark */
@@ -177,13 +206,13 @@ h1.ltx_title, .ltx_title_section.ltx_title {
   box-sizing: border-box;
   width: 100%;
   max-width: 100%;
-  margin: 1rem 0;
+  /*margin: 1rem 0;
   padding: .9rem 1rem;
   border: 1px solid var(--border);
   border-left: 6px solid var(--accent);
   background: var(--bg);
   border-radius: var(--radius);
-  box-shadow: var(--shadow);
+  box-shadow: var(--shadow);*/
 }
 /* If LaTeXML adds framed styling, neutralize it */
 .workbox.ltx_framed_rectangle {
@@ -192,7 +221,7 @@ h1.ltx_title, .ltx_title_section.ltx_title {
 }
 /* Optional title label: use data-label if present, otherwise a default */
 .workbox::before {
-  content: attr(data-label, "Blank space for student work");
+  /*content: attr(data-label, "Blank space for student work");*/
   display: block;
   font-weight: 600;
   margin: 0 0 .4rem 0;
@@ -200,6 +229,11 @@ h1.ltx_title, .ltx_title_section.ltx_title {
 }
 .workbox p { margin: .25rem 0 .75rem; }
 .workbox p:last-child { margin-bottom: 0; }
+
+
+.blankworkbox::before {
+  content: attr(data-label, "Blank space for student work");
+}
 
 /* Half-width workbox pair */
 .halfworkbox {
@@ -293,7 +327,7 @@ tr:last-child td { border-bottom: none; }
   html, body { height: auto; background: #fff; color: #000; margin: 0; }
   a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 90%; }
   .workbox, .example, .remark, figure, pre, table, blockquote,
-  .code-block, .problem, .solution, .theorem, .proof {
+  .code-block, .problem, .solution, .theorem, .proof, .back, .front {
     break-inside: avoid;
     page-break-inside: avoid;
   }
@@ -332,15 +366,7 @@ tr:last-child td { border-bottom: none; }
   --_shadow: var(--shadow, 0 4px 14px rgba(0,0,0,.06));
 }
 
-.workbox{
-  border:1px solid var(--_border);
-  border-left:6px solid var(--_blue);
-  border-radius:var(--_radius);
-  box-shadow:var(--_shadow);
-  background:var(--bg, #fff);
-  padding:.9rem 1rem;
-  margin:1rem 0;
-}
+
 
 .workbox .prompt{ margin:.25rem 0 1rem; }
 .workbox .solution{ display:none; margin:.25rem 0 1rem; }
@@ -362,3 +388,8 @@ tr:last-child td { border-bottom: none; }
 .workbox .btn:focus-visible, .workbox .btn:hover{
   outline:3px solid var(--_focus); outline-offset:2px;
 }
+
+
+
+
+

@@ -1,0 +1,103 @@
+% !TEX root = laplace_beltrami.tex
+
+%--------------------------------------------------------------------------------
+\section{Introduction}\label{sec:introduction}
+%--------------------------------------------------------------------------------
+
+Partial differential equations (PDEs) posed on surfaces play an important role in many domains of pure and applied mathematics, including geometry, modeling of materials, fluid flow, and image and shape processing.  The numerical approximation of such surface PDEs is both practically important and the source of many mathematically rich problems.  
+
+We consider a closed, compact and orientable surface $\gamma$ in $\mathbb{R}^{n+1}$ of co-dimension $1$.  The Laplace-Beltrami operator $-\Delta_\gamma$, which acts as a generalization of the standard Euclidean Laplace operator, plays a central role in both static and time-dependent surface PDE models arising in a wide range of applications.  Because of this a wide variety of numerical methods have been developed for the Laplace-Beltrami equation %
+\[
+-\Delta_\gamma \widetilde u=\widetilde f,
+\]
+%
+where $\widetilde f$ is a given forcing function satisfying $\int_\gamma \widetilde f =0$.  In this article we first lay out some important notions from differential geometry.  We then describe three important classes of finite element methods (FEMs) for the Laplace-Beltrami problem:  the parametric method, the trace method, and the narrow band method.   In all three cases we focus on the simplest case of piecewise linear finite element spaces and give an in-depth discussion of the effects of geometry on error behavior.  
+
+%We emphasize that unlike most of the works available in the literature, the partial differential equation considered here does not include a first order term, thereby adding an extra difficulty to account for the non trivial kernel of $-\Delta_\gamma$ on closed surfaces.}
+%\comment{AD:  This is not a big deal for parametric and trace methods as many papers going back to Dziuk do in fact account for  the kernel.  We should either remove this comment, or modify it to reflect that this is new/important for the narrow band.  Also add in somewhere that we only do narrow band for distance function, not generic level sets.} 
+
+The {\it parametric finite element method} was introduced in 1988 by Dziuk \cite{Dz88}, with some important related techniques appearing in earlier works on boundary element methods \cite{Ne76, Ben84}.  This method is the simplest of the many FEM that have been developed for solving the Laplace-Beltrami problem.  The given PDE is first written in weak form as:  Find $\widetilde u \in H^1(\gamma)$ such that $\int_\gamma \widetilde u =0$ and  
+\[
+a(\widetilde u,\widetilde \tv):=\int_\gamma \nabla_\gamma \widetilde u \cdot \nabla_\gamma \widetilde \tv = \int_\gamma \widetilde f \widetilde \tv \qquad \forall \widetilde \tv \in H^1(\gamma).  
+\]
+Here $H^1(\gamma)$ is the set of functions $\widetilde \tv$ in $L_2(\Omega)$ whose tangential gradient $\nabla_\gamma \widetilde \tv \in [L_2(\gamma)]^{n+1}$.  The continuous surface $\gamma$ is approximated by a polyhedral surface $\Gamma$ whose faces serve as a finite element mesh, and the finite element space $\V$ is made of continuous piecewise linear functions over $\Gamma$.  The finite element method then consists of finding $U \in \V$ such that
+\[ 
+A(U,V)=\int_\Gamma \nabla_\Gamma U \cdot \nabla_\Gamma V=\int_\gamma F V \qquad \forall V \in \V,
+\]
+where $F$ is a suitable approximation (lift) of $f$ defined on $\Gamma$.  In its conception and implementation, the resulting method is very similar to canonical FEM for solving Poisson's problem on Euclidean domains.    To quote Dziuk, ``...the numerical scheme is just the same as in a plane-two dimensional problem.  The only difference is that in our case the computer has to memorize three-dimensional nodes instead of two-dimensional ones.'' \cite[p. 143]{Dz88}.    The strategy underlying parametric surface finite element methods --direct translation of FEM on Euclidean spaces to triangulated surfaces-- has subsequently been applied to a variety of methods.  These include higher-order standard Lagrange methods \cite{De09}, various types of discontinuous Galerkin methods \cite{ADMSSV15, DMS13, CD16}, and mixed methods in  classical, hybridized, and finite element exterior calculus formulations \cite{Ben84, HoSt12, CD16, FFF16}.   A posteriori error estimation and adaptivity have been studied in \cite{DemlowDziuk:07, WCH10, BCMN:Magenes, DM16, BCMMN16, BD:18}.  Finally, we refer to the survey article \cite{DE13}. 
+
+In many applications in which surface PDEs are to be solved, a background volume (bulk) mesh is already present. A paradigm example is two-phase fluid flow, in which effects on the interface between the two phases such as surface tension are coupled with standard equations of fluid dynamics on the bulk. In these cases it is advantageous to utilize the background volume mesh to solve surface PDEs instead of independently meshing $\gamma$. This is especially the case when $\gamma$ is evolving, since the meshes needed for the parametric method typically distort as $\gamma$ changes and periodic remeshing is thus necessary.  The trace and narrow band methods both employ background bulk meshes in order to solve surface PDEs.  
+
+Trace (or cut) FEMs for the Laplace-Beltrami problem were first introduced in \cite{ORG09}.  In this method an approximating surface is constructed as in the parametric method, but using a different approach.  An {\it implicit} representation of $\gamma$ as the level set of some function $\phi$ is used, that is, it is assumed that
+%
+\[
+\gamma=\big\{x \in \mathbb{R}^{n+1}~ : ~\phi(x)=0\big\}.
+\]
+%
+A discrete surface $\Gamma$ is then defined as the zero level set of an interpolant of $\phi$ on the background mesh, and the finite element space is taken to be the trace of the bulk finite element space on $\Gamma$.  The FEM is posed and solved on $\Gamma$ as in the parametric method.   Note that the finite element space in the trace method consists of continuous piecewise linear functions over the faces of $\Gamma$.  However, because the faces of $\Gamma$ are arbitrary intersections of $n$-dimensional hyperplanes with $n+1$-simplices, they are not shape regular, and in particular may either fail to satisfy a minimum angle condition or be much smaller than the bulk simplices from which they are derived.  Counter to natural intuition about the quality of a finite element method posed on such a mesh, the trace method satisfies optimal error bounds and works well in practice.  In addition to the basic analysis of piecewise linear methods that we present below, the literature on trace methods for the Laplace-Beltrami problem includes study of matrix properties \cite{OR10}, adaptive versions \cite{DO12, CO15}, and extensions to higher-order \cite{Re15, GR16, GLR18}, stabilized \cite{BHL15, BHLMZ16}, and discontinuous Galerkin \cite{BHLM17} methods.  We refer to the recent survey article \cite{OR17}.
+
+Narrow band methods also employ a bulk mesh in order to approximate surface PDEs, but extend a surface PDE to the bulk instead of restricting a bulk finite element space to a surface. This idea appeared first in \cite{MR1868103} and is based on an extension of the PDE into a tubular neighborhood $\mathcal N(\delta)$ of width $2 \delta$ about $\gamma$ that reads
+%
+\[
+L(u_\delta)=-\textrm{div} \big( (I-\nabla d \otimes \nabla d) \nabla u_\delta \big)+u_\delta
+= f_\delta.
+\]
+%
+Here $f_\delta$ is an extension of $\wf$ from $\gamma$ to $\mathcal{N}(\delta)$ and $d$ is the distance function $\gamma$. The latter is chosen for simplicity over a generic level set function $\phi$ to represent $\gamma$ throughout this article. Because $\nabla d$ is the unit outward normal to $\gamma$, the coefficient matrix $I-\nabla d \otimes \nabla d$ is degenerate in the direction normal to $\gamma$, and the operator $L$ is thus elliptic but degenerate. We emphasize that in contrast to most previous literature on narrow band FEM we do not include a zero order term in our presentation, thereby adding extra difficulty due to the need to account for the non-trivial kernel of $L$ on closed surfaces. In narrow band FEMs, the Galerkin approximations to $u_\delta$ are posed over a discrete approximation $\mathcal{N}_h(\delta)$ to the narrow band $\mathcal{N}(\delta)$. Related methods that involve extending surface PDEs to bulk domains include the closest point method \cite{RM08}. 
+
+Narrow-band unfitted finite element methods have been proposed and analyzed by different authors.
+In \cite{MR2485787}, the aforementioned degenerate extension is shown to be well posed and error  bounds in the weighted bulk energy norm are derived. Subsequently, error estimates in the $H^1(\gamma)$ norm are obtained in \cite{MR2608464} for the lower order method.
+An alternate nondegenerate extension $L(u_\delta) = -\Delta  u_\delta+u_\delta$ is then proposed in \cite{MR3249369} leading to optimal  $H^1(\gamma)$ and also $L^2(\gamma)$ error estimates for the lower order method when $f_\delta$ is  (or is close to) the constant normal extension of $\widetilde f$.
+Independently, higher order methods are proposed and analyzed in \cite{MR3471100} using the extension
+%
+\[
+L(u_\delta) = -\textrm{div} \big( \mu (I-dD^2 d)^{-2} \nabla u_\delta \big) + u_\delta,
+\]
+%
+with $\mu := \det \big(I-dD^2 d\big)$ and $f_\delta$ the constant normal extension of $\widetilde f$.
+Note also that the associated FEM requires a sufficiently accurate approximation of $D^2d$ (if not known explicitly).
+For the case of lowest order (piecewise linear) finite element spaces, it is enough to approximate $D^2d$ with zero and thereby retrieve the discrete formulation in \cite{MR3249369}.
+
+%After a brief discussion of differential geometry
+%facts, we give a comprehensive descriptionn of three FEMs
+%for the Laplace-Beltrami operator on $\gamma$: the parametric method, the
+%trace method, and the narrow band method.
+
+In the construction of all three FEMs above, we incur on variational crimes (consistency errors) due to the approximation of geometry.  In the parametric and trace methods, these errors arise because the finite element method is posed over a discrete approximation $\Gamma$ to $\gamma$, thereby leading to different bilinear forms ($a$ and $A$) used to compute the continuous and finite element solutions ($\wu$ and $U$).  In the narrow band method the finite element equations are posed over a discrete narrow band $\mathcal{N}_h(\delta)$ instead of over the domain $\mathcal{N}(\delta)$ on which the extended solution $u_\delta$ is defined.  This again entails the use of different bilinear forms in the definitions of the continuous and discrete solutions.  A core problem in surface FEMs is understanding and controlling these errors, which are typically called {\it geometric consistency errors} or {\it geometric errors}.   In order to analyze these errors, it is necessary to define a map $\bP:\Gamma \rightarrow \gamma$ and then compare $a(\widetilde \tv, \widetilde w)$ with $A(\widetilde \tv \circ \bP, \widetilde w \circ \bP)$ for given functions $\widetilde \tv, \widetilde w \in H^1(\gamma)$.  This is done via a change of variables argument for the map $\bP$.  There may be several competing demands of both theoretical and practical nature that come into play when choosing the map $\bP$, and a main focus of this article is to elucidate how this choice affects analysis and implementation of surface FEMs.  
+
+The canonical choice of the map $\bP$ is defined via the so-called {\it signed distance function} $d:\mathcal N \rightarrow \gamma$.  The distance function is defined on a tubular neighborhood
+$\mathcal N$ of $\gamma$ and is of the same regularity class as $\gamma$ provided that $\gamma$ is at least $C^2$ and $\mathcal N$ is sufficiently narrow. In such a case, the map (also called distance-lift or orthogonal closest point projection) 
+%
+\begin{equation*}
+\bP_{d}(\bx) := \bx - d(\bx) \nabla d(\bx)  \quad
+\forall~\bx \in \mathcal N
+\end{equation*}
+is well defined and is of class $C^1$. The maps $d$ and $\bP_{d}$
+play a crucial role in analyzing and in some cases defining the numerical
+algorithms presented below.  In particular, the distance function is a critical tool in proving error estimates that are of optimal order with respect to geometric consistency errors.  When a generic map $\bP:\Gamma \rightarrow \gamma$ is instead used to analyze surface FEMs, the predicted behavior of geometric errors is of one order less than is seen in practice and also than may be proved using the closest point projection.  More precisely, when quasi-uniform meshes of size $h$ are used with affine surface approximations in the parametric and trace methods, arguments which use special properties of the closest point projection predict an $O(h^2)$ geometric errors, and these are in fact observed in practice.  On the other hand, standard proofs employing a generic map $\bP$ instead of the distance function map $\bP_d$ predict only order $h$ geometric errors.  This increase in convergence order due to the properties of the closest point projection may be viewed as a {\it superconvergence} effect.  
+
+Reliance on $\bP_{d}$ may however also constitute a serious drawback for several reasons. First, $\bP_d$ has a closed form expression only for the sphere and torus, so it is in general not directly available to the user.  We thus discuss how to use the distance function only as a theoretical tool for the parametric FEM and yet retain the superconvergence properties of $\bP_{d}$.  On a practical level, the user is still free to choose from a much more general class of lifts to implement an algorithm.  Our presentation includes optimal a priori and a posteriori estimates in $H^1$ and optimal a priori estimates in $L_2$ for an algorithm whose implementation only requires access to a generic lift $\bP$; the latter appear to be new in the literature even for smooth surfaces.
+Second, if $\gamma$ is merely $C^{1,\alpha}$ for $\alpha<1$, then the closest point projection $\bP_d$ is not uniquely defined in any neighborhood of $\gamma$.  We thus also provide an analysis of parametric FEMs for $\gamma$ of class $C^{1, \alpha}$ that instead makes use of a generic parametric map.  The price we pay is a possible order reduction of the method due to the loss of superconvergence properties of $\bP_{d}$.  %Understanding this phenomenon is a topic of ongoing study.
+Finally, previous proofs of optimal-order error estimates employing $\bP_{d}$ have required that $\bP_{d}$ is of class $C^2$ and thus $\gamma$ of class $C^3$; cf. \cite{Dz88}.  However, the solution $u$ to the Laplace-Beltrami problem already possesses the $H^2$ regularity needed to ensure optimal convergence of piecewise linear finite element methods when $\gamma$ is of class $C^2$.  In this survey we bridge this gap by giving a novel error analysis for the three FEMs which is based exclusively on $C^2$ regularity of $d$ and $\gamma$, but which also preserves the superconvergence property in the geometric error.   In the case of the trace and narrow band methods we achieve this by a regularization argument.
+
+
+This article is organized as follows. In section \ref{sec:preliminaries} we
+introduce surface gradient, divergence and
+Laplace-Beltrami operators along with the signed distance function and its most
+relevant properties. In section \ref{S:perturbation} we quantify the geometric effects
+of perturbing surfaces $\gamma$ of class $C^{1,\alpha}$ and $C^2$. We also present
+$H^2$ extensions to a tubular neigborhood
+$\Nd\subset\mathcal{N}$ of width $\delta$
+%
+\begin{equation*}
+\|u\|_{H^2(\Nd)} \lesssim \delta^{\frac12} \|\wu\|_{H^2(\gamma)}
+\end{equation*}
+%
+of functions $\wu\in H^2(\gamma)$ provided $\gamma$ is of class $C^2$.
+This turns out to be essential for our later
+error analysis of the trace and narrow band methods for $C^2$ surfaces.
+In section \ref{sec:parametric} we give a
+selfcontained exposition of parametric FEMs for surfaces of class $C^{1,\alpha}$ and
+$C^2$, including a priori and a posteriori error analyses. In section \ref{sec:trace}
+we describe the trace method and conclude in section \ref{sec:narrow} with the
+narrow band method. Both discussions assume $C^2$ regularity of $\gamma$.

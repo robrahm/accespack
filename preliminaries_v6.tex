@@ -1,0 +1,2704 @@
+% !TEX root = laplace_beltrami.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Calculus on Surfaces}\label{sec:preliminaries}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+In this section we discuss basic concepts of differential geometry.
+We start in section \ref{S:repres-surface} by describing
+the paramatric representaton of $\gamma$ via charts.
+This classical point of view
+is critical to introduce the first fundamental form $\bg$, the area element $q$, and
+the unit normal $\bnu$ of $\gamma$. We present in section \ref{S:operators} the
+tangential operators (gradient $\nabla_\gamma$, divergence div$_\gamma$, and
+Laplace-Beltrami $\Delta_\gamma$) as well as
+the Weingarten map; we also discuss $H^2$-regularity for $\Delta_\gamma$
+on surfaces $\gamma$ of class $C^2$.
+We introduce the distance function $d$ in section
+\ref{S:distance-function} and derive several important properties of it;
+this intrinsic approach avoids
+parametrizations and allows for implicit representions of $\gamma$. We devote section
+\ref{S:curvatures} to
+the second fundamental form of $\gamma$ and its principal curvatures using
+both parametric and intrinsic approaches.
+
+%--------------------------------------------------------------------------------
+\subsection{Parametric Surfaces}\label{S:repres-surface}
+%--------------------------------------------------------------------------------
+%
+We assume that $\gamma$ is a closed, compact, orientable manifold of class $C^{1,\alpha}$, $0<\alpha\leq1$, 
+and co-dimension $1$ in $\mathbb{R}^{n+1}$. It can be represented parametrically
+by an atlas $\lbrace ({\mathcal V}_i,{\mathcal U}_i,\bchi_i)\rbrace_{i\in I}$,
+where the individual
+charts $\bchi_i:{\mathcal V}_i \to {\mathcal U}_i\cap\gamma\subset\mathbb{R}^{n+1}$
+are isomorphisms of class $C^{1,\alpha}$ compatible with the orientation of $\gamma$; the open connected sets
+${\mathcal V}_i \subset \mathbb{R}^n$ are the parametric domains.
+Unless stated otherwise, it will be often sufficient to consider a single chart and resort to a partition of the unity.
+We thus drop the index $i$ for convenience.
+For $\bx \in {\mathcal U} \cap \gamma$, we set $\by := \bchi^{-1}(\bx) \in {\mathcal V}$.
+
+Let $\partial_j\bchi(\by)$ be the column vector of $j$-th partial derivatives of
+$\bchi(\by)$ for $1\le j\le n$ at $\by\in {\mathcal V}$.
+By definition, the rank of $D \bchi(\by) = \big(\partial_j\bchi(\by)\big)_{j=1}^n
+\in  {\mathbb R}^{(n+1)\times n}$ is  $n$ (full rank).
+This implies that $\{\partial_j\bchi(\by)\}_{j=1}^n$ are linearly independent and span
+the tangent hyperplane to $\gamma$ at $\bx$.
+
+The \emph{first fundamental form} is the symmetric and positive definite matrix
+$\bg\in {\mathbb R}^{n\times n}$ defined by
+\begin{equation}\label{dg:d:first}
+\bg(\by) := D \bchi(\by)^t D \bchi(\by) \quad\forall \by\in\mathcal V.
+\end{equation}
+If $\bg = (g_{ij})_{i,j=1}^n$, then the components $g_{ij}$ read
+$$
+g_{ij} = \partial_i\bchi^t\partial_j\bchi = \partial_i\bchi\cdot\partial_j\bchi,
+$$
+which depends on the choice of parametrization.
+A normal vector $\bN(\by)$ to $\gamma$ at $\bx$ can be written as
+$\bN(\by) = \sum_{j=1}^{n+1} A_j(\by) \be_j$, where
+$A_j:= \textrm{det}(\be_j, D \bchi)$ and
+$\{ \be_j \}_{j=1}^{n+1}$ is the canonical basis of $\mathbb R^{n+1}$. In fact,
+since
+%
+\[
+\bN \cdot \partial_i\bchi = \sum_{j=1}^{n+1} \be_j\cdot\partial_i\bchi
+\det(\be_j,D\bchi) = \det \big( \sum_{j=1}^{n+1} (\be_j\cdot\partial_i\bchi)
+\be_j,D\bchi\big) = \det(\partial_i\bchi,D\bchi) = 0,
+\]
+%
+and $A_j\ne0$ for at least one $j$ because $D\bchi$ has rank $n$, we deduce that
+%
+\begin{equation}\label{unit-normal}
+\bnu (\by) := \frac{\bN(\by)}{|\bN(\by)|} \quad\forall \by\in\mathcal V
+\end{equation}
+%
+is a well-defined unit normal vector to $\gamma$. Therefore, the matrix
+%
+\[
+\bT (\by) := [D\bchi(\by),\bnu(\by)] \in \mathbb{R}^{(n+1)\times(n+1)}
+\quad\forall \by\in\mathcal V
+\]
+%
+has rank $n+1$ and so is invertible. We write its inverse as
+%
+\[
+\bT^{-1} = \begin{bmatrix} \bB \\ \bv^t \end{bmatrix},
+\quad
+\bB \in \mathbb{R}^{n\times(n+1)}, \bv\in\mathbb{R}^n,
+\]
+%
+and note that
+%
+\[
+\bI_{(n+1)\times(n+1)} = \bT^{-1}\bT =
+\begin{bmatrix}
+\bB \, D\bchi & \bB \bv \\ \bv^t\ D\bchi & \bv^t\bnu,
+\end{bmatrix}  
+\]
+%
+whence
+%
+\[
+\bB \, D\bchi = \bI_{n\times n},
+\quad
+\bv^t D\bchi = 0,
+\quad
+\bv^t \, \bnu = 1.
+\]
+%
+The last two equalities imply $\bv=\bnu$. Reversing the order of multiplication yields
+%
+\[
+\bI_{(n+1)\times(n+1)} = \bT \, \bT^{-1} = D\bchi \, \bB + \bnu \bnu^t,
+\]
+%
+whence the {\it projection matrix} $\Pi \in \mathbb{R}^{(n+1)\times(n+1)}$ on the tangent
+hyperplane to $\gamma$ has the form
+%
+\begin{equation}\label{projection}
+\Pi := \bI - \bnu\otimes\bnu = D\bchi \, \bB .
+\end{equation}
+%
+To obtain an explicit expression for $\bB$ note that
+%
+\[
+D\bchi = (\bI - \bnu\otimes\bnu)^t D\bchi = \bB^t D\bchi^t D\bchi = \bB^t \bg
+\quad\Rightarrow\quad
+\bB = \bg^{-1} D\bchi^t.
+\]
+%
+This leads to the following useful expression of $\Pi$ defined in \eqref{projection}:
+%
+\begin{equation}\label{projection-b}
+\Pi = D\bchi \, \bg^{-1} D\bchi^t.
+\end{equation}
+
+The {\it area element} $q(\by)$ is the ratio of the
+infinitesimal volume at $\by\in\mathcal{V}$
+and area of $\gamma$ at $\bx=\bchi(\by)$, namely the volume of the parallelotope
+in the tangent plane to $\gamma$ spanned by the vectors $\{\bchi_j\}_{j=1}^n$:
+%
+\begin{equation}\label{e:area-rep}
+q(\by) := \det \big([\bnu(\by), D\chi(\by)] \big)
+\quad\forall \by\in\mathcal{V}.
+\end{equation}
+%
+To obtain a more familiar form of $q$ we argue as follows:
+%
+\begin{equation}\label{area-prelim}
+  q = \frac{1}{|N|} \det \big([\bN, D\bchi] \big) =
+  \frac{1}{|N|} \det\big( [\bN,D\bchi]^t [\bN,D\bchi]  \big)^{\frac12} = \sqrt{\det \bg},
+\end{equation}
+%
+because $\det\big( [\bN,D\bchi]^t [\bN,D\bchi]  \big) =
+|\bN|^2 \det(D\bchi^t D\bchi) = |\bN|^2 \det \bg$. Moreover, exploiting that
+$|N|^2 = \sum_{j=1}^{n+1} A_j \det([\be_j,D\bchi]) = \det([\bN,D\bchi])$, we deduce
+%
+\begin{equation}\label{q-N}
+q = |\bN|.
+\end{equation}  
+
+An integrable function $\tv:\mathcal{V}\to\mathbb{R}$ induces an integrable function
+$\widetilde{\tv}:\gamma\to\mathbb{R}$ by composition $\tv = \widetilde{\tv}\circ\bchi$,
+or equivalently $\widetilde{\tv}(\bx) = \tv(\by)$ for all $\by\in\mathcal{V}$.
+The area element allows for integration over $\gamma$ via the formula
+%
+\begin{equation}\label{int-gamma}
+  \int_\gamma \widetilde \tv = \int_{\mathcal V} \tv q
+  \quad\forall \tv \in L_1(\mathcal V).
+\end{equation}
+%
+This definition does not depend on the parametrization: if $\bchi_1,\bchi_2$
+are parametrizations of $\gamma$, then
+$\bchi_1=\bchi_2 \circ (\bchi_2^{-1}\circ\bchi_1)$ and
+$D\bchi_1=D\bchi_2 D(\bchi_2^{-1}\circ\bchi_1)$ whence
+%
+\[
+q_1 = \big|\det\big(D(\bchi_2^{-1}\circ\bchi_1)\big)\big| q_2
+\quad\Rightarrow\quad
+\int_{\mathcal{V}_1} \tv q_1 = \int_{\mathcal{V}_2} \tv q_2. 
+\]
+ 
+
+%--------------------------------------------------------------------------------
+\subsection{Differential Operators}\label{S:operators}
+%--------------------------------------------------------------------------------
+%
+If a function $\tv:\mathcal{V}\to\mathbb{R}$ is of class $C^1$, we can define the
+{\it tangential (or surface) gradient} of the corresponding function
+$\widetilde \tv: \gamma\to\mathbb{R}$ as
+a vector tangent to $\gamma$ that satisfies the chain rule
+%
+\begin{equation}\label{def-tang-grad}
+\nabla \tv(\by) = D\bchi(\by)^t \nabla_\gamma \widetilde \tv(\bx)
+\quad\forall \by\in\mathcal V.
+\end{equation}
+%
+Since $\nabla_\gamma\widetilde \tv$ is spanned by $\{\partial_j\bchi\}_{j=1}^n$, we get
+$\nabla_\gamma\widetilde \tv = D\bchi w$ for some $w \in \mathbb{R}^n$ whence $w = \bg^{-1} \nabla \tv$ and
+%
+\begin{equation}\label{e:exact_grad}
+  \nabla_\gamma \widetilde \tv (\bx) = D\bchi(\by) \bg(\by)^{-1} \nabla \tv(\by)
+  \quad\forall \by\in \mathcal V.
+\end{equation}
+%
+If $\widetilde\bv=(\widetilde\tv_i)_{i=1}^{n+1}:\gamma\to\mathbb{R}^{n+1}$
+is a vector field of class $C^1$, we define its tangential differential
+$D_\gamma\widetilde\bv \in \mathbb{R}^{(n+1)\times(n+1)}$ as a matrix whose $i$-th row is
+$(\nabla_\gamma \widetilde\tv_i)^t$. If $\gamma$ is of class $C^2$, then the unit normal
+vector $\bnu$ is of class $C^1$ and its differential
+%
+\begin{equation}\label{weingarten}
+  \bW(\bx) = D_\gamma \bnu(\bx)
+  \quad\forall \bx\in\gamma
+\end{equation}
+%
+is called the {\it Weingarten} (or shape) map of $\gamma$. In addition, the
+{\it tangential divergence} of $\widetilde\bv$ is the trace of $D_\gamma\widetilde\bv$
+%
+\begin{equation}\label{tang-diver}
+  \textrm{div}_\gamma \widetilde\bv(\bx)
+  = \textrm{trace}\big( D_\gamma\widetilde\bv(\bx)  \big)
+  = \sum_{i,j=1}^n g^{ij}(\by) \, \partial_i\bchi(\by)\cdot\partial_j \bv(\by)
+  \quad\forall \by\in\mathcal{V},
+\end{equation}  
+%
+provided $\bg^{-1} = (g^{ij})_{i,j=1}^n$.
+If both $\gamma$ and $\tv:\gamma\to\mathbb{R}$ are of class $C^2$, then
+the {\it Laplace-Beltrami (or surface Laplace) operator} is now defined to be
+%
+\begin{equation}\label{lap-bel-def}
+  \Delta_\gamma \widetilde \tv =
+  \frac{1}{q(\by)} \div { q(\by) \bg(\by)^{-1}\nabla \tv(\by) }
+  \quad\forall \by\in\mathcal V.
+\end{equation}  
+%
+The following lemma shows that \eqref{lap-bel-def} is designed
+to allow integration by parts on $\gamma$, exactly as it happens in flat
+domains with the Laplace operator $\Delta$.
+
+\begin{lemma}[weak form of the Laplace-Beltrami operator]
+If $\widetilde\varphi$ is of class $C^1$ with compact support in $\gamma$, then
+  %
+  \begin{equation}\label{lap-bel-weak}
+    \int_\gamma \widetilde\varphi \, \Delta_\gamma \widetilde\tv =
+    - \int_\gamma \nabla_\gamma \widetilde\varphi \cdot \nabla_\gamma \widetilde\tv.
+  \end{equation}  
+\end{lemma}
+\begin{proof}
+In view of \eqref{int-gamma}, which allows us to switch from $\gamma$ to $\mathcal{V}$
+back and forth, we can write
+%
+\begin{align*}
+  \int_\gamma \widetilde\varphi \Delta_\gamma \widetilde\tv
+  &= \int_{\mathcal V} \varphi \, \div{q\bg^{-1}\nabla\tv}
+  \\
+  &= - \int_{\mathcal V} \nabla\varphi \cdot \bg^{-1} \nabla \tv \, q
+  \\
+  &= -\int_{\mathcal V} D\bchi \bg^{-1} \nabla\varphi \cdot D\bchi \bg^{-1} \nabla\tv \, q
+  \\
+  &= -\int_\gamma \nabla_\gamma\widetilde\varphi \cdot \nabla_\gamma \widetilde\tv.
+\end{align*}
+%
+This proves \eqref{lap-bel-weak} as desired.
+\end{proof}
+
+In view of \eqref{lap-bel-weak}, we are now in the position to introduce the
+weak formulation for the Laplace-Beltrami operator. We first define the space
+of square integrable functions on $\gamma$ with vanishing mean value by
+%
+\[
+ L_{2,\#}(\gamma) := \Big\{\widetilde \tv \in L_2(\gamma) \;\big|\; \int_\gamma \widetilde \tv = 0\Big\}
+\]
+%
+and its subspace $H^1_\#(\gamma)$ containing square integrable weak derivatives defined as for example in Section 3 of \cite{JK95} by
+%
+\begin{equation*}
+  H^1_\#(\gamma) := H^1(\gamma) \cap L_{2,\#}(\gamma),
+  \quad
+  H^1(\gamma) := \Big\{\widetilde \tv\in L_2(\gamma) \;\big|\; 
+          \nabla(\widetilde \tv \circ  \bchi) \in [L_2(\mathcal V)]^{n}\Big\}.
+\end{equation*}
+%
+Our next result shows that the natural norm $\| \nabla_\gamma \widetilde v \|_{L_2(\gamma)}+\|\widetilde v \|_{L_2(\gamma)}$ in $H^1_\#(\gamma)$ is equivalent to the semi-norm $\| \nabla_\gamma \widetilde v \|_{L_2(\gamma)}$. The proof essentially hinges on the Peetre-Tartar Lemma \cite{MR0221282,MR532371}, but we proceed with a slightly more direct proof as in \cite[Section 5.8.1]{Ev98}.
+
+%\AB{We equip $H^1_\#(\gamma)$ with the norm $\| \widetilde v \|_{H^1_\#(\gamma)}:= \| \nabla_\gamma \widetilde v \|_{L_2(\gamma)}$, $\tilde v \in H^1_\#(\gamma)$. Note that these definitions are valid so long as $\gamma$ Lipschitz.
+%In fact, a standard use of the Peetre-Tartar lemma \cite{MR0221282,MR532371} yields the following result showing that $\| . \|_{H^1_\#(\gamma)}$ is indeed a norm on $H^1_\#(\gamma)$.}
+
+\begin{lemma}[Poincar\'e-Friedrichs inequality]\label{L:Poincare}
+Let $\gamma$ be a compact Lipschitz surface. There exists a constant $C$ only depending on $\gamma$ such that
+%
+\begin{equation}\label{poincare}
+\|\widetilde \tv\|_{L_2(\gamma)} \le C \|\nabla_\gamma \widetilde \tv\|_{L_2(\gamma)}
+    \quad\forall \, \widetilde \tv\in H^1_\#(\gamma).
+\end{equation}
+\end{lemma}  
+\begin{proof}
+We prove by contradiction the more general estimate
+% 
+\begin{equation}\label{more-general}
+\|\wv\|_{L_2(\gamma)} \le C \Big( \|\nabla_\gamma \wv\|_{L_2(\gamma)}
++ \Big| \int_\gamma \wv \, \Big| \Big)
+    \quad\forall \, \wv\in H^1(\gamma).
+\end{equation}
+%
+Suppose that there is a sequence $\wv_k\in H^1(\gamma)$ such that
+%
+\[
+\|\wv_k\|_{L_2(\gamma)}=1,\quad
+\|\nabla_\gamma \wv_k\|_{L_2(\gamma)} + \Big| \int_\gamma \wv_k \, \Big| \to 0
+\]
+%
+as $k\to\infty$. We deduce that $\{\wv_k\}_k$ is uniformly bounded in $H^1(\gamma)$.
+Since the embedding $H^1(\gamma) \subset L_2(\gamma)$ is compact (because $H^1(\mathcal V) \subset L_2(\mathcal V)$ is compact, see the proof of~\cite[Theorem~2.34]{MR681859}), there is a Cauchy subsequence (with abuse of notation not relabeled) of $\{\wv_k\}_k$ in $L_2(\gamma)$. This, together with $\|\nabla_\gamma \wv_k\|_{L_2(\gamma)}\to0$, implies that $\{\wv_k\}_k$ is a Cauchy sequence in $H^1(\gamma)$. Let $\wv\in H^1(\gamma)$ be the limit of $\wv_k$ in $H^1(\gamma)$, which yields $\nabla_\gamma\wv = \lim_{k\to\infty}\nabla_\gamma\wv_k = 0$ whence $\wv$ is constant on $\gamma$. Moreover, $\int_\gamma\wv=\lim_{k\to\infty}\int_\gamma \wv_k = 0$ whence $\tv=0$. This gives rise to the contradiction $0=\|\wv\|_{L_2(\gamma)}=\lim_{k\to\infty}\|\wv_k\|_{L_2(\gamma)}=1$, and finishes the proof.
+\end{proof}
+%\AB{Define the bounded  operator $A:H^1(\gamma) \rightarrow L_2(\gamma)^{n+1} \times \mathbb R$ by $A\widetilde \tv :=(\nabla_\gamma \widetilde \tv, \int_\gamma  \widetilde \tv)$.
+%Note that $A$ is injective.
+%Indeed,  $A\widetilde \tv =0$ implies $\nabla_\gamma \widetilde \tv =0$ and $\int_\gamma \widetilde \tv =0$. 
+%The former equality together with the local representation \eqref{def-tang-grad} of the tangential gradient shows that $\widetilde \tv$ is constant on $\gamma$. This in conjunction with the second inequality yields $\widetilde \tv = 0$ and proves that $A$ is injective.
+%}
+
+%\AB{ 
+%In addition, because 
+%$$
+%\| \widetilde \tv \|_{H^1(\gamma)} \lesssim \| A \widetilde \tv \|_{L_2(\gamma) \times \mathbb R} + \| \widetilde \tv \|_{L_2(\gamma)}  := \| \nabla_\gamma \widetilde \tv \|_{L_2(\gamma)} + \left| \int_\gamma \widetilde \tv \right| + \| \widetilde \tv \|_{L_2(\gamma)},
+%$$
+%and the embedding $H^1(\gamma) \subset L_2(\gamma)$ is compact (because $H^1(\mathcal V) \subset L_2(\mathcal V)$ is compact, see the proof of Theorem~2.34 in~\cite{MR681859}), the Petree-Tartar lemma yields
+%$$
+%\| \widetilde \tv \|_{H^1(\gamma)} \lesssim  \| \nabla_\gamma \widetilde \tv \|_{L_2(\gamma)} + \left| \int_\gamma \widetilde \tv \right|. 
+%$$
+%The proof is completed upon noting that $\int_\gamma \widetilde \tv = 0$ for $\widetilde \tv \in H^1_\#(\gamma)$.
+%}
+
+We emphasize that the Poincar\'e-Friedrichs constant depends on the surface $\gamma$. 
+Later we shall consider perturbations $\Gamma$ of $\gamma$ and derive Poincar\'e-Friedrichs type estimates on $\Gamma$ where the constant depends on $\gamma$ provided the geometry of $\gamma$ is minimally approximated by $\Gamma$. This is proved in Lemma~\ref{L:Poincare-unif} for Lipschitz surfaces and only requires that the $L_2$ and $H^1$ norms on $\gamma$ and $\Gamma$ are equivalent.
+
+%
+%
+We will not deal explicitly with functionals in the dual space $H^{-1}_\#(\gamma)$
+of $H^1_\#(\gamma)$, but occasionally need its norm for $\widetilde f\in L_{2,\#}(\gamma)$
+%
+\begin{equation}\label{dual-norm}
+\|\widetilde f\|_{H^{-1}_\#(\gamma)} = \sup_{\widetilde \tv\in H^1_\#(\gamma)}
+\frac{\int_\gamma \widetilde f \widetilde \tv}{\|\nabla_\gamma \widetilde \tv\|_{L_2(\gamma)}}.
+\end{equation}
+%
+Lemma \ref{L:Poincare} (Poincar\'e-Friedrichs inequality) implies that $\|\widetilde f\|_{H^{-1}_\#(\gamma)} \le C \|\widetilde f\|_{L_{2,\#}(\gamma)}$.
+The weak formulation of $-\Delta_\gamma \widetilde u = \widetilde f$ reads:
+for $\widetilde f \in L_{2,\#}(\gamma)$, seek $\widetilde u \in H^1_\#(\gamma)$ so that
+%
+\begin{equation}\label{e:weak}
+ \int_{\gamma} \nabla_{\gamma}\widetilde u \cdot \nabla_{\gamma}\widetilde \tv 
+=  \int_\gamma \widetilde f \,  \widetilde\tv 
+\quad \forall \,  \widetilde\tv \in H^1_\#(\gamma).  
+\end{equation}
+%
+Since the Dirichlet bilinear form in \eqref{e:weak} is coercive, according
+to Lemma \ref{L:Poincare}, 
+existence and uniqueness of a solution $\widetilde u\in H^1_\#(\gamma)$ is a consequence of
+the Lax-Milgram theorem.
+ We observe that thanks to the property $\widetilde f \in L_{2,\#}(\gamma)$, the solution $\widetilde u \in H^1_\#(\gamma)$ satisfies
+\begin{equation}\label{e:weak_relax}
+ \int_{\gamma} \nabla_{\gamma} \widetilde u \cdot \nabla_{\gamma} \widetilde \tv 
+=  \int_\gamma \widetilde f \, \widetilde \tv 
+\quad \forall \, \widetilde \tv \in H^1(\gamma).
+\end{equation}
+%
+It turns out that $\widetilde u$ exhibits the usual regularity pick-up provided $\gamma$ is
+of class $C^2$.
+%
+\begin{lemma}[regularity]\label{L:regularity}
+  If $\gamma$ is of class $C^2$, then there is a constant $C$ only depending on
+  $\gamma$ such that
+%  
+\begin{equation}\label{regularity}
+\|\widetilde u\|_{H^2(\gamma)} \le C \|\widetilde f\|_{L_2(\gamma)}.  
+\end{equation}
+\end{lemma}
+%
+\begin{proof}
+We use a localization argument to the parametric domain. We assume, without loss
+of generality, that the atlas $\{(\mathcal{V}_i,\mathcal{U}_i,\bchi_i)\}_{i=1}^I$
+satisfies the
+following property: there exist domains $\mathcal{W}_i$ such that
+$\overline{\mathcal{W}}_i \subset \mathcal{U}_i$ and $\{\mathcal{W}_i\}_{i=1}^I$ is
+still a covering of $\gamma$.
+Let now $\{\widetilde \psi_i\}_{i=1}^I$ be a $C^2$ partition of unity associated with the
+covering $\{\mathcal{W}_i\}_{i=1}^I$. The functions $u_i=u\psi_i$ satisfy 
+%
+\[
+\Delta_\gamma \widetilde u_i = \widetilde \psi_i \widetilde f + 2\nabla_\gamma \widetilde u \cdot \nabla_\gamma \widetilde \psi_i + \wu \Delta_\gamma \widetilde \psi_i=:  \widetilde g_i.
+\]
+%
+In light of the estimate $\| \nabla_\gamma \widetilde u\|_{L_2(\gamma)} \leq \| \widetilde f \|_{H^{-1}_\#(\gamma)}$ and \eqref{poincare} we deduce that $\|\widetilde g_i\|_{L_2(\gamma)} \le C \|\widetilde f\|_{L^2(\gamma\cap\mathcal{U}_i)}$. 
+Recalling \eqref{lap-bel-def} we can rewrite $\Delta_\gamma u_i$ in the parametric domain $\mathcal{V}_i$ as
+%
+\[
+\div{q_i(\by) \bg_i(\by)^{-1} \nabla u(\by)} = q_i(y) \widetilde g_i(\bchi(\by))
+\quad\forall \, \by\in\mathcal{V}_i,
+\]
+%
+and observe that this is a uniformly elliptic problem with $C^1$ coefficients.
+Applying interior regularity theory \cite{Ev98}, we deduce
+%
+\[
+\|u_i\|_{H^2(\bchi^{-1}(\mathcal{W}_i))} \le C \|g_i\|_{L_2(\mathcal{U}_i)}.
+\]
+%
+Therefore, adding over $i$ and using the finite overlap property of the
+sets $\mathcal{U}_i$, we end up with
+%
+\[
+\|\widetilde u\|_{H^2(\gamma)} \le \sum_{i=1}^I \| \widetilde u_i\|_{H^2(\mathcal{W}_i)}
+\le C \sum_{i=1}^I \| \widetilde g_i\|_{L_2(\mathcal{U}_i)} \le
+ C \|\widetilde f\|_{L_2(\gamma)} ,
+\]
+%
+as asserted.
+\end{proof}  
+
+In view of our discussion below of surfaces of class $C^{1,\alpha}$ with $0<\alpha\le1$, it is natural to ask whether the regularity estimate \eqref{regularity} is still valid in
+this more general context. We now show that this is indeed the case provided
+the surface $\gamma$ is of class $W^2_p$ with $p>n$, or equivalently the
+parametrizations $\{\bchi_i\}_{i=1}^I$ and partitions of unity $\{\widetilde \psi_i\}_{i=1}^I$ subordinate to the covering $\{\mathcal{W}_i\}_{i=1}^I$ of $\gamma$
+are of class $W^2_p$. In this case a Sobolev embedding implies $\gamma$ is of class
+$C^{1,\alpha}$ with $0< \alpha=1-\frac{n}{p} \le 1$.
+
+\begin{lemma}[regularity for $W^2_p$ surfaces]\label{L:regularity-W2p}
+If $\gamma$ is of class $W^2_p$ with $n<p\le\infty$, then there is a constant
+$C>0$ depending on $\gamma, p$ and $n$ such that
+%
+\begin{equation}\label{regularity-W2p}
+\|\widetilde u\|_{H^2(\gamma)} \le C \|\widetilde f\|_{L_2(\gamma)}.  
+\end{equation}
+%
+\end{lemma}    
+%
+\begin{proof}
+We argue with one chart $(\mathcal{V},\mathcal{U},\bchi)$ and thus suppress the index $i$ in $g$, $\bchi$, etc. Since $\wf\in L_2(\gamma)$ and
+$\wu\in H^1(\gamma)$, the right-hand side $g=\widetilde g\circ\bchi$ 
+in the proof of Lemma \ref{L:regularity} (regularity) satisfies
+%
+\[
+g \in L_{r_0}(\mathcal{V}) \qquad
+\frac{1}{r_0} = \frac{1}{2} + \frac{1}{p}.
+\]
+%
+On the other hand, the definitions \eqref{dg:d:first} and \eqref{e:area-rep} of
+the first fundamental form $\bg$ and area element $q$ imply that they are bounded
+in $L_\infty(\mathcal{V})$ as well as
+%
+\[
+\bg, q \in W^1_p(\mathcal{V})
+\qquad\Rightarrow\qquad
+\bA := q \bg^{-1} \in W^1_p(\mathcal{V}).
+\]
+%
+Therefore, the Laplace-Beltrami equation in the parametric domain $\mathcal{V}$
+can be written in non-divergence form as follows:
+%
+\begin{equation}\label{non-div}
+\bA : D^2 u = q g - \div \bA \cdot \nabla u = \ell \in L_{r_0}(\mathcal{V}).
+\end{equation}
+%
+Since $\bA$ is uniformly continuous, the Calder\'on-Zygmund regularity theory
+applies (cf. \cite[Theorem 9.15 and Lemma 9.17]{GT98}) and gives the interior regularity $u\in W^2_{r_0}(\mathcal{Z})$ with
+%
+\[
+\|u\|_{W^2_{r_0}(\mathcal{Z})} \lesssim \|\ell\|_{L_{r_0}(\mathcal{V})}
+\]
+%
+where $\mathcal{Z}:=\chi^{-1}(\mathcal{W})$ and $\overline{\mathcal{W}}\subset \mathcal U$ as in the proof Lemma~\ref{L:regularity} (regularity). Invoking Sobolev embedding again,
+we deduce
+%
+\[
+u \in W^1_{t_1}(\mathcal{Z}), \qquad
+\frac{1}{t_1} = \frac{1}{r_0} - \frac{1}{n},
+\]
+%
+and $\wu \in W^1_{t_1}(\gamma)$ upon pasting these local estimates together over $\gamma$;
+hence $u\in W^1_{t_1}(\mathcal{V})$.
+We now iterate this argument and prove a recurrence relation by induction. Suppose that
+a sequence of real numbers $\{r_k,t_k\}$ is governed by the relations $t_0=2$ and
+%
+\[
+\frac{1}{r_k} = \frac{1}{p} + \frac{1}{t_k},
+\qquad
+\frac{1}{t_{k+1}} = \frac{1}{r_k} - \frac{1}{n},
+\]
+%
+and the right hand side of \eqref{non-div} satisfies $\ell \in L_{r_k}(\mathcal{V})$;
+note that this is the case for $k=0$.
+Calder\'on-Zygmund theory  thus implies $u \in W^2_{r_k}(\mathcal{Z})$ with
+%
+\[
+\|u\|_{W^2_{r_k}(\mathcal{Z})} \lesssim \|\ell\|_{L_{r_k}(\mathcal{Z})}.
+\]
+%
+Sobolev embedding in turn yields $u \in W^1_{t_{k+1}}(\mathcal{V})$ whence
+$\ell \in L_{r_{k+1}}(\mathcal{V})$, which proves the recurrence relation.
+Iterating these relations we see that for $k\ge0$
+%
+\[
+\frac{1}{r_k} = \frac{1}{r_{k-1}} + \frac{1}{p} - \frac{1}{n}
+= \frac{1}{2} + \frac{1}{p} + k \Big( \frac{1}{p} - \frac{1}{n} \Big),
+\]
+%
+and that every step increases the value of $r_k$, because $\frac{1}{p}-\frac{1}{n}<0$.
+Since $\wf\in L_2(\gamma)$, the iteration stops once $r_k\ge2$ or equivalently
+%
+\[
+k = \Big\lceil \frac{n}{p-n} \Big\rceil.
+\]
+%
+This concludes the proof.
+\end{proof}
+  
+%--------------------------------------------------------------------------------
+\subsection{Signed Distance Function}\label{S:distance-function}
+%--------------------------------------------------------------------------------
+%
+We now take advantage of the ambient space $\mathbb R^{n+1}$ and use
+standard calculus in a suitable tubular neighborhood $\mathcal N$ of $\gamma$
+to derive useful expressions of geometric quantities; we postpone
+momentarily the precise definition of $\mathcal N$.  The surface $\gamma$ splits
+$\mathbb{R}^{n+1}$ into two disjoint sets, the interior and exterior of $\gamma$.
+The \emph{signed distance function} $d:\mathcal N \rightarrow \gamma$ is
+defined for every $\bx\in\mathcal N$ to be the distance of $\bx$ to $\gamma$,
+$\dist(\bx,\gamma)$, if
+$\bx$ belongs to the exterior of $\gamma$ and $-\dist(\bx,\gamma)$ if $\bx$ belongs
+to the interior of $\gamma$, whence
+%
+\[
+|d(\bx)| = \dist(\bx,\gamma)
+\quad\forall \, \bx\in\mathcal N.
+\]
+%
+It turns out that $d$ belongs to the same regularity class as $\gamma$ so long as $\gamma$ is at least $C^2$, which we henceforth assume in our discussion of $d$.  While the distance function exists for surfaces of regularity less than $C^{1,1}$, as we explain in Section \ref{S:d_for_C1} below its properties are drastically different and it is not immediately useful for purposes of defining and analyzing surface FEM.  Returning to the setting of $C^2$ surfaces, $\nabla d(\bx)$ is well defined for all
+$\bx\in\mathcal N$ and computed on $\gamma$ gives the unit normal $\bnu(\bx)$
+pointing outwards:
+%
+\[
+\bnu(\bx) = \nabla d(\bx)
+\quad\forall \, \bx\in\gamma.
+\]
+%
+Since $\nabla d$ is defined in $\mathcal N$ it provides a natural extension of
+$\bnu$ to $\mathcal N$. This neighborhood $\mathcal N$ is sufficiently small
+that for every $\bx\in\mathcal N$ there is a unique {\it closest point projection}
+$\bP_d(\bx) \in\gamma$ defined by
+%
+\begin{equation}\label{e:lift_dist}
+\bP_d(\bx) = \bx - d(\bx) \nabla d(\bx)  \qquad
+\forall \, \bx \in \mathcal N.
+\end{equation}
+%
+An important property is that $\nabla d$ coincides at $\bx\in\mathcal N$ and
+$\bP_d(\bx)\in\gamma$:
+%
+\begin{equation}\label{property-d}
+\nabla d(\bx) = \nabla d\big(\bP_d(\bx) \big)
+= \nabla d \big(\bx - d(\bx) \nabla d(\bx) \big)
+\quad\forall \, \bx\in\mathcal{N}.
+\end{equation}
+%
+Since $|\nabla d(\bx)|^2 = 1$, we deduce that the Hessian $D^2 d(\bx)$ satisfies
+%
+\begin{equation}\label{zero-eig}
+D^2 d(\bx) \, \nabla d(\bx) = 0
+\quad\forall \, \bx \in \mathcal N.
+\end{equation}
+%
+This implies that $D^2 d(\bx)$ can be regarded as an operator acting on the tangent
+hyperplane to $\gamma$ at $\bx\in\gamma$ and thus gives
+an alternative representation to the Weingarten map \eqref{weingarten}:
+%
+\[
+\bW(\bx) = D^2 d(\bx)
+\quad\forall \, \bx \in\gamma.
+\]
+%
+This has two important consequences. First it provides a natural extension of $\bW$
+to $\mathcal N$ and second shows that $\bW$ is symmetric, which is not apparent
+from \eqref{weingarten}.
+
+Given a generic function $\widetilde\tv:\gamma\to\mathbb{R}$,
+the distance function $d$ provides a natural way to extend it
+to the neighborhood $\mathcal{N}$ upon writing
+%
+\begin{equation}\label{normal-extension}
+\tv(\bx) = \widetilde\tv\big(\bP_d(\bx)  \big)
+= \widetilde\tv (\bx - d(\bx) \nabla d(\bx))
+\quad\forall \, \bx\in\mathcal{N}.
+\end{equation}
+%
+Differentiating and using the definition \eqref{projection} of orthogonal
+projection, we obtain
+%
+\begin{equation}\label{e:rel_dist_grad}
+\begin{aligned}
+\nabla \tv(\bx) &= \big(\bI - \nabla d(\bx)\otimes\nabla d(\bx) - d(\bx) D^2 d(\bx) \big)
+\nabla_\gamma \widetilde \tv\big(\bP_d(\bx)\big)
+\\
+& = \big(\Pi(\bx) - d(\bx) D^2 d(\bx)\big) \nabla_\gamma \widetilde \tv\big(\bP_d(\bx)\big)
+\\
+&= \big(\bI - d(\bx) D^2 d(\bx)\big) \Pi(\bx)\nabla_\gamma \widetilde \tv\big(\bP_d(\bx)\big)
+\end{aligned}
+\end{equation}
+%
+where the last equality hinges on \eqref{property-d}, which implies
+$\Pi(\bx) = \Pi(\bP_d(\bx))$ and $D^2 d(\bx)=D^2 d(\bx) \Pi(\bx)$. In particular,
+$\nabla \tv(\bx) = \nabla_\gamma \widetilde \tv\big(\bP_d(\bx)\big)$
+for $\bx\in\gamma$ because
+\eqref{normal-extension} provides a normal extension of $\widetilde \tv$.
+
+Suppose now that $\tv$ is an extension of $\widetilde \tv$ to $\mathcal{N}$,
+but not necessarily in the normal direction. An intrinsic definition of
+tangential gradient of $\widetilde \tv$ is the orthogonal projection of
+$\nabla \tv$ to the tangent hyperplane of $\gamma$:
+%
+\begin{equation}\label{grad-extension}
+\nabla_\gamma \widetilde \tv(\bx) = \big(\bI - \bnu(\bx)\otimes\bnu(\bx) \big) \nabla\tv(\bx)
+= \Pi(\bx) \nabla\tv(\bx)
+\quad\forall \, \bx\in\gamma.
+\end{equation}
+%
+This definition is consistent with \eqref{e:exact_grad}: $\nabla_\gamma \widetilde \tv(\bx)$
+is orthogonal to $\bnu(\bx)$ and
+%
+\[
+\nabla_\gamma \widetilde \tv(\bx) \cdot \partial_i\bchi(\by) =
+\nabla \tv(\bx) \cdot \partial_i\bchi(\by) =
+\partial_i \widetilde \tv(\bchi(\by))
+\]
+%
+obeys the chain rule, whence it must coincide with our previous definition
+based on these two properties. An important consequence of this property follows.
+%
+\begin{remark}[parametric independence]\label{R:param-indep}
+  The definition \eqref{grad-extension} is independent of the extension:
+  if $\tv_1,\tv_2$ are two extensions of $\widetilde \tv$ then $\tv_1-\tv_2 = 0$ on $\gamma$
+  and the only non-vanishing component of $\nabla(\tv_1-\tv_2)$ is in the normal
+  direction $\bnu$. Since definitions \eqref{grad-extension} and \eqref{e:exact_grad}
+  agree, we deduce that the tangential gradient $\nabla_\gamma \widetilde \tv$ is independent
+  of the parametrization $\bchi$ chosen to described $\gamma$. The same happens
+  with the tangential divergence \eqref{tang-diver} as well as the
+  Laplace-Beltrami operator \eqref{lap-bel-def}, the latter
+  because of \eqref{lap-bel-weak}
+  and the fact that \eqref{int-gamma} is independent of $\bchi$.
+\end{remark}  
+
+Given a vector field $\widetilde\bv:\gamma\to\mathbb{R}^{n+1}$ and corresponding
+extension to $\mathcal{N}$, the tangential divergence can be written as
+%
+\[
+\divg{\widetilde \bv(\bx)} = \trace{\nabla_\gamma \widetilde \bv(\bx)}
+= \div{\bv(\bx)} - \bnu(\bx)^t \, \nabla \bv(\bx) \bnu(\bx)
+\quad\forall \, \bx\in\gamma,
+\]
+%
+and gives an alternative expression to \eqref{tang-diver}. Likewise, the
+Laplace-Beltrami operator $\Delta_\gamma \widetilde\tv = \divg{\nabla_\gamma \widetilde \tv}$,
+written parametrically in \eqref{lap-bel-def},
+can be equivalently written in terms of the extension $\tv$ as follows
+%
+\[
+\Delta_\gamma \widetilde \tv = \trace{(\bI-\bnu\otimes\bnu)D^2\tv} - (\nabla\tv\cdot\bnu)
+\, \divg{\bnu},
+\]
+%
+because $\nabla_\gamma(\nabla\bnu\cdot\bnu) \cdot \bnu = 0$. This implies the
+expression
+%
+\[
+\Delta_\gamma \widetilde \tv(\bx) = \Delta \tv(\bx) - \bnu(\bx)^t D^2\tv(\bx) \bnu(\bx)
+- (\nabla\tv\cdot\bnu)(\bx) \, \divg{\bnu(\bx)}
+\quad\forall \, \bx\in\gamma.
+\]
+
+%--------------------------------------------------------------------------------
+\subsection{Curvatures}\label{S:curvatures}
+%--------------------------------------------------------------------------------
+%
+We again assume that $\gamma$ is of class $C^2$.
+In view of \eqref{weingarten}, the Weingarten map is symmetric and its
+$n+1$ eigenvalues are real.
+Except for the zero eigenvalue corresponding to the eigenvector $\bnu(\bx)$,
+according to \eqref{zero-eig}, they are called the {\it principal curvatures}
+of $\gamma$ at $\bx$ and are denoted by $\kappa_i(\bx)$ for $1\le i \le n$.
+The eigenvectors of $\bW$ corresponding to the principal curvatures are called the {\it principal directions}.
+
+We stress that $\kappa_i(\bx)$ is well defined for all $\bx \in \mathcal N$
+because so is $\bW(\bx)$.
+This allows us to make the definition of $\mathcal N$ precise. Given $\delta>0$, first let
+%
+\begin{equation}\label{e:delta-tube}
+\mathcal N(\delta) := \{ \bx \in \mathbb R^{n+1} \ : \ |d(\bx)| < \delta \}.
+\end{equation}
+ Let also
+%
+\begin{equation}\label{K:def}
+  K(\bx) := \max_{1 \le i \le n} |\kappa_i(\bx)| \quad\forall \, \bx \in \gamma;
+  \qquad
+  K_\infty := \|K\|_{L_\infty(\gamma)} . 
+\end{equation}
+We may now set
+\begin{equation}\label{N:def}
+  \mathcal{N} := \Big\{ \bx \in \mathbb{R}^{n+1}:
+  \dist (\bx, \gamma) < \frac{1}{2 K_\infty} \Big\}=\mathcal{N}\left(K_\infty/2\right).
+\end{equation}
+%
+Note that the distance function, closest point projection, and related properties are defined and hold on the larger set $\mathcal{N}(1/K_\infty)$.  We adopt the more limited definition of $\mathcal{N}$ in order to avoid degeneration of some quantities such as curvature of parallel surfaces (see below) that occurs near the boundary of the larger set.
+
+Given $\varepsilon$ small so that $|\varepsilon| \le \frac{1}{2K_\infty}$,
+we define the parallel surface $\gamma_\varepsilon$ to be
+%
+\[
+\gamma_\varepsilon := \big\{\bx\in\mathcal N: d(\bx) = \varepsilon \big\}.
+\]
+%
+The following statement relates the principal curvatures of $\gamma_\varepsilon$ with
+those of $\gamma$.
+
+\begin{lemma}[curvatures of parallel surface]\label{L:curv-parallel}
+If $\gamma$ is of class $C^2$  so are all parallel surfaces $\gamma_\varepsilon$ and
+their principal curvatures satisfy
+%
+\begin{equation}\label{kappas}
+  \kappa_i(\bx) = \frac{\kappa_i(\bP_d(\bx))}{1+\varepsilon \, \kappa_i(\bP_d(\bx))}
+  \quad\forall \, \bx\in\gamma_\varepsilon, 
+\end{equation}
+%
+whereas the principal directions at $\bx$ and $\bP_d(\bx)$ coincide.
+\end{lemma}
+%
+\begin{proof}  
+Differentiate \eqref{property-d} to get
+%
+\[
+D^2 d(\bx) = D^2d \big( \bP_d(\bx) \big) \big(\bI - \nabla d(\bx) \otimes \nabla d(\bx)
+- d(\bx) D^2 d(\bx) \big),
+\]
+%
+whence, since $\nabla d(\bx) = \nabla d \big(\bP_d(\bx) \big)$ again from
+\eqref{property-d},
+%
+\[
+\big( \bI + d(\bx) D^2 d\big(\bP_d(\bx) \big) \big) D^2 d(\bx)
+= D^2 d\big(\bP_d(\bx) \big) \big( \bI - \nabla d(\bx) \otimes \nabla d(\bx) \big)
+= D^2 d\big(\bP_d(\bx) \big).
+\]
+%
+Therefore, for $\bx\in\gamma_\varepsilon$ we see that the eigenvalues of
+$\big( \bI + \varepsilon D^2 d\big(\bP_d(\bx) \big) \big)$ are
+%
+\[
+\kappa_i\big( \bI + \varepsilon D^2 d\big(\bP_d(\bx) \big) \big)=
+1+\varepsilon \kappa_i \big(\bP_d(\bx) \big) \ge \frac12,
+\]
+%
+according to \eqref{N:def}.
+This implies that $\bI + \varepsilon D^2 d\big(\bP_d(\bx) \big)$ is nonsingular and
+the previous relation reads as follows in terms of the Weingarten map:
+%
+\[
+\bW(\bx) = \big( \bI + \varepsilon \bW\big(\bP_d(\bx) \big) \big)^{-1}
+\bW \big(\bP_d(\bx) \big).
+\]
+%
+This shows that the eigenvectors of $\bW(\bx)$ and $\bW \big(\bP_d(\bx) \big)$
+coincide and the eigenvalues are related via \eqref{kappas}.
+\end{proof}
+
+The {\it second fundamental form}
+$\bh = (h_{ij})_{i,j=1}^n$ of $\gamma$ is defined by
+%
+\[
+h_{ij}(\by) := -\partial_i \bnu(\by)\cdot\partial_i\bchi(\by)
+= \bnu(\by) \cdot \partial_{ij} \bchi(\by)
+\quad\forall \, \by\in\mathcal{V},
+\]
+%
+where the last equality relies on the fact that $\bnu$ and $\partial_j\bchi$
+are orthogonal for $1\le j\le n$. The next result connects $\bh$ with the
+Weingarten map \eqref{weingarten}.
+
+\begin{lemma}[second fundamental form]\label{L:second-form}
+The symmetric matrix $\bW=D_\gamma\bnu$ defines a selfadjoint operator on
+the tangent hyperplane to $\gamma$ that can be represented in the basis
+$\{\partial_j\bchi\}_{j=1}^n$ by the generally non-symmetric matrix
+%
+\[
+\bs = -\bh \bg^{-1}.
+\]
+%
+The eigenvalues of $\bs$ are the principal curvatures of $\gamma$.
+\end{lemma}  
+%
+\begin{proof}
+Since $D_\gamma\bnu \, \bnu = 0$, we can regard $D_\gamma\bnu$ as an operator acting on the
+tangent plane to $\gamma$ and represent its image in terms
+of $\{\partial_k\bchi\}_{k=1}^n$ as follows
+%
+\[
+\partial_i\bnu (\by) =
+D_\gamma\bnu(\bx) \, \partial_i\bchi(\by)
+= \sum_{k=1}^n s_{ik}(\by) \, \partial_k\bchi(\by)
+\quad\forall \, \by\in\mathcal{V}.
+\]
+%
+Let $\bs(\by) := (s_{ij}(\by))_{ij, = 1}^n$ and multiply both sides by
+$\partial_j\bchi(\by)$ to see that
+%
+\[
+h_{ij}(\by) = - \partial_i\bnu(\by) \cdot \partial_j\bchi(\by)
+= \sum_{k=1}^n s_{ik} \partial_k\bchi(\by)\cdot\partial_j\bchi(\by)
+= \sum_{k=1}^n s_{ik} g_{kj}.
+\]
+%
+This implies $\bh=-\bs\bg$ and thus the assertion.
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Surface regularity and properties of the distance function} \label{S:d_for_C1}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+In the previous two sections we have seen that when $\gamma$ is of class $C^2$, the closest point projection is uniquely defined in a tubular neighborhood of $\gamma$ whose width is related to the principal curvatures of the surface.  We shall see below that the closest point projection plays a pivotal role in analyzing finite element methods on $C^2$ surfaces.  On the other hand, some applications may require solving PDE on surfaces that are less regular than $C^2$.  Thus it is natural to ask which properties of the distance function and closest point projection carry over to less regular surfaces.  It turns out that the properties of these maps change drastically and fundamentally when crossing the threshold from $C^2$ to less regular ($C^{1,\alpha}$ with $\alpha<1$) surfaces.  
+
+%In the previous sections we have discussed two different methods for representing surfaces, one being implicit representation via distance functions and the associated closest point projection and the other being a generic parametric representation.  As we have applied it so far, the distance function approach has the following properties:
+%\begin{itemize}
+%\item It applies to $C^2$ (and smoother) surfaces;
+%\item The geometric consistency error in solving the Laplace-Beltrami problem on a perturbation $\Gamma$ of a $C^2$ surface $\gamma$ is bounded by $\|d\|_{L_\infty(\Gamma)} + \|\nu-\nu_\Gamma\|_{L_\infty(\Gamma)}^2$; cf. Lemma \ref{L:perturbation_bound_dist}.  
+%\end{itemize}
+%On the other hand, the generic parametric approach has the properties:
+%\begin{itemize}
+%\item It applies to less smooth surface, in particular $C^{1,\alpha}$, or more generally globally Lipschitz and piecwise $C^{1,\alpha}$.
+%\item The geometric consistency error in solving the Laplace-Beltrami problem on a perturbation $\Gamma$ of a $C^{1,\alpha}$ surface $\gamma$ is bounded by $\lambda_\infty$, which is essentially equivalent to $\|\nu-\nu_\Gamma\|_{L_\infty(\Gamma)}$.
+%\end{itemize}
+%
+%{\bf Relationship to surface finite element methods.}     Many types of surface finite element methods are defined on polygonal or other polynomial approximations $\Gamma$ to the continuous surface $\gamma$.  This results in a variational crime (geometric consistency error) having essentially the same form as in the perturbation analysis described directly above.  As we shall see below, the difference in the bounds obtained for such errors on $C^2$ and $C^{1,\alpha}$ surfaces can be quite substantial.  Let $\Gamma$ be a polyhedral approximation $\Gamma$ to $\gamma$ having triangular faces of width $h$.  The consistency error  $\|d\|_{L_\infty(\Gamma)} + \|\nu-\nu_\Gamma\|_{L_\infty(\Gamma)}^2$ for $C^2$ surfaces is easily seen to be of order $h^2$ (roughly speaking, the $L_\infty$ error in piecewise linear Lagrange interpolation), whereas the corresponding error $\lambda_\infty$ for a $C^{1,\alpha}$ surface is only of order $h^\alpha$ (or roughly speaking the $W_\infty^1$ error in piecewise linear Lagrange interpolation of a $C^{1,\alpha}$ function).  In the finite element setting, the perturbation theory in Section \ref{S:perturbation} thus predicts a jump in the order of the consistency error from $h^\alpha$ for a $C^{1,\alpha}$ surface ($0 < \alpha <1$) to $h^2$ for a $C^2$, or more generally $C^{1,1}$, surface.  It is not clearly whether this discrepancy is an artifact of proof.  
+%
+%Essential in analyzing geometric errors in surface finite element methods is a bijection between a discrete surface approximation $\Gamma$ and the continuous surface $\gamma$.  Typically in the surface finite element literature it is assumed that $\gamma$ is $C^2$, and the closest point projection is used as a canonical map between $\Gamma$ and $\gamma$ for purposes of establishing error estimates.   From our discussion of perturbation theory for the Laplace-Beltrami problem it can be seen that when $\gamma$ is $C^2$ using the closest point projection for this purpose is necessary to correctly characterize  geometric errors resulting from perturbing $\gamma$ for purposes of constructing a finite element method.   
+%
+%These observations naturally lead us to question whether it is possible to extend the distance function approach to a $C^{1,\alpha}$ surface.  As we explain below, the properties of the distance function and that of the associated closest point projection change drastically and fundamentally when one crosses the $C^{1,1}$ threshold.  In particular, the distance function is only Lipschitz and the closest point projection is not uniquely defined on any neighborhood of $\gamma$.  It is therefore necessary to adopt a different approach to representing $C^{1,\alpha}$ surfaces $\gamma$.  We note that even regularizing the distance function as in Section \ref{S:apriori-C1a} does not immediately yield meaningful results because the gradient of the regularized distance function does not converge to $\nabla d$ with any rate, which is an essential part of the regularization analysis.   
+%
+%\comment{AD:  A discussion of the importance of $C^{1,\alpha}$ surfaces in applications would be useful here.  Can either Ricardo or Andrea provide some examples for this?}. 
+%
+%{\bf Properties of the distance function for $C^1$ surfaces.}   We now more precisely explore properties of the distance function for less regular surfaces.  
+
+In order to make this statement precise, we begin by restating for comparison from \cite[Lemma 14.16]{GT98} some fundamental properties of the distance function for $C^k$ surfaces ($k \ge 2$).
+\begin{lemma}[properties of distance functions for $C^k$ surfaces] Let $\gamma$ be a $C^k$ surface, $k \ge 2$.  Then there exists a positive constant $\delta$ depending on $\gamma$ such that $d \in C^k(\mathcal{N}(\delta))$.  In addition, the closest point projection $\bP_d(\bx)=\bx-d(\bx) \nabla d(\bx)$ is defined and of class $C^{k-1}$ on $\mathcal{N}(\delta)$ with $\delta < \frac{1}{K_\infty}$. 
+\end{lemma}
+%Indeed, we have seen above that the above properties hold for any $\delta < \frac{1}{K_\infty}$, with $K_\infty$ the maximum principal curvature over $\gamma$.  
+We now ask whether a similar statement holds for $k<2$, and in particular for $k=1$.  Note first that the distance function $d$ to {\it any} closed set $\gamma \subset \mathbb{R}^{n+1}$ is defined and Lipschitz continuous \cite[Theorem 4.8.1]{Fed59}, so the first question at hand is whether distance functions for $C^{1,\alpha}$ surfaces ($0 \le \alpha <1)$ are more than Lipshitz continuous.  
+
+%The fact that principal curvatures do not exist everywhere on such surfaces hints that the answer is negative, since in a sense we have in this case that $K_\infty=\infty$ and thus the width of $\mathcal{N}$ is 0.  It turns out that this intuition can be made rigorous.  
+
+In order to understand the relationship between surface regularity and the distance function map, we first define the {\it reach} of a surface $\gamma$:  
+%
+\[
+{\rm reach}(\gamma) := \sup \big\{\delta \ge 0:  \hbox{all } \bx\in \mathcal{N}(\delta) \hbox{ have a unique closest point } \bP_d(\bx) \in \gamma \big\}.
+\]
+%
+For a $C^2$ surface $\gamma$, we have already seen that ${\rm reach}(\gamma)=1/K_\infty$.   We now explore the connection between the reach and properties of the distance function for less regular surfaces.  We first define
+%
+\[ U(\gamma):=\{\bx \in \mathbb{R}^{n+1} :~\bx \hbox{ has a unique closest point in } \gamma\}.
+\]
+%
+The following result may be found in \cite[Theorem 4.8.3]{Fed59}.
+\begin{lemma}[properties of differentiable distance functions]  \label{lem:d_properties}
+If $\gamma$ is a $C^1$ surface, $\bx \in \mathbb{R}^{n+1} \setminus \gamma$, and $d$ is differentiable at $\bx$, then $\bx \in U(\gamma)$.  In particular, if $d$ is differentiable in a neighborhood of $\gamma$, then ${\rm reach}(\gamma)>0$.  
+\end{lemma}
+%We have already stated and repeatedly used the properties of the distance function in the above lemma when $\gamma$ and therefore also $d$ are $C^2$; what is remarkable is that these properties in fact hold whenever the distance function is known merely to be differentiable.  
+
+Next we define several constants from the technical report \cite{Luc57}.  Given $\bx \in \gamma$ and $\rho\ge 0$, we first define the closed normal segment
+%
+\[
+S(\bx, \rho):= [\bx-\rho \bnu(\bx), \bx + \rho \bnu(\bx)].
+\]
+%
+Let
+$B_\rho(\by)$ denotes the ball in $\mathbb R^{n+1}$ of center $\by$ and radius $\rho>0$,
+and
+%
+\begin{align*}
+\begin{aligned}
+\frac{1}{r_0} &:=\sup_{\bx,\by \in \gamma, \bx \neq \by} \frac{|\bnu(\bx)-\bnu(\by)|}{|\bx-\by|},
+\\ \frac{1}{r_0{'}}&:=\sup \{\rho \ge 0: ~S(\bx, \rho) \cap S(\by, \rho)=\emptyset ~ \forall \bx, \by \in \gamma, ~\bx \neq \by\},
+%\\ \frac{1}{r_0{''}}&=\sup \{ \rho \ge 0, \overline{B_\rho (\bx \pm \rho \nu(\bx))} \cap \gamma = \emptyset ~\forall \bx \in \gamma\}, 
+\\ \frac{1}{r_0{''}}&:=\sup \{ \rho \ge 0: ~ \overline{B_\rho (\bx \pm \rho \bnu(\bx))} \hbox{ contain respectively no points}  \\ &~~~~~~\hbox{ interior or exterior to } \gamma ~
+\hbox{ for all } \bx \in \gamma\}, 
+\\ \frac{1}{r_0{'''}}&:=\sup_{\bx,\by \in \gamma, \bx \neq \by} \frac{|2(\by-\bx) \cdot \bnu(\bx)|}{|\by-\bx|^2}.
+\end{aligned}
+\end{align*}
+
+Combining \cite[Theorem 1]{Luc57} and noting that $r_0$ bounds the Lipschitz constant of $\gamma$ (cf. the comment on p. 15 of \cite{Luc57}), we have the following.
+%
+\begin{lemma}[further properties of $C^1$ surfaces] \label{lem:C1_properties} 
+If the surface $\gamma$ is of class $C^1$, then the constants $r_0$, $r_0{'}$, $r_0{''}$, and $r_0{'''}$ are all equal.  In addition, if $r_0>0$ then  $\gamma$ is of class $C^{1,1}$.
+\end{lemma}
+
+%
+%The following may be found in Theorem 4.18 of \cite{Fed59}.
+%\begin{lemma} If $A$ is a closed subset of $\mathbb{R}^{n+1}$, then 
+%$${\rm reach}(\gamma)=r_0'''.$$
+%\end{lemma}
+%
+
+%be the supremum of all nonnegative numbers $\rho$ such that the line segments $[\bx-\rho \nu(\bx), \bx+ \rho \nu(\bx)]$ are mutually disjoint for all points $\bx \in \gamma$.
+
+Combining the previous lemmas with the statement in \cite[Theorem 4.18]{Fed59} that $r_0{'''}={\rm reach}(\gamma)$ yields the following result.
+%
+\begin{theorem}[$C^1$ distance function implies $C^{1,1}$ surface] \label{t:C1_implies_C2} If the distance function $d$ associated to a $C^1$ surface $\gamma$ is continuously differentiable in a tubular neighborhood $\mathcal{N}(\delta)$ of $\gamma$ for some $\delta>0$, then $\gamma$ is of class $C^{1,1}$.  In addition, any $C^1$ surface with positive reach is of class $C^{1,1}$.  
+\end{theorem}
+%\begin{proof}
+%By Lemma \ref{lem:d_properties}, the fact that $d$ is differentiable on $\mathcal{N}(\delta)$ implies that$\mathcal{N}(\delta) \subset U(\gamma)$, that is, ${\rm domain}(\bP_d) \subset \mathcal{N}(\delta)$.  In addition, Lemma \ref{lem:d_properties} also implies that $[\bx-\rho \nu(\bx), \bx+ \rho \nu(\bx)] \subset \bP_d^{-1}(\bx)$ for all $\rho < \delta$, since $\bx-\bP_d(\bx)$ lies in the direction of $\nu(\bP_d(\bx))$. Assume now that two segments $[\bx-\rho \nu(\bx), \bx + \rho \nu(\bx)]$ and $[\by-\rho \nu(\by), \by+\rho\nu(\by)]$, $\rho \le C < \delta$, intersect at ${\bf z} \in U$ for distinct points $\bx, \by \in \gamma$.  
+%
+%This implies that the segments $[\bx-\rho \nu(\bx), \bx+ \rho \nu(\bx)]$ ($\rho < \delta)$ cannot intersect, since points shared by two such line segments originating at distinct point $\bx, \by \in \gamma$ could not have a unique closest point projection onto $\gamma$.  Thus $r_0' \ge \delta>0$, and by Lemma \ref{lem:C1_properties} there holds that $\gamma$ is in fact $C^{1,1}$.    
+%\end{proof}
+
+The preceding results establish that the properties of the distance function and the associated closest point projection for $C^2$ surfaces that we previously discussed are inherently connected with surfaces of bounded curvature.  This can be seen both in Theorem \ref{t:C1_implies_C2} (since the curvatures are defined and bounded almost everywhere on a $C^{1,1}$ surface) and in the definition of the constant $r_0{''}$ (since for $\bx \in \gamma$, the supremum over the radii $\rho$ for which $\overline{B_\rho (\bx \pm \rho \nu(\bx))} \cap \gamma = \emptyset$ is the inverse of the maximum principal curvature at $\bx$).  
+
+For our purposes, Theorem \ref{t:C1_implies_C2} is essentially a negative result in that it establishes that the distance function and closest point projection are of limited immediate use for surfaces that are less regular than $C^{1,1}$.  In particular, in this case the closest point projection is not uniquely defined on any tubular neighborhood of $\gamma$.  In addition, the regularity of the distance function does {\it not} vary continuously with that of $\gamma$, since for a $C^{1,\alpha}$ surface with $\alpha<1$ Theorem \ref{t:C1_implies_C2}  establishes that $d$ is only Lipschitz.  Thus we must use different tools when considering surface finite element methods on less regular surfaces than $C^2$.  
+
+%--------------------------------------------------------------------------------
+\subsection{Divergence Theorem on Surfaces}\label{S:diver-thm}
+%--------------------------------------------------------------------------------
+%
+We conclude this section with an application of calculus in $\mathbb{R}^{n+1}$
+to derive an integration by parts formula on not necessarily closed surfaces.
+
+\begin{proposition}[divergence theorem]\label{P:diver-thm}
+Let $\gamma$ be a compact, oriented surface of class $C^2$ with Lipschitz boundary $\partial\gamma$.
+Let $H = \sum_{i=1}^n \kappa_i$ be the total curvature of $\gamma$ and
+$\bmu$ be the unit outward normal to $\partial\gamma$ lying in the tangent hyperplane to
+$\gamma$. If $\widetilde \tv:\gamma\to\mathbb{R} \in H^1(\gamma)$, then
+%
+\[
+\int_\gamma \nabla_\gamma \widetilde \tv = \int_\gamma \widetilde \tv H \bnu + \int_{\partial\gamma}\widetilde  \tv \bmu.
+\]
+%
+\end{proposition}  
+%
+\begin{proof}
+Given $\varepsilon < \frac{1}{2 K_\infty}$ we define the tubular set
+%
+\[
+\Omega_\varepsilon := \big\{ \bz =  \bx + \rho \bnu(\bx):  \quad \bx\in\gamma, |\rho|<\varepsilon  \big\};
+\]
+%
+note that $\bP_d(\bz)=\bx$ for all $\bz\in\Omega_\varepsilon$.
+We decompose the boundary $\partial\Omega_\varepsilon$ of $\Omega_\varepsilon$ into
+%
+\[
+\gamma_{\pm\varepsilon} := \big\{ \bx \pm \varepsilon \bnu(\bx): ~ \bx\in\gamma  \big\},
+\quad
+\lambda_\varepsilon := \partial \Omega_\varepsilon \setminus (\gamma_\varepsilon\cup\gamma_{-\varepsilon}).
+\]
+%
+The sets $\gamma_{\pm\varepsilon}$ are parallel surfaces to $\gamma$ whereas
+$\lambda_\varepsilon$ is the lateral boundary of size $2\varepsilon$. We first
+assume that $\widetilde \tv$ is of class $C^1$, let $\tv$
+be an extension of $\widetilde \tv$ to $\Omega_\varepsilon$ of class
+$C^1(\overline{\Omega_\varepsilon})$,
+and apply the divergence theorem in $\Omega_\varepsilon$ to obtain
+%
+\[
+\int_{\Omega_\varepsilon} \nabla \tv = \int_{\partial\Omega_\varepsilon} \tv \bnu_\varepsilon
+= \int_{\gamma_\varepsilon} \tv \, \bnu\circ\bP_d- \int_{\gamma_{-\varepsilon}} \tv \, \bnu\circ\bP_d
++ \int_{\lambda_\varepsilon} \tv \, \bmu\circ\bP_d,
+\]
+%
+where $\bnu_\varepsilon$ is the unit outward normal of $\partial\Omega_\varepsilon$.
+We divide both sides of this equality by $2\varepsilon$, the thickness of $\Omega_\varepsilon$
+and compute the limits as $\varepsilon\to0$. According to \eqref{e:rel_dist_grad}
+we first see that
+%
+\[
+\frac{1}{2\varepsilon} \int_{\Omega_\varepsilon} \nabla\tv
+= \frac{1}{2\varepsilon} \int_{\Omega_\varepsilon} \big(\bI - d(\bx) D^2 d(\bx) \big)
+\nabla_\gamma \ttv(\bP_d(\bx)) d\bx
+\mathop{\longrightarrow}_{\varepsilon \to 0} \int_\gamma \nabla_\gamma \ttv.
+\]
+%
+Likewise
+%
+\[
+\frac{1}{2\varepsilon} \int_{\lambda_\varepsilon} \tv \, \bmu\circ\bP_d
+\mathop{\longrightarrow}_{\varepsilon \to 0} \int_{\partial\gamma} \ttv \, \bmu.
+\]
+%
+Moreover, since $\bnu\circ\bP_d = \nabla d$, we infer that
+%
+\begin{align*}
+\mathop{\lim}_{\varepsilon\to0} \frac{1}{2\varepsilon}
+\Big( \int_{\gamma_\varepsilon} \tv \, \bnu\circ\bP_d
+& - \int_{\gamma_{-\varepsilon}} \tv \, \bnu\circ\bP_d  \Big)
+= \frac{d}{d\rho} \int_{\gamma_\rho} \tv \, \nabla d ~\Big|_{\rho=0}
+\\
+& = \frac{d}{d\rho} \int_{\mathcal{V}} \tv(\bx) \, \nabla d\big(\bx+\rho\nabla d(\bx)\big)
+\, q_\rho(\by) d\by ~\Big|_{\rho=0}
+\end{align*}
+%
+with $\bx = \bchi(\by)\in\gamma$ and $q_\rho(\by)$ denotes the infinitesimal area associated with the surface $\gamma_\rho:=\{ \bz = \bx + \rho \bnu(\bx):  \bx \in \gamma\}$. Since
+$\frac{d}{d\rho}\nabla d\big(\bx+\rho\nabla d(\bx)\big)
+= D^2 d\big(\bx+\rho\nabla d(\bx)\big) \nabla d(\bx) = 0$, it remains to evaluate
+$\frac{d}{d\rho} q_\rho$. We resort to \eqref{e:area_ratio_distance} (shown below)
+with $\Gamma=\gamma_\rho$ and use that $\bnu_\rho\cdot\bnu=1$
+as well as \eqref{kappas} to write
+%
+\[
+\frac{q_\rho(\by)}{q(\by)} = \frac{1}{\det\Big( \bI - \rho D^2 d(\bx) \Big)}
+= \frac{1}{\mathop{\prod}_{i=1}^n \big(1-\rho\kappa_i(\bx) \big)}
+= \mathop{\prod}_{i=1}^n \Big(1+\rho\kappa_i(\bP_d(\bx)) \Big).
+\]
+%
+We finally observe that
+%
+\[
+\frac{d}{d\rho} q_\rho(\by) \Big|_{\rho=0}
+= q(\by) \sum_{i=1}^n \kappa_i(\bP_d(\bx)) = q(\by) H(\bP_d(\bx))
+\]
+%
+to conclude the proof for $\widetilde tv$ of class $C^1$. The assertion for $\ttv\in H^1(\gamma)$
+follows by density of $C^1(\overline{\gamma})$ in $\ttv\in H^1(\gamma)$.
+\end{proof}
+
+Applying Proposition \ref{P:diver-thm} (divergence theorem) to a vector field $\widetilde\bv:\gamma\to\mathbb{R}^{n+1}$
+and computing the trace yields the more familiar expression
+%
+\begin{equation*}
+\int_\gamma \textrm{div}_\gamma \widetilde \bv = \int_\gamma H \widetilde \bv\cdot\bnu + \int_{\partial\gamma} \widetilde\bv\cdot\bmu.
+\end{equation*}
+%
+\begin{corollary}[integration by parts]\label{C:int-parts}
+Let $\gamma$ be a surface of class $C^2$ with Lipschitz boundary $\partial\gamma$.
+If $\ttv, \widetilde w:\gamma\to\mathbb{R}$ satisfy $\ttv\in H^2(\gamma)$ and $\widetilde w\in H^1(\gamma)$,
+then
+%
+\[
+\int_\gamma \widetilde w \, \Delta_\gamma \ttv + \nabla_\gamma \widetilde w \cdot \nabla_\gamma \widetilde w
+= \int_{\partial\gamma} \widetilde w \, \nabla_\gamma \ttv\cdot\bmu.
+\]
+\end{corollary}
+%
+\begin{proof}
+Apply the previous equality to $\widetilde \bv = \widetilde w \, \nabla_\gamma \ttv$.
+\end{proof}  
+  
+  
+  
+  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Perturbation Theory}\label{S:perturbation}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+In most surface finite element methods, the approximate problem is not posed on the continuous surface $\gamma$.  This may occur either for convenience, or because $\gamma$ is not known precisely. Examples of only incomplete information being present in simulations include free boundary problems such as two-phase flow and cases where $\gamma$ is reconstructed from some sort of imaging data. 
+
+The purpose of this section is to investigate how geometric quantities change
+under perturbation of the surface $\gamma$. To this end, suppose that
+$\Gamma$ is a closed Lipschitz surface (not necessarily $C^2$). We use a subscript $\Gamma$
+to denote geometric quantities associated with $\Gamma$:
+$\bchi_\Gamma$ (parametrization), $\bg_\Gamma$
+(first fundamental form), $q_\Gamma$ (area element), $\bnu_\Gamma$ (unit normal),
+$\nabla_\Gamma$ (tangential gradient), and $\Pi_\Gamma$ (orthogonal projection
+onto $\Gamma$).
+
+Let $\widetilde u\in H^1_\#(\gamma)$ solve \eqref{e:weak_relax} and $u_\Gamma\in H^1_\#(\Gamma)$ solve
+%
+\begin{equation}\label{Gamma:LBproblem}
+  \int_\Gamma \nabla_\Gamma u_\Gamma \cdot \nabla_\Gamma \tv = \int_\Gamma f_\Gamma \tv
+  \quad\forall \, \tv\in H^1_\#(\Gamma),
+\end{equation}  
+%
+for a given forcing $f_\Gamma\in L_{2,\#}(\Gamma)$.
+To examine the error between $u$ and $u_\Gamma$, we first have to study how the bilinear
+forms in \eqref{e:weak_relax} and \eqref{Gamma:LBproblem} change
+when changing $\gamma$. This amounts to
+deriving expressions for the {\it error matrices}
+$\bE,\bE_\Gamma \in\mathbb{R}^{(n+1)\times(n+1)}$ in the error equations
+%
+\begin{equation}\label{consistency}
+  \int_\Gamma \nabla_\Gamma \tv \cdot \nabla_\Gamma w
+  - \int_\gamma \nabla_\gamma \widetilde{\tv} \cdot \nabla_\gamma \widetilde{w}
+  = \int_\gamma \nabla_\gamma \widetilde{\tv} \cdot \bE \, \nabla_\gamma \widetilde{w}
+  = \int_\Gamma \nabla_\Gamma \tv \cdot \bE_\Gamma \, \nabla_\Gamma w,
+\end{equation}
+%
+valid for all $\tv,w \in H^1(\Gamma)$ and 
+$\widetilde{\tv}, \widetilde{w} \in H^1(\gamma)$ the corresponding lifts.
+We carry out this program below within two scenarios depending on the regularity
+of $\gamma$. We alert the reader about the following abuse of notation:
+the matrix $\bE$ (resp. $\bE_\Gamma$) is defined in $\gamma$ (resp. $\Gamma$),
+but we will often write them in the parametric domain $\mathcal{V}$ thereby
+identifying $\bE$ (resp. $\bE_\Gamma$) with $\bE\circ\bchi$
+(resp. $\bE_\Gamma\circ\bchi_\Gamma$).
+
+%--------------------------------------------------------------------------------
+\subsection{Perturbation Theory for $C^{1,\alpha}$ Surfaces}\label{S:perturb-C1alpha}
+%--------------------------------------------------------------------------------
+%
+Let $\gamma$ be of class $C^{1,\alpha}$ and
+$\bchi$ and $\bchi_\Gamma$ be the parametrizations of $\gamma$ and $\Gamma$.
+They dictate the relation between $\widetilde{\tv}$ and $\tv$, the former
+defined on $\gamma$ and the latter on $\Gamma$,
+%
+\[
+\tv = \wv \circ \bchi \circ \bchi_\Gamma^{-1}.
+\]
+%
+In the sequel, we first establish a relation between $\nabla_\gamma\widetilde{\tv}$ and
+$\nabla_\Gamma\tv$ and next use it to characterize $\bE$ and $\bE_\Gamma$.
+
+\begin{lemma}[relation between tangential gradients]\label{L:tan-grads-lip}
+If $\wv:\gamma\to\mathbb{R}$ is of class $H^1$, then the tangential
+gradients $\nabla_\gamma\widetilde{\tv}$ and $\nabla_\Gamma\tv$ satisfy
+%
+\begin{equation}\label{tan-grads-lip}
+  \nabla_\Gamma \tv = D\bchi_\Gamma \, \bg_\Gamma^{-1} \, D\bchi^t \,
+  \nabla_\gamma \widetilde{\tv},
+  \qquad
+  \nabla_\gamma \widetilde{\tv} = D\bchi \, \bg^{-1} \, D\bchi_\Gamma^t \,
+  \nabla_\Gamma \tv.
+\end{equation}
+%
+\end{lemma}
+%
+\begin{proof}
+We concatenate \eqref{e:exact_grad} and \eqref{def-tang-grad} to write
+%
+\[
+\nabla_\Gamma \tv = D\bchi_\Gamma \, \bg_\Gamma^{-1} \, \nabla (\tv\circ\bchi_\Gamma)
+= D\bchi_\Gamma \, \bg_\Gamma^{-1} \, \nabla (\wv\circ\bchi)
+= D\bchi_\Gamma \, \bg_\Gamma^{-1} \, D\bchi^t \, \nabla_\gamma\widetilde{\tv},
+\]
+%
+which is the first asserted expression provided $\wu$ is of class $C^1$. Using
+the density of $C^1(\gamma)$ in $H^1(\gamma)$ for a surface $\gamma$ of class
+$C^{1,\alpha}$, the first assertion follows. The second one follows similarly.
+\end{proof}
+
+\begin{lemma}[geometric consistency]\label{L:geom_consist}
+The error matrices $\bE$ and $\bE_\Gamma$ read on $\mathcal{V}$
+%
+\begin{gather}
+\label{error-matrix-g}
+\bE = D\bchi \Big(\frac{q_\Gamma}{q} \bg_\Gamma^{-1} - \bg^{-1} \Big) D\bchi^t,
+\\
+\label{error-matrix-G}
+\bE_\Gamma = D\bchi_\Gamma \Big(\bg_\Gamma^{-1} - \frac{q}{q_\Gamma}\bg^{-1}
+\Big) D\bchi_\Gamma^t.
+\end{gather}
+%
+\end{lemma}
+%
+\begin{proof}
+Using \eqref{tan-grads-lip}, together with the definition \eqref{dg:d:first} of
+$\bg_\Gamma=D\bchi_\Gamma^t D\bchi_\Gamma$, yields
+%
+\[
+\int_\Gamma \nabla_\Gamma \tv\cdot\nabla_\Gamma w =
+\int_\gamma \nabla_\gamma \ttv \cdot
+\frac{q_\Gamma}{q}\big( D\bchi\bg_\Gamma^{-1} D\bchi^t \big) \nabla_\gamma \widetilde w.
+\]
+%
+Since $\nabla_\gamma \widetilde \tv=\Pi\nabla_\gamma \widetilde \tv=D\bchi \, \bg^{-1} \, D\bchi^t\nabla_\gamma \widetilde \tv$, according to
+\eqref{projection-b}, the first equality in \eqref{consistency} follows
+immediately. The proof of the second equality is similar.
+\end{proof}
+
+Our task now is to relate  $\bg-\bg_\Gamma$ and $q-q_\Gamma$
+with $D(\bchi-\bchi_\Gamma)$. We accomplish this next but first we introduce some
+additional concepts. For any $\by\in\mathcal{V}$, we denote by $|D\bchi(\by)|$
+(resp. $|D^-\bchi(\by)|$) the largest (resp. smaller) singular value of $D\bchi(\by)$.
+Given the relation $\bg = D\bchi^t \, D\bchi$, these quantities are the square
+roots of the largest and smallest eigenvalues of $\bg$. We define the
+stability constant
+%
+\begin{equation}\label{stab-const}
+S_\bchi := \sup_{\by\in\mathcal{V}} ~
+\frac{\max\big\{|D\bchi(y)|,|D\bchi_\Gamma(y)|\big\}}{\min\big\{|D^-\bchi(y)|,|D^-\bchi_\Gamma(y)|\big\}}
+\end{equation}
+%
+and point out that it is a measure of non-degeneracy of $D\bchi$ and $D\bchi_\Gamma$.
+We further define the following relative measure of geometric accuracy
+%
+\begin{equation}\label{geo-est}
+  \lambda_\infty := \sup_{\by\in\mathcal{V}} ~
+  \frac{|D(\bchi-\bchi_\Gamma)(\by)|}{\min\big\{|D^-\bchi(\by)|,|D^-\bchi_\Gamma(\by)|\big\}}.
+\end{equation}  
+
+\begin{lemma}[error estimates for $\bg$ and $q$]\label{L:error-est}
+The following error estimates are valid
+%
+\begin{gather}\label{error-est-g}
+  \|\bI-\bg_\Gamma\bg^{-1}\|_{L_\infty(\mathcal{V})}, \,
+  \|\bI-\bg_\Gamma^{-1}\bg\|_{L_\infty(\mathcal{V})}
+  \lesssim S_\bchi \, \lambda_\infty,
+\\ \label{error-est-q}
+  \|1-q^{-1}q_\Gamma\|_{L_\infty(\mathcal{V})}, \, \|1-q_\Gamma^{-1}q\|_{L_\infty(\mathcal{V})}
+  \lesssim S_\bchi^n \, \lambda_\infty.
+\end{gather}
+%
+\end{lemma}
+%
+\begin{proof}
+  Since $|D\bchi|=|D\bchi^t|$, $|\bg^{-1}| \le |D^-\bchi|^{-2}$ and
+%  
+\[
+(\bg - \bg_\Gamma)(\by) =
+D\bchi(\by)^t D(\bchi-\bchi_\Gamma)(\by)
++ D(\bchi-\bchi_\Gamma)(\by)^t D\bchi_\Gamma(\by)
+\quad\forall \, \by\in\mathcal{V},
+\]
+%
+the first assertion in \eqref{error-est-g} follows; the second one is similar.
+To prove \eqref{error-est-q}, we write
+%
+\[
+q(\by) - q_\Gamma(\by) = \frac{\det\bg(\by) - \det\bg_\Gamma(\by)}{q(\by)+q_\Gamma(\by)}
+\quad\forall \, \by\in\mathcal{V},
+\]
+%
+and note that $q = \sqrt{\det\bg}=\sqrt{\prod_{i=1}^n \lambda_i(\bg)}$ where
+$\{\lambda_i(\bg)\}_{i=1}^n$ are the eigenvalues of $\bg$. Utilizing the definitions
+of $|D\bchi|$ and $|D^-\bchi|$ we end up with
+%
+\begin{equation}\label{q:nondegen}
+|D^-\bchi(\by)|^n \le q(\by) \le |D\bchi(\by)|^n
+\quad\forall \, \by\in\mathcal{V}.
+\end{equation}
+%
+Since $\det\bg - \det\bg_\Gamma$ is the sum of terms of the form
+$\partial_i\bchi\cdot\partial_j\bchi - \partial_i\bchi_\Gamma\cdot\partial_j\bchi_\Gamma$
+multiplied by $n-1$ factors bounded by $|D\bchi|$, we deduce
+%
+\[
+|q(\by)^{-1}(q-q_\Gamma)(\by)| \lesssim
+|D^-\bchi(\by)|^{-n} \, |D(\bchi-\bchi_\Gamma)(\by)| \, |D\bchi(\by)|^{n-1}
+\quad\forall \, \by\in\mathcal{V}.
+\]
+%
+This is the first assertion in \eqref{error-est-q} in disguise. The second one
+is similar.
+\end{proof}
+
+\begin{lemma}[norm equivalence]\label{L:norm-equiv}
+Let $\gamma$ and $\Gamma$ be Lipschitz surfaces which are related via a bi-Lipschitz map $\bP=\bchi \circ \bchi^{-1}_\Gamma :\Gamma \rightarrow \gamma$. Then there is a constant $C \ge 1$, depending on the stability constant $S_\bchi$ in \eqref{stab-const}, such that
+\begin{gather}
+\label{L2:equiv}
+C^{-1} \|\tv\|_{L_2(\Gamma)} \le \|\ttv\|_{L_2(\gamma)}
+\le C \|\tv\|_{L_2(\Gamma)}
+\quad\forall \, \ttv \in L_2(\gamma),
+\\ \label{H1:equiv}
+C^{-1} \|\nabla_\Gamma \tv\|_{L_2(\Gamma)} \le \|\nabla_\gamma \ttv\|_{L_2(\gamma)}
+\le C \|\nabla_\Gamma \tv\|_{L_2(\Gamma)}
+\quad\forall \, \ttv \in H^1(\gamma).
+\end{gather}
+\end{lemma}
+%
+\begin{proof}
+Use \eqref{def-tang-grad} and \eqref{e:exact_grad} in conjunction with \eqref{int-gamma}.
+\end{proof}  
+  
+Lemma~\ref{L:Poincare} (Poincar\'e-Friedrichs inequality) holds on the perturbed surface $\Gamma$ but with a constant depending on $\Gamma$.  In order to avoid this dependence, and thus obtain a uniform constant in $\Gamma$, it is only necessary that Lemma \ref{L:norm-equiv} (norm equivalence) be valid. Before stating our result, we first define a class of surfaces.  Given a Lipschitz surface $\gamma$, we let $\mathcal{S}_{eq}$ be the class of Lipschitz surfaces $\Gamma$ such that Lemma \ref{L:norm-equiv} (norm equivalence) holds with uniform equivalence constant $C_{eq}$. Note that implicit in this definition is the existence of a bi-Lipschitz bijection $\bP:\Gamma \rightarrow \gamma$ for each $\Gamma \in \mathcal{S}_{eq}$,  for instance $\bP = \bchi\circ\bchi_\Gamma^{-1}$.
+
+\begin{lemma}[uniform Poincar\'e-Friedrichs constant]\label{L:Poincare-unif}
+Given a Lipschitz surface $\gamma$, for every $\tv \in H^1_\#(\Gamma)$ with $\Gamma \in \mathcal{S}_{eq}$ there holds that
+%
+\begin{equation}\label{poincare_unif}
+\|\tv\|_{L_2(\Gamma)} \lesssim \|\nabla_\Gamma u\|_{L_2(\Gamma)}
+\end{equation}
+%
+with the constant hidden in $\lesssim$ depending only on $\gamma$ and $C_{eq}$. 
+\end{lemma}
+%
+\begin{proof}
+We argue by contradiction the validity of
+%
+\[
+\|\tv\|_{L_2(\Gamma)} \le C \|\nabla_\Gamma \tv\|_{L_2(\Gamma)}
+    \quad\forall \, \tv\in H^1(\Gamma)
+\]
+%
+and all $\Gamma\in\mathcal{S}_{eq}$ with uniform constant $C$. We thus assume the existence of a sequence of surfaces $\Gamma_k \in \mathcal{S}_{eq}$ and functions $\tv_k \in H^1_\#(\Gamma_k)$ such that
+%
+\[
+\|\tv_k\|_{L_2(\Gamma_k)}=1
+\qquad
+\|\nabla_{\Gamma_k} \tv_k\|_{L_2(\Gamma_k)} \rightarrow 0
+\]
+%
+as $k \rightarrow \infty$.  We denote by $\bP_k: \Gamma_k \rightarrow \gamma$ the associated bi-Lipschitz bijections and by $\widetilde{\tv}_k = \tv_k \circ \bP_k^{-1}$ the lifts of the functions $\tv_k$ to $\gamma$. Since $\Gamma_k\in\mathcal{S}_{eq}$, the estimates of Lemma \ref{L:norm-equiv} (norm equivalence) hold with uniform constant $C_{eq}$ for each $\Gamma_k$, whence $\wv_k \in H^1(\gamma)$ and
+%
+\[
+\|\wv_k\|_{L_2(\gamma)} \simeq 1 ,\qquad
+\|\nabla_\gamma\wv_k\|_{L_2(\gamma)} \rightarrow 0
+\]
+%
+as $k \rightarrow \infty$. Proceeding as in Lemma \ref{L:Poincare}
+(Poincar\'e-Friedrichs inequality), we deduce that a subsequence
+of $\{\wv_k\}_k$, still denoted $\{\wv_k\}_k$, converges in $H^1(\gamma)$ to a function
+$\wv\in H^1(\gamma)$ with $\nabla_\gamma\wv=0$; this implies that $\wv$ is constant. To show that $\wv=0$, let
+$\epsilon>0$ be arbitrary and $k$ sufficiently large so that $\|\wv_k-\wv\|_{L_2(\gamma)} \le \epsilon$. Exploiting that $\widetilde{\tv}$ is constant and $\int_{\Gamma_k}\tv_k=0$, we use Lemma \ref{L:norm-equiv} to compute
+%
+\[
+\begin{aligned}
+|\widetilde{\tv}| & =|\Gamma_k|^{-1} \left | \int_{\Gamma_k} \widetilde{\tv} \, \right | = |\Gamma_k|^{-1} \left | \int_{\Gamma_k} \widetilde{\tv}-\tv_k \, \right | 
+\\ & \le |\Gamma_k|^{-1/2} \|\widetilde{\tv}-\tv_k\|_{L_2(\Gamma_k)} \le C_{eq} |\Gamma_k|^{-1/2} \|\widetilde{\tv}-\widetilde{\tv}_k\|_{L_2(\gamma)} \le C_{eq} |\Gamma_k|^{-1/2} \epsilon.
+\end{aligned}
+\]
+Applying again Lemma \ref{L:norm-equiv}, now to the function $1$, yields $|\Gamma_k|\simeq |\Gamma|$ with constant depending only on $C_{eq}$, so that $|\widetilde{\tv}| \lesssim \epsilon$. Since $\epsilon$ is arbitrary, we must thus  have $\widetilde{\tv}=0$.  This contradicts $\|\widetilde{\tv}_k\|_{L_2(\gamma)} \simeq 1$ because $\|\widetilde{\tv}_k\|_{L_2(\gamma)} \rightarrow \|\wv\|_{L_2(\gamma)}=0$. Consequently, the desired statement is proved.
+\end{proof}
+
+
+\begin{lemma}[perturbation error estimate for $C^{1,\alpha}$ surfaces]\label{L:perturbation_bound}
+Let $\wu\in H^1_\#(\gamma)$ solve \eqref{e:weak_relax} and $u_\Gamma\in H^1_\#(\Gamma)$
+solve \eqref{Gamma:LBproblem}. Then, the following error estimate for $u-u_\Gamma$ holds
+%
+\begin{equation}\label{perturbation_bound}
+\|\nabla_\gamma(\wu-\wu_\Gamma)\|_{L_2(\gamma)} \lesssim \lambda_\infty \|f_\Gamma\|_{H^{-1}_\#(\Gamma)} + \| f q q_\Gamma^{-1} - f_\Gamma \|_{H^{-1}_\#(\Gamma)},
+\end{equation}
+%
+where the hidden constant depends on $S_\bchi$ defined in \eqref{stab-const}.
+\end{lemma}
+%
+\begin{proof}
+We proceed in several steps.
+
+\noindent
+{\it Step 1: error representation}.
+Let $\ttv = \wu-\wu_\Gamma$ and make use of \eqref{consistency} to write
+%
+\begin{equation*}
+\|\nabla_\gamma ( \wu- \wu_\Gamma)\|_{L_2(\gamma)}^2
+= \int_\gamma \nabla_\gamma  \wu \cdot \nabla_\gamma \ttv
+-  \int_\Gamma \nabla_\Gamma u_\Gamma \cdot \nabla_\Gamma \tv
++ \int_\gamma \nabla_\gamma  \wu_\Gamma \cdot \bE \, \nabla_\gamma \ttv.
+\end{equation*}
+%
+We next employ the equations 
+\eqref{e:weak_relax} and \eqref{Gamma:LBproblem} satisfied by $\widetilde u$ and $u_\Gamma$
+to obtain
+%
+\begin{equation*}
+  \|\nabla_\gamma (\wu-\wu_\Gamma)\|_{L_2(\gamma)}^2  =
+  \int_\Gamma \Big(f\frac{q}{q_\Gamma} - f_\Gamma \Big) \tv
++ \int_\gamma \nabla_\gamma \wu_\Gamma \cdot \bE \, \nabla_\gamma \wv,
+\end{equation*}
+%
+where we have also employed \eqref{int-gamma} to switch the domain of integration
+of $f$.
+
+\smallskip\noindent
+{\it Step 2: geometric error matrix}.
+To derive a bound for $\|\bE \|_{L_\infty(\gamma)}$, we rewrite $\bE$
+%
+\[
+\bE = D\bchi \Big( \big(q^{-1}q_\Gamma-1\big) \bg^{-1}_\Gamma
+- \bg^{-1} \big(\bI - \bg\bg_\Gamma^{-1} \big) \Big) D\bchi^t .
+\]
+%
+Since $|\bg^{-1}|=|D^-\bchi|^{-2}, |\bg_\Gamma^{-1}|=|D^-\bchi_\Gamma|^{-2}$,
+applying \eqref{error-est-g} and \eqref{error-est-q} leads to the error estimate
+%
+\begin{equation}\label{bound-E}
+\|\bE \|_{L_\infty(\gamma)} \lesssim \lambda_\infty.
+\end{equation}
+%
+\smallskip\noindent
+{\it Step 3: final estimates}.
+The Cauchy-Schwarz inequality yields
+%
+\[
+\int_\gamma \nabla \wu_\Gamma \cdot \bE \, \nabla_\gamma \ttv \le
+\|\nabla_\gamma \ttv\|_{L_2(\gamma)}
+\|\nabla_\gamma \wu_\Gamma\|_{L_2(\gamma)} \|\bE \|_{L_\infty(\gamma)}.
+\]
+%
+To derive a bound for $\|\nabla_\gamma \wu_\Gamma\|_{L_2(\gamma)}$,
+we first combine \eqref{dual-norm} with \eqref{Gamma:LBproblem} to obtain
+$\|\nabla_\Gamma u_\Gamma\|_{L_2(\Gamma)} \le \|f_\Gamma\|_{H^{-1}_\#(\Gamma)}$,
+and next appeal to Lemma \ref{L:norm-equiv} (norm equivalence).
+%
+On the other hand, we recall that $f\frac{q}{q_\Gamma}-f_\Gamma$ has vanishing mean-value on
+$\Gamma$, let $\overline{\tv} = |\Gamma|^{-1} \int_\Gamma \tv$ be the mean-value
+of $\tv$, and use \eqref{dual-norm} to arrive at
+%
+\[
+\int_\Gamma \Big(f\frac{q}{q_\Gamma} - f_\Gamma \Big) \tv =
+\int_\Gamma \Big(f\frac{q}{q_\Gamma} - f_\Gamma \Big) \big( \tv - \overline{\tv} \big)
+\le \|f q q_\Gamma^{-1} - f_\Gamma \|_{H^{-1}_\#(\Gamma)} \|\nabla_\Gamma\tv\|_{L_2(\Gamma)}.
+\]
+%
+Finally, applying Lemma \ref{L:norm-equiv} ends the proof.
+\end{proof}
+  
+
+%--------------------------------------------------------------------------------
+\subsection{Perturbation Theory for $C^2$ Surfaces}\label{S:perturb-C2}
+%--------------------------------------------------------------------------------
+%
+Let $\gamma$ be of class $C^2$ and the tubular neighborhood $\mathcal{N}$
+satisfy \eqref{N:def}, namely
+%
+\begin{equation}\label{N:def-2}
+\mathcal{N} = \Big\{ \bx\in\mathbb{R}^{n+1}: ~ |d(\bx)| < \frac{1}{2K_\infty} \Big\},
+\end{equation}
+%
+so that parallel surfaces to $\gamma$ within $\mathcal{N}$ are also $C^2$.
+We further assume that $\Gamma\subset\mathcal{N}$ and the distance function projection
+$\bP_d=\bI-d\nabla d:\Gamma \rightarrow \gamma$ is a bijection. The parametrizations
+of $\gamma$ and $\Gamma$ are given by $\bchi := \bP_d \circ \bchi_\Gamma$ so that
+%
+\[
+\tv = \widetilde{\tv} \circ \bP_d.
+\]
+
+\begin{lemma}[relation between tangential gradients]\label{L:tan-grads}
+If $\wv:\gamma\to\mathbb{R}$ is of class $H^1$, then the tangential
+gradients $\nabla_\gamma\wv$ and $\nabla_\Gamma\tv$ satisfy for all
+$\bx\in\Gamma$
+%
+\begin{equation}\label{e:tang_exact_to_discrete}
+  \nabla_\Gamma \tv(\bx) = \Pi_\Gamma(\bx) \, \big(\bI - d \bW\big)(\bx) \, \Pi(\bx)
+  \nabla_\gamma \wv(\bP_d(\bx)),
+\end{equation}
+%
+and
+%
+\begin{equation}\label{e:tang_discrete_to_exact}
+\nabla_\gamma \wv(\bP_d(\bx)) = \big(\bI - d \bW \big)^{-1}(\bx)\left(\bI - \frac{\bnu_\Gamma(\bx) \otimes \bnu(\bx)}{\bnu_\Gamma(\bx) \cdot \bnu(\bx)}\right) \nabla_\Gamma \tv(\bx).
+\end{equation}
+%
+\end{lemma}  
+%
+\begin{proof}
+Let us assume that $\wv \in C^1(\gamma)$.
+Recalling \eqref{e:rel_dist_grad} and \eqref{grad-extension}, we readily get
+%
+\[
+\nabla_\Gamma \tv(\bx) = \Pi_\Gamma (\bx) \nabla\tv(\bx)
+= \Pi_\Gamma (\bx) \, \big(\bI - d \bW\big)(\bx) \, \Pi(\bx)
+  \nabla_\gamma \wv(\bP_d(\bx)),
+\]
+%
+hence \eqref{e:tang_exact_to_discrete}. Since $\bI-d(\bx)\bW(\bx)$ is invertible
+for all $\bx\in\mathcal{N}$, according to the definition \eqref{N:def} of
+$\mathcal{N}$ and shown in Lemma \ref{L:curv-parallel} (curvature of parallel
+surfaces), \eqref{e:rel_dist_grad} can be rewritten as
+%
+\[
+\nabla_\gamma \wv(\bP_d(\bx)) = \big(I - d \bW)(\bx) \big)^{-1} \nabla \tv(\bx)
+\quad\forall \, \bx \in \mathcal N.
+\]
+%
+To prove \eqref{e:tang_discrete_to_exact} we must relate $\nabla \tv$ and
+$\nabla_\Gamma \tv$. First note that for $\bx\in\Gamma$
+%
+\[
+\nabla \tv = (\bI - \bnu_\Gamma\otimes\bnu_\Gamma) \nabla\tv
++ \bnu_\Gamma\otimes\bnu_\Gamma \nabla\tv
+= \nabla_\Gamma \tv + (\nabla\tv\cdot\bnu_\Gamma) \bnu_\Gamma.
+\]
+%
+Exploiting next that $\nabla \tv(\bx)\cdot\bnu(\bx)=0$, because $\tv(\bx)$ is constant in the normal direction to $\bP_d(\bx)$, yields
+%
+\[
+ \nabla_\Gamma \tv \cdot \bnu + (\bnu_\Gamma \cdot \bnu) \nabla \tv \cdot \bnu_\Gamma
+ =0 \quad\Rightarrow\quad
+ \nabla \tv \cdot \bnu_\Gamma = - \frac{1}{\bnu_\Gamma \cdot \bnu}\nabla_\Gamma \tv \cdot \bnu.
+ \]
+ %
+ Since $\nabla\tv = \nabla_\Gamma\tv + (\nabla \tv\cdot\bnu_\Gamma) \bnu_\Gamma$,
+ we deduce
+ %
+ \[
+ \nabla \tv(\bx)  = \left(\bI - \frac{\bnu_\Gamma(\bx) \otimes \bnu(\bx)}{\bnu_\Gamma(\bx) \cdot \bnu(\bx)}\right) \nabla_\Gamma \tv(\bx)
+ \quad\forall \, \bx\in\Gamma.
+ \]
+ %
+ Inserting this into the previous expression for $\nabla_\gamma \tv(\bP_d(\bx))$
+ leads to \eqref{e:tang_discrete_to_exact}.
+ Finally, a density argument of $C^1(\gamma)$
+ in $H^1(\gamma)$ for $\gamma$ of class $C^2$ concludes the proof.
+ \end{proof}
+
+The following result mimics Lemma \ref{L:geom_consist} (geometric consistency)
+except that now it quantifies the effect of perturbing the surface $\gamma$ on the
+bilinear forms written in \eqref{consistency} in terms of $\bP_d$.
+
+\begin{lemma}[geometric consistency]\label{L:geom_consist_dist}
+The error matrices
+$\bE,\bE_\Gamma \in\mathbb{R}^{(n+1)\times(n+1)}$ in \eqref{consistency}
+are given on $\Gamma$ by
+%
+\begin{gather}\label{error-matrix-gamma}
+  \bE\circ\bP_d := \frac{q_\Gamma}{q} \Pi \big(\bI
+  - d\bW \big) \Pi_\Gamma
+  \big(\bI - d \bW \big) \Pi  - \Pi,
+  \\
+  \label{error-matrix-Gamma}
+  \bE_\Gamma :=  { q \over q_\Gamma } \left( I - \frac{\bnu \otimes \bnu_\Gamma}{ \bnu \cdot \bnu_\Gamma}\right) (\bI -d \bW)^{-2}  \left( I - \frac{\bnu_\Gamma \otimes \bnu}{ \bnu \cdot \bnu_\Gamma}\right)- \Pi_\Gamma.
+\end{gather}  
+%
+\end{lemma}
+%
+\begin{proof}
+In view of \eqref{int-gamma}, \eqref{e:tang_exact_to_discrete}, and the fact
+that all matrices involved are symmetric and $\Pi_\Gamma^2=\Pi_\Gamma$, we can write
+%  
+\[
+\int_\Gamma \nabla_\Gamma w \cdot \nabla_\Gamma\tv
+= \int_\gamma \nabla_\gamma \widetilde{w} \cdot
+\Big(\frac{q_\Gamma}{q} \Pi \big(\bI - d\bW \big)
+\Pi_\Gamma\big(\bI - d \bW \big) \Pi\Big)
+\nabla_\gamma\widetilde\tv
+\]
+%
+Noticing that $\nabla_\gamma \widetilde{w} = \Pi \nabla_\gamma \widetilde{w}$
+the first equality on \eqref{consistency} follows immediately. The second
+equality proceeds along the same lines but using \eqref{e:tang_discrete_to_exact}
+instead.
+\end{proof}  
+
+It is clear from Lemma \ref{L:geom_consist_dist} that the ratio of area
+elements $q / q_\Gamma$ matters.
+We next derive a representation for $q / q_\Gamma$ for any dimension $n$,
+proved originally for $n=2,3$ in \cite{DemlowDziuk:07,De09}.
+We stress that, in view of Remark \ref{R:param-indep} (parametric independence),
+the solution $u$ of the Laplace-Beltrami equation \eqref{e:weak} is independent
+of the parametrization of $\gamma$. This allows us to consider a convenient
+parametrization $\bchi$ for theory because it does not change the geometric
+objects under consideration. We exploit this flexibility next.
+
+\begin{lemma}[relation between $q$ and $q_\Gamma$]\label{L:area_ratio_distance}
+  Given any parametrization $\bchi_\Gamma$ of $\Gamma$, let
+  $\bchi := \bP_d \circ \bchi_\Gamma$ be the parametrization of $\gamma$.
+  If $\bnu(\bx) \cdot \bnu_\Gamma(\bx)\ge0$ for all $\bx\in\Gamma$,
+  then the ratio of area elements $q(\by)/q_\Gamma(\by)$ with
+  $\by=\bchi_\Gamma^{-1}(\bx)$ satisfies
+%
+\begin{equation}\label{e:area_ratio_distance}
+  \frac{q(\by)}{q_\Gamma(\by)}
+  = \det\Big(\bI-d(\bx) \bW(\bx)\Big) (\bnu(\bx) \cdot \bnu_\Gamma(\bx))
+  \quad\forall \, \bx \in \Gamma.
+\end{equation}
+\end{lemma}
+%
+\begin{proof}
+We start with the formula~\eqref{e:area-rep} for the area elements $q$
+and $q_\Gamma$ to get
+%
+\[
+\frac{q}{q_\Gamma} = \det\left(\lbrack \bnu, D\exactparam \rbrack
+\,\lbrack \bnu_\Gamma, D\bchi_\Gamma \rbrack^{-1} \right).
+\]
+%
+We write $ \lbrack \bnu_\Gamma, D\bchi_\Gamma \rbrack^{-1} = \lbrack \bv,\bA \rbrack^t$
+for some $\bv \in \mathbb R^{n+1}$ and $\bA\in \mathbb R^{(n+1)\times n}$ to be found.
+The identity  $ \lbrack \bv , \bA \rbrack^t  \lbrack \bnu_\Gamma, D\bchi_\Gamma \rbrack
+= \bI$ yields
+$
+\bv = \bnu_\Gamma
+$
+while $   \lbrack \bnu_\Gamma, D\bchi_\Gamma \rbrack \lbrack \bv, \bA \rbrack^t= \bI$ gives
+$
+D\bchi_\Gamma \bA^t = \bI - \bnu_\Gamma \otimes \bnu_\Gamma = \Pi_\Gamma
+$ and
+%
+\[
+\lbrack \bnu, D\exactparam \rbrack
+\,\lbrack \bnu_\Gamma, D\bchi_\Gamma \rbrack^{-1}
+=\bnu\otimes\bnu_\Gamma + D\bchi \, \bA^t.
+\]
+%
+To obtain an expression for $D\bchi$, let $\bx = \bchi_\Gamma(\by)\in\Gamma$ and
+$\bchi(\by) = \bP_d(\bx) = \bx - d(\bx)\nabla d(\bx) \in\gamma$, and utilize
+the chain rule
+%
+\[
+D\bchi(\by) = \big(\bI - d(\bx)\bW(\bx) \big) \, \Pi(\bx) \, D\bchi_\Gamma(\by)
+\quad\forall \, \by\in\mathcal{V},
+\]
+%
+where we have argued as in \eqref{e:rel_dist_grad}. Compute now $D\bchi\bA^t$
+and use that $D\bchi_\Gamma\bA^t=\Pi_\Gamma$ together with $\bW \bnu =0$ to arrive at
+%
+\begin{align*}
+\frac{q}{q_\Gamma} &= \det \big( \bnu\otimes\bnu_\Gamma
++ (\bI - d\bW) \, \Pi \, \Pi_\Gamma  \big) 
+\\
+& = \det\big( (\bI-d\bW) \big(\bnu \otimes \bnu_\Gamma + \Pi \, \Pi_\Gamma \big) \big)
+= \det\big( (\bI-d\bW) \big) \, \det\bB.
+\end{align*}
+%
+where $\bB := \bnu \otimes \bnu_\Gamma + \Pi \,\Pi_\Gamma$. It thus remains to show that
+$\det \bB = \bnu \cdot \bnu_\Gamma$.
+
+We now embark on a spectral analysis of $\bB$.
+We first note that the statement is trivial if $\bnu=\bnu_\Gamma$. We thus
+assume that $\{\bnu,\bnu_\Gamma\}$ are linearly independent and that the
+space $\mathbb{X} = \textrm{span} \{\bnu,\bnu_\Gamma\}$
+is generated by two orthonormal vectors $\bnu$ and $\be$. 
+We consider the orthogonal decomposition
+$\mathbb{R}^{n+1} = \mathbb{X} \oplus \mathbb{X}^\perp$ and
+a rotation $\bR\in\mathbb{R}^{(n+1)\times(n+1)}$ on $\mathbb{X}$
+that maps $\bnu$ into $\bnu_\Gamma$, namely
+%
+\[
+\bR \bnu = \bnu_\Gamma = \cos \theta \, \bnu + \sin\theta \, \be,
+\quad
+\bR \be = -\sin\theta \, \bnu + \cos \theta \, \be;
+\]
+%
+thus the rotation angle $\theta$ satisfies $\cos\theta=\bnu \cdot \bnu_\Gamma$
+and $\det\bR=1$. Consequently,
+%
+\[
+\bB = \big( \bnu\otimes\bnu + \Pi \, \bR \, \Pi  \big) \bR^t
+\quad\Rightarrow\quad
+\det \bB = \det \big( \bnu\otimes\bnu + \Pi \, \bR \, \Pi  \big).
+\]
+%
+The proof concludes upon realizing that $\bnu$ and $\be$ are
+eigenvectors of $\bnu\otimes\bnu + \Pi \, \bR \, \Pi$ 
+with eigenvalues $1$ and $\cos\theta$, and the remaining eigenvalues are $1$
+with eigenspace $\mathbb{X}^\perp$.
+\end{proof}
+
+We are now ready to compare solutions $u$ and $u_\Gamma$
+of \eqref{e:weak_relax} on two nearby surfaces $\gamma$ and $\Gamma$.
+In essence, weak solutions $u$ and $u_\Gamma$ are close in $H^1$ provided
+$\gamma$ and $\Gamma$ are close in a Lipschitz sense.
+Therefore, to make this statement quantitative we
+introduce the following geometric quantities
+%
+\begin{equation}\label{geom-quantities}
+d_\infty := \|d\|_{L_\infty(\Gamma)},
+\quad
+\nu_\infty := \|\bnu-\bnu_\Gamma\|_{L_\infty(\Gamma)},
+\quad
+K_\infty := \|K\|_{L_\infty(\gamma)},
+\end{equation}
+%
+where $\Gamma\subset\mathcal{N}$ is a Lipschitz surface.
+Our goal is to bound $\|u-u_\Gamma\|_{H_\#^1(\Gamma)}$ in terms of the forcing functions
+$f,f_\Gamma$, and $d_\infty, \nu_\infty, K_\infty$ in \eqref{geom-quantities}.
+%
+\begin{lemma}[perturbation error estimate for $C^2$ surfaces]\label{L:perturbation_bound_dist}
+Let $u$ solve \eqref{e:weak_relax} and $u_\Gamma$ solve \eqref{Gamma:LBproblem}
+with $\Gamma \subset \mathcal N$.
+Let $\bchi_\Gamma$ and $\bchi := \bP_d \circ \bchi_\Gamma$ be the parametrizations
+of $\Gamma$ and $\gamma$ that give rise to the area elements $q_\Gamma$ and $q$.
+If the normal vectors satisfy  $\bnu\cdot\bnu_\Gamma \ge c >0$, then
+%
+\begin{equation}\label{perturbation_bound_dist}
+  \|\nabla_\gamma(u-u_\Gamma)\|_{L_2(\gamma)} \lesssim
+  \big(d_\infty K_\infty+\nu_\infty^2\big) \|f_\Gamma\|_{H^{-1}_\#(\Gamma)}
+  + \|f q q_\Gamma^{-1}-f_\Gamma\|_{H^{-1}_\#(\Gamma)}.
+\end{equation}
+\end{lemma}
+%
+\begin{proof}
+We proceed along the lines of Lemma \ref{L:perturbation_bound}
+(perturbation error estimate for $C^{1,\alpha}$ surfaces) and realize that
+Steps 1 and 3 are exactly the same. Therefore, we only deal with the estimate of
+the geometric error matrix $\bE$. If we prove
+%
+\begin{equation}\label{est-E}
+\|\bE \|_{L_\infty(\gamma)} \lesssim \nu_\infty^2 + d_\infty K_\infty\, ,
+\end{equation}
+%
+then the assertion will readily follow. We first write
+$\bE \circ \bP_d = \bI_1 + \bI_2 + \bI_3$ with
+%
+\begin{align*}
+\bI_1 & := \Big(\frac{q_\Gamma}{q}-1\Big)
+\Pi \, (\bI-d\bW) \, \Pi_\Gamma \, (\bI-d\bW) \, \Pi,
+\\
+\bI_2 & := \Big(\Pi \, (\bI-d\bW) \, \Pi_\Gamma \, (\bI-d\bW) \, \Pi
+- \Pi \, \Pi_\Gamma \, \Pi\Big),
+\\
+\bI_3 & := \Big(\Pi \, \Pi_\Gamma \, \Pi - \Pi \Big).
+\end{align*}
+%
+We now estimate these three terms separately. In view of \eqref{e:area_ratio_distance}
+we deduce
+%
+\[
+\frac{q(\by)}{q_\Gamma(\by)} -1 = \Big((\bnu(\bx)\cdot\bnu_\Gamma(\bx)-1) \, \prod_{i=1}^n \big(1-d(\bx)\kappa_i(\bx) \big) \Big)
++ \Big(\prod_{i=1}^n \big(1-d(\bx)\kappa_i(\bx) \big) - 1\Big),
+\]
+where $\bx = \bchi_\Gamma(\by)\in \Gamma$.
+%
+Since $1-\bnu\cdot\bnu_\Gamma = \frac12 |\bnu-\bnu_\Gamma|^2 \le \frac12 \nu_\infty^2$
+and $\Gamma \subset \mathcal N$, we readily obtain
+%
+\begin{equation}\label{measure_error}
+  \Big|\frac{q(\by)}{q_\Gamma(\by)}-1\Big| \lesssim \nu_\infty^2 + d_\infty K_\infty
+  \quad\forall \, \by\in\mathcal{V},
+\end{equation}
+%
+and a similar bound for $\frac{q_\Gamma}{q}$
+because $\frac{q_\Gamma}{q}$ is bounded in $\mathcal{V}$ thanks to the
+assumption $\bnu \cdot \bnu_\Gamma \geq c >0$.
+The desired estimate for $\|\bI_1\|_{L_\infty(\gamma)}$ follows from the fact that
+$\Pi, \Pi_\Gamma$ and $\bW$ are bounded. This property again, now combined with
+%
+\[
+\bI_2 = - \Pi \, \Pi_\Gamma \, d\bW \, \Pi - \Pi \,d\bW \, \Pi_\Gamma \, \Pi
++ \Pi \,d\bW \, \Pi_\Gamma \,d\bW \, \Pi,
+\]
+%
+yields $\|\bI_2\|_{L_\infty(\gamma)} \lesssim d_\infty K_\infty$. Finally, term $\bI_3$ reads
+%
+\[
+\bI_3 = - \Pi\bnu_\Gamma \otimes \Pi\bnu_\Gamma =
+-\big(\bnu_\Gamma-(\bnu \cdot \bnu_\Gamma) \bnu\big) \otimes
+\big(\bnu_\Gamma- (\bnu \cdot \bnu_\Gamma) \bnu \big)
+\]
+%
+Since $\bnu_\Gamma- (\bnu \cdot \bnu_\Gamma) \bnu = (\bnu_\Gamma-\bnu) + (1-\bnu\cdot\bnu_\Gamma) \bnu$ we infer that $\|\bI_3\|_{L_\infty(\gamma)} \lesssim \nu_\infty^2$.
+This ends the proof.
+\end{proof} 
+
+It is worth comparing Lemmas \ref{L:perturbation_bound} and
+\ref{L:perturbation_bound_dist} (perturbation error estimates). To do so, we next give an estimate for
+$\nu_\infty$ in terms of $\lambda_\infty$.
+
+\begin{lemma}[error estimate for normals]\label{L:est-normals}
+The errors $\nu_\infty$ and $\lambda_\infty$ defined in \eqref{geom-quantities}
+and \eqref{geo-est} satisfy
+%
+\begin{equation}\label{est-normals}
+\nu_\infty \lesssim \lambda_\infty,
+\end{equation}  
+where the hidden constant depends on $S_\bchi$ defined in \eqref{stab-const}.
+\end{lemma}
+%
+\begin{proof}
+In view of the definition \eqref{unit-normal} of $\bnu$, we realize that
+%
+\[
+\bnu-\bnu_\Gamma = \frac{\bN-\bN_\Gamma}{|\bN|}
++ \frac{|\bN_\Gamma|-|\bN|}{|\bN|} \frac{\bN_\Gamma}{|\bN_\Gamma|}
+\quad\Rightarrow\quad
+|\bnu-\bnu_\Gamma| \le 2 \frac{|\bN-\bN_\Gamma|}{|\bN|}.
+\]
+%
+Since $\bN = \sum_{i=1}^{n+1} \det([\be_i,D\bchi]) \be_i$ and
+$\det([\be_i,D\bchi]) - \det([\be_i,D\bchi_\Gamma])$ is a sum of products of
+$\partial_j (\bchi-\bchi_\Gamma)\cdot\be_k$ with $k\ne i$ times $n-1$ factors
+$\partial_\ell\bchi_m$, we have
+%
+\[
+\big| \det([\be_i,D\bchi]) - \det([\be_i,D\bchi_\Gamma])  \big|
+\lesssim |D(\bchi-\bchi_\Gamma)| \, |D\bchi|^{n-1}.
+\]
+%
+We finally resort to $|\bN|=q$, proved in \eqref{q-N}, as well as $q\approx|D\bchi|^n$,
+showed in the proof of Lemma \ref{L:error-est}, to conclude \eqref{est-normals}.
+\end{proof}
+
+We now stress the advantage of using the distance function lift $\bP_d$ to
+represent the error $u-u_\gamma$ whenever the surface $\gamma$ is of class $C^2$.
+Comparing \eqref{perturbation_bound} and
+\eqref{perturbation_bound_dist} we see that the geometric error becomes of order $\|d\|_{L_\infty(\Gamma)}$ plus a quadratic term in $\lambda_\infty$ rather than linear. In the context of finite element methods, $\Gamma$ is often a polyhedral approximation to $\gamma$ having faces of diameter $h$. In this case $\|d\|_{L_\infty(\Gamma)}$ essentially becomes a Lagrange interpolation error measured in $L_\infty$ and $\lambda_\infty$ a Lagrange interpolation error measured in $W_\infty^1$.  The former error is of order $h^2$ and the latter of order $h$. Consequently, the perturbation error for $C^2$ surfaces is of order $h^2$, whereas for $C^{1,\alpha}$ surfaces with $\alpha<1$ it is of order $h^{\alpha}$ from the analysis of the previous subsection.  The increased approximation order for $C^2$ surfaces is a {\it superconvergence} effect.  We also recall from Theorem \ref{t:C1_implies_C2} ($C^1$ distance function implies $C^{1,1}$ surfaces) that the elegant properties of the distance function and closest point projection that lead to this superconvergence effect are not available when $\gamma$ is not of class $C^2$, thus the necessity of developing a separate perturbation theory for less regular surfaces as in the previous subsection.  It is not clear whether the order of the perturbation error actually jumps in this manner when crossing from $C^{1,\alpha}$ to $C^2$ surfaces, or if this jump is an artifact of proof.
+ 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{$H^2$ extensions from $C^2$ surfaces}
+\label{S:apriori-C1a}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The analysis of the trace and narrow band methods that we carry out in later sections requires us to extend the solution $\wu\in H^2(\gamma)$
+of \eqref{e:weak_relax} to tubular neighborhoods 
+$
+\mathcal N(\delta)
+$
+with the property
+%
+\begin{equation}\label{H2-extension}
+\|u\|_{H^2({\mathcal N(\delta)})} \lesssim \delta^{\frac12} \|\wu\|_{H^2(\gamma)};
+\end{equation}
+%
+we recall that $\Nd$ is defined in \eqref{e:delta-tube}.
+The distance function lift $\bP_d$ provides a natural way to achieve this upon
+setting $u=\wu\circ\bP_d$, namely
+%
+\[
+u(\bx) = \wu \big(\bx - d(\bx) \nabla d(\bx) \big)
+\quad\forall \, \bx\in{\mathcal N(\delta)}.
+\]
+%
+However, this is problematic because it requires $\bP_d$ to be of class $C^2$,
+and thus $\gamma$ of
+class $C^3$, for \eqref{H2-extension} to hold. We now construct an extension 
+that satisfies \eqref{H2-extension} for $\gamma$ of class $C^2$.   Our approach employs a regularization $\de$ of the signed distance function $d$ and construction of a regularized surface $\gae$ close to $\gamma$, with the regularization parameter $\varepsilon$ appropriately related to the desired value of $\delta$ above.  We begin by describing properties of this regularization.  
+
+\medskip\noindent
+{\bf Regularization.}
+Recall that given $\gamma$ of class $C^{2}$ there exists a sufficiently thin tubular
+neighborhood $\mathcal{N}$ so that the signed distance
+function $d$ to $\gamma$ satisfies $d \in C^2(\mathcal{N})$.
+Let $\delta>0$ and $\varepsilon = c \delta \le \frac{\delta}{2}$ be sufficiently small so that the
+tubular neighborhood $\mathcal{N}(\delta)$ of width $\delta$ satisfies the property
+\[
+\mathcal{N}(\delta+2\varepsilon) \subset  \mathcal{N}.
+\]
+%
+Let $\Be:=B(0,\varepsilon)$ be the ball of center $0$ and radius $\varepsilon$, $\re$ be a smooth and radially symmetric mollifier with support in
+$\Be$
+and
+%
+\[
+\de(\bx) := d \star \re(\bx) = \int_\Be d(\bx-\by) \re(\by) d\by
+\quad\forall \, \bx\in{\mathcal N(\delta)}
+\]
+%
+be a regularized distance function. This function $\de$ induces the smooth
+surface
+%
+\[
+\gae := \big\{\bx\in\mathcal{N}: \quad \de(\bx) = 0 \big\},
+\]
+%
+but is not the signed distance function to $\gae$, which we denote $\wde$.
+The following properties are immediate from the previous definitions.
+
+\begin{lemma}[properties of $\de$]\label{L:properties-de}
+If $d\in C^2(\overline{\mathcal{N}})$, then
+$\de$ satisfies
+%
+\[
+\| d - \de \|_{L_\infty({\mathcal N(\delta)})}
++ \varepsilon \| \nabla(d - \de) \|_{L_\infty({\mathcal N(\delta)})}
+\lesssim \varepsilon^{2} |d|_{W_\infty^2 (\overline{\mathcal{N}})}
+\]
+%
+and $\|D^2 \de\|_{L_\infty({\mathcal N(\delta)})} \lesssim
+ |d|_{W_\infty^2(\overline{\mathcal{N}})}$.
+Moreover, the surface $\gae$ is smooth and the Hausdorff distance $\dist_H(\gamma,\gae)$
+between $\gamma$ and $\gae$ satisfies
+%
+\[
+\dist_H(\gamma,\gae) \lesssim \varepsilon^{2}
+|d|_{W_\infty^2(\overline{\mathcal{N}})}
+\]
+%
+provided $\varepsilon$ is small enough so that $C\varepsilon
+|d|_{W_\infty^2(\overline{\mathcal{N}})} \le \frac12$ for a suitable constant $C$.
+\end{lemma}
+%
+\begin{proof}
+Since $\re$ is radially symmetric, we have that
+\[
+\big( d - \de  \big)(\bx) = \int_{\Be} \Big( d(\bx) - \nabla d(\bx) \cdot \by
+- d(\bx-\by) \Big) \re(\by) d \by
+\]
+%
+and
+%
+\[
+\nabla \big( d - \de  \big)(\bx) =
+\int_{\Be} \Big( \nabla d(\bx) - \nabla d(\bx-\by) \Big) \re(\by) d \by.
+\]
+%
+These relationships imply the first assertion upon employing a Taylor expansion of $d$ and the Lipschitz nature of $\nabla d$, respectively. We also note that 
+%
+\[
+D^2 \de(\bx) = \int_{\Be} \nabla d(\bx-\by) \otimes \nabla\re(\by) d\by
+= \int_{\Be} \nabla \Big( d(\bx-\by) - d(\bx) \Big) \otimes \nabla\re(\by) d\by
+\]
+%
+because $\int_{\Be} \nabla\re(\by) d\by = 0$ in view of the radial symmetry of $\re$. The second relationship bounding $D^2 \de$ then follows from the Lipschitz nature of $\nabla d$ (i.e. $|\nabla (d(\bx-\by)-d(\bx))| \lesssim \varepsilon$, $\by \in B_\varepsilon$) and the standard property $\|\nabla \rho_\varepsilon\|_{L_1(B_\varepsilon)} \lesssim \varepsilon^{-1}$ of the mollifier. 
+
+To establish the smoothness of $\gamma_\varepsilon$, note that the closeness of $\nabla d$ and $\nabla \de$ implies that $\nabla \de$ is nondegenerate for $C \varepsilon |d|_{W_\infty^2(\overline{\mathcal{N}})} \le 1/2$.  The smoothness of $\gamma_\varepsilon$ then follows from the implicit function theorem.
+
+The last assertion is a consequence of the nondegeneracy
+of the distance function: Given $\by\in\gae$ let
+$\bx = \bP_d(\by) =\by - d(\by) \nabla d(\by)\in\gamma$
+be the closest point to $\by$ and note that
+%
+\[
+|\by-\bx| = |d(\by)| = |d(\by)-\de(\by)| \lesssim \varepsilon^2 |d|_{W_\infty^2(\overline{\mathcal{N}})}. 
+\]
+%
+Likewise, given $\bx\in\gamma$ let $\by(s) = \bx + s \nabla d(\bx)$.  There is $s \in (-\varepsilon, \varepsilon)$ such that $\de(\by(s))=0$.  To see this,
+note that $d(\by(s))=\pm \varepsilon$ for $s=\pm\varepsilon$ and
+%
+\[
+\de(\by(\varepsilon)) \ge d(\by(\varepsilon)) - C\varepsilon^{2} |d|_{W_\infty^2(\overline{\mathcal{N}})}
+= \varepsilon \big( 1 - \varepsilon |d|_{W_\infty^2(\overline{\mathcal{N}})} \big) > 0
+\]
+%
+provided $C\varepsilon |d|_{W_\infty^2(\overline{\mathcal{N}})}\le\frac12$; similarly
+$\de(\by(-\varepsilon))<0$. Letting $\by=\by(s)$ be such that $\de(\by(s))=0$, we note that $\bx = \bP_d(\by)$, and so arguing as before we have that 
+\[ |\by -\bx|= |d(\by)|=|d(\by)-\de(\by)| \lesssim \varepsilon^2 |d|_{W_\infty^2(\overline{\mathcal{N}})},
+\]
+which concludes the proof.
+\end{proof}
+
+% a Taylor expansion
+%%
+%\[
+%\de(\bx)=\de(\by) + \nabla \de(\by)\cdot(\bx-\by) +
+%(\bx-\by)^t \int_0^1 (1-s) D^2 \de(s\bx+(1-s)\by) ds (\bx-\by)
+%\]
+%%
+%yields, after adding and subtracting $\nabla d(\bx) \cdot (\bx-\by)$ and using
+%that $|\bx-\by|=|s|\le\varepsilon$,}
+%%
+%\[
+%|\de(\bx)| \ge |\bx-\by| \Big( 1 - C\varepsilon^\alpha
+%|d|_{C^{1,\alpha}(\overline{\mathcal{N}})}\Big) \ge \frac12 |\bx-\by|
+%\]
+%%
+%provided $C\varepsilon^\alpha
+%|d|_{C^{1,\alpha}(\overline{\mathcal{N}})} \le \frac12$. At the same time, we see that
+%%
+%\[
+%|\de(\bx)| \le |d(\bx)|
+%+ |d|_{C^{1,\alpha}(\overline{\mathcal{N}})} \varepsilon^{1+\alpha}
+%= |d|_{C^{1,\alpha}(\overline{\mathcal{N}})} \varepsilon^{1+\alpha},
+%\]
+%%
+%which in turn gives $|\bx-\by| \le 2
+%|d|_{C^{1,\alpha}(\overline{\mathcal{N}})} \varepsilon^{1+\alpha}$ and
+%concludes the proof.
+  
+%We next solve the Laplace-Beltrami problem \eqref{e:weak} over $\gae$. We let
+%%
+%\[
+%\bPe(\bx) := \bx - \de(\bx) \nabla \de(\bx) \in \gae
+%\]
+%%
+%be the lift associated with $\de$; note that $\de \ne\dge$ and $\bPe\in C^2({\mathcal N(\delta)})$.
+%If $\bchie$ is a $C^2$ parametrization of $\gae$, with area element $\qe$, normal
+%vector $\bnue$, orthogonal projection $\Pie$, and Weingarten map $\bWe$
+%%
+%\[
+%\bnue := \frac{\nabla\de}{|\de|},
+%\quad
+%\Pie := \bI - \bnue\otimes\bnue,
+%\quad
+%\bWe := D_\gae \bnue
+%\]
+%%
+%then the error matrix $\bEe$ between $\gae$ and $\gamma$ is given on $\gamma$ by
+%%
+%\[
+%\bEe \circ \bPe := \frac{q}{\qe} \Pie (\bI-\dge \bWe)\Pi (\bI-\dge \bWe) \Pie - \Pie
+%\]
+%%
+%according to \eqref{error-matrix-gamma} of Lemma \ref{L:geom_consist_dist} (geometric
+%consistency) provided we take $\Gamma=\gamma$ and $\gamma=\gae$.
+%We next consider
+%$\bchi:=\bPe^{-1} \circ \bchie$ be the corresponding parametrization of $\gamma$.
+%We let $\fe = f \circ \bPe^{-1} \frac{q}{\qe} \in L_{2,\#}(\gae)$ and
+%$\ue\in H^1_\#(\gae)$ be the solution of 
+%%
+%\begin{equation}\label{e:weak_ueps}
+%\int_\gae \nabla_\gae \ue \cdot \nabla_\gae \tv = \int_\gae \fe \tv
+%\quad\forall \, \tv\in H^1(\gae).
+%\end{equation}
+%%
+%To examine the discrepancy between $u$ and $\ue$ we need the following results.
+%
+%\begin{lemma}[properties of $\gae$]\label{L:properties-gae}
+%The surface $\gae$ is at least of class $C^2$ and its Weingarten map satisfies
+%$\|\bWe\|_{L_\infty({\mathcal N(\delta)})} \lesssim \varepsilon^{\alpha-1}$. Moreover, the largest principal
+%curvature $K_\infty^\varepsilon$ on $\gae$ satisfies $K_\infty^\varepsilon \lesssim \varepsilon^{\alpha-1}$ and
+%%
+%\[
+%\|\bnu-\bnue\|_{L_\infty(\gamma)} \lesssim \varepsilon^\alpha,
+%\quad
+%\|\qe q^{-1} - 1 \|_{L_\infty(\gamma)} \lesssim \varepsilon^{2\alpha},
+%\quad
+%\|\bEe\|_{L_\infty(\gamma)} \lesssim \varepsilon^{2\alpha}.
+%\]
+%%
+%\end{lemma}
+%%
+%\begin{proof}
+%The estimate for the Weingarten map is a consequence of
+%%
+%\[
+%\bWe = D_\gae \Big(\frac{\nabla \de}{|\nabla \de|}\Big) =
+%\frac{1}{|\nabla \de|} \Big(\bI - \frac{\nabla \de}{|\nabla \de|} \otimes \frac{\nabla \de}{|\nabla \de|} \Big) D^2 \de,
+%\]
+%%
+%and Lemma \ref{L:properties-de} (properties of $\de$) which in particular
+%implies that $|\nabla\de(\bx)| \ge\frac12$ for $\bx\in{\mathcal N(\delta)}$. This,
+%together with $|\nabla d(x)|=1$ for $\bx\in{\mathcal N(\delta)}$, allows us to write
+%%
+%\[
+%\bnu(\bx) - \bnue(\bx) = \nabla d(x) - \nabla \de(\bx)
+%+ \frac{\nabla \de(\bx)}{|\nabla \de(\bx)|} \Big( |\nabla \de(\bx)| - |\nabla d(\bx)| \Big)
+%\]
+%%
+%and use Lemma \ref{L:properties-de} again to deduce the estimate for $\bnue$. Those
+%for $\qe q^{-1}$ and $\bEe$ follow from \eqref{measure_error} and
+%\eqref{est-E} with $\Gamma=\gamma$ and $\gamma=\gae$.
+%\end{proof}
+%
+%%------------------------------------------------------------------------------
+%\medskip\noindent
+%{\bf A-Priori Error Estimates for Surfaces of Class $C^{1,\alpha}$.}
+%%------------------------------------------------------------------------------
+%%
+%We are now ready to prove an error estimate in the energy norm for $u-\ue$.
+%
+%
+%\begin{lemma}[$H^1$ a-priori error estimate]\label{L:H1apriori-u-ue}
+%If $\gamma$ is of class $C^{1,\alpha}$ for $0<\alpha\le1$, then
+%%
+%\[
+%\| \nabla_\gamma(u - \ue\circ\bPe) \|_{L_2(\gamma)} \lesssim \varepsilon^{2\alpha} \|f\|_{H^{-1}_\#(\Omega)}.
+%\]
+%\end{lemma}
+%%
+%\begin{proof}
+%We resort to Lemma \ref{L:perturbation_bound_dist} (perturbation error estimate),
+%except that now we take
+%$\Gamma=\gamma$ and $\gamma=\gae$. The definition of $\fe$ yields
+%%
+%$
+%\fe\circ\bPe \frac{\qe}{q} = f
+%$
+%on $\gamma$ and $\|\bEe\|_{L_\infty(\gamma)} \lesssim \varepsilon^{2\alpha}$ completes the proof.
+%\end{proof}
+%  
+%We point out that there is no additional cancellation built in $\ue$ for the
+%$L^2$ error to be of higher order than the $H^1$ error.
+%
+%\begin{corollary}[$L^2$ a priori error estimate]\label{C:L2-reg}
+%If $\gamma$ is of class $C^{1,\alpha}$ for $0<\alpha\le1$, then
+%\[
+%\| u - \ue\circ\bPe \|_{L_2(\gamma)} \lesssim \varepsilon^{2\alpha} \|f\|_{H^{-1}_\#(\gamma)}.
+%\]  
+%\end{corollary}
+%%
+%\begin{proof}
+%Let $\bar{u}_\varepsilon := |\gamma|^{-1} \int_\gamma \ue\circ\bPe$
+%be the mean-value of $\ue$ on
+%$\gamma$, which in general does not vanish. Lemma \ref{L:Poincare} (Poincar\'e-Friedrichs
+%inequality) yields
+%%
+%\[
+%\| u - \ue + \bar{u}_\varepsilon \|_{L_2(\gamma)} \lesssim
+%\| \nabla_\gamma(u - \ue) \|_{L_2(\gamma)} \lesssim \varepsilon^{2\alpha} \|f\|_{H^{-1}_\#(\Omega)}.
+%\]
+%%
+%To estimate $|\bar{u}_\varepsilon|$, we use that $\int_\gae \ue = 0$ and $\gae$ is
+%close to $\gamma$, namely,
+%%
+%\[
+%\int_\gamma \ue\circ\bPe = \int_\gae \ue \frac{q}{\qe}
+%= \int_\gae \ue \Big(\frac{q}{\qe}-1\Big).
+%\]
+%%
+%Consequently, Lemma \ref{L:properties-gae} (properties of $\gae$)
+%combined with Lemma \ref{L:Poincare} lead to
+%%
+%\[
+%\Big| \int_\gamma \ue\circ\bPe \Big| \lesssim \varepsilon^{2\alpha} \|\ue\|_{L_2(\gae)}
+%\lesssim \varepsilon^{2\alpha} \|\nabla\ue\|_{L_2(\gae)}
+%\lesssim \varepsilon^{2\alpha} \|f\|_{H^{-1}_\#(\gamma)}.
+%\]
+%%
+%This finishes the proof.
+%\end{proof}
+%  
+%We are now in the position to compare $u$ with the discrete solution $U$ of
+%\eqref{e:galerkin_relax}. We point out that in Theorem \ref{t:H1error}
+%($H^1$ a priori error estimate) this error is quantified under the
+%assumption $u\in H^2(\gamma)$, which is unlikely to hold on a surface
+%$\gamma$ of class $C^{1,\alpha}$; see Lemma \ref{L:regularity} which assumes
+%$\gamma$ to be $C^2$. In fact, the precise Sobolev regularity of $u$ does not
+%seem to be known. We circumvent this fact upon appealing to the regularity of
+%$\ue$. This is discussed next.
+%
+%\begin{lemma}[Sobolev regularity of $\ue$]\label{L:reg-ue}
+%The function $\ue$ satisfies
+%%
+%\[
+%|\ue|_{H^2(\gae)} \lesssim \varepsilon^{\alpha-1} \|\fe\|_{L_2(\gae)}.
+%\]
+%%
+%\end{lemma}
+%%
+%\begin{proof}
+%  We revisit the proof of Lemma \ref{L:regularity}, and observe that the $H^2$
+%  regularity bound of $\ue$ is proportional to the Lipschitz constant of the diffusion
+%  coefficients of \eqref{lap-bel-def}. Since $\gae$ is of class $C^2$, we can cover
+%  $\gae$ with a finite number of overlapping balls so that $\gae$ can be described
+%  as a graph of a $C^2$ function $\psi$, whence
+%  the parametrization becomes $\bchi(\by) = (\by,\psi(\by)) \in \mathbb{R}^{n+1}$
+%  and is thus of class $C^2$. The coefficients of the Laplace-Beltrami operator
+%  in \eqref{lap-bel-def}
+%  involve first partial derivatives of $\bchi$ and their Lipschitz constant
+%  depend on second partial derivatives of $\bchi$.
+%  They behave as $\|D^2\de\|_{L_\infty({\mathcal N(\delta)})}$, hence the assertion.
+%\end{proof}
+%
+%We now establish the $H^1$ and $L_2$ a priori error estimates. We stress that the
+%regularized solution $\ue$ and surface $\gae$ play a key role in the proofs but
+%on the final statements.
+%
+%\begin{theorem}($H^1$ a priori error estimate)\label{T:H1apriori-reg}
+%If $\gamma$ is of class $C^{1,\alpha}$ for $0<\alpha\le1$, then
+%%
+%\[
+%\| \nabla_\Gamma (u\circ\bP - U) \|_{L_2(\Gamma)} \lesssim h_\T^{\frac{2\alpha}{1+\alpha}}
+%\|f\|_{L_2(\gamma)}.
+%\]  
+%%
+%\end{theorem}
+%%
+%\begin{proof}
+%We simply apply Theorem \ref{t:H1error} ($H^1$ a-priori error estimate)
+%upon taking $\gamma=\gae$, lift
+%$\bPe\circ\bP:\Gamma\to\gae$, and discrete forcing $F_\varepsilon$ is given by
+%%
+%\[
+%F_\varepsilon = \fe \circ \bPe\circ\bP \frac{\qe}{q_\Gamma} = f\circ\bP \frac{q}{q_\Gamma} = F.
+%\]
+%%
+%Since the discrete solution on $\Gamma$ coincides with $U$. We thus obtain
+%%
+%\begin{align*}
+%\|\nabla_\Gamma(\ue\circ\bPe\circ\bP - U)\|_{L_2(\Gamma)} & \lesssim
+%h_\T |\ue|_{H^2(\gae)} + \lambda_\T(\Gamma) \|\fe\|_{L_2(\gae)}
+%\\
+%& \lesssim h_\T \varepsilon^{\alpha-1} \|\fe\|_{L_2(\gae)}
+%\lesssim h_\T \varepsilon^{\alpha-1} \|f\|_{L_2(\gamma)},
+%\end{align*}
+%%
+%where we have used Lemma \ref{L:norm-equiv} (norm equivalence).
+%Combining this with Lemma \ref{L:H1apriori-u-ue} ($H^1$ a-priori error estimate),
+%rewritten on $\Gamma$ via Lemma \ref{L:norm-equiv}, gives
+%%
+%\[
+%\|\nabla_\Gamma (u\circ\bP - \ue\circ\bPe\circ\bP\|_{L_2(\Gamma)}
+%\lesssim \varepsilon^{2\alpha} \|f\|_{L_2(\gamma)}
+%\]
+%%
+%This shows that the optimal choice of $\varepsilon$ is $\varepsilon\approx h_\T^{\frac{1}{1+\alpha}}$
+%and yields the assertion.
+%\end{proof}
+%  
+%
+%\begin{theorem}[$L_2$ a-priori error estimate]\label{L:L2-apriori-reg}
+%If $\gamma$ is of class $C^{1,\alpha}$ for $0<\alpha\le1$, then
+%%
+%\[
+%\| u\circ\bP - U \|_{L_2(\Gamma)} \lesssim h_\T^{2\alpha}
+%\|f\|_{L_2(\gamma)}.
+%\]  
+%\end{theorem}
+%%
+%\begin{proof}
+%We apply Theorem \ref{t:L2_apriori} ($L_2$ a-priori error estimate) with 
+%$\gamma = \gae$, lift $\bPe\circ\bP:\Gamma\to\gae$, and discrete forcing
+%$F_\varepsilon = \fe\circ\bPe\circ\bP\frac{\qe}{q_\Gamma}=F$, as in Theorem
+%\ref{T:H1apriori-reg}. We now utilize \eqref{complete-est} to arrive at
+%%
+%\[
+%\|\ue\circ\bPe\circ\bP - U\|_{L_2(\Gamma)} \lesssim
+%h_\T^2 \varepsilon^{2(\alpha-1)} |d|_{C^{1,\alpha}(\overline{\mathcal{N}})} \|\fe\|_{L_2(\gae)}
+%\lesssim h_\T^2 \varepsilon^{2(\alpha-1)} \|f\|_{L_2(\gamma)}.
+%\]
+%%
+%We recall Corollary \ref{C:L2-reg} ($L^2$ a-priori error estimte) written over $\Gamma$
+%%
+%\[
+%\|u\circ\bP - \ue\circ\bPe\circ\bP\|_{L_2(\Gamma)} \lesssim
+%\varepsilon^{2\alpha} \|f\|_{L_2(\gamma)}
+%\]
+%%
+%and realize that the optimal choice of $\varepsilon$ to balance these two errors
+%in $\varepsilon\approx h_\T$. This leads to the desired estimate.
+%\end{proof}
+  
+
+
+%
+We recall that 
+$\wde$ is the signed distance function to the zero level set $\gae$ of $\de$.
+Consider the $C^\infty$ lift
+%
+\begin{equation}\label{eps-lift}
+\bPe(\bx) := \bx - \wde(\bx) \nabla \wde(\bx)
+\quad\forall \, \bx\in{\mathcal N(\delta)}.
+\end{equation}
+%
+It is natural and useful for later considerations to compare tubular neighborhoods
+dictated by $d$ and $\wde$. Let
+%
+\[
+{\mathcal{N}}_\varepsilon({\delta_\varepsilon}) :=
+\{\bx\in\mathbb{R}^{n+1}:  |\wde(\bx)| \le {\delta_\varepsilon} \},
+\]
+%
+where we choose $\delta_\varepsilon$ as follows depending
+on $\delta$ and $\varepsilon$.
+Given $\bx\in{\mathcal N(\delta)}$ let $\wx\in\gamma$ be the point at shortest distance,
+whence $|\bx-\wx|\le\delta$, and let $\bxe\in\gae$ be a point such that
+$|\wx-\bxe|\le C |d|_{W^2_\infty(\mathcal N)}\varepsilon^2$ which is guaranteed to exist
+because ${\rm dist}_H(\gamma, \gamma_\varepsilon) \le C \varepsilon^2|d| \le \varepsilon$
+in view of Lemma \ref{L:properties-de} (properties of $\de$). Therefore
+%
+\[
+|\wde(\bx)| = \dist(\bx,\gae) \le |\bx-\bxe| \le |\bx-\wx| + |\wx-\bxe|
+\le \delta + C|d|_{W^2_\infty(\mathcal N)}\varepsilon^2
+\le \delta + \varepsilon =: {\delta_\varepsilon} ,
+\]
+provided $C\varepsilon|d|_{W^2_\infty(\mathcal N)}\le1$; note that
+${\delta_\varepsilon} \le \frac32 \delta$. This implies
+%
+\begin{equation}\label{e:Ntilde}
+  {\mathcal N(\delta)}\subset {\mathcal{N}}_\varepsilon\big( {\delta_\varepsilon} \big).
+\end{equation}
+%
+Similarly, using again $C \varepsilon |d|_{W_\infty^2(\overline{\mathcal{N}})} \le 1$
+in conjunction with Lemma \ref{L:properties-de} yields
+%
+\[
+{\mathcal{N}}_\varepsilon\big( {\delta_\varepsilon} \big) \subset \mathcal{N}({\delta_\varepsilon}+\varepsilon)=\mathcal{N}(\delta + 2 \varepsilon) \subset \mathcal{N}.
+\]
+
+The next lemma and corollary study important properties of $\wde$ and $\bPe$,
+in particular how derivatives degenerate with $\varepsilon$.
+
+
+\begin{lemma}[properties of $\wde$]\label{L:properties-Pe}
+The function $\wde\in C^\infty(\mathcal N(\delta))$ and satisfies
+%
+\[
+\|\wde\|_{W^2_\infty({\mathcal N(\delta)})}
++ \varepsilon \|\wde\|_{W^3_\infty({\mathcal N(\delta)})}  \lesssim |d|_{W^2_\infty(\mathcal N)}.
+\]
+%
+Moreover, the following error estimates hold
+$$
+\|\nabla(d-\wde)\|_{L_\infty(\mathcal N(\delta))}
+  \lesssim \delta |d|_{W^2_\infty(\mathcal{N})},
+\quad
+\| 1 - \nabla d \cdot \nabla \wde \|_{L_\infty(\mathcal N(\delta))}
+\lesssim \delta^2 |d|_{W^2_\infty(\mathcal{N})}^2.
+$$
+%
+\end{lemma}
+%
+\begin{proof}
+Since $\de(\bx)=0$ and $|\nabla\de(\bx)|\ge\frac12$
+for all $\bx\in\gae$, fix $\bx_0\in\gae$ and a system of coordinates such that
+$\bx = (\bx',x_{n+1})$ is a generic point and $\nabla\de(\bx_0)$ points in the
+$(n+1)$-th coordinate direction. The Implicit Function Theorem guarantees the existence
+of a ball $B$ in $\mathbb{R}^n$ centered at $\bx_0'$ and a $C^\infty$ function
+$\psi:B\to\mathbb{R}$ such that
+%
+\[
+\de(\bx',\psi(\bx')) = 0
+\quad\forall \, \bx'\in B.
+\]
+%
+In other words, $\gae$ is locally described in $B$ as a graph $x_{n+1}=\psi(\bx')$
+for $\bx'\in B$. It is not difficult but tedious to see that
+%
+\begin{align*}
+\|\psi\|_{W^2_\infty(B)} &\lesssim \|\de\|_{W^2_\infty({\Nd})}
+\lesssim \|d\|_{W^2_\infty(\mathcal N)},
+\\
+\|\psi\|_{W^3_\infty(B)} &\lesssim \|\de\|_{W^3_\infty({\Nd})}
+\lesssim \frac{1}{\varepsilon} \|d\|_{W^2_\infty(\mathcal N)},
+\end{align*}
+%,
+which translates into the first estimates for $\wde$
+%
+\[
+\|\wde\|_{W^2_\infty(\Nd)} \lesssim \|d\|_{W^2_\infty(\mathcal N)},
+\qquad
+\|\wde\|_{W^3_\infty(\Nd)} \lesssim \frac{1}{\varepsilon}\|d\|_{W^2_\infty(\mathcal N)}.
+\]
+%
+
+To prove the error estimates, let $\bx\in\Nd\subset\mathcal{N}$ and note that 
+$$
+\nabla \wde(\bx) = \nabla \wde (\by) = \frac{\nabla \de(\by)}{|\nabla \de(\by)|},
+\qquad
+\nabla d(\bx) = \nabla d(\bw)
+$$
+with $\by = \bx-\wde(\bx) \nabla \wde(\bx)\in\gae$ and
+$\bw = \bx- d(\bx)\nabla d(\bx)\in\gamma$.
+Hence, 
+%
+\[
+|\bw-\by| \le |\bw-\bx| + |\by-\bx| \le \delta + {\delta_\varepsilon} \le \frac52\delta
+\]
+%
+because of \eqref{e:Ntilde}. Since $|\nabla d(\by)|=1$, we now write
+%
+\[
+\nabla d(\bx) - \nabla \wde(\bx) =
+\nabla d(\bw) - \nabla d(\by)
++ \nabla d(\by) - \nabla \de(\by)
++ \frac{\nabla \de(\by)}{|\nabla \de(\by)|}
+  \big(|\nabla \de(\by)| - |\nabla d(\by)|\big)
+\]
+%
+and estimate pairs of terms on the right hand side separately. Since
+$d\in W^2_\infty(\mathcal{N})$, we get
+%
+\[
+\big| \nabla d(\bw) - \nabla d(\by)  \big| \le |\bw-\by| \, |d|_{W^2_\infty(\mathcal{N})}
+\lesssim \delta |d|_{W^2_\infty(\mathcal{N})},
+\]
+%
+and using Lemma \ref{L:properties-de} (properties of $\de$) we also obtain
+%
+\[
+\big| |\nabla d(\by)| - |\nabla \de(\by)| \big| \le
+\big| \nabla d(\by) - \nabla \de(\by) \big| \le \varepsilon |d|_{W^2_\infty(\mathcal{N})}
+< \delta |d|_{W^2_\infty(\mathcal{N})},
+\]
+%
+whence the first error estimate follows
+%
+\[
+\big| \nabla d(\bx) - \nabla \wde(\bx)  \big| \lesssim
+\delta |d|_{W^2_\infty(\mathcal{N})}
+\quad\forall \, \bx \in \Nd.
+\]
+%
+To show the desired second error estimate we observe that
+$\big| 1 - \nabla d(\bx)\cdot\nabla\wde(\bx) \big|
+= \frac12 \big| \nabla d(\bx) - \nabla\wde(\bx) \big|^2$. This concludes the proof.
+\end{proof}
+
+\begin{corollary}[property of $\bP_\varepsilon$]\label{c:properties-Pe}
+The lift $\bPe$ belongs to $C^\infty(\mathcal N(\delta))$ and satisfies
+%
+$$
+|\bPe|_{W^2_\infty({\mathcal N(\delta)})} \lesssim |d|_{W^2_\infty(\mathcal N)}
+$$
+%
+for suitable constants $C_1,C_2$ so that $C_1\delta \le \varepsilon \le \frac \delta 2$
+and $C_2\varepsilon|d|_{W^2_\infty(\mathcal N)}\le 1$.
+  \end{corollary}
+  \begin{proof}
+Differentiate the $k$-th component of $\bPe$ with respect to $x_i$ and $x_j$
+to obtain
+%
+\[
+\partial_{ij} \bP_{\varepsilon,k} = - \partial_{ij}^2 \wde \, \partial_k \wde
+- \partial_i \wde \, \partial_{jk}^2 \wde - \partial_j \wde \, \partial_{ik}^2 \wde -  \wde \, \partial_{ijk}^3 \wde,
+\]
+%
+whence invoking Lemma~\ref{L:properties-Pe} (properties of $\wde$) yields
+%
+\[
+\|D^2 \bPe\|_{L_\infty(\Nd)} \lesssim
+|d|_{W^2_\infty(\mathcal N)} + \frac{\delta}{\varepsilon} |d|_{W^2_\infty(\mathcal N)}\lesssim
+|d|_{W^2_\infty(\mathcal N)}
+\]
+%
+because of $|\nabla\wde|=1$ and \eqref{e:Ntilde}.
+This completes the proof.
+  \end{proof}
+  
+Given a function $\wu\in H^2(\gamma)$ we are now ready to introduce an
+$H^2$ extension to ${\mathcal N(\delta)}$. 
+For this, we assume that $\delta$ is sufficiently small so that
+\eqref{e:Ntilde} is valid.
+We first define the auxiliary function
+$\ue = \wu\circ\bQe:\gae\to\mathbb{R}$, where
+$\bQe=\bPe^{-1}:\gae\to\gamma$, and then the
+extension $u = \ue\circ\bPe:{\mathcal N(\delta)}\to\mathbb{R}$, namely
+%
+\begin{equation}\label{e:non_const_ext}
+  u(\bx) := \ue \big( \bx - \wde(\bx) \nabla \wde(\bx)   \big)
+  \quad\forall \, \bx\in{\mathcal N(\delta)}.
+\end{equation}
+%
+Consequently, we realize that $u=\wu\circ\bQe\circ\bPe$.
+We introduce the notation $\bQe$ to avoid
+confusion between $\bQe\circ\bPe:{\mathcal N(\delta)}\to\gamma$ and the identity.
+We recall that the {\it coarea
+formula}
+%
+\begin{equation}\label{e:coarea}
+\int_{\mathcal N(\delta)} g  = \int_{\mathcal N(\delta)} g | \nabla d| =  \int_{-\delta}^{\delta} \int_{ \{ d^{-1}(s) \}} g d\sigma_s,
+\end{equation}
+is valid for any integrable function $g: \mathcal N(\delta) \rightarrow \mathbb R$
+[Theorem 3.14, Evans and Gariepy]. We will use this formula next and later in
+this chapter.
+ 
+\begin{proposition}[$H^2$ extension]\label{P:H2-extension}
+Let $\varepsilon$ and $\delta$ be as in Corollary \ref{c:properties-Pe}
+(property of $\bPe$), and assume that $\varepsilon |d|_{W_\infty^2(\mathcal{N})}\le c$
+for a sufficiently small constant $c$.  
+If $\wu\in H^2(\gamma)$, then $u\in H^2({\mathcal N(\delta)})$ and 
+%
+\[
+\|u\|_{H^2({\mathcal N(\delta)})} \lesssim \delta^{\frac12} |d|_{W^2_\infty(\mathcal N)} \|\wu\|_{H^2(\gamma)}.
+\]
+%
+Moreover, the trace of $u$ on $\gamma$ coincides with $\wu$, that is $u$ an $H^2$
+extension of $\wu$.
+\end{proposition}
+%
+\begin{proof}
+In view of \eqref{e:rel_dist_grad}, the $i$-partial derivative of $u$ reads
+%  
+\[
+\partial_i u = \sum_{j=1}^{n+1} \big( \delta_{ij} - \wde \, \partial_{ij}^2\wde \big)
+\, \overline{\partial}_j\ue\circ\bPe
+\]
+%
+where $\overline{\partial}_j\ue$ stands for the $j$-component of $\nabla_\gae\ue$.
+We use again \eqref{e:rel_dist_grad} to obtain
+%
+\begin{align*}
+\nabla \partial_j u = &- \sum_{j=1}^{n+1} \big( \nabla\wde \, \partial_{ij}^2\wde
++ \wde  \, \partial_{ij}^2\nabla\wde \big) \, \overline{\partial}_j\ue\circ\bPe
+\\ &+ \sum_{j=1}^{n+1} \big( \delta_{ij} - \wde \, \partial_{ij}^2\wde  \big)
+\, \big( \bI - \wde \, D^2 \wde \big) \nabla_\gae \overline{\partial}_j\ue\ \circ \bPe.
+\end{align*}
+%
+Setting $\Lambda := 1 + |d|_{W^2_\infty(\mathcal N)}$ and
+applying Lemma \ref{L:properties-Pe} (properties of $\wde$) yields
+%
+\[
+\big| D^2 u \big| \lesssim \Lambda
+\big( |\nabla_\gae\ue\circ\bPe| + |\nabla_\gae^2 \ue\circ\bPe| \big).
+\]
+%
+We reduce the computation of integrals in the bulk ${\mathcal N(\delta)}$ to integrals on
+parallel surfaces $\gae(s) := \{\bx\in\mathbb{R}^{n+1}: \wde(\bx) = s\}$ via the
+coarea formula \eqref{e:coarea}. 
+%
+Since $|\nabla\wde|=1$ in view of \eqref{e:Ntilde} the co-area formula implies
+%
+\begin{align*}
+\int_{\mathcal N(\delta)} |D^2 u(\bx)|^2 d\bx & \lesssim \Lambda^2 \int_{\mathcal N(\delta)}
+\sum_{k=1}^2|\nabla_\gae^k\ue(\bPe(\bx))|^2 \, |\nabla\wde(\bx)| \, d\bx
+\\ & \le  \Lambda^2 \int_{-{\delta_\varepsilon}}^{{\delta_\varepsilon}} \int_{\gae(s)}
+\sum_{k=1}^2|\nabla_\gae^k\ue(\bPe(\bx))|^2 \, d \sigma_{\varepsilon,s}(\bx) \, ds
+\\& \lesssim \delta  \Lambda^2 \int_\gae \sum_{k=1}^2|\nabla_\gae^k\ue(\bx)|^2
+\, d\sigma_\varepsilon(\bx),
+\end{align*}
+%
+Lemma \ref{L:norm-equiv} (norm equivalence) immediately yields
+\[ \int_{\gamma_\varepsilon} |\nabla_{\gamma_\varepsilon} u_\varepsilon(\bP_\varepsilon(\bx))|^2 \, d\sigma_\varepsilon(\bx) \lesssim \int_\gamma |\nabla_\gamma \wu(\bx)|^2 d \sigma(\bx).
+\]
+In order to relate second derivatives of $u_\varepsilon$ on $\gamma_\varepsilon$ to those of $\wu$ on $\gamma$, we apply \eqref{e:tang_discrete_to_exact} with $\gamma_\varepsilon$ playing the role of $\gamma$ and $\Gamma=\gamma$.  Then
+\[
+\nabla_{\gamma_\varepsilon} u_\varepsilon (\bP_\varepsilon(\bx)) = ({\bf I} -\wde \bW_\varepsilon)^{-1}(\bx) \left(\bI - \frac{\bnu_\gamma(\bx) \otimes \bnu_\varepsilon(\bx)}{\bnu_\gamma(\bx) \cdot \bnu_\varepsilon(\bx)}\right) \nabla_\gamma \wu(\bx) \quad \bx \in \gamma,
+\]
+and after applying this formula again to $\nabla_{\gamma_\varepsilon} u_\varepsilon (\bP_\varepsilon(\bx))$ we obtain
+\[
+|D_{\gamma_\varepsilon}^2 u_\varepsilon(\bP_\varepsilon(\bx))| \le |D_\gamma {\bf M}(\bx)| \, |\nabla_\gamma \wu(\bx)|+ |{\bf M}(\bx)| \, |D_\gamma^2 \wu(\bx)|,
+\]
+%
+where ${\bf M}(\bx)=({\bf I} -\wde \bW_\varepsilon)^{-1}(\bx) \left(\bI - \frac{\bnu_\gamma(\bx) \otimes \bnu_\varepsilon(\bx)}{\bnu_\gamma(\bx) \cdot \bnu_\varepsilon(\bx)}\right)$.
+We thus wish to bound $\|M\|_{W_\infty^1(\gamma)}$.  First we note that combining the bound on the Hausdorff distance between $\gamma$ and $\gamma_\varepsilon$ from Lemma \ref{L:properties-de} (properties of $\de$) with $\|\wde\|_{W_\infty^2(\mathcal{N}(\delta))} \lesssim |d|_{W_\infty^2(\mathcal{N})}$ from Lemma \ref{L:properties-Pe} (properties of $\wde$) yields for $\bx \in \gamma$ that the eigenvalues of $\wde(\bx) \bW_\varepsilon(\bx)$  are bounded by $C \varepsilon^2|d|_{W_\infty^2(\overline{\mathcal{N}})}^2$, which is less than $\frac{1}{2}$ under the assumption that $\varepsilon |d|_{W_\infty^2(\mathcal{N})}$ is sufficiently small; thus $\|(\bI-\wde \bW_\varepsilon)^{-1}\|_{L_\infty(\Nd)} \le 2$. In addition, combining the same assumption with $\varepsilon \simeq \delta$ and Lemma \ref{L:properties-Pe} yields
+\[ 
+\|1-\bnu_\gamma\cdot \bnu_\varepsilon\|_{L_\infty(\mathcal{N}(\delta))} \lesssim \delta^2|d|_{W_\infty^2(\mathcal{N})}^2 \lesssim \varepsilon^2 |d|_{W_\infty^2(\mathcal{N})}^2 \le \frac{1}{2},
+\]
+so that $\bnu_\gamma\cdot \bnu_\varepsilon \ge 1/2$ and
+ \[
+ \left \|\bI - \frac{\bnu_\gamma \otimes \bnu_\varepsilon}{\bnu_\gamma \cdot \bnu_\varepsilon}\right\|_{L_\infty(\Nd)} \lesssim 1 ;
+ \]
+thus $\|{\bf M}\|_{L_\infty(\Nd)} \lesssim 1$. In order to bound the derivatives of ${\bf M}$, we note that for a matrix ${\bf A}$ there holds  $\partial_i {\bf A}^{-1} = -{\bf A}^{-1}( \partial_i {\bf A}) {\bf A}^{-1}$.  For ${\bf A}=\bI-\wde \bW_\varepsilon$, we use Lemmas \ref{L:properties-de} and \ref{L:properties-Pe}, $|\nabla \wde|=1$, and the assumption $C_1\delta\le\varepsilon$ to deduce in $\Nd$
+ \[ 
+ \begin{aligned}
+ |\partial_i {\bf A}|& = \big|(\partial_i \wde) \bW_\varepsilon + \wde \,
+ \partial_i \bW_\varepsilon\big| 
+ \\ & \lesssim \|\wde\|_{W_\infty^2(\mathcal{N}(\delta)} + \delta \|\wde\|_{W_\infty^3(\mathcal{N})} \lesssim |d|_{W_\infty^2(\mathcal{N})}.
+ \end{aligned}
+ \]
+ Since we have already established that $\|\bf A^{-1}\|_{L_\infty(\Nd)}\lesssim 1$, we infer that $|(\bI-\wde \bW_\varepsilon)^{-1}|_{W_\infty^1(\Nd} \lesssim |d|_{W_\infty^2(\mathcal{N})}$.   A similar calculation for $\bI - \frac{\bnu_\gamma\otimes \bnu_\varepsilon}{\bnu_\gamma \cdot \bnu_\varepsilon}$, while recalling that $\bnu_\gamma \cdot \bnu_\varepsilon \ge 1/2$, yields  $|{\bf M}|_{W_\infty^1(\gamma)} \lesssim |d|_{W_\infty^2(\mathcal{N})}$ and, after applying Lemma \ref{L:norm-equiv} (norm equivalence), gives
+%
+\[ \|D_{\gamma_\varepsilon}^2 u_\varepsilon\|_{L_2(\gamma_\varepsilon)} \lesssim |d|_{W_\infty^2(\mathcal{N})} \left(\|\nabla_\gamma \wu\|_{L_2(\gamma)} + \|D_\gamma^2 \wu\|_{L_2(\gamma)}\right). \]
+
+
+The asserted estimate follows from applying again the 
+co-area formula \eqref{e:coarea}, which leads to
+%
+\[
+\int_{\mathcal N(\delta)} |u|^2+|\nabla u|^2+|D^2u|^2\lesssim \delta \Lambda^2
+\int_\gamma |\wu|^2 + |\nabla_\gamma \wu|^2 + |D^2\wu|^2.
+\]
+%
+Finally, we take $\bx\in\gamma$, note that $\bQe(\bPe(\bx))=\bx$, and compute
+%
+\[
+u(\bx) =  \wu\circ\bQe\circ\bPe(\bx) = \wu(\bx)
+\]  
+%
+to realize that $u$ is indeed an extension of $\wu$ to ${\mathcal N(\delta)}$.
+\end{proof}
+  
+We now derive the elliptic PDE's satisfied by $\ue$ on $\gae$ and $u$ in ${\mathcal N(\delta)}$.
+For $\wu\in H^2(\gamma)$, let
+$\wf = -\Delta_\gamma \wu \in L_{2,\#}(\gamma)$ and consider the extension $\wfe$ to
+$\gae$
+%
+\[
+\wfe := \wf \circ \bQe.
+\]
+%
+
+\begin{lemma}[PDE satisfied by $\ue$]\label{L:PDE-ue}
+If $\gamma$ is closed and of class $C^2$, then $\gae$ is also closed and of class
+$C^\infty$, and the extension $\ue = \wu\circ\bQe$ satisfies on $\gae$
+%
+\[  
+- \wmue \mathrm{div}_\gae \Big(\frac{1}{\wmue} \wbAe \nabla_\gae \ue \Big) = \wfe,
+\]
+%
+where $\wbAe := \big(\bI - \wde \, D^2\wde \big) \Pi
+\big(\bI - \wde \, D^2\wde \big)\circ\bQe$,
+$\Pi$ stands for the orthogonal  projection $\Pi = (\bI - \nabla d\otimes\nabla d)$
+on $\gamma$ and $\wmue := \frac{\qe}{q\circ\bQe}$ reads
+%
+\[
+\wmue = \det\Big(\bI - \wde \, D^2\wde  \Big)
+\big( \nabla d \cdot \nabla\wde  \big) \circ\bQe.
+\]
+%
+\end{lemma}
+%
+\begin{proof}
+Given $\wv\in H^1(\gamma)$, let $\tv = \ttv\circ\bQe \in H^1(\gae)$.
+We resort to \eqref{e:tang_exact_to_discrete} to write
+%
+\[
+\nabla_\gamma \wu = \Pi \big(\bI - \wde \, D^2 \wde  \big)
+\nabla_\gae \ue \circ \bPe \quad\textrm{on }\gamma,
+\]
+%
+because $\nabla_\gae \ue \circ \bPe = \Pi_\varepsilon \nabla_\gae \ue \circ \bPe$.
+This combined with \eqref{int-gamma} and Corollary \ref{C:int-parts}
+(integration by parts) on the closed surface $\gae$ yields
+%
+\[
+\int_\gamma \nabla_\gamma \wu \cdot \nabla_\gamma \ttv
+= \int_\gae \frac{1}{\wmue} \wbAe \nabla_\gae \ue \cdot \nabla_\gae \tv
+= -  \int_\gae \mathrm{div}_\gae \Big( \frac{1}{\wmue} \wbAe \nabla_\gae \ue \Big) \tv
+\]
+%
+with $\wmue=\frac{\qe}{q\circ\bQe}$ given by \eqref{e:area_ratio_distance}.
+Likewise,
+%
+\[
+\int_\gamma \wf \, \ttv = \int_\gae \frac{1}{\wmue}\wfe \tv .
+\]
+%
+Since the last two equalities hold for all $\tv\in H^1(\gae)$, the assertion
+follows.
+\end{proof}
+  
+
+We extend the function $\wfe$ to ${\mathcal{N}}_\varepsilon({\delta_\varepsilon})$ as follows:
+%
+\[
+\fe := \wfe \circ \bPe = \wf \circ \bQe \circ \bPe.
+\]
+%
+Equivalently, given $\bx\in{\mathcal{N}}_\varepsilon({\delta_\varepsilon})$
+let $\wx\in\gamma$ be the unique point such that for some $s$
+%
+\[
+\wx = \bx + s \nabla\wde(\bx)
+\quad\Rightarrow\quad
+\fe(\bx) = \wf(\wx).
+\]
+
+\begin{proposition}[PDE satisfied by $u$]\label{P:BVP}
+Let $\varepsilon$ and $\delta$ be as in Corollary \ref{c:properties-Pe}
+(property of $\bPe$).
+The extension $u\in H^2({\mathcal N(\delta)})$ of $\wu$ of
+Proposition \ref{P:H2-extension} satisfies the PDE
+%
+\[
+-\frac{1}{\mue} \div { \mue \bBe \nabla u}  = \fe
+\qquad \hbox{ in }\qquad  {\mathcal N(\delta)},
+\]
+%
+where
+%
+\[
+\bBe := \big(\bI - \wde \, D^2\wde \big)^{-1} \Pi_\varepsilon \bAe \Pi_\varepsilon
+\big( \bI - \wde \, D^2\wde \big)^{-1} ,
+\]
+%
+$\bAe:=\wbAe\circ\bPe$ with $\wbAe$ given in Lemma \ref{L:PDE-ue},
+$\Pi_\varepsilon = \bI - \nabla\wde\otimes\nabla\wde$, $\mue$ is given by
+%
+\[
+\mue := \frac{1}{\wmue\circ\bPe} \det\Big( \bI - \wde \, D^2\wde  \Big),
+\]
+%
+and $\wmue$ is defined in Lemma \ref{L:PDE-ue}.
+%
+\end{proposition}
+%
+\begin{proof}
+We proceed as in Proposition \ref{P:H2-extension} ($H^2$ extension).
+Let $\gamma_\varepsilon(s)$ be a parallel surface to $\gae$ at distance $s$, and let
+$|s| \le {\delta_\varepsilon}$ with ${\delta_\varepsilon} = \frac{3}{2}\delta$  so that \eqref{e:Ntilde} holds.
+%
+We first employ \eqref{e:tang_discrete_to_exact} to obtain the bilinear form
+for $u$ on $\gamma_\varepsilon(s)$. For
+$\delta$ sufficiently small Lemma~\ref{L:properties-Pe} (properties of $\wde$)
+guarantees that $\big(\bI - \wde \, D^2\wde \big)$ is invertible in
+${\mathcal{N}}_\varepsilon(\delta_\varepsilon)$.
+Hence, if $\bDe = \big(\bI - \wde \, D^2\wde \big)^{-1} \Pi_\varepsilon$
+and $\tv \in C_0^\infty({\mathcal N(\delta)})$, we restrict $\tv$ to $\gamma_\varepsilon(s)$,
+define the auxiliary function
+$\ttv := \tv \circ \bPe^{-1}\in C^\infty(\gae)$ and observe that
+\eqref{e:tang_discrete_to_exact} reads on $\gamma_\varepsilon(s)$
+%
+\[
+\nabla_\gae \ttv \circ \bPe = \bDe \nabla \tv, 
+\]
+%
+where $\nabla \tv$ is the full gradient of $\tv$; this is because of the presence
+of the projection matrix $\Pi_\varepsilon$ on the tangent hyperplane to $\gamma_\varepsilon(s)$
+in the definition of $\bDe$. We get
+%
+\begin{align*}
+\int_\gae \frac{1}{\wmue} \wbAe \nabla_\gae\ue \cdot \nabla_\gae \ttv
+= \int_{\gamma_\varepsilon(s)} \mue \bAe \bDe
+\nabla u \cdot \bDe \nabla \tv
+\end{align*}
+%
+where $\wmue$ is given in Lemma \ref{L:PDE-ue} (PDE satisfied by $\ue$) and
+$\mue$ is the surface measure density on $\gae(s)$ due to the change of variables, namely
+%
+\[
+\mue = \frac{1}{\wmue\circ\bPe} \frac{\qe}{q_{\varepsilon,s}}
+= \frac{1}{\wmue\circ\bPe} \det\Big( \bI - \wde \, D^2\wde  \Big)
+\]
+%
+according to \eqref{e:area_ratio_distance}.
+Similarly, the linear form for the forcing reads
+%
+\[
+\int_\gae \frac{1}{\wmue} \, \wfe \, \ttv = \int_{\gamma_\varepsilon(s)} \mue \, \fe \, \tv.
+\]
+%
+Since the left hand sides of the previous integral expressions coincide,
+in view of Lemma \ref{L:PDE-ue},
+we now integrate over
+$s\in(-{\delta_\varepsilon},{\delta_\varepsilon})$ and use the co-area
+formula \eqref{e:coarea} to convert the resulting integrals into bulk integrals
+%
+\begin{align*}
+  \int_{{\mathcal{N}}_\varepsilon({\delta_\varepsilon})}
+  \mue \bAe \bDe \nabla u \cdot \bDe \nabla \tv
+  & = \int_{{\mathcal{N}}_\varepsilon({\delta_\varepsilon})}
+  \mue \bAe \bDe \nabla u \cdot \bDe \nabla \tv
+\, |\nabla\wde|
+\\
+& =
+\int_{-{\delta_\varepsilon}}^{{\delta_\varepsilon}}\int_{\gamma_\varepsilon(s)}
+\mue \bAe \bDe \nabla u \cdot \bDe \nabla \tv \, d\sigma_{\varepsilon,s} \, ds
+\\
+& = \int_{-{\delta_\varepsilon}}^{{\delta_\varepsilon}}\int_{\gamma_\varepsilon(s)}
+\fe \tv \, \mue \, d\sigma_{\varepsilon,s} \, ds
+\\
+& = \int_{{\mathcal{N}}_\varepsilon({\delta_\varepsilon})} \fe \tv \, \mue \, |\nabla\wde|
+= \int_{{\mathcal{N}}_\varepsilon({\delta_\varepsilon})} \fe \tv \, \mue,
+\end{align*}
+%
+because $|\nabla \wde|=1$ in ${\mathcal{N}}_\varepsilon({\delta_\varepsilon})$.
+Since ${\mathcal N(\delta)}\subset {\mathcal{N}}_\varepsilon({\delta_\varepsilon})$ according to \eqref{e:Ntilde}, integration by parts gives
+%
+\[
+- \int_{\mathcal N(\delta)} \mathrm{div} \big(\mue \bDe \bAe \bDe \nabla u \big) \tv =
+\int_{\mathcal N(\delta)} \fe \, \tv \mue
+\quad\forall \, v\in C_0^\infty({\mathcal N(\delta)}),
+\]
+%
+whence the desired PDE follows after noticing that
+$\big(\bI - \wde \, D^2\wde \big)^{-1}$ and  $\Pi_\varepsilon$ commute.
+This completes the proof.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+%In addition, we assume that the parametrization
+%$\bchi := \bP_d \circ \bchi_\Gamma$ of $\gamma$ is induced by the distance
+%lift $\bP_d$.

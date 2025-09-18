@@ -1,0 +1,29 @@
+\@ifundefined {etoctocstyle}{\let \etoc@startlocaltoc \@gobble \let \etoc@settocdepth \@gobble \let \etoc@depthtag \@gobble \let \etoc@setlocaltop \@gobble }{}
+\etoc@startlocaltoc {1}
+\contentsline {section}{\tocsection {}{1}{Introduction}}{2}{}%
+\contentsline {section}{\tocsection {}{2}{Calculus on Surfaces}}{5}{}%
+\contentsline {subsection}{\tocsubsection {}{2.1}{Parametric Surfaces}}{6}{}%
+\contentsline {subsection}{\tocsubsection {}{2.2}{Differential Operators}}{7}{}%
+\contentsline {subsection}{\tocsubsection {}{2.3}{Signed Distance Function}}{11}{}%
+\contentsline {subsection}{\tocsubsection {}{2.4}{Curvatures}}{13}{}%
+\contentsline {subsection}{\tocsubsection {}{2.5}{Surface regularity and properties of the distance function}}{14}{}%
+\contentsline {subsection}{\tocsubsection {}{2.6}{Divergence Theorem on Surfaces}}{16}{}%
+\contentsline {section}{\tocsection {}{3}{Perturbation Theory}}{17}{}%
+\contentsline {subsection}{\tocsubsection {}{3.1}{Perturbation Theory for $C^{1,\alpha }$ Surfaces}}{18}{}%
+\contentsline {subsection}{\tocsubsection {}{3.2}{Perturbation Theory for $C^2$ Surfaces}}{21}{}%
+\contentsline {subsection}{\tocsubsection {}{3.3}{$H^2$ extensions from $C^2$ surfaces}}{25}{}%
+\contentsline {section}{\tocsection {}{4}{Parametric Finite Element Method}}{32}{}%
+\contentsline {subsection}{\tocsubsection {}{4.1}{FEM on Lipschitz Parametric Surfaces.}}{32}{}%
+\contentsline {subsection}{\tocsubsection {}{4.2}{Geometric Consistency}}{36}{}%
+\contentsline {subsection}{\tocsubsection {}{4.3}{A-Priori Error Analysis}}{41}{}%
+\contentsline {subsection}{\tocsubsection {}{4.4}{A-Posteriori Error Analysis}}{48}{}%
+\contentsline {section}{\tocsection {}{5}{Trace Method}}{52}{}%
+\contentsline {subsection}{\tocsubsection {}{5.1}{Preliminaries}}{55}{}%
+\contentsline {subsection}{\tocsubsection {}{5.2}{A Priori Error Estimates}}{60}{}%
+\contentsline {subsection}{\tocsubsection {}{5.3}{A Posteriori Error Estimates}}{64}{}%
+\contentsline {section}{\tocsection {}{6}{Narrow Band Method}}{68}{}%
+\contentsline {subsection}{\tocsubsection {}{6.1}{The Narrow Band FEM}}{69}{}%
+\contentsline {subsection}{\tocsubsection {}{6.2}{PDE Geometric Consistency}}{70}{}%
+\contentsline {subsection}{\tocsubsection {}{6.3}{Properties of the Narrow Band FEM}}{75}{}%
+\contentsline {subsection}{\tocsubsection {}{6.4}{A Priori Error Estimates}}{77}{}%
+\contentsline {section}{\tocsection {}{}{References}}{79}{}%

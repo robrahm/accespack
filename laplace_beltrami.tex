@@ -1,0 +1,389 @@
+\documentclass{amsart}
+
+\usepackage{amsmath,amssymb,graphicx,stmaryrd}
+
+\usepackage{./boldfonts}
+\usepackage{./macro}
+
+
+\begin{document}
+
+\title[The Laplace-Beltrami Operator]{Finite Element Methods for the \\ Laplace-Beltrami Operator}%\label{chap:1}
+\author{Andrea Bonito}
+\address{Department of Mathematics, Texas A\&M University, College Station, TX 77843, USA; bonito@math.tamu.edu}%
+\thanks{AB is partially supported by NSF grant DMS-1817691.}
+\author{Alan Demlow}%
+\address{Department of Mathematics, Texas A\&M University, College Station, TX 77843, USA; demlow@math.tamu.edu}%
+\thanks{AD is partially supported by NSF grant DMS-1720369.}
+\author{Ricardo H. Nochetto}%
+\address {University of Maryland, College Park, MD 20742, USA; rhn@math.umd.edu}%
+\thanks{RHN is partially supported by NSF grant DMS--1411808.}
+
+
+
+\begin{abstract}
+Partial differential equations posed on surfaces arise in a number of applications.  In this survey we describe three popular finite element methods for approximating solutions to the Laplace-Beltrami problem posed on an $n$-dimensional surface $\gamma$ embedded in $\mathbb{R}^{n+1}$:  the {\it parametric}, {\it trace}, and {\it narrow band} methods.  The parametric method entails constructing an approximating polyhedral surface $\Gamma$ whose faces comprise the finite element triangulation.  The finite element method is then posed over the approximate surface $\Gamma$ in a manner very similar to standard FEM on Euclidean domains.  In the trace method it is assumed that the given surface $\gamma$ is embedded in an $n+1$-dimensional domain $\Omega$ which has itself been triangulated.    An $n$-dimensional approximate surface $\Gamma$ is then constructed roughly speaking by interpolating $\gamma$ over the triangulation of $\Omega$, and the finite element space over $\Gamma$ consists of the trace (restriction) of a standard finite element space on $\Omega$ to $\Gamma$.  In the narrow band method the PDE posed on the surface is extended to a triangulated $n+1$-dimensional band about $\gamma$ whose width is proportional to the diameter of elements in the triangulation.  In all cases we provide optimal a priori error estimates for the lowest-order finite element methods, and we also present a posteriori error estimates for the parametric and trace methods.  Our presentation focuses especially on the relationship between the regularity of the surface $\gamma$, which is never assumed better than of class $C^2$, the manner in which $\gamma$ is represented in theory and practice, and the properties of the resulting methods.  
+\end{abstract}
+
+\keywords{
+Surface partial differential equations, Laplace-Beltrami operator, surface finite element methods, parametric finite element methods, trace finite element methods, narrow band finite element methods, a-priori and a-posteriori error estimates.
+}
+
+\date{\today}
+
+\maketitle
+
+% \minitoc
+
+
+\newpage 
+
+
+\begingroup
+\parindent=0em
+\etocsettocstyle{\rule{\linewidth}{\tocrulewidth}\vskip0.5\baselineskip}{\rule{\linewidth}{\tocrulewidth}}
+\localtableofcontents 
+\endgroup
+
+
+%
+\input{introduction_v2.tex}
+\input{preliminaries_v6.tex}
+\input{parametric_v9.tex}
+\input{trace_v6.tex}
+\input{narrow_v9.tex}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bibliographystyle{alpha}
+\newcommand{\etalchar}[1]{$^{#1}$}
+\begin{thebibliography}{ADM{\etalchar{+}}15}
+
+\bibitem[Ada75]{Ad75}
+Robert~A. Adams.
+\newblock {\em Sobolev spaces}.
+\newblock Academic Press [A subsidiary of Harcourt Brace Jovanovich,
+  Publishers], New York-London, 1975.
+\newblock Pure and Applied Mathematics, Vol. 65.
+
+\bibitem[ADM{\etalchar{+}}15]{ADMSSV15}
+Paola~F. Antonietti, Andreas Dedner, Pravin Madhavan, Simone Stangalino,
+  Bj\"{o}rn Stinner, and Marco Verani.
+\newblock High order discontinuous {G}alerkin methods for elliptic problems on
+  surfaces.
+\newblock {\em SIAM J. Numer. Anal.}, 53(2):1145--1171, 2015.
+
+\bibitem[Aub82]{MR681859}
+Thierry Aubin.
+\newblock {\em Nonlinear analysis on manifolds. {M}onge-{A}mp\`ere equations},
+  volume 252 of {\em Grundlehren der Mathematischen Wissenschaften [Fundamental
+  Principles of Mathematical Sciences]}.
+\newblock Springer-Verlag, New York, 1982.
+
+\bibitem[BCM{\etalchar{+}}16]{BCMMN16}
+Andrea Bonito, J.~Manuel Casc{\'o}n, Khamron Mekchay, Pedro Morin, and
+  Ricardo~H. Nochetto.
+\newblock High-order {AFEM} for the {L}aplace-{B}eltrami operator: Convergence
+  rates.
+\newblock {\em Found. Comput. Math.}, 16(6):1473--1539, 2016.
+
+\bibitem[BCMN13]{BCMN:Magenes}
+A.~Bonito, J.~M. Casc{\'o}n, P.~Morin, and R.~H. Nochetto.
+\newblock A{FEM} for geometric {PDE}: the {L}aplace-{B}eltrami operator.
+\newblock In {\em Analysis and Numerics of Partial Differential Equations},
+  volume~4 of {\em Springer INdAM Ser.}, pages 257--306. Springer, Milan, 2013.
+
+\bibitem[BCOS01]{MR1868103}
+Marcelo Bertalm\'{i}o, Li-Tien Cheng, Stanley Osher, and Guillermo Sapiro.
+\newblock Variational problems and partial differential equations on implicit
+  surfaces.
+\newblock {\em J. Comput. Phys.}, 174(2):759--780, 2001.
+
+\bibitem[BD19]{BD:18}
+A.~Bonito and A.~Demlow.
+\newblock A posteriori error estimates for the laplace-beltrami operator on
+  parametric {${C}^2$} surfaces.
+\newblock {\em SIAM J. Numer. Anal.}, 57(3):973--996, 2019.
+
+\bibitem[BDO]{BDO19}
+A.~Bonito, A.~Demlow, and J.~Owen.
+\newblock Convergence and optimality for higher order afem for eigenvalue
+  clusters of the {L}aplace-{B}eltrami operator.
+\newblock in preparation.
+
+\bibitem[Ben84]{Ben84}
+A.~Bendali.
+\newblock Numerical analysis of the exterior boundary value problem for the
+  time-harmonic {M}axwell equations by a boundary finite element method. {II}.
+  {T}he discrete problem.
+\newblock {\em Math. Comp.}, 43(167):47--68, 1984.
+
+\bibitem[BHL15]{BHL15}
+Erik Burman, Peter Hansbo, and Mats~G. Larson.
+\newblock A stabilized cut finite element method for partial differential
+  equations on surfaces: the {L}aplace-{B}eltrami operator.
+\newblock {\em Comput. Methods Appl. Mech. Engrg.}, 285:188--207, 2015.
+
+\bibitem[BHL{\etalchar{+}}16]{BHLMZ16}
+Erik Burman, Peter Hansbo, Mats~G. Larson, Andr\'{e} Massing, and Sara Zahedi.
+\newblock Full gradient stabilized cut finite element methods for surface
+  partial differential equations.
+\newblock {\em Comput. Methods Appl. Mech. Engrg.}, 310:278--296, 2016.
+
+\bibitem[BHLM17]{BHLM17}
+Erik Burman, Peter Hansbo, Mats~G. Larson, and Andr\'{e} Massing.
+\newblock A cut discontinuous {G}alerkin method for the {L}aplace-{B}eltrami
+  operator.
+\newblock {\em IMA J. Numer. Anal.}, 37(1):138--169, 2017.
+
+\bibitem[BP12]{BP:11}
+A.~Bonito and J.E. Pasciak.
+\newblock Convergence analysis of variational and non-variational multigrid
+  algorithm for the {L}aplace-{B}eltrami operator.
+\newblock {\em Math. Comp.}, 81:1263--1288, 2012.
+
+\bibitem[Bur09]{MR2485787}
+Martin Burger.
+\newblock Finite element approximation of elliptic partial differential
+  equations on implicit surfaces.
+\newblock {\em Comput. Vis. Sci.}, 12(3):87--100, 2009.
+
+\bibitem[CD15]{CD15}
+Fernando Camacho and Alan Demlow.
+\newblock {$L_2$} and pointwise a posteriori error estimates for {FEM} for
+  elliptic {PDE}s on surfaces.
+\newblock {\em IMA J. Numer. Anal.}, 35(3):1199--1227, 2015.
+
+\bibitem[CD16]{CD16}
+Bernardo Cockburn and Alan Demlow.
+\newblock Hybridizable discontinuous {G}alerkin and mixed finite element
+  methods for elliptic problems on surfaces.
+\newblock {\em Math. Comp.}, 85(302):2609--2638, 2016.
+
+\bibitem[CO15]{CO15}
+Alexey~Y. Chernyshenko and Maxim~A. Olshanskii.
+\newblock An adaptive octree finite element method for {PDE}s posed on
+  surfaces.
+\newblock {\em Comput. Methods Appl. Mech. Engrg.}, 291:146--172, 2015.
+
+\bibitem[DD07]{DemlowDziuk:07}
+A.~Demlow and G.~Dziuk.
+\newblock An adaptive finite element method for the {L}aplace-{B}eltrami
+  operator on implicitly defined surfaces.
+\newblock {\em SIAM J. Numer. Anal.}, 45(1):421--442 (electronic), 2007.
+
+\bibitem[DDEH10]{MR2608464}
+Klaus Deckelnick, Gerhard Dziuk, Charles~M. Elliott, and Claus-Justus Heine.
+\newblock An {$h$}-narrow band finite-element method for elliptic equations on
+  implicit surfaces.
+\newblock {\em IMA J. Numer. Anal.}, 30(2):351--376, 2010.
+
+\bibitem[DE13]{DE13}
+Gerhard Dziuk and Charles~M. Elliott.
+\newblock Finite element methods for surface {PDE}s.
+\newblock {\em Acta Numer.}, 22:289--396, 2013.
+
+\bibitem[Dem09]{De09}
+Alan Demlow.
+\newblock Higher-order finite element methods and pointwise error estimates for
+  elliptic problems on surfaces.
+\newblock {\em SIAM J. Numer. Anal.}, 47(2):805--827, 2009.
+
+\bibitem[DER14]{MR3249369}
+Klaus Deckelnick, Charles~M. Elliott, and Thomas Ranner.
+\newblock Unfitted finite element methods using bulk meshes for surface partial
+  differential equations.
+\newblock {\em SIAM J. Numer. Anal.}, 52(4):2137--2162, 2014.
+
+\bibitem[DM16]{DM16}
+Andreas Dedner and Pravin Madhavan.
+\newblock Adaptive discontinuous {G}alerkin methods on surfaces.
+\newblock {\em Numer. Math.}, 132(2):369--398, 2016.
+
+\bibitem[DMS13]{DMS13}
+Andreas Dedner, Pravin Madhavan, and Bj{\"o}rn Stinner.
+\newblock Analysis of the discontinuous {G}alerkin method for elliptic problems
+  on surfaces.
+\newblock {\em IMA J. Numer. Anal.}, 33(3):952--973, 2013.
+
+\bibitem[DO12]{DO12}
+Alan Demlow and Maxim Olshanskii.
+\newblock An adaptive surface finite element method based on volume meshes.
+\newblock {\em SIAM J. Numer. Anal.}, 50:1624--1647, 2012.
+
+\bibitem[Dzi88]{Dz88}
+Gerhard Dziuk.
+\newblock Finite elements for the {B}eltrami operator on arbitrary surfaces.
+\newblock In {\em Partial Differential Equations and Calculus of Variations},
+  volume 1357 of {\em Lecture Notes in Math.}, pages 142--155. Springer,
+  Berlin, 1988.
+
+\bibitem[Eva98]{Ev98}
+Lawrence~C. Evans.
+\newblock {\em Partial Differential Equations}, volume~19 of {\em Graduate
+  Studies in Mathematics}.
+\newblock American Mathematical Society, Providence, RI, 1998.
+
+\bibitem[Fed59]{Fed59}
+Herbert Federer.
+\newblock Curvature measures.
+\newblock {\em Trans. Amer. Math. Soc.}, 93:418--491, 1959.
+
+\bibitem[FFF16]{FFF16}
+Alberto Ferroni, Luca Formaggia, and Alessio Fumagalli.
+\newblock Numerical analysis of {D}arcy problem on surfaces.
+\newblock {\em ESAIM Math. Model. Numer. Anal.}, 50(6):1615--1630, 2016.
+
+\bibitem[GLR18]{GLR18}
+J\"{o}rg Grande, Christoph Lehrenfeld, and Arnold Reusken.
+\newblock Analysis of a high-order trace finite element method for {PDE}s on
+  level set surfaces.
+\newblock {\em SIAM J. Numer. Anal.}, 56(1):228--255, 2018.
+
+\bibitem[GR16]{GR16}
+J\"{o}rg Grande and Arnold Reusken.
+\newblock A higher order finite element method for partial differential
+  equations on surfaces.
+\newblock {\em SIAM J. Numer. Anal.}, 54(1):388--414, 2016.
+
+\bibitem[Gra17]{Gr17}
+J\"org Grande.
+\newblock Analysis of highly accurate finite element based algorithms for
+  computing distances to level sets.
+\newblock {\em SIAM J. Numer. Anal.}, 55(1):376--399, 2017.
+
+\bibitem[Gri85]{G85}
+Pierre Grisvard.
+\newblock {\em Elliptic Problems in Nonsmooth Domains}.
+\newblock Pitman Publishing Inc., Marshfield, MA, 1985.
+
+\bibitem[GT98]{GT98}
+David Gilbarg and Neil~S. Trudinger.
+\newblock {\em Elliptic Partial Differential Equations of Second Order}.
+\newblock Springer-Verlag, Berlin, 2nd edition, 1998.
+
+\bibitem[HH02]{HH02}
+Anita Hansbo and Peter Hansbo.
+\newblock An unfitted finite element method, based on {N}itsche's method, for
+  elliptic interface problems.
+\newblock {\em Comput. Methods Appl. Mech. Engrg.}, 191(47-48):5537--5552,
+  2002.
+
+\bibitem[HH04]{HH04}
+Anita Hansbo and Peter Hansbo.
+\newblock A finite element method for the simulation of strong and weak
+  discontinuities in solid mechanics.
+\newblock {\em Comput. Methods Appl. Mech. Engrg.}, 193(33-35):3523--3540,
+  2004.
+
+\bibitem[HS12]{HoSt12}
+Michael Holst and Ari Stern.
+\newblock Geometric variational crimes: {H}ilbert complexes, finite element
+  exterior calculus, and problems on hypersurfaces.
+\newblock {\em Found. Comput. Math.}, 12(3):263--293, 2012.
+
+\bibitem[JK95]{JK95}
+David Jerison and Carlos~E. Kenig.
+\newblock The inhomogeneous {D}irichlet problem in {L}ipschitz domains.
+\newblock {\em J. Funct. Anal.}, 130(1):161--219, 1995.
+
+\bibitem[Luc57]{Luc57}
+Kenneth~R. Lucas.
+\newblock Submanifolds of dimension $n-1$ in $\mathbb{R}^n$ with normals
+  satisfying a lipschitz condition, studies in eigenvalue problems.
+\newblock Technical report, University of Kansas, 1957.
+
+\bibitem[N{\'e}d76]{Ne76}
+J.-C. N{\'e}d{\'e}lec.
+\newblock Curved finite element methods for the solution of singular integral
+  equations on surfaces in {$R\sp{3}$}.
+\newblock {\em Comput. Methods Appl. Mech. Engrg.}, 8(1):61--80, 1976.
+
+\bibitem[OR10]{OR10}
+Maxim~A. Olshanskii and Arnold Reusken.
+\newblock A finite element method for surface {PDE}s: matrix properties.
+\newblock {\em Numer. Math.}, 114(3):491--520, 2010.
+
+\bibitem[OR17]{OR17}
+Maxim~A. Olshanskii and Arnold Reusken.
+\newblock Trace finite element methods for {PDE}s on surfaces.
+\newblock In {\em Geometrically Unfitted Finite Element Methods and
+  Applications}, volume 121 of {\em Lect. Notes Comput. Sci. Eng.}, pages
+  211--258. Springer, Cham, 2017.
+
+\bibitem[ORG09]{ORG09}
+Maxim~A. Olshanskii, Arnold Reusken, and J\"{o}rg Grande.
+\newblock A finite element method for elliptic equations on surfaces.
+\newblock {\em SIAM J. Numer. Anal.}, 47(5):3339--3358, 2009.
+
+\bibitem[ORX12]{ORX12}
+Maxim~A. Olshanskii, Arnold Reusken, and Xianmin Xu.
+\newblock On surface meshes induced by level set functions.
+\newblock {\em Comput. Vis. Sci.}, 15(2):53--60, 2012.
+
+\bibitem[OS16]{MR3471100}
+Maxim~A. Olshanskii and Danil Safin.
+\newblock A narrow-band unfitted finite element method for elliptic {PDE}s
+  posed on surfaces.
+\newblock {\em Math. Comp.}, 85(300):1549--1570, 2016.
+
+\bibitem[Pee66]{MR0221282}
+Jaak Peetre.
+\newblock Espaces d'interpolation et th\'{e}or\`eme de {S}oboleff.
+\newblock {\em Ann. Inst. Fourier (Grenoble)}, 16(fasc. 1):279--317, 1966.
+
+\bibitem[Reu15]{Re15}
+Arnold Reusken.
+\newblock Analysis of trace finite element methods for surface partial
+  differential equations.
+\newblock {\em IMA J. Numer. Anal.}, 35(4):1568--1590, 2015.
+
+\bibitem[RM08]{RM08}
+Steven~J. Ruuth and Barry Merriman.
+\newblock A simple embedding method for solving partial differential equations
+  on surfaces.
+\newblock {\em J. Comput. Phys.}, 227(3):1943--1961, 2008.
+
+\bibitem[Ste70]{Stein:70}
+Elias~M. Stein.
+\newblock {\em Singular Integrals and Differentiability Properties of
+  Functions}.
+\newblock Princeton Mathematical Series, No. 30. Princeton University Press,
+  Princeton, N.J., 1970.
+
+\bibitem[Tar78]{MR532371}
+Luc Tartar.
+\newblock {\em Topics in Nonlinear Analysis}, volume~13 of {\em Publications
+  Math\'{e}matiques d'Orsay 78}.
+\newblock Universit\'{e} de Paris-Sud, D\'{e}partement de Math\'{e}matique,
+  Orsay, 1978.
+
+\bibitem[Vee16]{Vee15}
+Andreas Veeser.
+\newblock Approximating gradients with continuous piecewise polynomial
+  functions.
+\newblock {\em Found. Comput. Math.}, 16(3):723--750, 2016.
+
+\bibitem[Ver13]{MR3059294}
+R\"{u}diger Verf\"{u}rth.
+\newblock {\em A Posteriori Error Estimation Techniques for Finite Element
+  Methods}.
+\newblock Numerical Mathematics and Scientific Computation. Oxford University
+  Press, Oxford, 2013.
+
+\bibitem[WCH10]{WCH10}
+Huayi Wei, Long Chen, and Yunqing Huang.
+\newblock Superconvergence and gradient recovery of linear finite elements for
+  the {L}aplace-{B}eltrami operator on general surfaces.
+\newblock {\em SIAM J. Numer. Anal.}, 48(5):1920--1943, 2010.
+
+\end{thebibliography}
+
+
+
+
+
+
+
+\end{document}

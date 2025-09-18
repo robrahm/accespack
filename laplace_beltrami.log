@@ -1,0 +1,3432 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.8.11)  18 SEP 2025 18:02
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**laplace_beltrami.tex
+(./laplace_beltrami.tex
+LaTeX2e <2025-06-01> patch level 1
+L3 programming layer <2025-07-20>
+(c:/texlive/2025/texmf-dist/tex/latex/amscls/amsart.cls
+Document Class: amsart 2020/05/29 v2.20.6
+\linespacing=\dimen148
+\normalparindent=\dimen149
+\normaltopskip=\skip49
+(c:/texlive/2025/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2025/06/16 v2.17y AMS math features
+\@mathmargin=\skip50
+
+For additional information on amsmath, use the `?' option.
+(c:/texlive/2025/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2024/11/17 v2.01 AMS text
+
+(c:/texlive/2025/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks17
+\ex@=\dimen150
+))
+(c:/texlive/2025/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen151
+)
+(c:/texlive/2025/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 2022/04/08 v2.04 operator names
+)
+\inf@bad=\count275
+LaTeX Info: Redefining \frac on input line 233.
+\uproot@=\count276
+\leftroot@=\count277
+LaTeX Info: Redefining \overline on input line 398.
+LaTeX Info: Redefining \colon on input line 409.
+\classnum@=\count278
+\DOTSCASE@=\count279
+LaTeX Info: Redefining \ldots on input line 495.
+LaTeX Info: Redefining \dots on input line 498.
+LaTeX Info: Redefining \cdots on input line 619.
+\Mathstrutbox@=\box53
+\strutbox@=\box54
+LaTeX Info: Redefining \big on input line 721.
+LaTeX Info: Redefining \Big on input line 722.
+LaTeX Info: Redefining \bigg on input line 723.
+LaTeX Info: Redefining \Bigg on input line 724.
+\big@size=\dimen152
+LaTeX Font Info:    Redeclaring font encoding OML on input line 742.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 743.
+\macc@depth=\count280
+LaTeX Info: Redefining \bmod on input line 904.
+LaTeX Info: Redefining \pmod on input line 909.
+LaTeX Info: Redefining \smash on input line 939.
+LaTeX Info: Redefining \relbar on input line 969.
+LaTeX Info: Redefining \Relbar on input line 970.
+\c@MaxMatrixCols=\count281
+\dotsspace@=\muskip17
+\c@parentequation=\count282
+\dspbrk@lvl=\count283
+\tag@help=\toks18
+\row@=\count284
+\column@=\count285
+\maxfields@=\count286
+\andhelp@=\toks19
+\eqnshift@=\dimen153
+\alignsep@=\dimen154
+\tagshift@=\dimen155
+\tagwidth@=\dimen156
+\totwidth@=\dimen157
+\lineht@=\dimen158
+\@envbody=\toks20
+\multlinegap=\skip51
+\multlinetaggap=\skip52
+\mathdisplay@stack=\toks21
+LaTeX Info: Redefining \[ on input line 2949.
+LaTeX Info: Redefining \] on input line 2950.
+)
+LaTeX Font Info:    Trying to load font information for U+msa on input line 397
+.
+
+(c:/texlive/2025/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+(c:/texlive/2025/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+)
+\copyins=\insert252
+\abstractbox=\box55
+\listisep=\skip53
+\c@part=\count287
+\c@section=\count288
+\c@subsection=\count289
+\c@subsubsection=\count290
+\c@paragraph=\count291
+\c@subparagraph=\count292
+\c@figure=\count293
+\c@table=\count294
+\abovecaptionskip=\skip54
+\belowcaptionskip=\skip55
+\captionindent=\dimen159
+\thm@style=\toks22
+\thm@bodyfont=\toks23
+\thm@headfont=\toks24
+\thm@notefont=\toks25
+\thm@headpunct=\toks26
+\thm@preskip=\skip56
+\thm@postskip=\skip57
+\thm@headsep=\skip58
+\dth@everypar=\toks27
+)
+(c:/texlive/2025/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+)
+(c:/texlive/2025/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2024/12/31 v1.2e Enhanced LaTeX Graphics (DPC,SPQR)
+
+(c:/texlive/2025/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
+\KV@toks@=\toks28
+)
+(c:/texlive/2025/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2024/08/06 v1.4g Standard LaTeX Graphics (DPC,SPQR)
+
+(c:/texlive/2025/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2023/12/02 v1.11 sin cos tan (DPC)
+)
+(c:/texlive/2025/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 106.
+
+(c:/texlive/2025/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2024/04/13 v1.2c Graphics/color driver for pdftex
+))
+\Gin@req@height=\dimen160
+\Gin@req@width=\dimen161
+)
+(c:/texlive/2025/texmf-dist/tex/latex/stmaryrd/stmaryrd.sty
+Package: stmaryrd 1994/03/03 St Mary's Road symbol package
+\symstmry=\mathgroup6
+LaTeX Font Info:    Overwriting symbol font `stmry' in version `bold'
+(Font)                  U/stmry/m/n --> U/stmry/b/n on input line 89.
+) (./boldfonts.sty)
+(./macro.sty (c:/texlive/2025/texmf-dist/tex/generic/ulem/ulem.sty
+\UL@box=\box56
+\UL@hyphenbox=\box57
+\UL@skip=\skip59
+\UL@hook=\toks29
+\UL@height=\dimen162
+\UL@pe=\count295
+\UL@pixel=\dimen163
+\ULC@box=\box58
+Package: ulem 2019/11/18
+\ULdepth=\dimen164
+)
+(c:/texlive/2025/texmf-dist/tex/latex/graphics/color.sty
+Package: color 2025/01/14 v1.3e Standard LaTeX Color (DPC)
+
+(c:/texlive/2025/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package color Info: Driver file: pdftex.def on input line 149.
+
+(c:/texlive/2025/texmf-dist/tex/latex/graphics/mathcolor.ltx))
+\tocrulewidth=\skip60
+
+(c:/texlive/2025/texmf-dist/tex/latex/etoc/etoc.sty
+Package: etoc 2023/10/29 v1.2d Completely customisable TOCs (JFB)
+
+(c:/texlive/2025/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
+
+(c:/texlive/2025/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
+Package: ltxcmds 2023-12-04 v1.26 LaTeX kernel commands for general use (HO)
+)
+(c:/texlive/2025/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty
+Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
+))
+(c:/texlive/2025/texmf-dist/tex/latex/tools/multicol.sty
+Package: multicol 2025/05/25 v2.0a multicolumn formatting (FMi)
+\c@tracingmulticols=\count296
+\mult@box=\box59
+\multicol@leftmargin=\dimen165
+\c@unbalance=\count297
+\c@collectmore=\count298
+\doublecol@number=\count299
+\multicoltolerance=\count300
+\multicolpretolerance=\count301
+\full@width=\dimen166
+\page@free=\dimen167
+\premulticols=\dimen168
+\postmulticols=\dimen169
+\multicolsep=\skip61
+\multicolbaselineskip=\skip62
+\partial@page=\box60
+\last@line=\box61
+\mc@boxedresult=\box62
+\maxbalancingoverflow=\dimen170
+\mult@rightbox=\box63
+\mult@grightbox=\box64
+\mult@firstbox=\box65
+\mult@gfirstbox=\box66
+\@tempa=\box67
+\@tempa=\box68
+\@tempa=\box69
+\@tempa=\box70
+\@tempa=\box71
+\@tempa=\box72
+\@tempa=\box73
+\@tempa=\box74
+\@tempa=\box75
+\@tempa=\box76
+\@tempa=\box77
+\@tempa=\box78
+\@tempa=\box79
+\@tempa=\box80
+\@tempa=\box81
+\@tempa=\box82
+\@tempa=\box83
+\@tempa=\box84
+\@tempa=\box85
+\@tempa=\box86
+\@tempa=\box87
+\@tempa=\box88
+\@tempa=\box89
+\@tempa=\box90
+\@tempa=\box91
+\@tempa=\box92
+\@tempa=\box93
+\@tempa=\box94
+\@tempa=\box95
+\@tempa=\box96
+\@tempa=\box97
+\@tempa=\box98
+\@tempa=\box99
+\@tempa=\box100
+\@tempa=\box101
+\@tempa=\box102
+\c@minrows=\count302
+\c@columnbadness=\count303
+\c@finalcolumnbadness=\count304
+\last@try=\dimen171
+\multicolovershoot=\dimen172
+\multicolundershoot=\dimen173
+\mult@nat@firstbox=\box103
+\colbreak@box=\box104
+\mc@col@check@num=\count305
+\g__mc_curr_col_int=\count306
+)
+\Etoc@toctoks=\toks30
+\c@etoc@tocid=\count307
+\etoc@framed@titlebox=\box105
+\etoc@framed@contentsbox=\box106
+)
+(c:/texlive/2025/texmf-dist/tex/latex/algorithms/algorithm.sty
+Package: algorithm 2009/08/24 v0.1 Document Style `algorithm' - floating enviro
+nment
+
+(c:/texlive/2025/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count308
+\float@exts=\toks31
+\float@box=\box107
+\@float@everytoks=\toks32
+\@floatcapt=\box108
+)
+(c:/texlive/2025/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2024/03/16 v1.1e Standard LaTeX ifthen package (DPC)
+)
+\@float@every@algorithm=\toks33
+\c@algorithm=\count309
+)
+(c:/texlive/2025/texmf-dist/tex/latex/algorithms/algorithmic.sty
+Package: algorithmic 2009/08/24 v0.1 Document Style `algorithmic'
+\c@ALC@unique=\count310
+\c@ALC@line=\count311
+\c@ALC@rem=\count312
+\c@ALC@depth=\count313
+\ALC@tlm=\skip63
+\algorithmicindent=\skip64
+)
+\c@theorem=\count314
+\c@assumption=\count315
+\c@mainresult=\count316
+\c@algo=\count317
+\c@condition=\count318
+\c@ourassumption=\count319
+)
+(c:/texlive/2025/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+File: l3backend-pdftex.def 2025-06-09 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count320
+)
+No file laplace_beltrami.aux.
+\openout1 = `laplace_beltrami.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 9.
+(c:/texlive/2025/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 9.
+
+(c:/texlive/2025/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+LaTeX Font Info:    Trying to load font information for U+stmry on input line 9
+.
+
+(c:/texlive/2025/texmf-dist/tex/latex/stmaryrd/Ustmry.fd)
+(c:/texlive/2025/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count321
+\scratchdimen=\dimen174
+\scratchbox=\box109
+\nofMPsegments=\count322
+\nofMParguments=\count323
+\everyMPshowfont=\toks34
+\MPscratchCnt=\count324
+\MPscratchDim=\dimen175
+\MPnumerator=\count325
+\makeMPintoPDFobject=\count326
+\everyMPtoPDFconversion=\toks35
+) (c:/texlive/2025/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+85.
+
+(c:/texlive/2025/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+No file laplace_beltrami.toc.
+
+
+[1{c:/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+\tf@toc=\write3
+\openout3 = `laplace_beltrami.toc'.
+
+
+(./introduction_v2.tex
+
+LaTeX Warning: Citation `Dz88' on page 2 undefined on input line 19.
+
+
+LaTeX Warning: Citation `Ne76' on page 2 undefined on input line 19.
+
+
+LaTeX Warning: Citation `Ben84' on page 2 undefined on input line 19.
+
+LaTeX Font Info:    Trying to load font information for OT1+pzc on input line 2
+1.
+(c:/texlive/2025/texmf-dist/tex/latex/psnfss/ot1pzc.fd
+File: ot1pzc.fd 2020/03/25 font definitions for OT1/pzc.
+)
+
+LaTeX Warning: Citation `Dz88' on page 2 undefined on input line 27.
+
+
+LaTeX Warning: Citation `De09' on page 2 undefined on input line 27.
+
+
+LaTeX Warning: Citation `ADMSSV15' on page 2 undefined on input line 27.
+
+
+LaTeX Warning: Citation `DMS13' on page 2 undefined on input line 27.
+
+
+LaTeX Warning: Citation `CD16' on page 2 undefined on input line 27.
+
+
+LaTeX Warning: Citation `Ben84' on page 2 undefined on input line 27.
+
+
+LaTeX Warning: Citation `HoSt12' on page 2 undefined on input line 27.
+
+
+LaTeX Warning: Citation `CD16' on page 2 undefined on input line 27.
+
+
+LaTeX Warning: Citation `FFF16' on page 2 undefined on input line 27.
+
+
+LaTeX Warning: Citation `DemlowDziuk:07' on page 2 undefined on input line 27.
+
+
+LaTeX Warning: Citation `WCH10' on page 2 undefined on input line 27.
+
+
+LaTeX Warning: Citation `BCMN:Magenes' on page 2 undefined on input line 27.
+
+
+LaTeX Warning: Citation `DM16' on page 2 undefined on input line 27.
+
+
+LaTeX Warning: Citation `BCMMN16' on page 2 undefined on input line 27.
+
+
+LaTeX Warning: Citation `BD:18' on page 2 undefined on input line 27.
+
+
+LaTeX Warning: Citation `DE13' on page 2 undefined on input line 27.
+
+
+
+[2{c:/texlive/2025/texmf-dist/fonts/enc/dvips/base/8r.enc}]
+
+LaTeX Warning: Citation `ORG09' on page 3 undefined on input line 31.
+
+
+LaTeX Warning: Citation `OR10' on page 3 undefined on input line 37.
+
+
+LaTeX Warning: Citation `DO12' on page 3 undefined on input line 37.
+
+
+LaTeX Warning: Citation `CO15' on page 3 undefined on input line 37.
+
+
+LaTeX Warning: Citation `Re15' on page 3 undefined on input line 37.
+
+
+LaTeX Warning: Citation `GR16' on page 3 undefined on input line 37.
+
+
+LaTeX Warning: Citation `GLR18' on page 3 undefined on input line 37.
+
+
+LaTeX Warning: Citation `BHL15' on page 3 undefined on input line 37.
+
+
+LaTeX Warning: Citation `BHLMZ16' on page 3 undefined on input line 37.
+
+
+LaTeX Warning: Citation `BHLM17' on page 3 undefined on input line 37.
+
+
+LaTeX Warning: Citation `OR17' on page 3 undefined on input line 37.
+
+
+LaTeX Warning: Citation `MR1868103' on page 3 undefined on input line 39.
+
+
+LaTeX Warning: Citation `RM08' on page 3 undefined on input line 46.
+
+
+
+[3]
+
+LaTeX Warning: Citation `MR2485787' on page 4 undefined on input line 49.
+
+
+LaTeX Warning: Citation `MR2608464' on page 4 undefined on input line 49.
+
+
+LaTeX Warning: Citation `MR3249369' on page 4 undefined on input line 50.
+
+
+LaTeX Warning: Citation `MR3471100' on page 4 undefined on input line 51.
+
+
+LaTeX Warning: Citation `MR3249369' on page 4 undefined on input line 59.
+
+
+
+[4]
+
+LaTeX Warning: Citation `Dz88' on page 5 undefined on input line 81.
+
+
+LaTeX Warning: Reference `sec:preliminaries' on page 5 undefined on input line 
+84.
+
+
+LaTeX Warning: Reference `S:perturbation' on page 5 undefined on input line 87.
+
+
+
+LaTeX Warning: Reference `sec:parametric' on page 5 undefined on input line 99.
+
+
+
+LaTeX Warning: Reference `sec:trace' on page 5 undefined on input line 101.
+
+
+LaTeX Warning: Reference `sec:narrow' on page 5 undefined on input line 102.
+
+) (./preliminaries_v6.tex
+
+LaTeX Warning: Reference `S:repres-surface' on page 5 undefined on input line 8
+.
+
+
+LaTeX Font Warning: Font shape `U/stmry/b/n' undefined
+(Font)              using `U/stmry/m/n' instead on input line 12.
+
+
+LaTeX Warning: Reference `S:operators' on page 5 undefined on input line 12.
+
+
+LaTeX Warning: Reference `S:distance-function' on page 5 undefined on input lin
+e 18.
+
+
+LaTeX Warning: Reference `S:curvatures' on page 5 undefined on input line 21.
+
+
+
+[5]
+
+[6]
+
+LaTeX Warning: Reference `projection' on page 7 undefined on input line 130.
+
+
+
+[7]
+
+LaTeX Warning: Reference `lap-bel-def' on page 8 undefined on input line 236.
+
+
+LaTeX Warning: Reference `int-gamma' on page 8 undefined on input line 249.
+
+
+LaTeX Warning: Reference `lap-bel-weak' on page 8 undefined on input line 263.
+
+
+LaTeX Warning: Reference `lap-bel-weak' on page 8 undefined on input line 266.
+
+
+LaTeX Warning: Citation `JK95' on page 8 undefined on input line 274.
+
+
+LaTeX Warning: Citation `MR0221282' on page 8 undefined on input line 283.
+
+
+LaTeX Warning: Citation `MR532371' on page 8 undefined on input line 283.
+
+
+LaTeX Warning: Citation `Ev98' on page 8 undefined on input line 283.
+
+
+
+[8]
+
+LaTeX Warning: Citation `MR681859' on page 9 undefined on input line 313.
+
+
+LaTeX Warning: Reference `L:Poincare-unif' on page 9 undefined on input line 33
+4.
+
+
+LaTeX Warning: Reference `L:Poincare' on page 9 undefined on input line 346.
+
+
+LaTeX Warning: Reference `e:weak' on page 9 undefined on input line 356.
+
+
+LaTeX Warning: Reference `L:Poincare' on page 9 undefined on input line 357.
+
+
+
+[9]
+
+LaTeX Warning: Reference `poincare' on page 10 undefined on input line 393.
+
+
+LaTeX Warning: Reference `lap-bel-def' on page 10 undefined on input line 394.
+
+
+Overfull \hbox (2.94707pt too wide) in paragraph at lines 391--396
+\OT1/cmr/m/n/10 In light of the es-ti-mate $\OMS/cmsy/m/n/10 kr[][]k[] ^^T k[]k
+[]$ \OT1/cmr/m/n/10 and [] we de-duce that $\OMS/cmsy/m/n/10 k[]k[] ^^T
+ []
+
+
+LaTeX Warning: Citation `Ev98' on page 10 undefined on input line 402.
+
+
+LaTeX Warning: Reference `regularity' on page 10 undefined on input line 420.
+
+
+LaTeX Warning: Reference `L:regularity' on page 10 undefined on input line 440.
+
+
+
+LaTeX Warning: Reference `dg:d:first' on page 10 undefined on input line 447.
+
+
+LaTeX Warning: Reference `e:area-rep' on page 10 undefined on input line 447.
+
+
+LaTeX Warning: Citation `GT98' on page 10 undefined on input line 465.
+
+
+LaTeX Warning: Reference `L:regularity' on page 10 undefined on input line 471.
+
+
+
+
+[10]
+
+LaTeX Warning: Reference `non-div' on page 11 undefined on input line 490.
+
+
+LaTeX Warning: Reference `S:d_for_C1' on page 11 undefined on input line 537.
+
+
+
+[11]
+
+LaTeX Warning: Reference `weingarten' on page 12 undefined on input line 574.
+
+
+LaTeX Warning: Reference `weingarten' on page 12 undefined on input line 583.
+
+
+LaTeX Warning: Reference `projection' on page 12 undefined on input line 595.
+
+
+LaTeX Warning: Reference `property-d' on page 12 undefined on input line 609.
+
+
+LaTeX Warning: Reference `normal-extension' on page 12 undefined on input line 
+613.
+
+
+Overfull \hbox (4.7026pt too wide) in paragraph at lines 607--614
+\OT1/cmr/m/n/10 where the last equal-ity hinges on [], which im-plies $^^E(\OT1
+/cmr/bx/n/10 x\OT1/cmr/m/n/10 ) = ^^E(\OT1/cmr/bx/n/10 P[]\OT1/cmr/m/n/10 (\OT1
+/cmr/bx/n/10 x\OT1/cmr/m/n/10 ))$ and $\OML/cmm/m/it/10 D[]d\OT1/cmr/m/n/10 (\O
+T1/cmr/bx/n/10 x\OT1/cmr/m/n/10 ) =
+ []
+
+
+LaTeX Warning: Reference `e:exact_grad' on page 12 undefined on input line 626.
+
+
+
+LaTeX Warning: Reference `grad-extension' on page 12 undefined on input line 63
+9.
+
+
+LaTeX Warning: Reference `grad-extension' on page 12 undefined on input line 64
+2.
+
+
+LaTeX Warning: Reference `e:exact_grad' on page 12 undefined on input line 642.
+
+
+
+LaTeX Warning: Reference `tang-diver' on page 12 undefined on input line 645.
+
+
+LaTeX Warning: Reference `lap-bel-def' on page 12 undefined on input line 646.
+
+
+LaTeX Warning: Reference `lap-bel-weak' on page 12 undefined on input line 647.
+
+
+
+LaTeX Warning: Reference `int-gamma' on page 12 undefined on input line 648.
+
+
+LaTeX Warning: Reference `tang-diver' on page 12 undefined on input line 660.
+
+
+LaTeX Warning: Reference `lap-bel-def' on page 12 undefined on input line 662.
+
+
+
+[12]
+
+LaTeX Warning: Reference `weingarten' on page 13 undefined on input line 684.
+
+
+LaTeX Warning: Reference `zero-eig' on page 13 undefined on input line 687.
+
+
+LaTeX Warning: Reference `property-d' on page 13 undefined on input line 736.
+
+
+LaTeX Warning: Reference `property-d' on page 13 undefined on input line 744.
+
+
+LaTeX Warning: Reference `N:def' on page 13 undefined on input line 760.
+
+
+
+[13]
+
+LaTeX Warning: Reference `kappas' on page 14 undefined on input line 770.
+
+
+LaTeX Warning: Reference `weingarten' on page 14 undefined on input line 784.
+
+
+LaTeX Warning: Citation `GT98' on page 14 undefined on input line 849.
+
+
+LaTeX Warning: Citation `Fed59' on page 14 undefined on input line 853.
+
+
+
+[14]
+
+LaTeX Warning: Citation `Fed59' on page 15 undefined on input line 868.
+
+
+LaTeX Warning: Citation `Luc57' on page 15 undefined on input line 874.
+
+
+LaTeX Warning: Citation `Luc57' on page 15 undefined on input line 895.
+
+
+LaTeX Warning: Citation `Luc57' on page 15 undefined on input line 895.
+
+
+LaTeX Warning: Citation `Fed59' on page 15 undefined on input line 910.
+
+
+LaTeX Warning: Reference `t:C1_implies_C2' on page 15 undefined on input line 9
+20.
+
+
+
+[15]
+
+LaTeX Warning: Reference `t:C1_implies_C2' on page 16 undefined on input line 9
+22.
+
+
+LaTeX Warning: Reference `t:C1_implies_C2' on page 16 undefined on input line 9
+22.
+
+
+LaTeX Warning: Reference `e:rel_dist_grad' on page 16 undefined on input line 9
+74.
+
+
+LaTeX Warning: Reference `e:area_ratio_distance' on page 16 undefined on input 
+line 1006.
+
+
+LaTeX Warning: Reference `kappas' on page 16 undefined on input line 1008.
+
+
+
+[16]
+
+LaTeX Warning: Reference `P:diver-thm' on page 17 undefined on input line 1027.
+
+
+
+LaTeX Warning: Reference `e:weak_relax' on page 17 undefined on input line 1067
+.
+
+
+LaTeX Warning: Reference `e:weak_relax' on page 17 undefined on input line 1076
+.
+
+
+LaTeX Warning: Reference `Gamma:LBproblem' on page 17 undefined on input line 1
+076.
+
+
+
+[17]
+
+LaTeX Warning: Reference `e:exact_grad' on page 18 undefined on input line 1128
+.
+
+
+LaTeX Warning: Reference `def-tang-grad' on page 18 undefined on input line 112
+8.
+
+
+LaTeX Warning: Reference `tan-grads-lip' on page 18 undefined on input line 115
+6.
+
+
+LaTeX Warning: Reference `dg:d:first' on page 18 undefined on input line 1156.
+
+
+LaTeX Warning: Reference `projection-b' on page 18 undefined on input line 1166
+.
+
+
+LaTeX Warning: Reference `consistency' on page 18 undefined on input line 1166.
+
+
+
+
+[18]
+
+LaTeX Warning: Reference `error-est-g' on page 19 undefined on input line 1215.
+
+
+
+LaTeX Warning: Reference `error-est-q' on page 19 undefined on input line 1216.
+
+
+
+LaTeX Warning: Reference `error-est-q' on page 19 undefined on input line 1242.
+
+
+
+LaTeX Warning: Reference `stab-const' on page 19 undefined on input line 1247.
+
+
+LaTeX Warning: Reference `def-tang-grad' on page 19 undefined on input line 126
+1.
+
+
+LaTeX Warning: Reference `e:exact_grad' on page 19 undefined on input line 1261
+.
+
+
+LaTeX Warning: Reference `int-gamma' on page 19 undefined on input line 1261.
+
+
+LaTeX Warning: Reference `L:Poincare' on page 19 undefined on input line 1264.
+
+
+LaTeX Warning: Reference `L:norm-equiv' on page 19 undefined on input line 1264
+.
+
+
+LaTeX Warning: Reference `L:norm-equiv' on page 19 undefined on input line 1264
+.
+
+
+LaTeX Warning: Reference `L:norm-equiv' on page 19 undefined on input line 1292
+.
+
+
+
+[19]
+
+LaTeX Warning: Reference `L:Poincare' on page 20 undefined on input line 1299.
+
+
+LaTeX Warning: Reference `L:norm-equiv' on page 20 undefined on input line 1303
+.
+
+
+LaTeX Warning: Reference `L:norm-equiv' on page 20 undefined on input line 1311
+.
+
+
+LaTeX Warning: Reference `e:weak_relax' on page 20 undefined on input line 1316
+.
+
+
+LaTeX Warning: Reference `Gamma:LBproblem' on page 20 undefined on input line 1
+317.
+
+
+LaTeX Warning: Reference `stab-const' on page 20 undefined on input line 1323.
+
+
+LaTeX Warning: Reference `consistency' on page 20 undefined on input line 1331.
+
+
+
+LaTeX Warning: Reference `e:weak_relax' on page 20 undefined on input line 1341
+.
+
+
+LaTeX Warning: Reference `Gamma:LBproblem' on page 20 undefined on input line 1
+341.
+
+
+LaTeX Warning: Reference `int-gamma' on page 20 undefined on input line 1350.
+
+
+LaTeX Warning: Reference `error-est-g' on page 20 undefined on input line 1363.
+
+
+
+LaTeX Warning: Reference `error-est-q' on page 20 undefined on input line 1363.
+
+
+
+LaTeX Warning: Reference `dual-norm' on page 20 undefined on input line 1380.
+
+
+LaTeX Warning: Reference `Gamma:LBproblem' on page 20 undefined on input line 1
+380.
+
+
+LaTeX Warning: Reference `L:norm-equiv' on page 20 undefined on input line 1382
+.
+
+
+LaTeX Warning: Reference `dual-norm' on page 20 undefined on input line 1386.
+
+
+
+[20]
+
+LaTeX Warning: Reference `L:norm-equiv' on page 21 undefined on input line 1394
+.
+
+
+LaTeX Warning: Reference `N:def' on page 21 undefined on input line 1403.
+
+
+LaTeX Warning: Reference `e:rel_dist_grad' on page 21 undefined on input line 1
+438.
+
+
+LaTeX Warning: Reference `grad-extension' on page 21 undefined on input line 14
+38.
+
+
+LaTeX Warning: Reference `e:tang_exact_to_discrete' on page 21 undefined on inp
+ut line 1446.
+
+
+LaTeX Warning: Reference `N:def' on page 21 undefined on input line 1447.
+
+
+LaTeX Warning: Reference `L:curv-parallel' on page 21 undefined on input line 1
+448.
+
+
+LaTeX Warning: Reference `e:rel_dist_grad' on page 21 undefined on input line 1
+449.
+
+
+LaTeX Warning: Reference `e:tang_discrete_to_exact' on page 21 undefined on inp
+ut line 1456.
+
+
+LaTeX Warning: Reference `e:tang_discrete_to_exact' on page 21 undefined on inp
+ut line 1482.
+
+
+LaTeX Warning: Reference `L:geom_consist' on page 21 undefined on input line 14
+87.
+
+
+LaTeX Warning: Reference `consistency' on page 21 undefined on input line 1489.
+
+
+
+LaTeX Warning: Reference `consistency' on page 21 undefined on input line 1493.
+
+
+
+Package amsmath Warning: Foreign command \over;
+(amsmath)                \frac or \genfrac should be used instead
+(amsmath)                 on input line 1503.
+
+
+
+[21]
+
+LaTeX Warning: Reference `int-gamma' on page 22 undefined on input line 1508.
+
+
+LaTeX Warning: Reference `e:tang_exact_to_discrete' on page 22 undefined on inp
+ut line 1508.
+
+
+LaTeX Warning: Reference `consistency' on page 22 undefined on input line 1520.
+
+
+
+LaTeX Warning: Reference `e:tang_discrete_to_exact' on page 22 undefined on inp
+ut line 1521.
+
+
+LaTeX Warning: Reference `L:geom_consist_dist' on page 22 undefined on input li
+ne 1525.
+
+
+LaTeX Warning: Citation `DemlowDziuk:07' on page 22 undefined on input line 152
+8.
+
+
+LaTeX Warning: Citation `De09' on page 22 undefined on input line 1528.
+
+
+LaTeX Warning: Reference `R:param-indep' on page 22 undefined on input line 152
+9.
+
+
+LaTeX Warning: Reference `e:weak' on page 22 undefined on input line 1530.
+
+
+LaTeX Warning: Reference `e:area-rep' on page 22 undefined on input line 1550.
+
+
+LaTeX Warning: Reference `e:rel_dist_grad' on page 22 undefined on input line 1
+585.
+
+
+
+[22]
+
+LaTeX Warning: Reference `e:weak_relax' on page 23 undefined on input line 1631
+.
+
+
+LaTeX Warning: Reference `geom-quantities' on page 23 undefined on input line 1
+647.
+
+
+LaTeX Warning: Reference `e:weak_relax' on page 23 undefined on input line 1650
+.
+
+
+LaTeX Warning: Reference `Gamma:LBproblem' on page 23 undefined on input line 1
+650.
+
+
+LaTeX Warning: Reference `L:perturbation_bound' on page 23 undefined on input l
+ine 1664.
+
+
+LaTeX Warning: Reference `e:area_ratio_distance' on page 23 undefined on input 
+line 1686.
+
+
+
+[23]
+
+LaTeX Warning: Reference `L:perturbation_bound' on page 24 undefined on input l
+ine 1726.
+
+
+LaTeX Warning: Reference `L:perturbation_bound_dist' on page 24 undefined on in
+put line 1727.
+
+
+LaTeX Warning: Reference `geom-quantities' on page 24 undefined on input line 1
+731.
+
+
+LaTeX Warning: Reference `geo-est' on page 24 undefined on input line 1732.
+
+
+LaTeX Warning: Reference `stab-const' on page 24 undefined on input line 1737.
+
+
+LaTeX Warning: Reference `unit-normal' on page 24 undefined on input line 1741.
+
+
+
+LaTeX Warning: Reference `q-N' on page 24 undefined on input line 1760.
+
+
+LaTeX Warning: Reference `L:error-est' on page 24 undefined on input line 1761.
+
+
+
+LaTeX Warning: Reference `est-normals' on page 24 undefined on input line 1761.
+
+
+
+LaTeX Warning: Reference `perturbation_bound' on page 24 undefined on input lin
+e 1766.
+
+
+LaTeX Warning: Reference `perturbation_bound_dist' on page 24 undefined on inpu
+t line 1767.
+
+
+LaTeX Warning: Reference `t:C1_implies_C2' on page 24 undefined on input line 1
+767.
+
+
+LaTeX Warning: Reference `e:weak_relax' on page 24 undefined on input line 1776
+.
+
+
+
+[24]
+
+LaTeX Warning: Reference `e:delta-tube' on page 25 undefined on input line 1786
+.
+
+
+LaTeX Warning: Reference `H2-extension' on page 25 undefined on input line 1797
+.
+
+
+LaTeX Warning: Reference `H2-extension' on page 25 undefined on input line 1798
+.
+
+
+
+[25]
+
+LaTeX Warning: Reference `L:properties-de' on page 26 undefined on input line 2
+211.
+
+
+LaTeX Warning: Reference `L:properties-de' on page 26 undefined on input line 2
+226.
+
+
+
+[26]
+
+LaTeX Warning: Reference `e:Ntilde' on page 27 undefined on input line 2302.
+
+
+LaTeX Warning: Reference `L:properties-de' on page 27 undefined on input line 2
+320.
+
+
+
+[27]
+
+LaTeX Warning: Reference `L:properties-Pe' on page 28 undefined on input line 2
+360.
+
+
+LaTeX Warning: Reference `e:Ntilde' on page 28 undefined on input line 2368.
+
+
+LaTeX Warning: Reference `e:Ntilde' on page 28 undefined on input line 2375.
+
+
+LaTeX Warning: Reference `c:properties-Pe' on page 28 undefined on input line 2
+400.
+
+
+LaTeX Warning: Reference `e:rel_dist_grad' on page 28 undefined on input line 2
+414.
+
+
+LaTeX Warning: Reference `e:rel_dist_grad' on page 28 undefined on input line 2
+422.
+
+
+LaTeX Warning: Reference `L:properties-Pe' on page 28 undefined on input line 2
+432.
+
+
+LaTeX Warning: Reference `e:coarea' on page 28 undefined on input line 2441.
+
+
+LaTeX Warning: Reference `e:Ntilde' on page 28 undefined on input line 2443.
+
+
+
+[28]
+
+LaTeX Warning: Reference `L:norm-equiv' on page 29 undefined on input line 2454
+.
+
+
+LaTeX Warning: Reference `e:tang_discrete_to_exact' on page 29 undefined on inp
+ut line 2457.
+
+
+LaTeX Warning: Reference `L:properties-de' on page 29 undefined on input line 2
+467.
+
+
+LaTeX Warning: Reference `L:properties-Pe' on page 29 undefined on input line 2
+467.
+
+
+LaTeX Warning: Reference `L:properties-Pe' on page 29 undefined on input line 2
+467.
+
+
+Overfull \hbox (11.69225pt too wide) in paragraph at lines 2464--2468
+\OT1/cmr/m/n/10 where $\OT1/cmr/bx/n/10 M\OT1/cmr/m/n/10 (\OT1/cmr/bx/n/10 x\OT
+1/cmr/m/n/10 ) = (\OT1/cmr/bx/n/10 I \OMS/cmsy/m/n/10 ^^@ \OML/cmm/m/it/10 d[]\
+OT1/cmr/bx/n/10 W[]\OT1/cmr/m/n/10 )[](\OT1/cmr/bx/n/10 x\OT1/cmr/m/n/10 ) []$.
+ We thus wish to bound $\OMS/cmsy/m/n/10 k\OML/cmm/m/it/10 M\OMS/cmsy/m/n/10 k[
+]$\OT1/cmr/m/n/10 .
+ []
+
+
+LaTeX Warning: Reference `L:properties-de' on page 29 undefined on input line 2
+475.
+
+
+LaTeX Warning: Reference `L:properties-Pe' on page 29 undefined on input line 2
+475.
+
+
+LaTeX Warning: Reference `L:norm-equiv' on page 29 undefined on input line 2483
+.
+
+
+LaTeX Warning: Reference `e:coarea' on page 29 undefined on input line 2489.
+
+
+
+[29]
+
+LaTeX Warning: Reference `e:tang_exact_to_discrete' on page 30 undefined on inp
+ut line 2537.
+
+
+LaTeX Warning: Reference `int-gamma' on page 30 undefined on input line 2545.
+
+
+LaTeX Warning: Reference `C:int-parts' on page 30 undefined on input line 2545.
+
+
+
+LaTeX Warning: Reference `e:area_ratio_distance' on page 30 undefined on input 
+line 2554.
+
+
+LaTeX Warning: Reference `c:properties-Pe' on page 30 undefined on input line 2
+582.
+
+
+LaTeX Warning: Reference `P:H2-extension' on page 30 undefined on input line 25
+85.
+
+
+LaTeX Warning: Reference `L:PDE-ue' on page 30 undefined on input line 2599.
+
+
+
+[30]
+
+LaTeX Warning: Reference `L:PDE-ue' on page 31 undefined on input line 2606.
+
+
+LaTeX Warning: Reference `P:H2-extension' on page 31 undefined on input line 26
+11.
+
+
+LaTeX Warning: Reference `e:Ntilde' on page 31 undefined on input line 2613.
+
+
+LaTeX Warning: Reference `e:tang_discrete_to_exact' on page 31 undefined on inp
+ut line 2615.
+
+
+LaTeX Warning: Reference `L:properties-Pe' on page 31 undefined on input line 2
+617.
+
+
+LaTeX Warning: Reference `e:tang_discrete_to_exact' on page 31 undefined on inp
+ut line 2624.
+
+
+LaTeX Warning: Reference `L:PDE-ue' on page 31 undefined on input line 2640.
+
+
+LaTeX Warning: Reference `e:area_ratio_distance' on page 31 undefined on input 
+line 2648.
+
+
+LaTeX Warning: Reference `L:PDE-ue' on page 31 undefined on input line 2656.
+
+
+LaTeX Warning: Reference `e:coarea' on page 31 undefined on input line 2659.
+
+
+LaTeX Warning: Reference `e:Ntilde' on page 31 undefined on input line 2680.
+
+) (./parametric_v9.tex
+
+[31]
+
+LaTeX Warning: Reference `S:perturbation' on page 32 undefined on input line 13
+.
+
+
+LaTeX Warning: Reference `f:valence' on page 32 undefined on input line 67.
+
+
+LaTeX Warning: Citation `DemlowDziuk:07' on page 32 undefined on input line 67.
+
+
+
+LaTeX Warning: Citation `BCMMN16' on page 32 undefined on input line 67.
+
+
+LaTeX Warning: Citation `BCMN:Magenes' on page 32 undefined on input line 67.
+
+
+
+[32]
+Package epstopdf Info: Source file: <shape_n12.eps>
+(epstopdf)                    date: 2019-06-06 14:08:30
+(epstopdf)                    size: 13079 bytes
+(epstopdf)             Output file: <shape_n12-eps-converted-to.pdf>
+(epstopdf)             Command: <repstopdf --outfile=shape_n12-eps-converted-to
+.pdf shape_n12.eps>
+(epstopdf)             \includegraphics on input line 72.
+runsystem(repstopdf --outfile=shape_n12-eps-converted-to.pdf shape_n12.eps)...e
+xecuted safely (allowed).
+
+Package epstopdf Info: Result file: <shape_n12-eps-converted-to.pdf>
+(epstopdf)                    date: 2025-09-18 18:02:31
+(epstopdf)                    size: 3299 bytes.
+<shape_n12-eps-converted-to.pdf, id=129, 796.9775pt x 518.93875pt>
+File: shape_n12-eps-converted-to.pdf Graphic file (type pdf)
+<use shape_n12-eps-converted-to.pdf>
+Package pdftex.def Info: shape_n12-eps-converted-to.pdf  used on input line 72.
+
+(pdftex.def)             Requested size: 180.0pt x 117.1996pt.
+Package epstopdf Info: Source file: <shape_n22.eps>
+(epstopdf)                    date: 2019-06-06 14:08:37
+(epstopdf)                    size: 15731 bytes
+(epstopdf)             Output file: <shape_n22-eps-converted-to.pdf>
+(epstopdf)             Command: <repstopdf --outfile=shape_n22-eps-converted-to
+.pdf shape_n22.eps>
+(epstopdf)             \includegraphics on input line 72.
+runsystem(repstopdf --outfile=shape_n22-eps-converted-to.pdf shape_n22.eps)...e
+xecuted safely (allowed).
+
+Package epstopdf Info: Result file: <shape_n22-eps-converted-to.pdf>
+(epstopdf)                    date: 2025-09-18 18:02:33
+(epstopdf)                    size: 3548 bytes.
+<shape_n22-eps-converted-to.pdf, id=130, 796.9775pt x 518.93875pt>
+File: shape_n22-eps-converted-to.pdf Graphic file (type pdf)
+<use shape_n22-eps-converted-to.pdf>
+Package pdftex.def Info: shape_n22-eps-converted-to.pdf  used on input line 72.
+
+(pdftex.def)             Requested size: 180.0pt x 117.1996pt.
+
+
+LaTeX Warning: Reference `e:shape_reg_init' on page 33 undefined on input line 
+74.
+
+
+LaTeX Warning: Reference `e:shape_reg' on page 33 undefined on input line 79.
+
+
+LaTeX Warning: Citation `BP:11' on page 33 undefined on input line 85.
+
+
+LaTeX Warning: Reference `e:shape_reg_init' on page 33 undefined on input line 
+85.
+
+
+LaTeX Warning: Citation `BCMMN16' on page 33 undefined on input line 86.
+
+
+LaTeX Warning: Citation `BCMN:Magenes' on page 33 undefined on input line 86.
+
+
+LaTeX Warning: Reference `e:shape_reg_init' on page 33 undefined on input line 
+87.
+
+
+LaTeX Warning: Reference `f:param' on page 33 undefined on input line 92.
+
+
+LaTeX Warning: Reference `surf_bi_lipschitz' on page 33 undefined on input line
+ 93.
+
+
+LaTeX Warning: Reference `e:shape_reg_init' on page 33 undefined on input line 
+93.
+
+Package epstopdf Info: Source file: <parametric.eps>
+(epstopdf)                    date: 2019-06-06 14:07:58
+(epstopdf)                    size: 3044 bytes
+(epstopdf)             Output file: <parametric-eps-converted-to.pdf>
+(epstopdf)             Command: <repstopdf --outfile=parametric-eps-converted-t
+o.pdf parametric.eps>
+(epstopdf)             \includegraphics on input line 108.
+runsystem(repstopdf --outfile=parametric-eps-converted-to.pdf parametric.eps)..
+.executed safely (allowed).
+
+Package epstopdf Info: Result file: <parametric-eps-converted-to.pdf>
+(epstopdf)                    date: 2025-09-18 18:02:35
+(epstopdf)                    size: 3324 bytes.
+<parametric-eps-converted-to.pdf, id=131, 283.0575pt x 242.9075pt>
+File: parametric-eps-converted-to.pdf Graphic file (type pdf)
+<use parametric-eps-converted-to.pdf>
+Package pdftex.def Info: parametric-eps-converted-to.pdf  used on input line 10
+8.
+(pdftex.def)             Requested size: 180.0pt x 154.47063pt.
+
+
+[33 <./shape_n12-eps-converted-to.pdf> <./shape_n22-eps-converted-to.pdf>]
+
+LaTeX Warning: Reference `sec:preliminaries' on page 34 undefined on input line
+ 155.
+
+
+LaTeX Warning: Reference `e:shape_reg_exact' on page 34 undefined on input line
+ 158.
+
+
+Overfull \hbox (10.90419pt too wide) in paragraph at lines 149--162
+\OT1/cmr/bx/n/10 Differential Ge-om-e-try on Poly-he-dral Sur-faces. \OT1/cmr/m
+/n/10 We use the at-las $\OMS/cmsy/m/n/10 f[]\OML/cmm/m/it/10 ; []; [][]\OMS/cm
+sy/m/n/10 g[]$\OT1/cmr/m/n/10 ,
+ []
+
+
+LaTeX Warning: Reference `stab-const' on page 34 undefined on input line 178.
+
+
+LaTeX Warning: Reference `e:shape_reg_exact' on page 34 undefined on input line
+ 185.
+
+
+LaTeX Warning: Reference `bi_lipschitz' on page 34 undefined on input line 185.
+
+
+
+
+[34 <./parametric-eps-converted-to.pdf>]
+
+LaTeX Warning: Reference `para_lift' on page 35 undefined on input line 219.
+
+
+LaTeX Warning: Reference `e:weak_relax' on page 35 undefined on input line 222.
+
+
+
+LaTeX Warning: Reference `C:int-parts' on page 35 undefined on input line 223.
+
+
+LaTeX Warning: Reference `lap-bel' on page 35 undefined on input line 246.
+
+
+LaTeX Warning: Reference `jump-residual' on page 35 undefined on input line 247
+.
+
+
+
+[35]
+
+LaTeX Warning: Reference `e:weak_relax' on page 36 undefined on input line 293.
+
+
+
+LaTeX Warning: Reference `e:galerkin_relax' on page 36 undefined on input line 
+293.
+
+
+LaTeX Warning: Reference `para_lift' on page 36 undefined on input line 296.
+
+
+LaTeX Warning: Reference `error-matrix-g' on page 36 undefined on input line 30
+0.
+
+
+LaTeX Warning: Reference `error-matrix-G' on page 36 undefined on input line 30
+1.
+
+
+LaTeX Warning: Reference `e:galerkin_Gamma' on page 36 undefined on input line 
+315.
+
+
+LaTeX Warning: Reference `e:galerkin_gamma' on page 36 undefined on input line 
+315.
+
+
+LaTeX Warning: Reference `e:galerkin_relax' on page 36 undefined on input line 
+316.
+
+
+LaTeX Warning: Reference `consistency' on page 36 undefined on input line 316.
+
+
+LaTeX Warning: Reference `e:weak_relax' on page 36 undefined on input line 325.
+
+
+
+LaTeX Warning: Reference `int-gamma' on page 36 undefined on input line 325.
+
+
+LaTeX Warning: Reference `e:galerkin_Gamma' on page 36 undefined on input line 
+325.
+
+
+LaTeX Warning: Reference `L:Poincare-unif' on page 36 undefined on input line 3
+53.
+
+
+LaTeX Warning: Reference `poin-unif' on page 36 undefined on input line 353.
+
+
+LaTeX Warning: Reference `Sapprox1' on page 36 undefined on input line 353.
+
+
+LaTeX Warning: Reference `q:nondegen:assume' on page 36 undefined on input line
+ 353.
+
+
+LaTeX Warning: Reference `surf_bi_lipschitz' on page 36 undefined on input line
+ 353.
+
+
+LaTeX Warning: Reference `S:perturb-C2' on page 36 undefined on input line 354.
+
+
+
+LaTeX Warning: Citation `BCMMN16' on page 36 undefined on input line 363.
+
+
+
+[36]
+
+LaTeX Warning: Reference `geo-est' on page 37 undefined on input line 378.
+
+
+LaTeX Warning: Reference `stab-const' on page 37 undefined on input line 390.
+
+
+LaTeX Warning: Reference `L:perturbation_bound' on page 37 undefined on input l
+ine 393.
+
+
+LaTeX Warning: Citation `BD:18' on page 37 undefined on input line 397.
+
+
+LaTeX Warning: Reference `L:perturbation_bound_dist' on page 37 undefined on in
+put line 398.
+
+
+LaTeX Warning: Reference `L:est-normals' on page 37 undefined on input line 400
+.
+
+
+LaTeX Warning: Reference `S:perturb-C2' on page 37 undefined on input line 419.
+
+
+
+LaTeX Warning: Reference `e:shape_reg_init' on page 37 undefined on input line 
+441.
+
+
+LaTeX Warning: Reference `e:shape_reg_exact' on page 37 undefined on input line
+ 442.
+
+
+LaTeX Warning: Reference `stab-const' on page 37 undefined on input line 452.
+
+
+LaTeX Warning: Reference `e:shape_reg_init' on page 37 undefined on input line 
+460.
+
+
+LaTeX Warning: Reference `e:shape_reg_exact' on page 37 undefined on input line
+ 460.
+
+
+LaTeX Warning: Reference `Sapprox1' on page 37 undefined on input line 461.
+
+
+LaTeX Warning: Reference `L:error-est' on page 37 undefined on input line 462.
+
+
+LaTeX Warning: Reference `L:est-normals' on page 37 undefined on input line 463
+.
+
+
+LaTeX Warning: Reference `bound-E' on page 37 undefined on input line 464.
+
+
+LaTeX Warning: Reference `e:approx_X' on page 37 undefined on input line 464.
+
+
+LaTeX Warning: Reference `S:perturb-C2' on page 37 undefined on input line 473.
+
+
+
+LaTeX Warning: Reference `error-matrix-gamma' on page 37 undefined on input lin
+e 475.
+
+
+LaTeX Warning: Reference `error-matrix-Gamma' on page 37 undefined on input lin
+e 475.
+
+
+LaTeX Warning: Reference `C:lambda' on page 37 undefined on input line 476.
+
+
+LaTeX Warning: Citation `BD:18' on page 37 undefined on input line 480.
+
+
+LaTeX Warning: Reference `d:beta' on page 37 undefined on input line 487.
+
+
+
+[37]
+
+LaTeX Warning: Reference `N:def-2' on page 38 undefined on input line 497.
+
+
+LaTeX Warning: Reference `S:perturb-C2' on page 38 undefined on input line 497.
+
+
+
+LaTeX Warning: Reference `P_Pd:mismatch' on page 38 undefined on input line 526
+.
+
+
+LaTeX Warning: Reference `P_Pd:mismatch' on page 38 undefined on input line 527
+.
+
+
+LaTeX Warning: Citation `BD:18' on page 38 undefined on input line 528.
+
+
+LaTeX Warning: Reference `beta-small' on page 38 undefined on input line 535.
+
+
+LaTeX Warning: Reference `q:nondegen:assume' on page 38 undefined on input line
+ 535.
+
+
+LaTeX Warning: Reference `q-d-nu' on page 38 undefined on input line 559.
+
+
+LaTeX Warning: Reference `d:beta' on page 38 undefined on input line 559.
+
+
+LaTeX Warning: Reference `q-d-nu' on page 38 undefined on input line 560.
+
+
+LaTeX Warning: Reference `est-normals' on page 38 undefined on input line 561.
+
+
+LaTeX Warning: Reference `q-d-nu' on page 38 undefined on input line 561.
+
+
+LaTeX Warning: Reference `measure_error' on page 38 undefined on input line 562
+.
+
+
+LaTeX Warning: Reference `est-normals' on page 38 undefined on input line 562.
+
+
+LaTeX Warning: Reference `est-E-EG' on page 38 undefined on input line 563.
+
+
+LaTeX Warning: Reference `est-E' on page 38 undefined on input line 563.
+
+
+LaTeX Warning: Reference `error-mismatch' on page 38 undefined on input line 57
+7.
+
+
+LaTeX Warning: Citation `BD:18' on page 38 undefined on input line 586.
+
+
+LaTeX Warning: Reference `e:shape_reg_init' on page 38 undefined on input line 
+589.
+
+
+LaTeX Warning: Reference `q:nondegen:assume' on page 38 undefined on input line
+ 590.
+
+
+LaTeX Warning: Reference `beta-small' on page 38 undefined on input line 590.
+
+
+LaTeX Warning: Reference `P_Pd:mismatch' on page 38 undefined on input line 590
+.
+
+
+LaTeX Warning: Reference `e:shape_reg_exact' on page 38 undefined on input line
+ 605.
+
+
+
+[38]
+
+LaTeX Warning: Reference `q:nondegen' on page 39 undefined on input line 618.
+
+
+LaTeX Warning: Reference `P_Pd:mismatch' on page 39 undefined on input line 625
+.
+
+
+LaTeX Warning: Citation `Stein:70' on page 39 undefined on input line 630.
+
+
+LaTeX Warning: Reference `q:nondegen' on page 39 undefined on input line 672.
+
+
+LaTeX Warning: Reference `e:shape_reg_exact' on page 39 undefined on input line
+ 672.
+
+
+LaTeX Warning: Reference `P_Pd:mismatch' on page 39 undefined on input line 674
+.
+
+
+
+[39]
+
+LaTeX Warning: Reference `e:shape_reg_exact' on page 40 undefined on input line
+ 712.
+
+
+LaTeX Warning: Reference `error-mismatch' on page 40 undefined on input line 72
+3.
+
+
+LaTeX Warning: Reference `q:nondegen' on page 40 undefined on input line 731.
+
+
+LaTeX Warning: Reference `e:shape_reg_exact' on page 40 undefined on input line
+ 731.
+
+
+LaTeX Warning: Reference `l:convolution' on page 40 undefined on input line 743
+.
+
+
+LaTeX Warning: Reference `sec:narrow' on page 40 undefined on input line 745.
+
+
+LaTeX Warning: Reference `l:convolution' on page 40 undefined on input line 764
+.
+
+
+LaTeX Warning: Reference `l:convolution' on page 40 undefined on input line 784
+.
+
+
+LaTeX Warning: Reference `e:weak' on page 40 undefined on input line 793.
+
+
+
+[40]
+
+LaTeX Warning: Citation `Dz88' on page 41 undefined on input line 801.
+
+
+LaTeX Warning: Reference `t:C1_implies_C2' on page 41 undefined on input line 8
+03.
+
+
+LaTeX Warning: Reference `S:geom_consistency' on page 41 undefined on input lin
+e 805.
+
+
+LaTeX Warning: Reference `K:def' on page 41 undefined on input line 818.
+
+
+LaTeX Warning: Reference `d:beta' on page 41 undefined on input line 818.
+
+
+LaTeX Warning: Citation `Vee15' on page 41 undefined on input line 828.
+
+
+LaTeX Warning: Citation `CD15' on page 41 undefined on input line 839.
+
+
+LaTeX Warning: Reference `e:tang_exact_to_discrete' on page 41 undefined on inp
+ut line 849.
+
+
+LaTeX Warning: Reference `H1:equiv' on page 41 undefined on input line 853.
+
+
+
+[41]
+
+LaTeX Warning: Reference `opt_approx' on page 42 undefined on input line 887.
+
+
+LaTeX Warning: Reference `L:approxH1' on page 42 undefined on input line 898.
+
+
+LaTeX Warning: Reference `L:perturbation_bound' on page 42 undefined on input l
+ine 900.
+
+
+LaTeX Warning: Reference `L:perturbation_bound_dist' on page 42 undefined on in
+put line 900.
+
+
+LaTeX Warning: Reference `L:regularity' on page 42 undefined on input line 903.
+
+
+
+LaTeX Warning: Reference `e:weak' on page 42 undefined on input line 913.
+
+
+LaTeX Warning: Reference `e:galerkin' on page 42 undefined on input line 915.
+
+
+LaTeX Warning: Reference `bi_lipschitz' on page 42 undefined on input line 916.
+
+
+
+LaTeX Warning: Reference `beta-small' on page 42 undefined on input line 917.
+
+
+LaTeX Warning: Reference `P_Pd:mismatch' on page 42 undefined on input line 917
+.
+
+
+LaTeX Warning: Reference `Gamma:LBproblem' on page 42 undefined on input line 9
+33.
+
+
+
+[42]
+
+LaTeX Warning: Reference `L:approxH1' on page 43 undefined on input line 955.
+
+
+Overfull \hbox (2.91937pt too wide) in paragraph at lines 953--959
+\OT1/cmr/m/n/10 Applying Lemma [] (ap-prox-ima-bil-ity of $\OML/cmm/m/it/10 H[]
+\OT1/cmr/m/n/10 (^^@)$), to-gether with $\OMS/cmsy/m/n/10 k[]k[] \U/msa/m/n/10 
+. \OMS/cmsy/m/n/10 k[]k[]$\OT1/cmr/m/n/10 ,
+ []
+
+
+LaTeX Warning: Reference `L:norm-equiv' on page 43 undefined on input line 964.
+
+
+
+LaTeX Warning: Reference `L:perturbation_bound_dist' on page 43 undefined on in
+put line 965.
+
+
+LaTeX Warning: Reference `C:lambda-2' on page 43 undefined on input line 966.
+
+
+LaTeX Warning: Reference `l:convolution' on page 43 undefined on input line 977
+.
+
+
+LaTeX Warning: Reference `L:perturbation_bound' on page 43 undefined on input l
+ine 989.
+
+
+LaTeX Warning: Reference `C:lambda' on page 43 undefined on input line 991.
+
+
+LaTeX Warning: Reference `L:perturbation_bound' on page 43 undefined on input l
+ine 997.
+
+
+LaTeX Warning: Reference `L:perturbation_bound_dist' on page 43 undefined on in
+put line 997.
+
+
+LaTeX Warning: Reference `L:GO' on page 43 undefined on input line 1008.
+
+
+
+[43]
+
+LaTeX Warning: Reference `C:lambda-2' on page 44 undefined on input line 1029.
+
+
+LaTeX Warning: Reference `L:norm-equiv' on page 44 undefined on input line 1031
+.
+
+
+LaTeX Warning: Reference `L:approxH1' on page 44 undefined on input line 1038.
+
+
+LaTeX Warning: Reference `poin-unif' on page 44 undefined on input line 1062.
+
+
+LaTeX Warning: Reference `l:convolution' on page 44 undefined on input line 106
+4.
+
+
+LaTeX Warning: Reference `d:mu' on page 44 undefined on input line 1080.
+
+
+LaTeX Warning: Reference `C:lambda-2' on page 44 undefined on input line 1080.
+
+
+LaTeX Warning: Reference `L:approxH1' on page 44 undefined on input line 1081.
+
+
+LaTeX Warning: Reference `C:lambda' on page 44 undefined on input line 1085.
+
+
+LaTeX Warning: Reference `C:lambda' on page 44 undefined on input line 1094.
+
+
+LaTeX Warning: Reference `C:lambda-2' on page 44 undefined on input line 1095.
+
+
+LaTeX Warning: Reference `bi_lipschitz' on page 44 undefined on input line 1116
+.
+
+
+LaTeX Warning: Reference `beta-small' on page 44 undefined on input line 1117.
+
+
+LaTeX Warning: Reference `P_Pd:mismatch' on page 44 undefined on input line 111
+7.
+
+
+LaTeX Warning: Reference `e:weak_relax' on page 44 undefined on input line 1119
+.
+
+
+LaTeX Warning: Reference `e:galerkin' on page 44 undefined on input line 1120.
+
+
+
+[44]
+
+LaTeX Warning: Reference `l:convolution' on page 45 undefined on input line 112
+6.
+
+
+LaTeX Warning: Reference `d:beta' on page 45 undefined on input line 1140.
+
+
+LaTeX Warning: Reference `d:mu' on page 45 undefined on input line 1141.
+
+
+LaTeX Warning: Reference `L:Poincare' on page 45 undefined on input line 1151.
+
+
+LaTeX Warning: Reference `t:H1error' on page 45 undefined on input line 1160.
+
+
+LaTeX Warning: Reference `L:GO' on page 45 undefined on input line 1170.
+
+
+
+[45]
+
+LaTeX Warning: Reference `L:regularity' on page 46 undefined on input line 1204
+.
+
+
+LaTeX Warning: Reference `t:H1error' on page 46 undefined on input line 1211.
+
+
+LaTeX Warning: Reference `L:norm-equiv' on page 46 undefined on input line 1212
+.
+
+
+LaTeX Warning: Reference `t:H1error' on page 46 undefined on input line 1220.
+
+
+LaTeX Warning: Reference `l:convolution' on page 46 undefined on input line 122
+8.
+
+
+LaTeX Warning: Reference `C:lambda-2' on page 46 undefined on input line 1248.
+
+
+LaTeX Warning: Reference `L:norm-equiv' on page 46 undefined on input line 1249
+.
+
+
+LaTeX Warning: Reference `L:norm-equiv' on page 46 undefined on input line 1258
+.
+
+
+LaTeX Warning: Reference `q:nondegen:assume' on page 46 undefined on input line
+ 1258.
+
+
+LaTeX Warning: Reference `C:lambda-2' on page 46 undefined on input line 1269.
+
+
+LaTeX Warning: Reference `L:norm-equiv' on page 46 undefined on input line 1269
+.
+
+
+LaTeX Warning: Reference `L:norm-equiv' on page 46 undefined on input line 1272
+.
+
+
+
+[46]
+
+LaTeX Warning: Reference `l:convolution' on page 47 undefined on input line 128
+8.
+
+
+LaTeX Warning: Reference `d:beta' on page 47 undefined on input line 1290.
+
+
+LaTeX Warning: Reference `e:L2error' on page 47 undefined on input line 1294.
+
+
+LaTeX Warning: Citation `Dz88' on page 47 undefined on input line 1295.
+
+
+LaTeX Warning: Reference `e:L2error' on page 47 undefined on input line 1296.
+
+
+LaTeX Warning: Reference `error-rep' on page 47 undefined on input line 1301.
+
+
+LaTeX Warning: Reference `L:regularity' on page 47 undefined on input line 1302
+.
+
+
+LaTeX Warning: Reference `regularity' on page 47 undefined on input line 1304.
+
+
+LaTeX Warning: Reference `est-E-EG' on page 47 undefined on input line 1311.
+
+
+LaTeX Warning: Reference `error-rep' on page 47 undefined on input line 1312.
+
+
+LaTeX Warning: Reference `l:convolution' on page 47 undefined on input line 131
+3.
+
+
+LaTeX Warning: Reference `L:regularity-W2p' on page 47 undefined on input line 
+1326.
+
+
+LaTeX Warning: Citation `BDO19' on page 47 undefined on input line 1335.
+
+
+LaTeX Warning: Reference `L:approxH1' on page 47 undefined on input line 1336.
+
+
+LaTeX Warning: Reference `tan-grads-lip' on page 47 undefined on input line 135
+2.
+
+
+LaTeX Warning: Citation `Vee15' on page 47 undefined on input line 1359.
+
+
+
+[47]
+
+LaTeX Warning: Reference `L:approxH1-C1a' on page 48 undefined on input line 13
+71.
+
+
+LaTeX Warning: Reference `L:approxH1' on page 48 undefined on input line 1371.
+
+
+LaTeX Warning: Reference `L:approxH1-C1a' on page 48 undefined on input line 13
+71.
+
+
+LaTeX Warning: Reference `L:approxH1' on page 48 undefined on input line 1371.
+
+
+LaTeX Warning: Reference `t:H1error' on page 48 undefined on input line 1371.
+
+
+LaTeX Warning: Reference `t:L2_apriori' on page 48 undefined on input line 1371
+.
+
+
+LaTeX Warning: Reference `bi_lipschitz' on page 48 undefined on input line 1375
+.
+
+
+LaTeX Warning: Reference `beta-small' on page 48 undefined on input line 1376.
+
+
+LaTeX Warning: Reference `P_Pd:mismatch' on page 48 undefined on input line 137
+6.
+
+
+LaTeX Warning: Reference `e:weak' on page 48 undefined on input line 1377.
+
+
+LaTeX Warning: Reference `e:galerkin' on page 48 undefined on input line 1385.
+
+
+LaTeX Warning: Reference `t:H1error' on page 48 undefined on input line 1393.
+
+
+LaTeX Warning: Reference `L:approxH1-C1a' on page 48 undefined on input line 13
+93.
+
+
+LaTeX Warning: Reference `L:approxH1' on page 48 undefined on input line 1394.
+
+
+LaTeX Warning: Reference `t:H1error' on page 48 undefined on input line 1394.
+
+
+LaTeX Warning: Reference `poin-unif' on page 48 undefined on input line 1394.
+
+
+LaTeX Warning: Reference `L:perturbation_bound' on page 48 undefined on input l
+ine 1394.
+
+
+LaTeX Warning: Reference `C:lambda' on page 48 undefined on input line 1394.
+
+
+LaTeX Warning: Reference `e:galerkin' on page 48 undefined on input line 1409.
+
+
+LaTeX Warning: Reference `e:weak' on page 48 undefined on input line 1410.
+
+
+LaTeX Warning: Citation `BCMMN16' on page 48 undefined on input line 1413.
+
+
+LaTeX Warning: Citation `BCMN:Magenes' on page 48 undefined on input line 1413.
+
+
+
+LaTeX Warning: Reference `patch' on page 48 undefined on input line 1422.
+
+
+LaTeX Warning: Reference `S:a-priori' on page 48 undefined on input line 1425.
+
+
+
+[48]
+
+LaTeX Warning: Reference `S:diver-thm' on page 49 undefined on input line 1435.
+
+
+
+LaTeX Warning: Reference `lap-bel-def' on page 49 undefined on input line 1439.
+
+
+
+LaTeX Warning: Reference `bi_lipschitz' on page 49 undefined on input line 1462
+.
+
+
+LaTeX Warning: Reference `e:weak' on page 49 undefined on input line 1463.
+
+
+LaTeX Warning: Reference `e:galerkin' on page 49 undefined on input line 1463.
+
+
+LaTeX Warning: Reference `e:weak_relax' on page 49 undefined on input line 1472
+.
+
+
+LaTeX Warning: Reference `e:galerkin_relax' on page 49 undefined on input line 
+1472.
+
+
+LaTeX Warning: Reference `consistency' on page 49 undefined on input line 1473.
+
+
+
+LaTeX Warning: Reference `C:int-parts' on page 49 undefined on input line 1493.
+
+
+
+
+[49]
+
+LaTeX Warning: Reference `e:sz_interp' on page 50 undefined on input line 1513.
+
+
+
+LaTeX Warning: Reference `L:norm-equiv' on page 50 undefined on input line 1521
+.
+
+
+LaTeX Warning: Reference `C:lambda' on page 50 undefined on input line 1522.
+
+
+LaTeX Warning: Reference `L:norm-equiv' on page 50 undefined on input line 1537
+.
+
+
+LaTeX Warning: Reference `L:Poincare' on page 50 undefined on input line 1537.
+
+
+LaTeX Warning: Reference `t:posteriori_generic' on page 50 undefined on input l
+ine 1541.
+
+
+LaTeX Warning: Citation `BCMN:Magenes' on page 50 undefined on input line 1555.
+
+
+
+LaTeX Warning: Reference `t:posteriori_generic' on page 50 undefined on input l
+ine 1568.
+
+
+LaTeX Warning: Citation `MR3059294' on page 50 undefined on input line 1579.
+
+
+LaTeX Warning: Reference `e:post_split' on page 50 undefined on input line 1580
+.
+
+
+LaTeX Warning: Reference `H1:equiv' on page 50 undefined on input line 1580.
+
+
+LaTeX Warning: Reference `e:post_split' on page 50 undefined on input line 1584
+.
+
+
+LaTeX Warning: Reference `e:I1' on page 50 undefined on input line 1588.
+
+
+LaTeX Warning: Reference `C:lambda' on page 50 undefined on input line 1589.
+
+
+
+[50]
+
+LaTeX Warning: Reference `e:post_split' on page 51 undefined on input line 1598
+.
+
+
+LaTeX Warning: Reference `e:I1' on page 51 undefined on input line 1598.
+
+
+LaTeX Warning: Reference `T:apost-lower' on page 51 undefined on input line 161
+7.
+
+
+LaTeX Warning: Reference `e:estim_consist' on page 51 undefined on input line 1
+618.
+
+
+LaTeX Warning: Reference `C:lambda' on page 51 undefined on input line 1619.
+
+
+LaTeX Warning: Reference `C:lambda-2' on page 51 undefined on input line 1620.
+
+
+LaTeX Warning: Citation `BD:18' on page 51 undefined on input line 1624.
+
+
+LaTeX Warning: Citation `BD:18' on page 51 undefined on input line 1626.
+
+
+LaTeX Warning: Reference `e:shape_reg_init' on page 51 undefined on input line 
+1630.
+
+
+LaTeX Warning: Reference `q:nondegen:assume' on page 51 undefined on input line
+ 1631.
+
+
+LaTeX Warning: Reference `beta-small' on page 51 undefined on input line 1631.
+
+
+LaTeX Warning: Reference `P_Pd:mismatch' on page 51 undefined on input line 163
+1.
+
+
+LaTeX Warning: Reference `e:weak' on page 51 undefined on input line 1632.
+
+
+LaTeX Warning: Reference `e:galerkin' on page 51 undefined on input line 1633.
+
+
+LaTeX Warning: Reference `t:posteriori_generic' on page 51 undefined on input l
+ine 1642.
+
+
+
+[51]
+
+LaTeX Warning: Reference `consistency' on page 52 undefined on input line 1662.
+
+
+
+LaTeX Warning: Reference `error-matrix-gamma' on page 52 undefined on input lin
+e 1663.
+
+
+LaTeX Warning: Reference `L:geom_consist_dist' on page 52 undefined on input li
+ne 1663.
+
+
+LaTeX Warning: Reference `t:posteriori_generic' on page 52 undefined on input l
+ine 1665.
+
+
+LaTeX Warning: Reference `est-E-EG' on page 52 undefined on input line 1673.
+
+
+LaTeX Warning: Reference `C:lambda-2' on page 52 undefined on input line 1673.
+
+
+LaTeX Warning: Reference `l:convolution' on page 52 undefined on input line 169
+3.
+
+
+LaTeX Warning: Citation `DemlowDziuk:07' on page 52 undefined on input line 170
+4.
+
+
+LaTeX Warning: Reference `T:apost-upper-dist' on page 52 undefined on input lin
+e 1707.
+
+
+LaTeX Warning: Reference `T:apost-lower' on page 52 undefined on input line 171
+9.
+
+
+LaTeX Warning: Reference `C:lambda-2' on page 52 undefined on input line 1720.
+
+
+LaTeX Warning: Reference `C:lambda' on page 52 undefined on input line 1720.
+
+
+LaTeX Warning: Reference `e:error_rep_dist' on page 52 undefined on input line 
+1721.
+
+
+LaTeX Warning: Reference `e:I3-dist' on page 52 undefined on input line 1722.
+
+) (./trace_v6.tex
+
+LaTeX Warning: Citation `ORG09' on page 52 undefined on input line 7.
+
+
+LaTeX Warning: Citation `BHL15' on page 52 undefined on input line 7.
+
+
+LaTeX Warning: Citation `Re15' on page 52 undefined on input line 7.
+
+
+
+[52]
+
+LaTeX Warning: Citation `ORG09' on page 53 undefined on input line 10.
+
+
+LaTeX Warning: Reference `S:distance-function' on page 53 undefined on input li
+ne 17.
+
+
+LaTeX Warning: Reference `f:tracemeshes' on page 53 undefined on input line 29.
+
+
+
+LaTeX Warning: Reference `S:perturb-C2' on page 53 undefined on input line 32.
+
+Package epstopdf Info: Source file: <trace_cutaway.eps>
+(epstopdf)                    date: 2019-06-06 14:28:11
+(epstopdf)                    size: 667102 bytes
+(epstopdf)             Output file: <trace_cutaway-eps-converted-to.pdf>
+(epstopdf)             Command: <repstopdf --outfile=trace_cutaway-eps-converte
+d-to.pdf trace_cutaway.eps>
+(epstopdf)             \includegraphics on input line 50.
+runsystem(repstopdf --outfile=trace_cutaway-eps-converted-to.pdf trace_cutaway.
+eps)...executed safely (allowed).
+
+Package epstopdf Info: Result file: <trace_cutaway-eps-converted-to.pdf>
+(epstopdf)                    date: 2025-09-18 18:02:37
+(epstopdf)                    size: 682829 bytes.
+<trace_cutaway-eps-converted-to.pdf, id=203, 634.37pt x 640.3925pt>
+File: trace_cutaway-eps-converted-to.pdf Graphic file (type pdf)
+<use trace_cutaway-eps-converted-to.pdf>
+Package pdftex.def Info: trace_cutaway-eps-converted-to.pdf  used on input line
+ 50.
+(pdftex.def)             Requested size: 183.59802pt x 185.33774pt.
+Package epstopdf Info: Source file: <trace_blowup.eps>
+(epstopdf)                    date: 2019-06-06 14:28:04
+(epstopdf)                    size: 1056814 bytes
+(epstopdf)             Output file: <trace_blowup-eps-converted-to.pdf>
+(epstopdf)             Command: <repstopdf --outfile=trace_blowup-eps-converted
+-to.pdf trace_blowup.eps>
+(epstopdf)             \includegraphics on input line 50.
+runsystem(repstopdf --outfile=trace_blowup-eps-converted-to.pdf trace_blowup.ep
+s)...executed safely (allowed).
+
+Package epstopdf Info: Result file: <trace_blowup-eps-converted-to.pdf>
+(epstopdf)                    date: 2025-09-18 18:02:39
+(epstopdf)                    size: 995113 bytes.
+<trace_blowup-eps-converted-to.pdf, id=204, 213.79875pt x 228.855pt>
+File: trace_blowup-eps-converted-to.pdf Graphic file (type pdf)
+<use trace_blowup-eps-converted-to.pdf>
+Package pdftex.def Info: trace_blowup-eps-converted-to.pdf  used on input line 
+50.
+(pdftex.def)             Requested size: 165.60242pt x 177.263pt.
+
+
+[53]
+
+LaTeX Warning: Reference `f:tracemeshes' on page 54 undefined on input line 80.
+
+
+
+LaTeX Warning: Citation `ORX12' on page 54 undefined on input line 80.
+
+
+LaTeX Warning: Citation `DO12' on page 54 undefined on input line 80.
+
+
+
+[54 <./trace_cutaway-eps-converted-to.pdf> <./trace_blowup-eps-converted-to.pdf
+>]
+
+LaTeX Warning: Citation `OR17' on page 55 undefined on input line 82.
+
+
+LaTeX Warning: Reference `N:def' on page 55 undefined on input line 114.
+
+
+
+[55]
+
+LaTeX Warning: Reference `ass:flattening' on page 56 undefined on input line 13
+0.
+
+
+LaTeX Warning: Citation `Ev98' on page 56 undefined on input line 130.
+
+
+LaTeX Warning: Reference `trace:geo_res_assumption' on page 56 undefined on inp
+ut line 136.
+
+
+LaTeX Warning: Reference `eq:phi_assumption' on page 56 undefined on input line
+ 147.
+
+
+LaTeX Warning: Reference `trace:geo_res_assumption' on page 56 undefined on inp
+ut line 161.
+
+
+
+[56]
+
+LaTeX Warning: Reference `N:def' on page 57 undefined on input line 189.
+
+
+LaTeX Warning: Reference `eq:phi_properties' on page 57 undefined on input line
+ 201.
+
+
+LaTeX Warning: Reference `eq:phi_properties' on page 57 undefined on input line
+ 204.
+
+
+LaTeX Warning: Reference `eq:phih_assumption' on page 57 undefined on input lin
+e 204.
+
+
+LaTeX Warning: Citation `DemlowDziuk:07' on page 57 undefined on input line 214
+.
+
+
+LaTeX Warning: Citation `DemlowDziuk:07' on page 57 undefined on input line 214
+.
+
+
+LaTeX Warning: Citation `Gr17' on page 57 undefined on input line 214.
+
+
+
+[57]
+
+LaTeX Warning: Citation `G85' on page 58 undefined on input line 237.
+
+
+LaTeX Warning: Citation `Ad75' on page 58 undefined on input line 248.
+
+
+LaTeX Warning: Citation `DO12' on page 58 undefined on input line 258.
+
+
+LaTeX Warning: Citation `ORG09' on page 58 undefined on input line 258.
+
+
+LaTeX Warning: Citation `HH02' on page 58 undefined on input line 258.
+
+
+LaTeX Warning: Citation `HH04' on page 58 undefined on input line 258.
+
+
+LaTeX Warning: Citation `BHL15' on page 58 undefined on input line 258.
+
+
+LaTeX Warning: Citation `Re15' on page 58 undefined on input line 258.
+
+
+
+[58]
+
+LaTeX Warning: Reference `general_trace_est' on page 59 undefined on input line
+ 290.
+
+
+LaTeX Warning: Citation `Ad75' on page 59 undefined on input line 290.
+
+
+LaTeX Warning: Reference `trace_est' on page 59 undefined on input line 290.
+
+
+LaTeX Warning: Reference `curved_trace_est' on page 59 undefined on input line 
+292.
+
+
+LaTeX Warning: Reference `H32_curved_trace' on page 59 undefined on input line 
+292.
+
+
+LaTeX Warning: Reference `ass:flattening' on page 59 undefined on input line 29
+2.
+
+
+LaTeX Warning: Reference `H32_curved_trace' on page 59 undefined on input line 
+294.
+
+
+LaTeX Warning: Reference `lem:standard_extension' on page 59 undefined on input
+ line 306.
+
+
+LaTeX Warning: Reference `special_trace' on page 59 undefined on input line 306
+.
+
+
+LaTeX Warning: Reference `extension' on page 59 undefined on input line 306.
+
+
+LaTeX Warning: Reference `H32_curved_trace' on page 59 undefined on input line 
+318.
+
+
+LaTeX Warning: Reference `curved_trace_est' on page 59 undefined on input line 
+327.
+
+
+LaTeX Warning: Reference `general_trace_est' on page 59 undefined on input line
+ 328.
+
+
+LaTeX Warning: Reference `special_trace' on page 59 undefined on input line 328
+.
+
+
+
+[59]
+
+LaTeX Warning: Reference `curved_trace_est' on page 60 undefined on input line 
+339.
+
+
+Overfull \hbox (10.61101pt too wide) in paragraph at lines 346--347
+ \OT1/cmr/m/n/10 5.2.\OT1/cmr/bx/n/10 A Pri-ori Er-ror Es-ti-mates.[] \OT1/cmr/
+m/n/10 We re-call that we use the no-ta-tion $\OML/cmm/m/it/10 h \OT1/cmr/m/n/1
+0 := [][] \OML/cmm/m/it/10 h[]$
+ []
+
+
+LaTeX Warning: Reference `P:H2-extension' on page 60 undefined on input line 35
+4.
+
+
+LaTeX Warning: Reference `H2extend' on page 60 undefined on input line 367.
+
+
+LaTeX Warning: Reference `trace:geo_res_assumption' on page 60 undefined on inp
+ut line 375.
+
+
+LaTeX Warning: Reference `poin-unif' on page 60 undefined on input line 385.
+
+
+
+[60]
+
+LaTeX Warning: Reference `trace:geo_res_assumption' on page 61 undefined on inp
+ut line 398.
+
+
+LaTeX Warning: Reference `ass:flattening' on page 61 undefined on input line 39
+8.
+
+
+LaTeX Warning: Reference `e:TGamma' on page 61 undefined on input line 398.
+
+
+LaTeX Warning: Reference `ass:skinlayer' on page 61 undefined on input line 398
+.
+
+
+LaTeX Warning: Reference `e:TGamma' on page 61 undefined on input line 406.
+
+
+LaTeX Warning: Reference `P:H2-extension' on page 61 undefined on input line 40
+7.
+
+
+LaTeX Warning: Reference `H2extend' on page 61 undefined on input line 407.
+
+
+LaTeX Warning: Reference `L:norm-equiv' on page 61 undefined on input line 427.
+
+
+
+LaTeX Warning: Reference `curved_trace_est' on page 61 undefined on input line 
+433.
+
+
+LaTeX Warning: Reference `H2extend' on page 61 undefined on input line 433.
+
+
+
+[61]
+
+LaTeX Warning: Reference `trace_est' on page 62 undefined on input line 457.
+
+
+LaTeX Warning: Reference `trace:geo_res_assumption' on page 62 undefined on inp
+ut line 480.
+
+
+LaTeX Warning: Reference `curved_trace_est' on page 62 undefined on input line 
+484.
+
+
+LaTeX Warning: Reference `H2extend' on page 62 undefined on input line 484.
+
+
+LaTeX Warning: Reference `trace:geo_res_assumption' on page 62 undefined on inp
+ut line 499.
+
+
+LaTeX Warning: Reference `ass:skinlayer' on page 62 undefined on input line 504
+.
+
+
+LaTeX Warning: Reference `e:TGamma' on page 62 undefined on input line 504.
+
+
+Overfull \hbox (18.38518pt too wide) in paragraph at lines 502--507
+\OT1/cmr/m/n/10 In view of as-sump-tions [] and [], and the bound $\OMS/cmsy/m/
+n/10 krI[]r\OML/cmm/m/it/10 u\OMS/cmsy/m/n/10 k[] \U/msa/m/n/10 . \OMS/cmsy/m/n
+/10 k\OML/cmm/m/it/10 D[]u\OMS/cmsy/m/n/10 k[]$\OT1/cmr/m/n/10 ,
+ []
+
+
+LaTeX Warning: Reference `trace:geo_res_assumption' on page 62 undefined on inp
+ut line 516.
+
+
+LaTeX Warning: Reference `ass:flattening' on page 62 undefined on input line 51
+6.
+
+
+LaTeX Warning: Reference `e:TGamma' on page 62 undefined on input line 516.
+
+
+LaTeX Warning: Reference `ass:skinlayer' on page 62 undefined on input line 516
+.
+
+
+LaTeX Warning: Reference `trace-poin-unif' on page 62 undefined on input line 5
+16.
+
+
+LaTeX Warning: Reference `e:weak_relax' on page 62 undefined on input line 516.
+
+
+
+LaTeX Warning: Reference `def:trace_fem' on page 62 undefined on input line 516
+.
+
+
+LaTeX Warning: Reference `trace:geo_res_assumption' on page 62 undefined on inp
+ut line 524.
+
+
+LaTeX Warning: Reference `lem:trace_approx' on page 62 undefined on input line 
+524.
+
+
+LaTeX Warning: Reference `t:H1error' on page 62 undefined on input line 524.
+
+
+LaTeX Warning: Reference `t:L2_apriori' on page 62 undefined on input line 524.
+
+
+
+
+[62]
+
+LaTeX Warning: Reference `e:trace_approx' on page 63 undefined on input line 52
+8.
+
+
+LaTeX Warning: Reference `L:geom_consist_dist' on page 63 undefined on input li
+ne 535.
+
+
+LaTeX Warning: Reference `trace:geo_res_assumption' on page 63 undefined on inp
+ut line 535.
+
+
+LaTeX Warning: Reference `lem:trace_approx' on page 63 undefined on input line 
+542.
+
+
+LaTeX Warning: Reference `L:regularity' on page 63 undefined on input line 549.
+
+
+
+LaTeX Warning: Reference `t:L2_apriori' on page 63 undefined on input line 572.
+
+
+
+LaTeX Warning: Reference `L:regularity' on page 63 undefined on input line 581.
+
+
+
+LaTeX Warning: Reference `L:geom_consist_dist' on page 63 undefined on input li
+ne 588.
+
+
+LaTeX Warning: Reference `trace:geo_res_assumption' on page 63 undefined on inp
+ut line 588.
+
+
+LaTeX Warning: Reference `L:norm-equiv' on page 63 undefined on input line 602.
+
+
+
+
+[63]
+
+LaTeX Warning: Reference `C:lambda-2' on page 64 undefined on input line 611.
+
+
+LaTeX Warning: Reference `trace:geo_res_assumption' on page 64 undefined on inp
+ut line 611.
+
+
+LaTeX Warning: Reference `t:L2_apriori' on page 64 undefined on input line 611.
+
+
+
+LaTeX Warning: Citation `DO12' on page 64 undefined on input line 618.
+
+
+LaTeX Warning: Citation `CO15' on page 64 undefined on input line 618.
+
+
+LaTeX Warning: Citation `DO12' on page 64 undefined on input line 618.
+
+
+LaTeX Warning: Reference `P:H2-extension' on page 64 undefined on input line 61
+8.
+
+
+LaTeX Warning: Reference `P:H2-extension' on page 64 undefined on input line 61
+8.
+
+
+LaTeX Warning: Citation `CO15' on page 64 undefined on input line 618.
+
+
+LaTeX Warning: Citation `DO12' on page 64 undefined on input line 618.
+
+
+LaTeX Warning: Reference `P:H2-extension' on page 64 undefined on input line 61
+8.
+
+
+LaTeX Warning: Reference `S:trace-prelim' on page 64 undefined on input line 65
+4.
+
+
+LaTeX Warning: Reference `S:trace-prelim' on page 64 undefined on input line 66
+4.
+
+
+LaTeX Warning: Reference `trace:geo_res_assumption' on page 64 undefined on inp
+ut line 667.
+
+
+LaTeX Warning: Reference `trace_apost_ass1' on page 64 undefined on input line 
+667.
+
+
+LaTeX Warning: Reference `trace_apost_ass2' on page 64 undefined on input line 
+667.
+
+
+
+[64]
+
+LaTeX Warning: Citation `JK95' on page 65 undefined on input line 684.
+
+
+LaTeX Warning: Reference `lem:standard_extension' on page 65 undefined on input
+ line 684.
+
+
+LaTeX Warning: Reference `trace:geo_res_assumption' on page 65 undefined on inp
+ut line 694.
+
+
+LaTeX Warning: Reference `ass:flattening' on page 65 undefined on input line 69
+4.
+
+
+LaTeX Warning: Reference `trace_apost_ass1' on page 65 undefined on input line 
+694.
+
+
+LaTeX Warning: Reference `trace:geo_res_assumption' on page 65 undefined on inp
+ut line 713.
+
+
+LaTeX Warning: Reference `trace_apost_ass1' on page 65 undefined on input line 
+713.
+
+
+LaTeX Warning: Reference `trace:geo_res_assumption' on page 65 undefined on inp
+ut line 746.
+
+
+LaTeX Warning: Reference `ass:flattening' on page 65 undefined on input line 74
+6.
+
+
+LaTeX Warning: Reference `trace_apost_ass1' on page 65 undefined on input line 
+746.
+
+
+LaTeX Warning: Reference `trace_apost_ass2' on page 65 undefined on input line 
+746.
+
+
+LaTeX Warning: Reference `e:weak_relax' on page 65 undefined on input line 746.
+
+
+
+LaTeX Warning: Reference `def:trace_fem' on page 65 undefined on input line 746
+.
+
+
+
+[65]
+
+LaTeX Warning: Reference `e:post_split' on page 66 undefined on input line 763.
+
+
+
+LaTeX Warning: Reference `error-matrix-gamma' on page 66 undefined on input lin
+e 774.
+
+
+LaTeX Warning: Reference `lem:harmonic_extension' on page 66 undefined on input
+ line 774.
+
+
+LaTeX Warning: Reference `est-E' on page 66 undefined on input line 778.
+
+
+LaTeX Warning: Reference `L:norm-equiv' on page 66 undefined on input line 783.
+
+
+
+LaTeX Warning: Reference `L:eval-mismatch' on page 66 undefined on input line 8
+10.
+
+
+
+[66]
+Overfull \hbox (17.87227pt too wide) in paragraph at lines 820--821
+[]\OT1/cmr/m/n/10 For the first term $\OML/cmm/m/it/10 h[]\OMS/cmsy/m/n/10 k\OT
+1/pzc/m/it/10 v[] \OMS/cmsy/m/n/10 ^^@ \OML/cmm/m/it/10 V[]\OMS/cmsy/m/n/10 k[]
+$ \OT1/cmr/m/n/10 we ar-gue as fol-lows. Let $\U/msb/m/n/10 P$ \OT1/cmr/m/n/10 
+be the $\OML/cmm/m/it/10 n\OMS/cmsy/m/n/10 ^^@$\OT1/cmr/m/n/10 dimensional
+ []
+
+
+LaTeX Warning: Reference `general_trace_est' on page 67 undefined on input line
+ 822.
+
+
+LaTeX Warning: Reference `L:trace-est' on page 67 undefined on input line 822.
+
+
+LaTeX Warning: Reference `L:norm-equiv' on page 67 undefined on input line 828.
+
+
+
+LaTeX Warning: Reference `trace_apost_ass2' on page 67 undefined on input line 
+835.
+
+
+LaTeX Warning: Reference `L:eval-mismatch' on page 67 undefined on input line 8
+42.
+
+
+LaTeX Warning: Reference `H32_curved_trace' on page 67 undefined on input line 
+867.
+
+
+
+[67]
+
+LaTeX Warning: Reference `lem:harmonic_extension' on page 68 undefined on input
+ line 883.
+
+
+LaTeX Warning: Reference `T:apost-lower' on page 68 undefined on input line 893
+.
+
+
+LaTeX Warning: Reference `T:apost-lower-dist' on page 68 undefined on input lin
+e 893.
+
+
+LaTeX Warning: Citation `DO12' on page 68 undefined on input line 903.
+
+) (./narrow_v9.tex
+
+LaTeX Warning: Reference `e:weak_relax' on page 68 undefined on input line 6.
+
+
+LaTeX Warning: Reference `e:delta-tube' on page 68 undefined on input line 11.
+
+
+LaTeX Warning: Citation `MR1868103' on page 68 undefined on input line 16.
+
+
+LaTeX Warning: Citation `MR2485787' on page 68 undefined on input line 16.
+
+
+LaTeX Warning: Reference `e:Ntilde' on page 68 undefined on input line 18.
+
+
+LaTeX Warning: Reference `sec:preliminaries' on page 68 undefined on input line
+ 18.
+
+
+LaTeX Warning: Reference `P:H2-extension' on page 68 undefined on input line 28
+.
+
+
+LaTeX Warning: Reference `t:narrow:geom_consistency' on page 68 undefined on in
+put line 28.
+
+
+
+[68]
+
+LaTeX Warning: Reference `narrow-band-eq' on page 69 undefined on input line 34
+.
+
+
+LaTeX Warning: Reference `narrow-band-eq' on page 69 undefined on input line 34
+.
+
+
+LaTeX Warning: Citation `MR3471100' on page 69 undefined on input line 35.
+
+
+LaTeX Warning: Citation `MR2608464' on page 69 undefined on input line 35.
+
+
+LaTeX Warning: Citation `MR3249369' on page 69 undefined on input line 35.
+
+
+LaTeX Warning: Reference `e:narrow:interp' on page 69 undefined on input line 6
+9.
+
+
+LaTeX Warning: Reference `e:narrow:nondegen' on page 69 undefined on input line
+ 69.
+
+
+LaTeX Warning: Reference `N:def' on page 69 undefined on input line 81.
+
+
+LaTeX Warning: Reference `e:narrow:delta_and_h' on page 69 undefined on input l
+ine 93.
+
+
+
+[69]
+
+LaTeX Warning: Reference `narrow-band-eq' on page 70 undefined on input line 10
+6.
+
+
+LaTeX Warning: Reference `e:discrete_nb' on page 70 undefined on input line 126
+.
+
+
+LaTeX Warning: Reference `narrow-band-eq' on page 70 undefined on input line 13
+4.
+
+
+LaTeX Warning: Reference `P:H2-extension' on page 70 undefined on input line 13
+4.
+
+
+LaTeX Warning: Reference `P:BVP' on page 70 undefined on input line 134.
+
+
+LaTeX Warning: Reference `e:narrow_band_exact' on page 70 undefined on input li
+ne 149.
+
+
+LaTeX Warning: Reference `P:BVP' on page 70 undefined on input line 169.
+
+
+LaTeX Warning: Reference `L:PDE-ue' on page 70 undefined on input line 170.
+
+
+
+[70]
+
+LaTeX Warning: Reference `L:properties-Pe' on page 71 undefined on input line 2
+00.
+
+
+LaTeX Warning: Reference `e:Ntilde' on page 71 undefined on input line 200.
+
+
+LaTeX Warning: Reference `L:properties-Pe' on page 71 undefined on input line 2
+18.
+
+
+LaTeX Warning: Reference `nb:mu_estim' on page 71 undefined on input line 227.
+
+
+LaTeX Warning: Reference `nb:matrix_estim' on page 71 undefined on input line 2
+30.
+
+
+LaTeX Warning: Reference `nb:mu_estim' on page 71 undefined on input line 230.
+
+
+LaTeX Warning: Reference `P:BVP' on page 71 undefined on input line 232.
+
+
+LaTeX Warning: Reference `L:properties-Pe' on page 71 undefined on input line 2
+39.
+
+
+LaTeX Warning: Reference `L:PDE-ue' on page 71 undefined on input line 246.
+
+
+LaTeX Warning: Reference `L:properties-Pe' on page 71 undefined on input line 2
+74.
+
+
+
+[71]
+
+LaTeX Warning: Reference `L:area_ratio_distance' on page 72 undefined on input 
+line 283.
+
+
+LaTeX Warning: Reference `P:H2-extension' on page 72 undefined on input line 29
+7.
+
+
+LaTeX Warning: Reference `e:narrow_band_exact' on page 72 undefined on input li
+ne 306.
+
+
+LaTeX Warning: Reference `e:narrow:consistency_alg' on page 72 undefined on inp
+ut line 331.
+
+
+LaTeX Warning: Reference `e:coarea' on page 72 undefined on input line 344.
+
+
+LaTeX Warning: Reference `L:area_ratio_distance' on page 72 undefined on input 
+line 350.
+
+
+
+[72]
+
+LaTeX Warning: Reference `L:area_ratio_distance' on page 73 undefined on input 
+line 375.
+
+
+LaTeX Warning: Reference `e:coarea' on page 73 undefined on input line 404.
+
+
+LaTeX Warning: Reference `nb:mu_estim' on page 73 undefined on input line 431.
+
+
+LaTeX Warning: Reference `nb:mu_estim_d' on page 73 undefined on input line 431
+.
+
+
+LaTeX Warning: Reference `p:mol_bulk' on page 73 undefined on input line 437.
+
+
+
+[73]
+
+LaTeX Warning: Reference `p:mol_bulk' on page 74 undefined on input line 445.
+
+
+LaTeX Warning: Reference `e:coarea' on page 74 undefined on input line 450.
+
+
+LaTeX Warning: Reference `nb:mu_estim_d' on page 74 undefined on input line 456
+.
+
+
+LaTeX Warning: Reference `nb:mu_estim' on page 74 undefined on input line 471.
+
+
+LaTeX Warning: Reference `nb:mu_estim_d' on page 74 undefined on input line 471
+.
+
+
+LaTeX Warning: Reference `e:narrow:consistency_alg' on page 74 undefined on inp
+ut line 488.
+
+
+LaTeX Warning: Reference `L:properties-Pe' on page 74 undefined on input line 4
+89.
+
+
+LaTeX Warning: Reference `P:H2-extension' on page 74 undefined on input line 51
+9.
+
+
+LaTeX Warning: Reference `L:regularity' on page 74 undefined on input line 520.
+
+
+
+LaTeX Warning: Citation `MR3249369' on page 74 undefined on input line 545.
+
+
+LaTeX Warning: Citation `MR3471100' on page 74 undefined on input line 545.
+
+
+
+[74]
+
+LaTeX Warning: Reference `e:narrow:rewrite_M' on page 75 undefined on input lin
+e 564.
+
+
+LaTeX Warning: Reference `e:narrow:interp' on page 75 undefined on input line 5
+64.
+
+
+LaTeX Warning: Reference `e:narrow:estim_Mh' on page 75 undefined on input line
+ 579.
+
+
+LaTeX Warning: Reference `e:narrow:estim_Mh' on page 75 undefined on input line
+ 579.
+
+
+LaTeX Warning: Reference `e:narrow:lipschitz' on page 75 undefined on input lin
+e 579.
+
+
+LaTeX Warning: Reference `e:narrow:det' on page 75 undefined on input line 581.
+
+
+
+LaTeX Warning: Reference `e:narrow:estim_Mh' on page 75 undefined on input line
+ 587.
+
+
+LaTeX Warning: Reference `e:discrete_nb' on page 75 undefined on input line 597
+.
+
+
+LaTeX Warning: Reference `P:H2-extension' on page 75 undefined on input line 59
+7.
+
+
+LaTeX Warning: Reference `e:narrow:Ih' on page 75 undefined on input line 597.
+
+
+LaTeX Warning: Reference `delta-h' on page 75 undefined on input line 602.
+
+
+LaTeX Warning: Reference `e:weak' on page 75 undefined on input line 603.
+
+
+LaTeX Warning: Reference `e:non_const_ext' on page 75 undefined on input line 6
+03.
+
+
+LaTeX Warning: Reference `e:narrow:F' on page 75 undefined on input line 603.
+
+
+LaTeX Warning: Reference `e:narrow:Ih' on page 75 undefined on input line 604.
+
+
+
+[75]
+
+LaTeX Warning: Reference `e:narrow:Ih' on page 76 undefined on input line 611.
+
+
+LaTeX Warning: Reference `e:narrow:geom_consistency' on page 76 undefined on in
+put line 611.
+
+
+LaTeX Warning: Reference `p:mol_bulk' on page 76 undefined on input line 632.
+
+
+LaTeX Warning: Reference `l:narrow:prop_Mh' on page 76 undefined on input line 
+632.
+
+
+LaTeX Warning: Reference `l:narrow:prop_Mh' on page 76 undefined on input line 
+644.
+
+
+LaTeX Warning: Reference `L:regularity' on page 76 undefined on input line 653.
+
+
+
+LaTeX Warning: Reference `e:narrow:F' on page 76 undefined on input line 662.
+
+
+LaTeX Warning: Reference `e:narrow:Ih' on page 76 undefined on input line 662.
+
+
+LaTeX Warning: Reference `e:narrow:lipschitz' on page 76 undefined on input lin
+e 678.
+
+
+LaTeX Warning: Reference `e:narrow:det' on page 76 undefined on input line 678.
+
+
+
+
+[76]
+
+LaTeX Warning: Reference `e:narrow:lipschitz' on page 77 undefined on input lin
+e 686.
+
+
+LaTeX Warning: Reference `e:narrow:det' on page 77 undefined on input line 686.
+
+
+
+LaTeX Warning: Reference `e:coarea' on page 77 undefined on input line 696.
+
+
+LaTeX Warning: Reference `L:area_ratio_distance' on page 77 undefined on input 
+line 706.
+
+
+LaTeX Warning: Reference `r:narrow:mu' on page 77 undefined on input line 707.
+
+
+LaTeX Warning: Reference `e:narrow:geom_consistency' on page 77 undefined on in
+put line 751.
+
+
+LaTeX Warning: Reference `t:narrow:geom_consistency' on page 77 undefined on in
+put line 751.
+
+
+LaTeX Warning: Reference `P:H2-extension' on page 77 undefined on input line 75
+6.
+
+
+LaTeX Warning: Reference `delta-h' on page 77 undefined on input line 765.
+
+
+LaTeX Warning: Reference `e:weak' on page 77 undefined on input line 766.
+
+
+LaTeX Warning: Reference `e:non_const_ext' on page 77 undefined on input line 7
+66.
+
+
+LaTeX Warning: Reference `e:discrete_nb' on page 77 undefined on input line 767
+.
+
+
+LaTeX Warning: Reference `e:narrow:F' on page 77 undefined on input line 767.
+
+
+LaTeX Warning: Reference `e:discrete_nb' on page 77 undefined on input line 779
+.
+
+
+LaTeX Warning: Reference `e:narrow:Ih' on page 77 undefined on input line 779.
+
+
+
+[77]
+
+LaTeX Warning: Reference `l:narrow:consistency_Ih' on page 78 undefined on inpu
+t line 783.
+
+
+LaTeX Warning: Reference `delta-h' on page 78 undefined on input line 783.
+
+
+LaTeX Warning: Reference `t:narrow:aprior' on page 78 undefined on input line 7
+93.
+
+
+LaTeX Warning: Reference `extension-N' on page 78 undefined on input line 800.
+
+
+LaTeX Warning: Reference `P:H2-extension' on page 78 undefined on input line 81
+0.
+
+
+LaTeX Warning: Reference `L:regularity' on page 78 undefined on input line 811.
+
+
+
+LaTeX Warning: Reference `t:narrow:aprior' on page 78 undefined on input line 8
+18.
+
+
+LaTeX Warning: Citation `MR3471100' on page 78 undefined on input line 821.
+
+
+LaTeX Warning: Reference `t:narrow:aprior' on page 78 undefined on input line 8
+25.
+
+
+LaTeX Warning: Reference `curved_trace_est' on page 78 undefined on input line 
+833.
+
+
+LaTeX Warning: Reference `P:H2-extension' on page 78 undefined on input line 84
+7.
+
+
+LaTeX Warning: Reference `c:narrow:error' on page 78 undefined on input line 84
+7.
+
+
+LaTeX Warning: Reference `L:regularity' on page 78 undefined on input line 853.
+
+
+)
+
+[78]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+[79]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+[80]
+
+[81] (./laplace_beltrami.aux)
+ ***********
+LaTeX2e <2025-06-01> patch level 1
+L3 programming layer <2025-07-20>
+ ***********
+
+
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 5768 strings out of 467800
+ 83445 string characters out of 5436068
+ 496651 words of memory out of 5000000
+ 34154 multiletter control sequences out of 15000+600000
+ 642322 words of font info for 90 fonts, out of 8000000 for 9000
+ 1302 hyphenation exceptions out of 8191
+ 71i,20n,79p,1785b,326s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/tex
+live/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb><c:/texlive/2025/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><c:/texlive/2025/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2025/texmf-dist/fonts/
+type1/public/amsfonts/cmextra/cmex7.pfb><c:/texlive/2025/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmmi5.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmmi6.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb
+><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/texli
+ve/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb><c:/texlive/2025/
+texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib7.pfb><c:/texlive/2025/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2025/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmr5.pfb><c:/texlive/2025/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmr6.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmr7.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.
+pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/t
+exlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb><c:/texlive/202
+5/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2025/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/texlive/2025/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmti10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmti8.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfont
+s/symbols/msam10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/sy
+mbols/msbm10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbol
+s/msbm7.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/stmaryrd/stmary10.pf
+b><c:/texlive/2025/texmf-dist/fonts/type1/urw/zapfchan/uzcmi8a.pfb>
+Output written on laplace_beltrami.pdf (81 pages, 2349925 bytes).
+PDF statistics:
+ 437 PDF objects out of 1000 (max. 8388607)
+ 276 compressed objects within 3 object streams
+ 0 named destinations out of 1000 (max. 500000)
+ 26 words of extra memory for PDF output out of 10000 (max. 10000000)
+

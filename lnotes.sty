@@ -23,6 +23,7 @@
   \vspace*{.5\textheight}%
 }
 
+
 % --- These are boxes for students' work. 
 % the height is adjusted via \vertspaces in the argument; this is 
 % so LaTeXML will work right. 
@@ -54,3 +55,23 @@
 \newtheorem{example}[theorem]{Example}
 \newtheorem{rem}[theorem]{Remark}
 \newtheorem{definition}[theorem]{Definition}
+\newtheorem{qquestion}{Quiz Prep Question}
+
+
+\newif\ifshowbacks
+\showbacksfalse % default: show fronts
+
+% Command to switch on showing backs
+\newcommand{\showback}{\showbackstrue}
+
+% The card macro: takes [front]{back}
+\newcommand{\card}[2]{%
+  \ifshowbacks
+    \workbox{#2} % show back
+  \else
+    \workbox{#1} % show front
+  \fi
+}
+
+\newcommand{\qcard}[2]{\textbf{Quiz Prep Question \qpqc:} #1  \ifshowbacks\newline \textbf{Solution:} #2\fi\newline}
+
